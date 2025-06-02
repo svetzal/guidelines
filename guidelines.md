@@ -15,6 +15,7 @@ To be written.
 * **Small, safe increments** — single‑reason commits; avoid speculative work (**YAGNI**).
 * **Tests are the executable spec** — red first, green always; test behaviour not implementation.
 * **Compose over inherit**; favour pure functions where practical, avoid side-effects.
+* **Functional core, imperative shell** — isolate pure business logic from I/O and side effects; push mutations to the system boundaries, build mockable gateways at those boundaries.
 * **Psychological safety** — review code, not colleagues; critique ideas, not authors.
 * **Version‑control etiquette** — descriptive commit messages, branch from `main`, PRs require green CI.
 
