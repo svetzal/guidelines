@@ -44,11 +44,21 @@ Apply these Simple Design Heuristics as guiding principles, not iron laws. When 
 - Make dependencies explicit through dependency injection
 
 **Code Quality & Tooling**
-- Use **flake8** to enforce style and catch common issues
+- Use **flake8** with **zero warnings allowed, period** - all style and code issues must be resolved
+- **MANDATORY: Before completing ANY work, run `flake8 src` and ensure ZERO warnings/errors**
 - Use **uv** for fast, reliable Python project and dependency management
 - Use **pysentry** (or similar tools) to scan dependencies for known vulnerabilities
 - Write idiomatic Python that leverages language features appropriately (comprehensions, context managers, generators, decorators, etc.)
 - Follow PEP 8 and community conventions unless project-specific standards dictate otherwise
+- Never suppress flake8 warnings with `# noqa` unless absolutely necessary and fully documented
+
+**Virtual Environment Management**
+- **Always** use Python virtual environments—never run system Python directly
+- Create virtual environments using: `python3 -m venv .venv`
+- Activate before any Python work: `source .venv/bin/activate`
+- All pip commands must run within the activated virtual environment
+- Never use `pip3` or `python3` directly—always use `pip` and `python` from within the activated `.venv`
+- Ensure `.venv/` is in `.gitignore`
 
 **Documentation Synchronization**
 - Maintain end-user documentation in `docs/` using mkdocs
@@ -70,20 +80,22 @@ Apply these Simple Design Heuristics as guiding principles, not iron laws. When 
 2. Start with a failing test that describes the desired behavior
 3. Implement the simplest solution that makes the test pass
 4. Refactor to reveal intent and eliminate duplication
-5. Verify with flake8 and ensure appropriate test coverage
-6. Update relevant documentation in `docs/`
-7. Verify dependencies with pysentry
+5. **Run flake8 and fix ALL warnings** - zero warnings mandatory
+6. Ensure appropriate test coverage with pytest
+7. Update relevant documentation in `docs/`
+8. Verify dependencies with pysentry
 
 **When Reviewing Code:**
 1. Verify all tests pass and provide meaningful coverage
-2. Check that code reveals intent—is it readable and well-named?
-3. Identify knowledge duplication (shared decisions, not just shared text)
-4. Look for unnecessary complexity or entities
-5. Ensure proper separation of pure logic from side effects
-6. Verify flake8 compliance and idiomatic Python usage
-7. Check that mkdocs documentation in `docs/` reflects current implementation
-8. Scan for security concerns and recommend pysentry checks
-9. Provide specific, actionable, and kind feedback
+2. **Run flake8 and ensure ZERO warnings** - reject any code with warnings
+3. Check that code reveals intent—is it readable and well-named?
+4. Identify knowledge duplication (shared decisions, not just shared text)
+5. Look for unnecessary complexity or entities
+6. Ensure proper separation of pure logic from side effects
+7. Verify idiomatic Python usage and PEP 8 compliance
+8. Check that mkdocs documentation in `docs/` reflects current implementation
+9. Scan for security concerns and recommend pysentry checks
+10. Provide specific, actionable, and kind feedback
 
 **When Refactoring:**
 1. Ensure tests are in place and passing before refactoring
@@ -94,18 +106,22 @@ Apply these Simple Design Heuristics as guiding principles, not iron laws. When 
 6. Update documentation to reflect structural changes
 
 **When Setting Up Projects:**
-1. Use uv for project initialization and dependency management
-2. Configure flake8 with appropriate rules for the project
-3. Set up pytest with pytest-async, pytest-cov, and pytest-mock
-4. Initialize mkdocs for documentation in `docs/`
-5. Configure pysentry or equivalent for dependency scanning
-6. Establish CI pipeline that enforces tests, linting, and coverage
-7. Create initial documentation that explains project structure and principles
+1. Create a virtual environment: `python3 -m venv .venv`
+2. Activate the virtual environment: `source .venv/bin/activate`
+3. Ensure `.venv/` is added to `.gitignore`
+4. Use uv for project initialization and dependency management (within the venv)
+5. Configure flake8 with appropriate rules for the project
+6. Set up pytest with pytest-async, pytest-cov, and pytest-mock
+7. Initialize mkdocs for documentation in `docs/`
+8. Configure pysentry or equivalent for dependency scanning
+9. Establish CI pipeline that enforces tests, linting, and coverage
+10. Create initial documentation that explains project structure and principles
 
 # Quality Assurance Mechanisms
 
 - Before declaring any code complete, run the full test suite and verify 100% pass rate
-- Check flake8 output and address all issues or explicitly document exceptions
+- **Run flake8 and achieve ZERO warnings** - this is non-negotiable, not optional
+- Check flake8 output and address all issues; only use `# noqa` with full explanation when absolutely necessary
 - Review test coverage reports—aim for high coverage of critical paths, not just overall percentages
 - Verify documentation in `docs/` accurately reflects the current state of the code
 - When uncertain about a design decision, explicitly present the trade-offs to the user
