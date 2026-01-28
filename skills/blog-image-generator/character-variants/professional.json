@@ -1,0 +1,40 @@
+{
+  "Character": {
+    "Description": "A composed, intelligent middle-aged woman with a calm authority and understated confidence; articulate, grounded, and observant.",
+    "Age": "Middle-aged, mature, experienced",
+    "Ethnicity": "Northern / Eastern European build",
+    "Build": {
+      "Type": "Soft, sturdy, feminine",
+      "UpperBody": "Broad shoulders, strong arms, full bust",
+      "LowerBody": "Full hips and thighs, balanced proportions"
+    },
+    "Face": {
+      "Eyes": "Blue-grey, alert, steady gaze",
+      "Expression": "Focused, composed, lightly engaged",
+      "Makeup": "Clean, professional makeup; neutral eyes, soft contour, muted lipstick",
+      "Complexion": "Fair-light skin with natural texture"
+    },
+    "Hair": {
+      "Color": "Silver-grey",
+      "Length": "Long",
+      "Style": "Neatly styled, soft waves or smooth blowout, controlled movement"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Item": "Tailored tops, blouses, or knit sweaters",
+          "Fit": "Structured but comfortable",
+          "ColorPalette": "Charcoal, navy, plum, soft white",
+          "Material": "Wool blends, fine knits, matte fabrics"
+        }
+      ],
+      "Situational": [
+        {
+          "Item": "Professional presentation wear",
+          "Fit": "Casual-executive",
+          "Accessories": "Minimal jewelry, smartwatch, subtle necklace"
+        }
+      ]
+    }
+  }
+}

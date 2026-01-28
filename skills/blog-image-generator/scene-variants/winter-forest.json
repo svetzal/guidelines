@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Canadian Winter Landscape / Nordic Naturalism",
+    "Rendering": "High-detail digital painting, photorealistic, nature photography quality",
+    "Lighting": {
+      "Type": "Cold, crisp, ethereal",
+      "Sources": ["Overcast winter sky", "Snow reflection", "Pale sun through bare branches", "Blue hour twilight"],
+      "Shadows": "Long and blue-tinted, soft edges from diffused winter light"
+    },
+    "ColorPalette": {
+      "Primary": ["Ice Blue", "Snow White", "Charcoal Grey", "Deep Evergreen"],
+      "Accents": ["Pale Gold", "Birch Bark White", "Frosted Silver", "Muted Berry Red"],
+      "Treatment": "Cool and desaturated, high contrast between snow and dark trees, subtle warmth in skin tones"
+    },
+    "Atmosphere": {
+      "Effects": ["Visible breath", "Falling snow", "Frost on surfaces", "Mist between trees", "Snow sparkle"],
+      "Mood": "Quiet, reflective, resilient, stark beauty"
+    }
+  },
+  "PromptKeywords": [
+    "highly detailed", "digital painting", "winter landscape",
+    "canadian forest", "snow", "cold light", "nature photography", "atmospheric"
+  ]
+}

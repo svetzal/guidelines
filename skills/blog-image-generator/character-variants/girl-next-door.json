@@ -1,0 +1,40 @@
+{
+  "Character": {
+    "Description": "A warm, attractive middle-aged woman with an approachable charm and effortless femininity; relaxed, friendly, and quietly alluring.",
+    "Age": "Middle-aged, confident, naturally feminine",
+    "Ethnicity": "Northern / Eastern European build",
+    "Build": {
+      "Type": "Soft, curvy, feminine",
+      "UpperBody": "Broad shoulders, gentle curves, relaxed posture",
+      "LowerBody": "Curvy hips and thighs, natural stance"
+    },
+    "Face": {
+      "Eyes": "Blue-grey, kind, inviting",
+      "Expression": "Soft smile, relaxed confidence",
+      "Makeup": "Light, natural makeup with subtle mascara and glossy pink lips",
+      "Complexion": "Fair-light skin with visible natural texture"
+    },
+    "Hair": {
+      "Color": "Silver-grey",
+      "Length": "Long",
+      "Style": "Loose, touchable waves; casual, slightly tousled"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Item": "Fitted t-shirts, soft sweaters",
+          "Fit": "Figure-skimming but casual",
+          "ColorPalette": "White, blush, soft pink, lavender",
+          "Material": "Cotton, jersey, soft knits"
+        }
+      ],
+      "Situational": [
+        {
+          "Item": "Casual skirts or jeans",
+          "Fit": "Comfortable, feminine",
+          "Accessories": "Minimal jewelry, smartwatch"
+        }
+      ]
+    }
+  }
+}

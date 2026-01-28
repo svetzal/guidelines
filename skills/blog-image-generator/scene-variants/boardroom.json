@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Corporate Executive / Modern Professional",
+    "Rendering": "High-detail digital painting, photorealistic, architectural visualization quality",
+    "Lighting": {
+      "Type": "Clean, professional, controlled",
+      "Sources": ["Recessed ceiling lights", "Large floor-to-ceiling windows", "Presentation screen glow", "Under-cabinet accent lighting"],
+      "Shadows": "Crisp and defined, minimal but purposeful"
+    },
+    "ColorPalette": {
+      "Primary": ["Charcoal Grey", "Navy Blue", "Pure White", "Warm Wood Tones"],
+      "Accents": ["Brushed Steel", "Glass Reflections", "Leather Brown", "Corporate Blue"],
+      "Treatment": "Clean and balanced, neutral base with subtle warmth from wood and leather, professional restraint"
+    },
+    "Atmosphere": {
+      "Effects": ["City skyline through windows", "Reflections on polished surfaces", "Subtle lens flare from windows", "Clean geometric lines"],
+      "Mood": "Authoritative, strategic, high-stakes, polished"
+    }
+  },
+  "PromptKeywords": [
+    "highly detailed", "digital painting", "corporate interior",
+    "executive boardroom", "professional", "modern architecture", "clean lines"
+  ]
+}

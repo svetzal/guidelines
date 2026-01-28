@@ -1,0 +1,111 @@
+{
+  "ImageType": "callout",
+  "AspectRatio": "1:1",
+  "Size": "1024x1024",
+  "Purpose": "Inline illustration within article body, emphasizes a specific point or concept",
+
+  "Character": {
+    "Description": "A highly competent, focused woman coder and systems thinker",
+    "Age": "Middle-aged, mature, experienced",
+    "Ethnicity": "Eastern European build",
+    "Build": {
+      "Type": "Heavy set, sturdy",
+      "UpperBody": "Big arms, broad shoulders",
+      "LowerBody": "Slim hips"
+    },
+    "Face": {
+      "Eyes": "Blue-grey",
+      "Expression": "Thoughtful, analytical"
+    },
+    "Hair": {
+      "Color": "Grey/silver",
+      "Length": "Long",
+      "Style": "Wind-swept or naturally flowing"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Name": "Dark blazer",
+          "Description": "Professional dark blazer over tech-casual attire, sleeves often pushed up",
+          "Context": "Always present, bridges corporate and technical worlds"
+        }
+      ],
+      "Situational": [
+        {
+          "Name": "Professional glasses",
+          "Description": "Modern rectangular frames, subtle tech integration",
+          "Context": "Close-up work, reading, detail-focused scenes"
+        }
+      ]
+    }
+  },
+
+  "Style": {
+    "Genre": "Cyberpunk / Tech Noir",
+    "Rendering": "High-detail digital painting, photorealistic, concept art quality",
+    "Lighting": {
+      "Type": "Focused, intimate, single-source dominant",
+      "Sources": ["Screen glow", "Soft rim lighting", "Focused spotlight"],
+      "Shadows": "Softer than banner, more intimate feel"
+    },
+    "ColorPalette": {
+      "Primary": ["Magenta", "Cyan", "Electric Blue", "Lime Green"],
+      "Accents": ["Silver", "White", "Cool Blues", "Metallic purples"],
+      "Treatment": "Slightly muted compared to banner, focus on subject clarity"
+    },
+    "Atmosphere": {
+      "Effects": ["Subtle bokeh", "Soft glow", "Minimal haze"],
+      "Mood": "Focused, intimate, instructive"
+    }
+  },
+
+  "PromptKeywords": [
+    "highly detailed", "digital painting", "concept art",
+    "cyberpunk", "focused lighting", "portrait composition",
+    "1:1 aspect ratio", "square format", "centered subject"
+  ],
+
+  "CompositionNotes": {
+    "Framing": "Close-up or tight mid-shot, character fills more of frame",
+    "SubjectPlacement": "Centered or slightly off-center, minimal background",
+    "DepthOfField": "Shallow, background heavily blurred",
+    "Focus": "Single concept or action, not environmental storytelling"
+  },
+
+  "UseCases": [
+    {
+      "Name": "Concept Illustration",
+      "Description": "Character interacting with a single symbolic prop representing an article concept",
+      "Example": "Holding a tangled vs untangled cable to represent complexity"
+    },
+    {
+      "Name": "Emotional Beat",
+      "Description": "Close-up expression capturing a specific emotional moment from the article",
+      "Example": "The 'aha' moment of realization"
+    },
+    {
+      "Name": "Action Detail",
+      "Description": "Hands or partial figure performing a specific action",
+      "Example": "Hands on keyboard with code reflection in glasses"
+    }
+  ],
+
+  "MoodVariations": {
+    "optimistic": {
+      "LightingAdjustment": "Warm key light, soft fill",
+      "ExpressionTendency": "Genuine smile, bright eyes"
+    },
+    "analytical": {
+      "LightingAdjustment": "Cool, even lighting",
+      "ExpressionTendency": "Focused, examining something closely"
+    },
+    "frustrated": {
+      "LightingAdjustment": "Harsh single source, deep shadows",
+      "ExpressionTendency": "Furrowed brow, tense jaw"
+    },
+    "contemplative": {
+      "LightingAdjustment": "Soft, dreamlike quality",
+      "ExpressionTendency": "Distant gaze, relaxed features"
+    }
+  }
+}

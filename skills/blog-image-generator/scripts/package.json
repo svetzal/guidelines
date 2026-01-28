@@ -1,0 +1,13 @@
+{
+  "name": "blog-banner-generator",
+  "version": "1.0.0",
+  "description": "Generate blog banner images using OpenAI API",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate-banner.mjs"
+  },
+  "dependencies": {
+    "canvas": "^3.2.0",
+    "openai": "^4.0.0"
+  }
+}

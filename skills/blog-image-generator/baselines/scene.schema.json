@@ -1,0 +1,357 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "scene.schema.json",
+  "title": "Blog Image Scene Specification",
+  "description": "Schema for generating consistent blog images (banners, callouts, diagrams)",
+  "type": "object",
+  "required": [
+    "ImageType",
+    "Character",
+    "Style",
+    "Situation",
+    "PromptKeywords"
+  ],
+  "properties": {
+    "ImageType": {
+      "type": "string",
+      "enum": ["banner", "callout", "diagram"],
+      "description": "Type of image determining aspect ratio and purpose"
+    },
+
+    "Character": {
+      "type": "object",
+      "description": "Physical traits of the recurring character",
+      "required": ["Description", "Age"],
+      "properties": {
+        "Description": {
+          "type": "string",
+          "description": "Brief overall description of the character"
+        },
+        "Age": {
+          "type": "string",
+          "description": "Age range and maturity descriptors"
+        },
+        "Ethnicity": {
+          "type": "string",
+          "description": "Ethnic background or build type"
+        },
+        "Build": {
+          "type": "object",
+          "description": "Body type and proportions",
+          "properties": {
+            "Type": {
+              "type": "string",
+              "description": "Overall body type descriptor"
+            },
+            "UpperBody": {
+              "type": "string",
+              "description": "Arms, shoulders, chest description"
+            },
+            "LowerBody": {
+              "type": "string",
+              "description": "Hips, legs description"
+            }
+          }
+        },
+        "Face": {
+          "type": "object",
+          "description": "Facial features",
+          "properties": {
+            "Eyes": {
+              "type": "string",
+              "description": "Eye color and shape"
+            },
+            "Expression": {
+              "type": "string",
+              "description": "Default/baseline facial expression"
+            },
+            "Makeup": {
+              "type": "string",
+              "description": "Default/baseline makeup style"
+            },
+            "Complexion": {
+              "type": "string",
+              "description": "Skin tone and texture"
+            }
+          }
+        },
+        "Hair": {
+          "type": "object",
+          "description": "Hair characteristics",
+          "properties": {
+            "Color": {
+              "type": "string",
+              "description": "Hair color"
+            },
+            "Length": {
+              "type": "string",
+              "description": "Hair length"
+            },
+            "Style": {
+              "type": "string",
+              "description": "Hair styling and movement"
+            }
+          }
+        },
+        "Wardrobe": {
+          "type": "object",
+          "description": "Character's clothing and accessories",
+          "properties": {
+            "Base": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/WardrobeItem" },
+              "description": "Core clothing items always present"
+            },
+            "Situational": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/WardrobeItem" },
+              "description": "Items that may appear based on context"
+            }
+          }
+        }
+      }
+    },
+
+    "Style": {
+      "type": "object",
+      "description": "Visual style and rendering specifications",
+      "required": ["Genre", "Rendering"],
+      "properties": {
+        "Genre": {
+          "type": "string",
+          "description": "Overall artistic genre or aesthetic"
+        },
+        "Rendering": {
+          "type": "string",
+          "description": "Rendering style and quality level"
+        },
+        "Lighting": {
+          "type": "object",
+          "description": "Lighting characteristics",
+          "properties": {
+            "Type": {
+              "type": "string",
+              "description": "Overall lighting style"
+            },
+            "Sources": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Types of light sources used"
+            },
+            "Shadows": {
+              "type": "string",
+              "description": "Shadow characteristics"
+            }
+          }
+        },
+        "ColorPalette": {
+          "type": "object",
+          "description": "Color scheme specifications",
+          "properties": {
+            "Primary": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Primary colors in the palette"
+            },
+            "Accents": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Accent colors"
+            },
+            "Treatment": {
+              "type": "string",
+              "description": "How colors are applied and balanced"
+            }
+          }
+        },
+        "Atmosphere": {
+          "type": "object",
+          "description": "Atmospheric effects and mood",
+          "properties": {
+            "Effects": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Visual effects applied to the scene"
+            },
+            "Mood": {
+              "type": "string",
+              "description": "Overall emotional tone"
+            }
+          }
+        }
+      }
+    },
+
+    "Situation": {
+      "$ref": "#/$defs/Situation",
+      "description": "The specific scene configuration for this image"
+    },
+
+    "PromptKeywords": {
+      "type": "array",
+      "description": "Keywords to include in image generation prompts",
+      "items": { "type": "string" }
+    },
+
+    "ArticleContext": {
+      "type": "object",
+      "description": "Context from the article this image accompanies",
+      "properties": {
+        "Title": {
+          "type": "string",
+          "description": "Article title"
+        },
+        "Tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Article tags"
+        },
+        "Themes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Key themes or concepts from the article"
+        },
+        "Mood": {
+          "type": "string",
+          "enum": [
+            "optimistic",
+            "analytical",
+            "frustrated",
+            "contemplative",
+            "energetic",
+            "somber"
+          ],
+          "description": "Overall emotional tone of the article"
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "Situation": {
+      "type": "object",
+      "description": "A specific scene configuration",
+      "required": ["Name", "Setting", "Camera", "CharacterPose"],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Identifier for this situation"
+        },
+        "Setting": {
+          "type": "string",
+          "description": "Environment and location description"
+        },
+        "Camera": {
+          "type": "string",
+          "description": "Camera angle, distance, and framing"
+        },
+        "CharacterPose": {
+          "$ref": "#/$defs/CharacterPose"
+        },
+        "Props": {
+          "type": "object",
+          "description": "Objects in the scene, categorized by source",
+          "properties": {
+            "Character": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Prop" },
+              "description": "Props belonging to the character (wardrobe, personal items)"
+            },
+            "Article": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Prop" },
+              "description": "Props derived from article content (thematic objects, metaphors)"
+            },
+            "Environment": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Prop" },
+              "description": "Props that are part of the setting"
+            }
+          }
+        },
+        "KeyDetails": {
+          "type": "array",
+          "description": "Important atmospheric or scene details",
+          "items": { "type": "string" }
+        },
+        "LightingFocus": {
+          "type": "string",
+          "description": "Specific lighting setup for this situation"
+        },
+        "ThematicTags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Tags linking this situation to article themes"
+        }
+      }
+    },
+
+    "CharacterPose": {
+      "type": "object",
+      "description": "Character positioning within a situation",
+      "required": ["Expression", "BodyPosition"],
+      "properties": {
+        "Expression": {
+          "type": "string",
+          "description": "Facial expression and gaze"
+        },
+        "BodyPosition": {
+          "type": "string",
+          "description": "Overall body stance and posture"
+        },
+        "Gesture": {
+          "type": "string",
+          "description": "Hand and arm positioning/action"
+        }
+      }
+    },
+
+    "Prop": {
+      "type": "object",
+      "description": "An object or accessory in the scene",
+      "required": ["Name", "Description", "Application"],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "What the prop is"
+        },
+        "Description": {
+          "type": "string",
+          "description": "Visual details and style of the prop"
+        },
+        "Application": {
+          "type": "string",
+          "description": "How the prop is positioned or used in the scene"
+        },
+        "SymbolicMeaning": {
+          "type": "string",
+          "description": "What this prop represents thematically (optional)"
+        },
+        "ReferenceImage": {
+          "type": "string",
+          "description": "Path to a reference image for this prop (relative to scene JSON or repo root). The image will be included as a reference for accurate rendering."
+        }
+      }
+    },
+
+    "WardrobeItem": {
+      "type": "object",
+      "description": "A clothing item or accessory",
+      "required": ["Name", "Description"],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Item name"
+        },
+        "Description": {
+          "type": "string",
+          "description": "Visual details"
+        },
+        "Context": {
+          "type": "string",
+          "description": "When this item appears (e.g., 'outdoor scenes', 'professional settings')"
+        }
+      }
+    }
+  }
+}

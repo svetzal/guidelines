@@ -1,0 +1,39 @@
+{
+  "Character": {
+    "Description": "A striking, confident middle-aged woman with a cyberpunk edge; intelligent, seductive, and unapologetically powerful.",
+    "Age": "Middle-aged, confident, formidable",
+    "Ethnicity": "Northern / Eastern European build",
+    "Build": {
+      "Type": "Curvy, powerful, feminine",
+      "UpperBody": "Broad shoulders, strong arms, pronounced curves",
+      "LowerBody": "Full hips and thighs, assertive stance"
+    },
+    "Face": {
+      "Eyes": "Blue-grey, intense, sharp focus",
+      "Expression": "Self-assured, knowing, slightly dangerous",
+      "Makeup": "High-contrast makeup; sharp eyeliner, metallic accents, bold magenta or neon lips",
+      "Complexion": "Fair-light skin with cool highlights and cinematic contrast"
+    },
+    "Hair": {
+      "Color": "Silver-grey with subtle neon reflections",
+      "Length": "Long",
+      "Style": "Loose waves or wind-swept, dramatic movement"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Item": "Futuristic fitted tops or jackets",
+          "Fit": "Body-contouring",
+          "ColorPalette": "Black, magenta, electric purple, cyan accents",
+          "Material": "Leather, synthetic tech fabrics, reflective elements"
+        }
+      ],
+      "Situational": [
+        {
+          "Item": "Cyberpunk accessories",
+          "Accessories": "LED accents, metallic jewelry, smart wearables"
+        }
+      ]
+    }
+  }
+}

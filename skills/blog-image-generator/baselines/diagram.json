@@ -1,0 +1,139 @@
+{
+  "ImageType": "diagram",
+  "AspectRatio": "9:16",
+  "Size": "1024x1536",
+  "Purpose": "Tall infographic or diagram, explains a process, system, or concept visually",
+
+  "Character": {
+    "Description": "A highly competent, focused woman coder and systems thinker",
+    "Age": "Middle-aged, mature, experienced",
+    "Ethnicity": "Eastern European build",
+    "Build": {
+      "Type": "Heavy set, sturdy",
+      "UpperBody": "Big arms, broad shoulders",
+      "LowerBody": "Slim hips"
+    },
+    "Face": {
+      "Eyes": "Blue-grey",
+      "Expression": "Thoughtful, analytical"
+    },
+    "Hair": {
+      "Color": "Grey/silver",
+      "Length": "Long",
+      "Style": "Wind-swept or naturally flowing"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Name": "Dark blazer",
+          "Description": "Professional dark blazer over tech-casual attire, sleeves often pushed up",
+          "Context": "Always present, bridges corporate and technical worlds"
+        }
+      ],
+      "Situational": [
+        {
+          "Name": "Professional glasses",
+          "Description": "Modern rectangular frames, subtle tech integration",
+          "Context": "Teaching or presenting moments"
+        }
+      ]
+    }
+  },
+
+  "Style": {
+    "Genre": "Cyberpunk / Tech Noir with Infographic Elements",
+    "Rendering": "High-detail digital painting with clean graphic overlays, concept art quality",
+    "Lighting": {
+      "Type": "Even, instructional, clear visibility prioritized",
+      "Sources": ["Ambient tech glow", "Even fill lighting", "Subtle rim accents"],
+      "Shadows": "Minimal, clarity over drama"
+    },
+    "ColorPalette": {
+      "Primary": ["Magenta", "Cyan", "Electric Blue", "Lime Green"],
+      "Accents": ["Silver", "White", "Cool Blues", "Metallic purples"],
+      "Treatment": "Clear color coding for diagram elements, consistent visual hierarchy"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean backgrounds", "Holographic UI elements", "Floating labels"],
+      "Mood": "Instructive, clear, educational yet stylish"
+    }
+  },
+
+  "PromptKeywords": [
+    "highly detailed", "digital painting", "concept art",
+    "cyberpunk", "infographic style", "educational illustration",
+    "9:16 aspect ratio", "vertical format", "diagram composition",
+    "clean visual hierarchy", "holographic UI elements"
+  ],
+
+  "CompositionNotes": {
+    "Framing": "Full figure or 3/4 figure, vertical space for diagram elements",
+    "SubjectPlacement": "Character to one side, diagram elements flowing vertically",
+    "DepthOfField": "Deep, all elements should be readable",
+    "Layout": "Clear visual flow from top to bottom, numbered or connected elements"
+  },
+
+  "DiagramTypes": [
+    {
+      "Name": "Process Flow",
+      "Description": "Character beside or within a vertical flowchart",
+      "Elements": ["Numbered steps", "Connecting arrows", "Decision points"],
+      "Example": "Development workflow from idea to deployment"
+    },
+    {
+      "Name": "Comparison",
+      "Description": "Character between two contrasting approaches",
+      "Elements": ["Left/right or before/after split", "Contrasting colors", "Labels"],
+      "Example": "Resolution vs Solution approaches"
+    },
+    {
+      "Name": "Hierarchy",
+      "Description": "Character presenting layered or nested concepts",
+      "Elements": ["Stacked levels", "Size variation", "Containment"],
+      "Example": "Ackoff's problem treatment levels"
+    },
+    {
+      "Name": "System Map",
+      "Description": "Character within or explaining an interconnected system",
+      "Elements": ["Nodes and connections", "Feedback loops", "Clusters"],
+      "Example": "Organizational feedback systems"
+    }
+  ],
+
+  "UseCases": [
+    {
+      "Name": "Concept Explanation",
+      "Description": "Breaking down a complex idea into visual steps",
+      "CharacterRole": "Presenter/guide pointing to or interacting with elements"
+    },
+    {
+      "Name": "Before/After",
+      "Description": "Showing transformation or improvement",
+      "CharacterRole": "Standing between states, gesturing to contrast"
+    },
+    {
+      "Name": "Mental Model",
+      "Description": "Illustrating how to think about something",
+      "CharacterRole": "Contemplating or constructing the model"
+    }
+  ],
+
+  "MoodVariations": {
+    "optimistic": {
+      "LightingAdjustment": "Bright, clear, upward visual flow",
+      "DiagramStyle": "Green accents for positive outcomes, open structures"
+    },
+    "analytical": {
+      "LightingAdjustment": "Cool, even, clinical precision",
+      "DiagramStyle": "Blue/cyan dominant, precise lines, labeled clearly"
+    },
+    "frustrated": {
+      "LightingAdjustment": "Red/amber warning accents",
+      "DiagramStyle": "Tangled elements, blocked paths, warning indicators"
+    },
+    "contemplative": {
+      "LightingAdjustment": "Soft, ethereal quality",
+      "DiagramStyle": "Organic connections, flowing rather than rigid"
+    }
+  }
+}

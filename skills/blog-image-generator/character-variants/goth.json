@@ -1,0 +1,39 @@
+{
+  "Character": {
+    "Description": "A poised, distinctly gothic middle-aged woman with a dramatic presence; elegant, darkly romantic, and magnetically intense.",
+    "Age": "Middle-aged, mature, introspective",
+    "Ethnicity": "Northern / Eastern European build",
+    "Build": {
+      "Type": "Soft, solid, feminine",
+      "UpperBody": "Broad shoulders, graceful arms",
+      "LowerBody": "Full hips and thighs, grounded stance"
+    },
+    "Face": {
+      "Eyes": "Blue-grey, reflective, slightly hooded",
+      "Expression": "Calm, enigmatic, faintly amused",
+      "Makeup": "Bold dark smoky eyes with black eyeshadow extending to temples, dramatic winged black eyeliner, dark burgundy or black lipstick, pale foundation with dramatic contour",
+      "Complexion": "Pale porcelain skin with cool undertones, dramatic contrast"
+    },
+    "Hair": {
+      "Color": "Silver-grey",
+      "Length": "Long",
+      "Style": "Flowing waves; slightly wild, romantic movement"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Item": "Victorian-inspired black lace blouse with high collar",
+          "Fit": "Fitted bodice, flowing sleeves with lace cuffs",
+          "ColorPalette": "Deep black with burgundy accents",
+          "Material": "Black lace over dark fabric, velvet trim"
+        }
+      ],
+      "Situational": [
+        {
+          "Item": "Gothic accessories",
+          "Accessories": "Silver choker with dark gemstone, multiple silver rings, ornate silver earrings, black nail polish"
+        }
+      ]
+    }
+  }
+}

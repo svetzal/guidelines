@@ -1,0 +1,121 @@
+{
+  "ImageType": "banner",
+  "AspectRatio": "16:9",
+  "Size": "1536x1024",
+  "Purpose": "Hero image at top of blog post, sets the tone and theme",
+
+  "Character": {
+    "Description": "A highly competent, focused woman coder and systems thinker",
+    "Age": "Middle-aged, experienced",
+    "Ethnicity": "Eastern European build",
+    "Build": {
+      "Type": "Size 16, feminine",
+      "UpperBody": "Broad shoulders",
+      "LowerBody": "Slim hips"
+    },
+    "Face": {
+      "Complexion": "Light",
+      "Eyes": "Blue-grey",
+      "Expression": "Thoughtful, analytical",
+      "Makeup": "Bold, pinks or purples, with a touch of shimmer"
+    },
+    "Hair": {
+      "Color": "Grey/silver",
+      "Length": "Long",
+      "Style": "Flowing, big wavy curls"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Name": "Dark blazer",
+          "Description": "Professional dark blazer over tech-casual attire, sleeves often pushed up",
+          "Context": "Always present, bridges corporate and technical worlds"
+        }
+      ],
+      "Situational": [
+        {
+          "Name": "Leather coat",
+          "Description": "Dark leather with high collar, tactical styling",
+          "Context": "Outdoor or street scenes, adds edge"
+        },
+        {
+          "Name": "Professional glasses",
+          "Description": "Modern rectangular frames, subtle tech integration",
+          "Context": "Close-up work, reading, screen-focused scenes"
+        },
+        {
+          "Name": "Futuristic sunglasses",
+          "Description": "Sleek, angular frames with reflective or holographic lenses",
+          "Context": "Outdoor urban scenes, adds mystery"
+        }
+      ]
+    }
+  },
+
+  "Style": {
+    "Genre": "Cyberpunk / Tech Noir",
+    "Rendering": "High-detail digital painting, photorealistic, concept art quality",
+    "Lighting": {
+      "Type": "Dramatic, high-contrast, cinematic",
+      "Sources": ["Neon signs", "Screen glow", "Rim lighting", "Side lighting"],
+      "Shadows": "Sharp, emphasizing texture and form"
+    },
+    "ColorPalette": {
+      "Primary": ["Magenta", "Cyan", "Electric Blue", "Lime Green"],
+      "Accents": ["Silver", "White", "Cool Blues", "Metallic purples"],
+      "Treatment": "High saturation, strong contrast between warm neons and cool tech light"
+    },
+    "Atmosphere": {
+      "Effects": [
+        "Bokeh",
+        "Atmospheric haze",
+        "Neon glow",
+        "Reflections on surfaces"
+      ],
+      "Mood": "Mysterious, electric, high-stakes, gritty yet stylish"
+    }
+  },
+
+  "PromptKeywords": [
+    "highly detailed",
+    "digital painting",
+    "concept art",
+    "cyberpunk",
+    "neon light",
+    "cinematic lighting",
+    "high contrast",
+    "16:9 aspect ratio",
+    "wide shot",
+    "banner composition"
+  ],
+
+  "CompositionNotes": {
+    "Framing": "Wide or mid-shot to show environment context",
+    "SubjectPlacement": "Character typically off-center with negative space for environment",
+    "DepthOfField": "Shallow to medium, background elements visible but not distracting",
+    "TextSafeArea": "Consider leaving space for potential text overlay"
+  },
+
+  "MoodVariations": {
+    "optimistic": {
+      "LightingAdjustment": "Warmer tones, more amber and gold accents",
+      "AtmosphereAdjustment": "Lighter haze, more open spaces",
+      "ExpressionTendency": "Slight smile, engaged, forward-leaning"
+    },
+    "analytical": {
+      "LightingAdjustment": "Cool blue-dominant, screen glow emphasis",
+      "AtmosphereAdjustment": "Clean, organized environment",
+      "ExpressionTendency": "Focused concentration, slight squint"
+    },
+    "frustrated": {
+      "LightingAdjustment": "Harsh contrasts, red/amber warning tones",
+      "AtmosphereAdjustment": "Cluttered, chaotic elements",
+      "ExpressionTendency": "Tension in jaw, exasperated gaze"
+    },
+    "contemplative": {
+      "LightingAdjustment": "Soft, diffused, single source dominant",
+      "AtmosphereAdjustment": "Quiet, still environment",
+      "ExpressionTendency": "Distant gaze, thoughtful half-smile"
+    }
+  }
+}

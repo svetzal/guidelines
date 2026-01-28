@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Urban Cozy / Indie Coffee Culture",
+    "Rendering": "High-detail digital painting, photorealistic, warm illustration quality",
+    "Lighting": {
+      "Type": "Warm, natural, inviting",
+      "Sources": ["Large windows with diffused daylight", "Edison bulb pendant lights", "Laptop screen glow", "Candle flicker"],
+      "Shadows": "Soft, layered, creating depth without harshness"
+    },
+    "ColorPalette": {
+      "Primary": ["Warm Brown", "Cream", "Burnt Orange", "Forest Green"],
+      "Accents": ["Copper", "Brass", "Soft White", "Terracotta"],
+      "Treatment": "Warm and muted, natural tones with pops of warmth from lighting"
+    },
+    "Atmosphere": {
+      "Effects": ["Steam from coffee", "Dust motes in sunlight", "Soft window glow", "Bokeh from string lights"],
+      "Mood": "Contemplative, creative, intimate, unhurried"
+    }
+  },
+  "PromptKeywords": [
+    "highly detailed", "digital painting", "warm lighting",
+    "cozy atmosphere", "coffee shop", "natural light", "indie aesthetic"
+  ]
+}

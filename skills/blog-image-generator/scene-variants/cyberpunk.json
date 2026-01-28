@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Cyberpunk / Tech Noir",
+    "Rendering": "High-detail digital painting, photorealistic, concept art quality",
+    "Lighting": {
+      "Type": "Dramatic, high-contrast, cinematic",
+      "Sources": ["Neon signs", "Screen glow", "Rim lighting", "Side lighting"],
+      "Shadows": "Sharp, emphasizing texture and form"
+    },
+    "ColorPalette": {
+      "Primary": ["Magenta", "Cyan", "Electric Blue", "Lime Green"],
+      "Accents": ["Silver", "White", "Cool Blues", "Metallic purples"],
+      "Treatment": "High saturation, strong contrast between warm neons and cool tech light"
+    },
+    "Atmosphere": {
+      "Effects": ["Bokeh", "Atmospheric haze", "Neon glow", "Reflections on surfaces"],
+      "Mood": "Electric, gritty yet stylish, high-tech urban"
+    }
+  },
+  "PromptKeywords": [
+    "highly detailed", "digital painting", "concept art",
+    "cyberpunk", "neon light", "cinematic lighting", "high contrast"
+  ]
+}
