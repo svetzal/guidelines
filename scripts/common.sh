@@ -79,6 +79,9 @@ EOF
 Based on the following assessment, create a step-by-step plan to address the issues
 identified. Make sure each step is clear and actionable.
 
+IMPORTANT: Output the COMPLETE plan in full detail. Do not summarize or abbreviate.
+The entire plan text will be passed to the next stage for execution.
+
 Assessment:
 $assessment
 EOF
@@ -90,6 +93,9 @@ EOF
     echo "==> Executing plan..."
     local execute=$(claude --dangerously-skip-permissions --agent "$agent" --model sonnet << EOF
 Execute the following plan to improve the project in $folder.
+
+Why:
+$assessment
 
 Plan:
 $plan
