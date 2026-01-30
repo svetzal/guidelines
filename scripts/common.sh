@@ -45,15 +45,18 @@ iterate() {
         return 1
     fi
 
+    # Read-only tools for assessment/planning steps
+    local readonly_tools="Read Glob Grep WebFetch WebSearch"
+
     echo "==> Assessing $folder with $agent..."
-    local assessment=$(claude --dangerously-skip-permissions --agent "$agent" --model opus --print << EOF
+    local assessment=$(claude --dangerously-skip-permissions --agent "$agent" --model opus --print --allowedTools $readonly_tools << EOF
 Assess the project in $folder against your principles. Identify the principle that it
 is most violating, and describe how we should correct it.
 EOF
     )
 
     echo "==> Generating filename..."
-    local raw_name=$(claude --dangerously-skip-permissions --agent "$agent" --model haiku --print << EOF
+    local raw_name=$(claude --dangerously-skip-permissions --agent "$agent" --model haiku --print --allowedTools $readonly_tools << EOF
 Output ONLY a short kebab-case filename (no extension) summarizing the main issue.
 Rules: lowercase, hyphens only, no spaces, no backticks, no explanation, max 50 chars.
 Example: fix-duplicate-api-helpers
@@ -72,7 +75,7 @@ EOF
     echo "    Saved: $AUDIT_DIR/$name.md"
 
     echo "==> Creating plan..."
-    local plan=$(claude --dangerously-skip-permissions --agent "$agent" --model opus --print << EOF
+    local plan=$(claude --dangerously-skip-permissions --agent "$agent" --model opus --print --allowedTools $readonly_tools << EOF
 Based on the following assessment, create a step-by-step plan to address the issues
 identified. Make sure each step is clear and actionable.
 
@@ -85,7 +88,7 @@ EOF
     echo "    Saved: $AUDIT_DIR/$name-plan.md"
 
     echo "==> Executing plan..."
-    local execute=$(claude --dangerously-skip-permissions --agent "$agent" --model sonnet --print << EOF
+    local execute=$(claude --dangerously-skip-permissions --agent "$agent" --model sonnet << EOF
 Execute the following plan to improve the project in $folder.
 
 Plan:
