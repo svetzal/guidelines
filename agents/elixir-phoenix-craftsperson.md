@@ -318,7 +318,9 @@ end
 ## Ecto Database Guidelines
 
 **Schema and Changesets:**
-- **Always** preload associations in queries when accessed in templates
+- **Always use changesets** for inserts and updates — never pass raw maps to `Repo.insert/1` or `Repo.update/1`
+- **Always** preload associations in queries when accessed in templates — explicit N+1 prevention
+- Use `Repo.preload(record, [:assoc])` or preload in the query with `from q in Query, preload: [:assoc]`
 - Remember to `import Ecto.Query` in `seeds.exs` and other files
 - `Ecto.Schema` fields always use `:string` type, even for `:text` columns
 - `Ecto.Changeset.validate_number/2` **does not support `:allow_nil` option**
@@ -326,14 +328,71 @@ end
 - **Must** use `Ecto.Changeset.get_field(changeset, :field)` to access changeset fields
 - Fields set programmatically (like `user_id`) **must not** be in `cast` calls
   - Set explicitly when creating struct for security
+- **Always** use `timestamps()` in every schema
+
+**Dual Validation:**
+- Use **both** changeset validations (user-facing errors) **and** database constraints (last line of defense)
+- `validate_required`, `validate_format`, etc. in changesets for immediate feedback
+- `unique_constraint`, `foreign_key_constraint`, etc. backed by database indexes/constraints
+
+**Transactions:**
+- Use `Repo.transaction/1` for multi-step operations that must succeed or fail atomically:
+  ```elixir
+  Repo.transaction(fn ->
+    with {:ok, order} <- create_order(attrs),
+         {:ok, _payment} <- process_payment(order) do
+      order
+    else
+      {:error, reason} -> Repo.rollback(reason)
+    end
+  end)
+  ```
+
+**Upserts:**
+- Use `on_conflict` / `conflict_target` for upsert operations:
+  ```elixir
+  Repo.insert(changeset, on_conflict: :replace_all, conflict_target: :email)
+  ```
 
 **Migrations:**
 - **Always** invoke `mix ecto.gen.migration migration_name_using_underscores`
   - Ensures correct timestamp and conventions
+- **Add indexes** on foreign keys and frequently queried fields
+- Example: `create index(:posts, [:user_id])`
 
 **Context Patterns:**
 - **Never** put Ecto queries directly in LiveViews
 - **Always** place queries in appropriate context module
+
+---
+
+## Project Structure
+
+- `lib/my_app/` — business logic with no web dependencies (contexts, schemas, workers)
+- `lib/my_app_web/` — web layer depending on core (LiveViews, controllers, components, router)
+- Dependencies flow **inward**: web depends on core, **never** vice versa
+- One module per file; file paths mirror module names (`MyApp.Accounts.User` → `lib/my_app/accounts/user.ex`)
+
+---
+
+## File Uploads
+
+**Key Rules:**
+- Use **manual uploads**, not `auto_upload: true` with form submission
+- Generate unique filenames with `Ecto.UUID.generate()` — prevents collisions and path traversal
+- **Validate file types server-side** — never trust client MIME types
+- Add upload directory to `static_paths()` in endpoint and restart server after changes
+- Use `File.mkdir_p!/1` before saving to ensure directory exists
+
+**Configuration:**
+```elixir
+# In mount/3
+socket = allow_upload(socket, :avatar,
+  accept: ~w(.jpg .jpeg .png),
+  max_entries: 1,
+  max_file_size: 5_000_000
+)
+```
 
 ---
 
@@ -454,6 +513,53 @@ end
 - Default `:browser` scope is already aliased with `AppWeb`
 - In router: `live "/weather", WeatherLive`
 - **Avoid LiveComponents** unless strong, specific need
+
+### Two-Phase Rendering
+
+LiveView renders **twice**: first a static/disconnected render (HTTP), then a connected render (WebSocket). This is the most common source of LiveView crashes.
+
+**Critical Rules:**
+- `connected?(socket)` returns `false` during the first (static) render
+- **Always initialize ALL assigns in `mount/3`** — accessing uninitialized assigns during static render causes `KeyError`
+- **Check `connected?(socket)` before** PubSub subscriptions, timers, `send(self(), ...)`, and expensive data loads
+- In helper functions, use `Map.get(assigns, :key)` for optional assigns to avoid pattern match failures
+
+```elixir
+def mount(_params, _session, socket) do
+  # Initialize ALL assigns first — static render needs them
+  socket = assign(socket, items: [], loading: true)
+
+  # Only start async work after connection is established
+  if connected?(socket) do
+    Phoenix.PubSub.subscribe(MyApp.PubSub, "items")
+    send(self(), :load_items)
+  end
+
+  {:ok, socket}
+end
+```
+
+### Callback Return Contracts
+
+**Strict return values — wrong returns cause cryptic crashes:**
+- `mount/3` → `{:ok, socket}` or `{:ok, socket, temporary_assigns: [...]}`
+- `handle_event/3` → `{:noreply, socket}` or `{:reply, payload, socket}` (for JS interop)
+- `handle_info/2` → `{:noreply, socket}`
+- `handle_params/3` → `{:noreply, socket}`
+
+### Flash Messages
+
+- `put_flash(socket, :info, "message")` for success feedback
+- `put_flash(socket, :error, "message")` for error feedback
+- **Always** handle errors in event handlers with flash instead of crashing:
+  ```elixir
+  def handle_event("delete", %{"id" => id}, socket) do
+    case Context.delete_item(id) do
+      {:ok, _} -> {:noreply, put_flash(socket, :info, "Deleted.")}
+      {:error, _} -> {:noreply, put_flash(socket, :error, "Could not delete.")}
+    end
+  end
+  ```
 
 ### LiveView Streams
 

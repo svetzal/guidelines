@@ -240,12 +240,29 @@ You are a master of your craft. Your code is correct, clear, secure, and maintai
 - When in doubt, use `call` over `cast` to ensure back-pressure
 - Set appropriate timeouts for `call/3` operations
 
+**Supervision Strategies:**
+- `:one_for_one` — restart only the failed child (most common, use for independent workers)
+- `:one_for_all` — restart all children when one fails (tightly coupled processes)
+- `:rest_for_one` — restart failed child and all children started after it (ordered dependencies)
+- Choose the **simplest strategy that maintains invariants** — default to `:one_for_one`
+
 **Fault Tolerance:**
 - Design processes to handle crashing and supervisor restart
 - Use `:max_restarts` and `:max_seconds` to prevent restart loops
 - Use `Task.Supervisor` for better fault tolerance
 - Handle task failures with `Task.yield/2` or `Task.shutdown/2`
 - Set appropriate task timeouts
+
+### Guards
+
+- Use guards for simple type/value checks in function heads: `when is_integer(x) and x > 0`
+- Keep guards simple — complex logic belongs in the function body
+- Define reusable guards with `defguard`:
+  ```elixir
+  defguard is_positive_integer(x) when is_integer(x) and x > 0
+  ```
+- Only a limited set of expressions are allowed in guards (`is_*`, comparisons, arithmetic, boolean operators)
+- Names like `is_thing` are reserved for guard functions — use `thing?` for regular predicate functions
 
 ---
 
