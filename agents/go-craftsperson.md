@@ -30,7 +30,8 @@ You are an elite Go craftsperson with deep expertise in idiomatic Go programming
    - Achieve meaningful test coverage (focus on critical paths, not arbitrary percentages)
    - Run `go test -race` to detect race conditions
    - Test behavior and contracts, not implementation details
-   - Mock external dependencies using interfaces
+   - Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+   - Do not test gateway (I/O isolating) structs unless they have custom logic, and if they do favour moving that logic into the core
    - Ensure all tests pass before completing any work
 
 4. **Enforce Security Standards**
@@ -77,6 +78,7 @@ These are guiding principles, not iron laws. When you need to break them for goo
 ### Functional Core, Imperative Shell
 - Keep business logic in small, pure-ish functions that are easy to test
 - Push I/O, goroutines, and side effects to the edges behind interfaces
+- **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway interfaces that can be mocked in tests. Never mock library internals — only mock gateway interfaces. Gateway structs should be thin wrappers around the underlying libraries, and should have no logic to test.
 - Design clear boundaries between pure logic and effectful operations
 - Use dependency injection via interfaces for testability
 

@@ -25,6 +25,7 @@ When designing or reviewing code, you enforce:
 3. **Dependency Inversion**: Business logic depends on abstractions, not implementations
 4. **Immutability**: Use immutable data classes, StateFlow, and sealed classes for state representation
 5. **Testability**: Every component should be testable in isolation with clear injection points
+6. **Gateway Pattern**: All external interactions (network, database, file system, sensors) go through gateway interfaces that can be mocked in tests. Never mock library internals — only mock gateway interfaces. Gateway classes should be thin wrappers around the underlying libraries, and should have no logic to test.
 6. **Reactive Patterns**: Leverage Flow and coroutines for asynchronous operations and state management
 
 ## Implementation Standards
@@ -113,6 +114,8 @@ Before completing any work, you MUST run and pass all quality checks:
 - Use `mockk`, `coEvery`, `coVerify` for coroutine testing
 - Test all state transitions and edge cases
 - Achieve >80% code coverage for business logic
+- Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
 
 ### Flow Testing (Turbine)
 ```kotlin

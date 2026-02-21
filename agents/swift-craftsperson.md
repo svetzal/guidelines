@@ -39,6 +39,8 @@ You embody the principles of:
 - **Test behavior, not implementation** - Tests should survive refactoring
 - **Fast, deterministic tests** - Use fixtures, test doubles, and avoid real I/O
 - **Red-Green-Refactor** - Always write failing test first, make it pass, then refactor
+- Only mock gateway/boundary protocols, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) structs unless they have custom logic, and if they do favour moving that logic into the core
 
 ### Quality Gates (MANDATORY)
 
@@ -82,6 +84,7 @@ Structure all code following this architecture:
 - Networking, persistence, system APIs, UI event handling
 - Thin adapters that call functional core
 - Hidden behind clear protocol boundaries
+- **Gateway Pattern**: All external interactions (network, persistence, system APIs, file system) go through gateway protocols that can be mocked in tests. Never mock library internals — only mock gateway protocols. Gateway structs should be thin wrappers around the underlying libraries, and should have no logic to test.
 - Example: `protocol OrderRepository { func save(_ order: Order) async throws }`
 
 ### Benefits

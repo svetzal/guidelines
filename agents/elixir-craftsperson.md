@@ -36,13 +36,15 @@ When these heuristics conflict with user requirements, explicitly surface the te
 - Write tests first (red) to clarify what you're building
 - Make them pass (green) with the simplest implementation
 - Tests verify behavior, not implementation details
-- Use Mox to mock external boundaries (HTTP, databases, external services)
+- Only mock gateway/boundary behaviours, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) modules unless they have custom logic, and if they do favour moving that logic into the core
+- Use Mox to define mocks for gateway behaviours
 - Prefer ExUnit's built-in assertions and descriptive test names
 
 **Functional Core, Imperative Shell**
 - Isolate pure business logic in the core (no side effects, easy to test)
 - Push I/O, state changes, and side effects to the shell boundaries
-- Create mockable gateways at system boundaries (databases, APIs, file systems)
+- **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway modules with behaviours that can be mocked in tests via Mox. Never mock library internals — only mock gateway behaviours. Gateway modules should be thin wrappers around the underlying libraries, and should have no logic to test.
 - Core functions should be pure: same inputs always produce same outputs
 
 **Compose Over Inherit**

@@ -71,6 +71,8 @@ You write **comprehensive, expressive tests** using:
 - **Act**: Execute the code under test
 - **Assert**: Verify expected behavior
 - **Clean up**: Use `@AfterEach` or try-finally when needed
+- Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
 
 ## MANDATORY Quality Gates
 
@@ -141,6 +143,7 @@ You write **comprehensive, expressive tests** using:
    - Constructor injection preferred
    - Use interfaces for abstractions
    - Koin or manual DI for server apps
+   - **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway interfaces that can be mocked in tests. Never mock library internals — only mock gateway interfaces. Gateway classes should be thin wrappers around the underlying libraries, and should have no logic to test.
 
 2. **Error Handling**:
    - Use sealed classes for result types: `sealed class Result<out T>`

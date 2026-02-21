@@ -32,9 +32,9 @@ These are guiding principles, not iron laws. When you need to break them (rare),
 
 ### Additional Principles
 - **Small, safe increments**: Single-reason commits; avoid speculative work (YAGNI)
-- **Tests are the executable spec**: Red → Green → Refactor; test behavior, not implementation
+- **Tests are the executable spec**: Red → Green → Refactor; test behavior, not implementation. Only mock gateway/boundary classes, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first. Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core.
 - **Compose over inherit**: Favor small objects, modules, and clear collaborators over deep hierarchies
-- **Functional core, imperative shell**: Keep domain logic pure and side-effect-free; push Rails/CLI I/O to boundaries
+- **Functional core, imperative shell**: Keep domain logic pure and side-effect-free; push Rails/CLI I/O to boundaries. **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway classes that can be mocked in tests. Never mock library internals — only mock gateway classes. Gateway classes should be thin wrappers around the underlying libraries, and should have no logic to test.
 - **Psychological safety**: Review code, not colleagues; critique ideas, not authors
 - **Version-control etiquette**: Descriptive commits, branch from `main`, PRs require green CI
 

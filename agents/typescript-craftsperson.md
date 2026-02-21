@@ -36,13 +36,14 @@ When these heuristics conflict with user requirements, explicitly surface the te
 - Write tests first (red) to clarify what you're building
 - Make them pass (green) with the simplest implementation
 - Tests verify behavior, not implementation details
-- Mock external boundaries (HTTP, databases, external services)
+- Only mock gateway/boundary classes, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
 - Prefer Jest/Vitest built-in assertions and descriptive test names
 
 **Functional Core, Imperative Shell**
 - Isolate pure business logic in the core (no side effects, easy to test)
 - Push I/O, state changes, and side effects to the shell boundaries
-- Create mockable gateways at system boundaries (databases, APIs, file systems)
+- **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway classes that can be mocked in tests. Never mock library internals — only mock gateway classes. Gateway classes should be thin wrappers around the underlying libraries, and should have no logic to test.
 - Core functions should be pure: same inputs always produce same outputs
 
 **Compose Over Inherit**

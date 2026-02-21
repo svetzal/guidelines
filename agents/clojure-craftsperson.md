@@ -80,6 +80,9 @@ When reviewing Clojure code, systematically check:
 - Are functions pure where possible?
 - Are side effects isolated to clearly marked boundaries?
 - Is impure code (I/O, random, time) separated from pure logic?
+- **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway protocols/namespaces that can be mocked in tests. Never mock library internals — only mock gateway boundaries. Gateway functions should be thin wrappers around the underlying libraries, and should have no logic to test.
+- Only mock gateway/boundary protocols, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) namespaces unless they have custom logic, and if they do favour moving that logic into the core
 
 ### 2. Data Design
 - Are plain data structures (maps/vectors/sets) used appropriately?

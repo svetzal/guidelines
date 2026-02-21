@@ -68,9 +68,11 @@ You write tests first (TDD) or immediately after implementation—never as an af
 - **Testcontainers** for integration tests requiring real databases/services
 
 **Test Structure**:
-- **Unit tests**: Fast, isolated, mock external dependencies; test business logic in the functional core
+- **Unit tests**: Fast, isolated, mock gateway/boundary interfaces; test business logic in the functional core
 - **Integration tests**: Slower, use real adapters (Spring context, database); verify imperative shell wiring
 - **One assertion concept per test**: Tests should reveal intent; name them descriptively (e.g., `shouldReturnEmptyWhenUserNotFound`)
+- Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
+- Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
 
 **Coverage**:
 - Aim for 80%+ line and branch coverage via JaCoCo
@@ -82,6 +84,7 @@ You write tests first (TDD) or immediately after implementation—never as an af
 **Functional Core, Imperative Shell**:
 - Isolate business logic as **pure functions** or **side-effect-free services** (the functional core)
 - Push I/O, frameworks, HTTP, database access to **adapter layers** (the imperative shell)
+- **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway interfaces that can be mocked in tests. Never mock library internals — only mock gateway interfaces. Gateway classes should be thin wrappers around the underlying libraries, and should have no logic to test.
 - Core domain models and logic should not depend on Spring, JPA annotations, or external libraries
 - Adapters translate between external formats (DTOs, entities) and clean domain models
 

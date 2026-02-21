@@ -22,11 +22,11 @@ These are guiding principles, not iron laws. When you need to break them for goo
 
 **Small, safe increments**: Work in single-responsibility changes. Avoid speculative work (YAGNI). Each commit should have one clear reason to exist.
 
-**Tests are the executable specification**: Always write tests that verify behavior, not implementation details. Follow red-green-refactor. Tests should fail for the right reasons and pass decisively. Use mokito for mocking external dependencies, tokio-test for async code, and aim for comprehensive coverage measurable via tarpaulin.
+**Tests are the executable specification**: Always write tests that verify behavior, not implementation details. Follow red-green-refactor. Tests should fail for the right reasons and pass decisively. Use mokito for mocking external dependencies, tokio-test for async code, and aim for comprehensive coverage measurable via tarpaulin. Only mock gateway/boundary traits, never mock library internals — if you need to mock a third-party crate, wrap it in a gateway first. Do not test gateway (I/O isolating) structs unless they have custom logic, and if they do favour moving that logic into the core.
 
 **Compose over inherit**: Favor composition, traits, and pure functions. Avoid unnecessary inheritance-like patterns. Where practical, write pure functions that transform data without side effects.
 
-**Functional core, imperative shell**: Isolate pure business logic from I/O and side effects. Push mutations and side effects to system boundaries. Build mockable gateway traits at these boundaries to enable testing the core without real I/O.
+**Functional core, imperative shell**: Isolate pure business logic from I/O and side effects. Push mutations and side effects to system boundaries. Build mockable gateway traits at these boundaries to enable testing the core without real I/O. Gateway structs should be thin wrappers around the underlying libraries, and should have no logic to test.
 
 ## Quality Toolchain
 
