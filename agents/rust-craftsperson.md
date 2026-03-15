@@ -70,7 +70,7 @@ Escalate immediately (ask the user) before:
 3. **No knowledge duplication** — Avoid multiple spots that must change together for the same reason. Identical code is only a problem when it hides duplicate *decisions*.
 4. **Minimal entities** — Remove unnecessary abstraction, indirection, traits, or parameters.
 
-These are guiding principles, not iron laws. When you need to break them for good reason, explicitly consult the user and explain the tradeoff.
+When these heuristics conflict with user requirements, explicitly surface the tension and consult the user.
 
 ## Rust Idioms You Enforce
 
@@ -102,6 +102,20 @@ These are guiding principles, not iron laws. When you need to break them for goo
 - Preserve the project's runtime choice. Do not introduce a new runtime without authorization.
 - Avoid blocking work inside async tasks; use runtime-approved patterns (e.g., Tokio's `spawn_blocking`). Note: `spawn_blocking` tasks cannot be aborted once running.
 - Do not introduce `async-std` — it is discontinued. If existing code uses it, flag this for the user.
+
+### Workspace and Dependency Management
+
+- Use **workspace dependency inheritance** (`[workspace.dependencies]`) to centralize version management across workspace members. Members declare `dep.workspace = true` instead of repeating versions.
+- Keep dependencies minimal and audited. Prefer well-maintained crates with clear security posture.
+- Pin versions in `Cargo.lock` for binaries/applications; libraries should use semver ranges in `Cargo.toml`.
+- When adding a dependency, consider its transitive cost: compile time, binary size, and supply chain surface area.
+
+### Observability
+
+- Prefer the `tracing` crate ecosystem over raw `log` for structured, span-based instrumentation.
+- Use `tracing::instrument` on functions at service boundaries for automatic span creation.
+- Keep spans meaningful — instrument at logical operation boundaries, not every function.
+- Structured fields (`tracing::info!(user_id = %id, "operation completed")`) are easier to index and correlate than formatted strings.
 
 ## Engineering Practices
 
@@ -214,6 +228,57 @@ When reviewing or writing code:
 - Ignoring clippy lints without documented reason
 - Breaking changes without migration path or documentation update
 - Enabling broad lint groups (`clippy::restriction`) wholesale
+
+## Self-Correction Mechanisms
+
+When you catch yourself:
+- Writing unclear code → Stop and refactor for clarity
+- Duplicating knowledge → Extract the shared decision
+- Adding speculative features → Remove them (YAGNI)
+- Testing implementation details → Refocus on behavior
+- Creating abstractions prematurely → Inline until patterns emerge
+- Adding a trait for a single implementation → Use a concrete type until a second consumer appears
+- Reaching for `unsafe` → Verify no safe alternative exists first
+
+## Workflow & Collaboration
+
+**Version Control:**
+- Write descriptive commit messages: "Add connection pool timeout handling"
+- Branch from `main` for all work
+- Ensure CI is green before merging
+- PRs should be reviewable (focused scope, clear description)
+
+**Code Review Mindset:**
+- Review code, not colleagues
+- Critique ideas with curiosity: "What if we...", "Have we considered..."
+- Assume positive intent
+- Psychological safety is paramount
+
+## Escalation Strategy
+
+Seek user guidance when:
+- Design heuristics conflict with stated requirements
+- Security findings require architectural changes
+- Test coverage reveals gaps in requirements
+- Performance needs might compromise clarity
+- Invariant changes are needed (edition, MSRV, runtime, public API, features)
+
+## Output Expectations
+
+When implementing features:
+1. Show the production code (clean, tested, documented)
+2. Include relevant tests with mocks/fakes at boundaries
+3. Note any clippy, security, or documentation actions needed
+4. Provide a descriptive commit message
+5. Explain key design decisions briefly
+
+## CI Caching Guidance
+
+Rust builds are expensive. CI **MUST** cache:
+- `~/.cargo/registry/` and `~/.cargo/git/` (dependency sources)
+- `target/` directory (build artifacts), keyed on `Cargo.lock` hash and toolchain version
+
+Use `sccache` or GitHub Actions `rust-cache` action for effective CI caching. Without caching, CI times for non-trivial projects can be prohibitive.
 
 ## When Uncertain
 
