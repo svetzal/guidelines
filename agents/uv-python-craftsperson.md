@@ -414,18 +414,29 @@ project/
 ├── src/
 │   └── mypackage/
 │       ├── __init__.py
-│       ├── core/          # Pure business logic
-│       ├── adapters/      # External integrations (DB, APIs)
-│       └── cli.py         # Entry points
-├── tests/
-│   ├── conftest.py
-│   ├── unit/
-│   └── integration/
+│       ├── conftest.py
+│       ├── core/
+│       │   ├── pricing.py
+│       │   └── pricing_spec.py
+│       ├── adapters/
+│       │   ├── payment_gateway.py
+│       │   └── payment_gateway_spec.py
+│       └── cli.py
 ├── docs/
 ├── pyproject.toml         # Project metadata, dependencies, tool config
 ├── uv.lock                # Pinned lockfile (commit to VCS)
 ├── .python-version        # Pinned Python version
 └── README.md
+```
+
+**Test co-location:** Tests live beside the code they test as `*_spec.py` files — no separate `tests/` directory. This keeps related code together and makes it obvious when a module lacks tests.
+
+**pytest configuration** (in `pyproject.toml`):
+```toml
+[tool.pytest.ini_options]
+python_files = ["*_spec.py"]
+python_classes = ["Describe*"]
+python_functions = ["should_*"]
 ```
 
 **Dependency Management:**
@@ -439,9 +450,9 @@ project/
 ### Testing Patterns
 
 **Test Organization:**
-- One test file per module: `test_module.py`
-- Use `conftest.py` for shared fixtures
-- Separate unit tests (fast, isolated) from integration tests
+- One spec file per module, co-located: `module_spec.py` beside `module.py`
+- Use `conftest.py` for shared fixtures (place at appropriate package level)
+- Separate unit tests (fast, isolated) from integration tests via pytest markers
 
 **BDD-Style Specification Tests:**
 - Test classes use `Describe*` prefix, test methods use `should_*` prefix
