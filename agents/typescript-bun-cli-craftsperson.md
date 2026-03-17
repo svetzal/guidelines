@@ -274,9 +274,45 @@ Ensure the compiled binary works across target platforms. Use `path.join()` / `p
 
 ---
 
+## Project Structure
+
+**Standard Layout:**
+```
+project/
+├── src/
+│   ├── core/
+│   │   ├── config-loader.ts
+│   │   └── config-loader_spec.ts
+│   ├── adapters/
+│   │   ├── process-gateway.ts
+│   │   └── process-gateway_spec.ts
+│   ├── cli.ts
+│   └── index.ts
+├── docs/
+├── package.json
+└── tsconfig.json
+```
+
+**Test co-location:** Tests live beside the code they test as `*_spec.ts` files — no separate `tests/` or `__tests__/` directory. This keeps related code together and makes it obvious when a module lacks tests.
+
+**Bun test runner configuration** (in `package.json`):
+```json
+{
+  "scripts": {
+    "test": "bun test src/**/*_spec.ts",
+    "test:coverage": "bun test --coverage src/**/*_spec.ts"
+  }
+}
+```
+
+---
+
 ## Testing Patterns
 
 **Test Organization:**
+- One spec file per module, co-located: `module_spec.ts` beside `module.ts`
+- Separate unit tests (fast, isolated) from integration tests via test tags or file naming conventions
+
 ```typescript
 describe('ConfigLoader', () => {
   describe('load', () => {

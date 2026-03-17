@@ -330,22 +330,62 @@ export function useAuth(): AuthContextValue {
 }
 ```
 
+### Project Structure
+
+**Standard Layout:**
+```
+project/
+├── src/
+│   ├── core/
+│   │   ├── pricing.ts
+│   │   └── pricing_spec.ts
+│   ├── adapters/
+│   │   ├── payment-gateway.ts
+│   │   └── payment-gateway_spec.ts
+│   ├── conftest.ts           # Shared test helpers/fixtures
+│   └── index.ts
+├── docs/
+├── package.json
+├── tsconfig.json
+└── vitest.config.ts          # Or jest.config.ts
+```
+
+**Test co-location:** Tests live beside the code they test as `*_spec.ts` files — no separate `tests/` or `__tests__/` directory. This keeps related code together and makes it obvious when a module lacks tests.
+
+**Test runner configuration** (Vitest — `vitest.config.ts`):
+```typescript
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    include: ['src/**/*_spec.ts'],
+  },
+});
+```
+
+Or for Jest (`jest.config.ts`):
+```typescript
+export default {
+  testMatch: ['<rootDir>/src/**/*_spec.ts'],
+};
+```
+
 ### Testing Patterns
 
 **Test Organization:**
+- One spec file per module, co-located: `module_spec.ts` beside `module.ts`
+- Separate unit tests (fast, isolated) from integration tests via test tags or file naming conventions
+
 ```typescript
 describe('UserService', () => {
   describe('createUser', () => {
     it('should create a user with valid input', async () => {
-      // Arrange
       const input = { name: 'Test', email: 'test@example.com' };
-      const mockRepo = { save: jest.fn().mockResolvedValue({ id: '1', ...input }) };
+      const mockRepo = { save: vi.fn().mockResolvedValue({ id: '1', ...input }) };
       const service = new UserService(mockRepo);
 
-      // Act
       const result = await service.createUser(input);
 
-      // Assert
       expect(result.id).toBe('1');
       expect(mockRepo.save).toHaveBeenCalledWith(expect.objectContaining(input));
     });
@@ -359,15 +399,9 @@ describe('UserService', () => {
 
 **Mocking at Boundaries:**
 ```typescript
-// Mock external dependencies, not internal implementation
-jest.mock('../adapters/database', () => ({
-  connect: jest.fn(),
-  query: jest.fn(),
-}));
-
-// Or use dependency injection
+// Use dependency injection — prefer over module mocking
 const mockDatabase: Database = {
-  query: jest.fn().mockResolvedValue([]),
+  query: vi.fn().mockResolvedValue([]),
 };
 const service = new UserService(mockDatabase);
 ```
