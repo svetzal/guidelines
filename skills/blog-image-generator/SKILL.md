@@ -1,5 +1,6 @@
 ---
 name: blog-image-generator
+version: 1.0.0
 description: Generate cyberpunk-styled images for blog posts including banners (16:9), callouts (1:1), and diagrams (9:16). Use this skill when creating new blog posts, when asked to generate images, or when updating visuals for existing posts. Creates consistent character-based imagery following the blog's visual identity.
 ---
 

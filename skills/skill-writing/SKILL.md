@@ -1,5 +1,6 @@
 ---
 name: skill-writing
+version: 1.0.0
 description: Create cross-agent compatible skills with SKILL.md format, supporting files, and scripts for Claude Code, Copilot, Cursor, Windsurf, and other AI coding assistants
 ---
 
