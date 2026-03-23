@@ -1,0 +1,40 @@
+{
+  "name": "svetzal-guidelines",
+  "owner": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "metadata": {
+    "description": "Curated craftsperson agents and skills for software development",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "craftsperson-agents",
+      "description": "Production-grade craftsperson agents for multiple tech stacks",
+      "source": "./",
+      "agents": [
+        "./agents/clojure-craftsperson.md",
+        "./agents/cpp-qt-craftsperson.md",
+        "./agents/csharp-craftsperson.md",
+        "./agents/elixir-craftsperson.md",
+        "./agents/elixir-phoenix-craftsperson.md",
+        "./agents/go-craftsperson.md",
+        "./agents/java-craftsperson.md",
+        "./agents/kotlin-android-craftsperson.md",
+        "./agents/kotlin-craftsperson.md",
+        "./agents/python-craftsperson.md",
+        "./agents/ruby-craftsperson.md",
+        "./agents/rust-craftsperson.md",
+        "./agents/swift-craftsperson.md",
+        "./agents/typescript-bun-cli-craftsperson.md",
+        "./agents/typescript-craftsperson.md",
+        "./agents/uv-python-craftsperson.md"
+      ],
+      "skills": [
+        "./skills/blog-image-generator",
+        "./skills/skill-writing"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,9 @@
 ---
 name: skill-writing
 version: 1.0.0
+deprecated: true
+deprecated_reason: Superseded by Anthropic's skill-creator (cmx source add anthropic-skills https://github.com/anthropics/skills)
+deprecated_replacement: skill-creator
 description: Create cross-agent compatible skills with SKILL.md format, supporting files, and scripts for Claude Code, Copilot, Cursor, Windsurf, and other AI coding assistants
 ---
 

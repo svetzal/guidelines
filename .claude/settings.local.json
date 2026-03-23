@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(cp /Users/svetzal/Work/Projects/Personal/guidelines/agents/python-craftsperson.md ~/.claude/agents/python-craftsperson.md)",
+      "Bash(cp /Users/svetzal/Work/Projects/Personal/guidelines/agents/uv-python-craftsperson.md ~/.claude/agents/uv-python-craftsperson.md)",
+      "Bash(cp /Users/svetzal/Work/Projects/Personal/guidelines/agents/typescript-craftsperson.md ~/.claude/agents/typescript-craftsperson.md)",
+      "Bash(cp /Users/svetzal/Work/Projects/Personal/guidelines/agents/typescript-bun-cli-craftsperson.md ~/.claude/agents/typescript-bun-cli-craftsperson.md)"
+    ]
+  }
+}
