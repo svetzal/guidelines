@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Modern Tech / Minimal Corporate",
+    "Rendering": "Clean digital illustration, polished, editorial quality",
+    "Lighting": {
+      "Type": "Clean, even, professional",
+      "Sources": ["Soft ambient light", "Subtle gradient backgrounds", "Screen glow accents"],
+      "Shadows": "Soft and minimal, clean edges"
+    },
+    "ColorPalette": {
+      "Primary": ["Steel Blue", "Pure White", "Light Grey", "Slate"],
+      "Accents": ["Electric Blue", "Teal", "Soft Cyan"],
+      "Treatment": "Low saturation primaries with selective high-saturation accents for emphasis"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean gradients", "Subtle glass reflections", "Minimal geometric shapes"],
+      "Mood": "Professional, confident, forward-looking"
+    }
+  },
+  "PromptKeywords": [
+    "clean design", "modern tech", "minimal", "professional",
+    "editorial illustration", "corporate", "polished", "geometric"
+  ]
+}

@@ -1,0 +1,63 @@
+# Per-Slide Frontmatter Reference
+# These fields go in the --- block above each slide.
+#
+# Example:
+#   ---
+#   layout: center
+#   class: text-white
+#   background: /images/bg.png
+#   ---
+#   # My Slide Content
+
+# --- Layout ---
+layout: default                     # Slide layout (see references/layouts.md)
+                                    # Common: default, center, cover, section, two-cols,
+                                    # image-right, image-left, quote, fact, statement, end
+
+# --- Naming & Navigation ---
+name: slide-name                    # Named anchor for linking (used with <Link to="name">)
+title: Slide Title                  # Override title for Toc component
+                                    # By default uses first heading on slide
+level: 2                            # Heading level for Toc (1-5, default: auto-detected)
+hide: false                         # Hide from Toc component: true | false
+
+# --- Styling ---
+class: text-center text-white       # UnoCSS/CSS classes applied to slide container
+background: /images/bg.png          # Background image path (from public/)
+                                    # Also accepts color: '#1a1a2e'
+color: light                        # Override color scheme: 'light' | 'dark'
+
+# --- Transitions ---
+transition: fade                    # Override slide transition for this slide
+                                    # Can differ from global transition
+
+# --- Click Behavior ---
+clicks: 5                           # Total number of clicks on this slide
+                                    # Auto-detected from v-click elements by default
+clicksStart: 0                      # Starting click count (default: 0)
+                                    # Useful for continuing count from previous slide
+
+# --- Slide State ---
+disabled: false                     # Disable/skip this slide: true | false
+preload: true                       # Preload next slide: true (default) | false
+
+# --- Image Layouts ---
+# These props are used with image-left, image-right, and image layouts:
+image: /images/photo.png            # Image source path
+backgroundSize: cover               # CSS background-size: cover | contain | auto
+
+# --- Iframe Layouts ---
+# These props are used with iframe, iframe-left, iframe-right layouts:
+# url: https://example.com          # URL to embed
+
+# --- External Slides ---
+# src: ./other-slides.md            # Import slides from another file
+                                    # Can also use URL for remote slides
+
+# --- Draggable Elements ---
+# dragPos:                          # Positions for VDrag elements
+#   my-element: "100,200,300,400"   # id: "left,top,width,height"
+
+# --- Zoom ---
+# zoom: 0.8                         # Scale factor for this slide (default: 1)
+                                    # Useful for fitting dense content

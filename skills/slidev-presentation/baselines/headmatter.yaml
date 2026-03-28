@@ -1,0 +1,77 @@
+# Slidev Headmatter Configuration Reference
+# The headmatter is the first YAML block in slides.md
+# It configures the entire presentation.
+#
+# Copy and customize the fields you need. Remove unused fields.
+
+# --- Metadata ---
+title: "Presentation Title"        # Shown in browser tab and cover slide
+author: "Stacey Vetzal"            # Author attribution
+info: |                             # Presentation description (supports markdown)
+  A presentation about [topic].
+  Created with [Slidev](https://sli.dev).
+keywords: "slidev,presentation"    # SEO keywords (comma-separated string)
+
+# --- Theme ---
+theme: default                      # Theme name. Options: default, seriph, apple-basic,
+                                    # bricks, dracula, geist, purplin, penguin, shibainu
+                                    # Install others: npm i slidev-theme-<name>
+
+# --- Appearance ---
+colorSchema: auto                   # Color scheme: 'auto' | 'light' | 'dark'
+                                    # 'auto' follows system preference
+favicon: /favicon.ico               # Path to favicon (from public/ directory)
+fonts:
+  sans: Robot                       # Primary text font (Google Fonts name)
+  serif: Robot Slab                 # Serif font
+  mono: Fira Code                   # Code font
+  provider: google                  # Font provider: 'google' | 'none'
+
+# --- Layout Defaults ---
+layout: cover                       # Layout for the first slide (default: cover)
+background: /images/cover-bg.png    # Background image for cover slide
+class: text-center                  # CSS classes for cover slide
+
+# --- Transitions ---
+transition: slide-left              # Default slide transition
+                                    # Built-in: fade, fade-out, slide-left, slide-right,
+                                    # slide-up, slide-down, view-transition
+                                    # Combine: "slide-left | slide-right" (forward | backward)
+
+# --- Code Settings ---
+highlighter: shiki                  # Code highlighter: 'shiki' (default) | 'prism'
+lineNumbers: false                  # Show line numbers in code blocks globally
+codeCopy: true                      # Show copy button on code blocks
+
+# --- Shiki Magic Move ---
+magicMoveDuration: 800              # Animation duration in ms (default: 800)
+magicMoveCopy: true                 # Copy button: true | false | 'final'
+
+# --- Features ---
+mdc: true                           # Enable MDC (Markdown Components) syntax
+                                    # Allows inline/block component syntax in markdown
+record: false                       # Enable recording controls: false | 'dev' | 'build'
+routerMode: hash                    # Router mode: 'hash' (default) | 'history'
+aspectRatio: 16/9                   # Slide aspect ratio (default: 16/9)
+canvasWidth: 980                    # Canvas width in px (default: 980)
+selectable: true                    # Whether text is selectable on slides
+remoteAssets: true                  # Download remote assets locally during build
+
+# --- Drawing ---
+drawings:
+  enabled: true                     # Enable drawing overlay in dev
+  persist: false                    # Persist drawings across sessions
+  presenterOnly: false              # Only allow drawing in presenter mode
+  syncAll: true                     # Sync drawings across clients
+
+# --- Export ---
+exportFilename: slides-export       # Default export filename (without extension)
+download: false                     # Show download button: false | true | 'https://url'
+
+# --- Monaco Editor ---
+monaco: true                        # Enable Monaco: true | false | 'dev' | 'build'
+monacoTypesSource: local            # TypeScript types: 'local' | 'cdn' | 'none'
+
+# --- Addons ---
+# addons:                           # List of Slidev addons
+#   - slidev-addon-name

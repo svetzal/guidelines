@@ -1,0 +1,39 @@
+{
+  "ImageRole": "concept",
+  "ContentDescription": "A focused illustration that visualizes a single abstract idea or concept. Should make the intangible tangible through visual metaphor.",
+
+  "Layout": {
+    "SlidevLayout": "image-right",
+    "AspectRatio": "1:1",
+    "TextSafeZone": "none",
+    "FocalPoint": "center",
+    "NegativeSpace": "moderate"
+  },
+
+  "Style": {
+    "Genre": "Modern Tech / Minimal Corporate",
+    "Rendering": "Clean digital illustration, polished, editorial quality",
+    "Lighting": {
+      "Type": "Clean, even, professional",
+      "Sources": ["Soft ambient light", "Subtle gradient backgrounds", "Screen glow accents"],
+      "Shadows": "Soft and minimal, clean edges"
+    },
+    "ColorPalette": {
+      "Primary": ["Steel Blue", "Pure White", "Light Grey", "Slate"],
+      "Accents": ["Electric Blue", "Teal", "Soft Cyan"],
+      "Treatment": "Low saturation primaries with selective high-saturation accents for emphasis"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean gradients", "Subtle glass reflections", "Minimal geometric shapes"],
+      "Mood": "Professional, confident, forward-looking"
+    }
+  },
+
+  "PromptKeywords": [
+    "clean design", "modern tech", "minimal", "professional",
+    "editorial illustration", "1:1 aspect ratio", "square composition",
+    "concept visualization", "visual metaphor"
+  ],
+
+  "CompositionNotes": "Concept images should present one clear visual metaphor or abstract representation. The image will typically sit beside explanatory text (image-right or image-left layout), so it needs to work at moderate size. Keep the visual focused — one dominant element with supporting details, not a busy scene."
+}

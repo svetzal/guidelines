@@ -1,0 +1,418 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "presentation-scene.schema.json",
+  "title": "Presentation Image Scene Specification",
+  "description": "Schema for generating images for Slidev presentations. Only ImageRole and ContentDescription are required; all other blocks are optional refinement.",
+  "type": "object",
+  "required": [
+    "ImageRole",
+    "ContentDescription"
+  ],
+  "properties": {
+    "ImageRole": {
+      "type": "string",
+      "enum": ["cover", "section-break", "concept", "comparison", "diagram", "background", "accent"],
+      "description": "Rhetorical function of the image in the presentation"
+    },
+
+    "ContentDescription": {
+      "type": "string",
+      "description": "Plain-language creative brief describing what the image should depict"
+    },
+
+    "Layout": {
+      "type": "object",
+      "description": "Presentation-specific layout integration for Slidev",
+      "properties": {
+        "SlidevLayout": {
+          "type": "string",
+          "enum": ["cover", "image", "image-right", "image-left", "section", "default", "none"],
+          "description": "Which Slidev layout this image will be used with"
+        },
+        "AspectRatio": {
+          "type": "string",
+          "enum": ["16:9", "1:1", "9:16"],
+          "description": "Override the default aspect ratio for this image role"
+        },
+        "TextSafeZone": {
+          "type": "string",
+          "enum": ["left-third", "right-third", "top-third", "bottom-third", "center", "none"],
+          "description": "Region kept visually quiet for text overlay"
+        },
+        "FocalPoint": {
+          "type": "string",
+          "enum": ["center", "left", "right", "top", "bottom", "rule-of-thirds-left", "rule-of-thirds-right", "rule-of-thirds-top-left", "rule-of-thirds-top-right", "rule-of-thirds-bottom-left", "rule-of-thirds-bottom-right"],
+          "description": "Where the eye should be drawn in the composition"
+        },
+        "NegativeSpace": {
+          "type": "string",
+          "enum": ["minimal", "moderate", "generous"],
+          "description": "How busy the image is — generous leaves room for text overlay"
+        }
+      }
+    },
+
+    "PresentationContext": {
+      "type": "object",
+      "description": "Context from the presentation this image accompanies",
+      "properties": {
+        "TalkTitle": {
+          "type": "string",
+          "description": "Title of the presentation"
+        },
+        "SlideNumber": {
+          "type": "integer",
+          "description": "Which slide this image appears on"
+        },
+        "SectionName": {
+          "type": "string",
+          "description": "Name of the section this slide belongs to"
+        },
+        "SlideTitle": {
+          "type": "string",
+          "description": "Title text on this specific slide"
+        },
+        "NarrativeRole": {
+          "type": "string",
+          "enum": ["hook", "setup", "tension", "climax", "resolution", "transition", "evidence", "humor"],
+          "description": "Role of this slide in the presentation narrative arc"
+        },
+        "Mood": {
+          "type": "string",
+          "enum": ["optimistic", "analytical", "frustrated", "contemplative", "energetic", "provocative", "triumphant", "vulnerable"],
+          "description": "Emotional tone of this section"
+        },
+        "Themes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Key themes or concepts relevant to this slide"
+        },
+        "VisualContinuity": {
+          "type": "string",
+          "description": "Notes on visual connections across the deck (recurring motifs, color threads)"
+        }
+      }
+    },
+
+    "Style": {
+      "type": "object",
+      "description": "Visual style and rendering specifications (typically loaded from a scene variant)",
+      "properties": {
+        "Genre": {
+          "type": "string",
+          "description": "Overall artistic genre or aesthetic"
+        },
+        "Rendering": {
+          "type": "string",
+          "description": "Rendering style and quality level"
+        },
+        "Lighting": {
+          "type": "object",
+          "description": "Lighting characteristics",
+          "properties": {
+            "Type": {
+              "type": "string",
+              "description": "Overall lighting style"
+            },
+            "Sources": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Types of light sources used"
+            },
+            "Shadows": {
+              "type": "string",
+              "description": "Shadow characteristics"
+            }
+          }
+        },
+        "ColorPalette": {
+          "type": "object",
+          "description": "Color scheme specifications",
+          "properties": {
+            "Primary": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Primary colors in the palette"
+            },
+            "Accents": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Accent colors"
+            },
+            "Treatment": {
+              "type": "string",
+              "description": "How colors are applied and balanced"
+            }
+          }
+        },
+        "Atmosphere": {
+          "type": "object",
+          "description": "Atmospheric effects and mood",
+          "properties": {
+            "Effects": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Visual effects applied to the scene"
+            },
+            "Mood": {
+              "type": "string",
+              "description": "Overall emotional tone"
+            }
+          }
+        }
+      }
+    },
+
+    "Character": {
+      "type": "object",
+      "description": "Physical traits of a character (optional — most presentation images are abstract)",
+      "properties": {
+        "Description": {
+          "type": "string",
+          "description": "Brief overall description of the character"
+        },
+        "Age": {
+          "type": "string",
+          "description": "Age range and maturity descriptors"
+        },
+        "Ethnicity": {
+          "type": "string",
+          "description": "Ethnic background or build type"
+        },
+        "Build": {
+          "type": "object",
+          "description": "Body type and proportions",
+          "properties": {
+            "Type": {
+              "type": "string",
+              "description": "Overall body type descriptor"
+            },
+            "UpperBody": {
+              "type": "string",
+              "description": "Arms, shoulders, chest description"
+            },
+            "LowerBody": {
+              "type": "string",
+              "description": "Hips, legs description"
+            }
+          }
+        },
+        "Face": {
+          "type": "object",
+          "description": "Facial features",
+          "properties": {
+            "Eyes": {
+              "type": "string",
+              "description": "Eye color and shape"
+            },
+            "Expression": {
+              "type": "string",
+              "description": "Default/baseline facial expression"
+            },
+            "Makeup": {
+              "type": "string",
+              "description": "Default/baseline makeup style"
+            },
+            "Complexion": {
+              "type": "string",
+              "description": "Skin tone and texture"
+            }
+          }
+        },
+        "Hair": {
+          "type": "object",
+          "description": "Hair characteristics",
+          "properties": {
+            "Color": {
+              "type": "string",
+              "description": "Hair color"
+            },
+            "Length": {
+              "type": "string",
+              "description": "Hair length"
+            },
+            "Style": {
+              "type": "string",
+              "description": "Hair styling and movement"
+            }
+          }
+        },
+        "Wardrobe": {
+          "type": "object",
+          "description": "Character's clothing and accessories",
+          "properties": {
+            "Base": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/WardrobeItem" },
+              "description": "Core clothing items always present"
+            },
+            "Situational": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/WardrobeItem" },
+              "description": "Items that may appear based on context"
+            }
+          }
+        }
+      }
+    },
+
+    "Situation": {
+      "$ref": "#/$defs/Situation",
+      "description": "Scene configuration (optional — many presentation images are abstract concepts)"
+    },
+
+    "PromptKeywords": {
+      "type": "array",
+      "description": "Keywords to boost in image generation prompts",
+      "items": { "type": "string" }
+    },
+
+    "CompositionNotes": {
+      "type": "string",
+      "description": "Free-form notes for nuanced composition direction"
+    },
+
+    "MoodVariations": {
+      "type": "object",
+      "description": "Maps mood names to lighting/atmosphere adjustments",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "LightingAdjustment": {
+            "type": "string",
+            "description": "How lighting changes for this mood"
+          },
+          "AtmosphereAdjustment": {
+            "type": "string",
+            "description": "How atmosphere changes for this mood"
+          },
+          "ExpressionTendency": {
+            "type": "string",
+            "description": "Character expression shift (if character is present)"
+          }
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "Situation": {
+      "type": "object",
+      "description": "A specific scene configuration (all fields optional for presentation use)",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Identifier for this situation"
+        },
+        "Setting": {
+          "type": "string",
+          "description": "Environment and location description"
+        },
+        "Camera": {
+          "type": "string",
+          "description": "Camera angle, distance, and framing"
+        },
+        "CharacterPose": {
+          "$ref": "#/$defs/CharacterPose"
+        },
+        "Props": {
+          "type": "object",
+          "description": "Objects in the scene, categorized by source",
+          "properties": {
+            "Character": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Prop" },
+              "description": "Props belonging to the character"
+            },
+            "Conceptual": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Prop" },
+              "description": "Props representing presentation concepts or metaphors"
+            },
+            "Environment": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Prop" },
+              "description": "Props that are part of the setting"
+            }
+          }
+        },
+        "KeyDetails": {
+          "type": "array",
+          "description": "Important atmospheric or scene details",
+          "items": { "type": "string" }
+        },
+        "LightingFocus": {
+          "type": "string",
+          "description": "Specific lighting setup for this situation"
+        }
+      }
+    },
+
+    "CharacterPose": {
+      "type": "object",
+      "description": "Character positioning within a situation",
+      "properties": {
+        "Expression": {
+          "type": "string",
+          "description": "Facial expression and gaze"
+        },
+        "BodyPosition": {
+          "type": "string",
+          "description": "Overall body stance and posture"
+        },
+        "Gesture": {
+          "type": "string",
+          "description": "Hand and arm positioning/action"
+        }
+      }
+    },
+
+    "Prop": {
+      "type": "object",
+      "description": "An object or element in the scene",
+      "required": ["Name", "Description"],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "What the prop is"
+        },
+        "Description": {
+          "type": "string",
+          "description": "Visual details and style of the prop"
+        },
+        "Application": {
+          "type": "string",
+          "description": "How the prop is positioned or used in the scene"
+        },
+        "SymbolicMeaning": {
+          "type": "string",
+          "description": "What this prop represents thematically"
+        },
+        "ReferenceImage": {
+          "type": "string",
+          "description": "Path to a reference image for this prop (relative to scene JSON or repo root)"
+        }
+      }
+    },
+
+    "WardrobeItem": {
+      "type": "object",
+      "description": "A clothing item or accessory",
+      "required": ["Name", "Description"],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Item name"
+        },
+        "Description": {
+          "type": "string",
+          "description": "Visual details"
+        },
+        "Context": {
+          "type": "string",
+          "description": "When this item appears"
+        }
+      }
+    }
+  }
+}

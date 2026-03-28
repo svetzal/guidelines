@@ -1,0 +1,39 @@
+{
+  "ImageRole": "section-break",
+  "ContentDescription": "An atmospheric transition image that signals a shift to a new topic or section. Should feel like a visual breath between major ideas.",
+
+  "Layout": {
+    "SlidevLayout": "section",
+    "AspectRatio": "16:9",
+    "TextSafeZone": "center",
+    "FocalPoint": "center",
+    "NegativeSpace": "generous"
+  },
+
+  "Style": {
+    "Genre": "Modern Tech / Minimal Corporate",
+    "Rendering": "Clean digital illustration, polished, editorial quality",
+    "Lighting": {
+      "Type": "Clean, even, professional",
+      "Sources": ["Soft ambient light", "Subtle gradient backgrounds", "Screen glow accents"],
+      "Shadows": "Soft and minimal, clean edges"
+    },
+    "ColorPalette": {
+      "Primary": ["Steel Blue", "Pure White", "Light Grey", "Slate"],
+      "Accents": ["Electric Blue", "Teal", "Soft Cyan"],
+      "Treatment": "Low saturation primaries with selective high-saturation accents for emphasis"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean gradients", "Subtle glass reflections", "Minimal geometric shapes"],
+      "Mood": "Professional, confident, forward-looking"
+    }
+  },
+
+  "PromptKeywords": [
+    "clean design", "modern tech", "minimal", "professional",
+    "editorial illustration", "16:9 aspect ratio", "wide composition",
+    "generous negative space", "section divider", "atmospheric"
+  ],
+
+  "CompositionNotes": "Section breaks should be visually lighter than cover images. They provide a moment of rest and signal transition. Keep the center clear for a section title. Use a related but distinct visual motif from the cover to maintain deck cohesion."
+}

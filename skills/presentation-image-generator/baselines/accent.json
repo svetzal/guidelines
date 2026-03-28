@@ -1,0 +1,39 @@
+{
+  "ImageRole": "accent",
+  "ContentDescription": "A small, focused visual element used as an inline illustration or decorative accent alongside slide content.",
+
+  "Layout": {
+    "SlidevLayout": "default",
+    "AspectRatio": "1:1",
+    "TextSafeZone": "none",
+    "FocalPoint": "center",
+    "NegativeSpace": "minimal"
+  },
+
+  "Style": {
+    "Genre": "Modern Tech / Minimal Corporate",
+    "Rendering": "Clean digital illustration, polished, editorial quality",
+    "Lighting": {
+      "Type": "Clean, even, professional",
+      "Sources": ["Soft ambient light", "Subtle gradient backgrounds", "Screen glow accents"],
+      "Shadows": "Soft and minimal, clean edges"
+    },
+    "ColorPalette": {
+      "Primary": ["Steel Blue", "Pure White", "Light Grey", "Slate"],
+      "Accents": ["Electric Blue", "Teal", "Soft Cyan"],
+      "Treatment": "Low saturation primaries with selective high-saturation accents for emphasis"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean gradients", "Subtle glass reflections", "Minimal geometric shapes"],
+      "Mood": "Professional, confident, forward-looking"
+    }
+  },
+
+  "PromptKeywords": [
+    "clean design", "modern tech", "minimal", "professional",
+    "editorial illustration", "1:1 aspect ratio", "square composition",
+    "small icon-like", "focused visual"
+  ],
+
+  "CompositionNotes": "Accent images are small and will be displayed at reduced size on the slide. They should have a single clear subject with good contrast — think of them as oversized icons or spot illustrations. They need to read clearly even at 200-300px display size."
+}

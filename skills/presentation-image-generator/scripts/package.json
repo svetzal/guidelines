@@ -1,0 +1,10 @@
+{
+  "name": "presentation-image-generator",
+  "version": "1.0.0",
+  "description": "Generate presentation images using OpenAI API",
+  "type": "module",
+  "dependencies": {
+    "canvas": "^3.2.0",
+    "openai": "^4.0.0"
+  }
+}

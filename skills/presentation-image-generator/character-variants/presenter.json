@@ -1,0 +1,44 @@
+{
+  "Character": {
+    "Description": "A composed, approachable, experienced woman presenter and thought leader; warm authority with a spark of wit.",
+    "Age": "Middle-aged, confident, seasoned",
+    "Ethnicity": "Northern / Eastern European build",
+    "Build": {
+      "Type": "Sturdy, feminine, grounded",
+      "UpperBody": "Broad shoulders, relaxed posture",
+      "LowerBody": "Full hips, stable stance"
+    },
+    "Face": {
+      "Eyes": "Blue-grey, warm, direct",
+      "Expression": "Engaged, approachable, slight knowing smile",
+      "Makeup": "Clean professional makeup; neutral tones, subtle warmth, polished but not overdone",
+      "Complexion": "Fair-light skin with natural warmth"
+    },
+    "Hair": {
+      "Color": "Silver-grey",
+      "Length": "Long",
+      "Style": "Soft waves, neatly styled, professional but not rigid"
+    },
+    "Wardrobe": {
+      "Base": [
+        {
+          "Name": "Tailored blazer",
+          "Description": "Well-fitted dark blazer over smart-casual attire, sleeves sometimes pushed up",
+          "Context": "Conference and professional settings"
+        }
+      ],
+      "Situational": [
+        {
+          "Name": "Speaker lanyard",
+          "Description": "Conference badge on a branded lanyard",
+          "Context": "Conference talk settings"
+        },
+        {
+          "Name": "Presentation clicker",
+          "Description": "Small wireless slide remote",
+          "Context": "On-stage presenting"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "ImageRole": "cover",
+  "ContentDescription": "A dramatic, atmospheric image that sets the tone for the entire presentation. Should be visually striking and work as a full-bleed background behind a title slide.",
+
+  "Layout": {
+    "SlidevLayout": "cover",
+    "AspectRatio": "16:9",
+    "TextSafeZone": "center",
+    "FocalPoint": "center",
+    "NegativeSpace": "generous"
+  },
+
+  "Style": {
+    "Genre": "Modern Tech / Minimal Corporate",
+    "Rendering": "Clean digital illustration, polished, editorial quality",
+    "Lighting": {
+      "Type": "Clean, even, professional",
+      "Sources": ["Soft ambient light", "Subtle gradient backgrounds", "Screen glow accents"],
+      "Shadows": "Soft and minimal, clean edges"
+    },
+    "ColorPalette": {
+      "Primary": ["Steel Blue", "Pure White", "Light Grey", "Slate"],
+      "Accents": ["Electric Blue", "Teal", "Soft Cyan"],
+      "Treatment": "Low saturation primaries with selective high-saturation accents for emphasis"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean gradients", "Subtle glass reflections", "Minimal geometric shapes"],
+      "Mood": "Professional, confident, forward-looking"
+    }
+  },
+
+  "PromptKeywords": [
+    "clean design", "modern tech", "minimal", "professional",
+    "editorial illustration", "16:9 aspect ratio", "wide composition",
+    "generous negative space", "title slide background"
+  ],
+
+  "CompositionNotes": "Cover images must leave generous space in the center for the presentation title and subtitle. Keep visual interest toward the edges or use a subtle, non-distracting pattern. The image should set an emotional tone without competing with text.",
+
+  "MoodVariations": {
+    "optimistic": {
+      "LightingAdjustment": "Warmer tones, golden accents, upward light direction",
+      "AtmosphereAdjustment": "Open, expansive, sunrise-like warmth"
+    },
+    "analytical": {
+      "LightingAdjustment": "Cool blue-dominant, precise, even illumination",
+      "AtmosphereAdjustment": "Clean, structured, grid-like elements"
+    },
+    "provocative": {
+      "LightingAdjustment": "High contrast, dramatic edge lighting",
+      "AtmosphereAdjustment": "Bold, slightly unsettling, unexpected angles"
+    },
+    "contemplative": {
+      "LightingAdjustment": "Soft, diffused, muted tones",
+      "AtmosphereAdjustment": "Quiet, spacious, meditative"
+    }
+  }
+}

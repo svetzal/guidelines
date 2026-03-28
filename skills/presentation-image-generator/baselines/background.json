@@ -1,0 +1,39 @@
+{
+  "ImageRole": "background",
+  "ContentDescription": "A subtle, low-contrast texture or pattern that sits behind slide text without competing for attention. Should add visual richness without reducing readability.",
+
+  "Layout": {
+    "SlidevLayout": "default",
+    "AspectRatio": "16:9",
+    "TextSafeZone": "center",
+    "FocalPoint": "center",
+    "NegativeSpace": "generous"
+  },
+
+  "Style": {
+    "Genre": "Modern Tech / Minimal Corporate",
+    "Rendering": "Clean digital illustration, polished, editorial quality",
+    "Lighting": {
+      "Type": "Even, ambient, non-directional",
+      "Sources": ["Diffused ambient light", "Soft gradients"],
+      "Shadows": "Barely visible, no harsh shadows"
+    },
+    "ColorPalette": {
+      "Primary": ["Steel Blue", "Pure White", "Light Grey", "Slate"],
+      "Accents": ["Electric Blue", "Teal", "Soft Cyan"],
+      "Treatment": "Very low saturation, muted, subtle — must not compete with text readability"
+    },
+    "Atmosphere": {
+      "Effects": ["Subtle texture", "Soft gradients", "Barely-visible geometric patterns"],
+      "Mood": "Calm, unobtrusive, supportive"
+    }
+  },
+
+  "PromptKeywords": [
+    "subtle background", "texture", "minimal pattern", "low contrast",
+    "muted colors", "16:9 aspect ratio", "slide background",
+    "unobtrusive", "professional texture"
+  ],
+
+  "CompositionNotes": "Background images must be extremely subtle. They should add a hint of visual texture or depth without competing with any text placed over them. Test readability by imagining white and dark text over the result. Avoid any strong focal points, sharp edges, or high-contrast regions."
+}

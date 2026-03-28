@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Bio-Digital / Nature Meets Technology",
+    "Rendering": "Detailed digital illustration, organic textures, bioluminescent accents",
+    "Lighting": {
+      "Type": "Natural diffused light with bioluminescent accents",
+      "Sources": ["Filtered sunlight", "Bioluminescent glow", "Soft ambient warmth"],
+      "Shadows": "Soft, dappled, organic patterns"
+    },
+    "ColorPalette": {
+      "Primary": ["Forest Green", "Earth Brown", "Warm Cream", "Moss"],
+      "Accents": ["Bioluminescent Teal", "Soft Gold", "Amber", "Living Green"],
+      "Treatment": "Natural earth tones as base with selective bioluminescent highlights on key elements"
+    },
+    "Atmosphere": {
+      "Effects": ["Organic textures", "Root-like network patterns", "Soft particle motes", "Living light"],
+      "Mood": "Growth-oriented, interconnected, living systems"
+    }
+  },
+  "PromptKeywords": [
+    "organic", "bioluminescent", "nature technology", "growth",
+    "living systems", "natural patterns", "earth tones", "bio-digital"
+  ]
+}

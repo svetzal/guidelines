@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Data Visualization Art / Generative Abstract",
+    "Rendering": "High-detail digital art, generative aesthetic, data-inspired patterns",
+    "Lighting": {
+      "Type": "Ambient glow from data elements, cool ethereal light",
+      "Sources": ["Glowing nodes", "Data stream light trails", "Soft radial gradients"],
+      "Shadows": "Minimal, elements float in space"
+    },
+    "ColorPalette": {
+      "Primary": ["Deep Navy", "Dark Charcoal", "Midnight Blue"],
+      "Accents": ["Cyan", "Electric Blue", "Soft White", "Amber highlights"],
+      "Treatment": "Dark backgrounds with luminous data elements, high contrast on key nodes"
+    },
+    "Atmosphere": {
+      "Effects": ["Glowing connection lines", "Particle fields", "Depth-of-field blur on distant nodes", "Subtle grid patterns"],
+      "Mood": "Analytical, expansive, interconnected"
+    }
+  },
+  "PromptKeywords": [
+    "data visualization", "network graph", "abstract", "generative art",
+    "nodes and connections", "information design", "dark background", "glowing elements"
+  ]
+}

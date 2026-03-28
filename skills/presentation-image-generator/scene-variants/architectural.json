@@ -1,0 +1,24 @@
+{
+  "Style": {
+    "Genre": "Architectural / Structural Minimalism",
+    "Rendering": "Clean digital illustration, precise geometry, blueprint-inspired",
+    "Lighting": {
+      "Type": "Even, controlled, studio-quality",
+      "Sources": ["Soft overhead lighting", "Warm accent from materials", "Subtle edge highlighting"],
+      "Shadows": "Clean geometric shadows, precise angles"
+    },
+    "ColorPalette": {
+      "Primary": ["Cool Grey", "Warm Concrete", "Off-White", "Charcoal"],
+      "Accents": ["Warm Copper", "Burnt Orange", "Deep Teal"],
+      "Treatment": "Neutral palette with selective warm accent on focal elements, emphasizing structure"
+    },
+    "Atmosphere": {
+      "Effects": ["Clean geometric lines", "Structural grid overlays", "Precise shadows", "Subtle material textures"],
+      "Mood": "Ordered, methodical, precisely constructed"
+    }
+  },
+  "PromptKeywords": [
+    "architectural", "structural", "geometric", "minimal",
+    "clean lines", "blueprint", "precise", "orderly"
+  ]
+}
