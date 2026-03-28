@@ -25,8 +25,9 @@ description: |
 
   user: "I'm getting a clippy warning about needless borrows in my parser module"
   assistant: "Let me use the rust-craftsperson agent to analyze the parser module, resolve the clippy warnings idiomatically, ensure the fix doesn't break tests, and verify the code still reveals intent clearly."
-version: 2.0.0
-model: sonnet
+metadata:
+  version: "2.0.0"
+  author: Stacey Vetzal
 ---
 
 ## Core Identity

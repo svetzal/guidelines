@@ -1,6 +1,9 @@
 ---
 name: presentation-image-generator
 description: Generate images for Slidev presentations including covers (16:9), section breaks (16:9), concepts (1:1), backgrounds (16:9), and accents (1:1). Abstract-first approach — character is OFF by default. Supports multiple visual styles via scene variants. Use when creating presentation imagery, generating slide visuals, or adding custom graphics to a talk.
+metadata:
+  version: "1.0.0"
+  author: Stacey Vetzal
 ---
 
 # Presentation Image Generator

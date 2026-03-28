@@ -1,6 +1,9 @@
 ---
 name: slidev-presentation
 description: Create Slidev markdown presentations from scratch or by converting blog posts. Use when asked to "create a presentation", "make slides", "convert this post to slides", "build a slide deck", or "set up Slidev".
+metadata:
+  version: "1.0.0"
+  author: Stacey Vetzal
 ---
 
 # Slidev Presentation Skill
@@ -203,26 +206,7 @@ console.log(`${greeting}, ${audience}!`)
 ````
 `````
 
-### Mermaid Diagrams
-
-````markdown
-```mermaid
-graph LR
-  A[Problem] --> B[Analysis]
-  B --> C[Solution]
-  C --> D[Result]
-```
-````
-
-### UnoCSS Styling
-
-```markdown
-<div class="text-3xl font-bold text-blue-500 mt-4">
-  Styled text
-</div>
-```
-
-Common utilities: `text-center`, `grid grid-cols-2 gap-4`, `mt-8`, `opacity-50`, `bg-gray-100`, `rounded-lg`, `p-4`.
+For Mermaid diagrams see `references/diagrams-and-math.md`. For UnoCSS styling see `references/styling.md`.
 
 ### Images
 

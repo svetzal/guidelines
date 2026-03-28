@@ -13,7 +13,9 @@ Opinionated AI agents for writing production-grade software across different tec
 | Agent | Use For |
 |-------|---------|
 | [python-craftsperson](python-craftsperson.md) | Python libraries, CLI tools, services (pytest, Pydantic2, ruff) |
+| [uv-python-craftsperson](uv-python-craftsperson.md) | Python projects managed with uv |
 | [typescript-craftsperson](typescript-craftsperson.md) | Node.js, TypeScript libraries (Jest/Vitest, Zod, ESLint) |
+| [typescript-bun-cli-craftsperson](typescript-bun-cli-craftsperson.md) | Bun-based TypeScript CLI tools (Bun runtime, subprocess management) |
 | [java-craftsperson](java-craftsperson.md) | Java applications (Maven/Gradle, JUnit 5, Checkstyle) |
 | [kotlin-craftsperson](kotlin-craftsperson.md) | Kotlin server-side (Ktor, Spring Boot, Kotest) |
 | [kotlin-android-craftsperson](kotlin-android-craftsperson.md) | Android apps (Jetpack Compose, Hilt, Coroutines) |
@@ -138,9 +140,31 @@ All craftsperson agents share a remarkably consistent architectural pattern, sug
 #### 1. Frontmatter Metadata
 
 Every agent includes YAML frontmatter with:
-- `name`: Agent identifier (e.g., `python-craftsperson`)
+- `name`: Agent identifier — must match the filename without `.md` (e.g., `python-craftsperson` in `python-craftsperson.md`)
 - `description`: Rich usage examples showing when/how to invoke
-- `model`: Execution model (`sonnet`, `inherit`, etc.)
+- `metadata`: Key-value map for additional properties (see below)
+
+##### Versioning
+
+Following the [Agent Skills specification](https://agentskills.io/specification),
+version information belongs in the `metadata` field rather than as a top-level
+frontmatter property:
+
+```yaml
+---
+name: typescript-craftsperson
+description: ...
+metadata:
+  version: "1.3.1"
+  author: example-org
+---
+```
+
+Use semantic versioning (`MAJOR.MINOR.PATCH`):
+- **MAJOR**: Breaking changes to agent behavior or removed guidance
+- **MINOR**: New capabilities, sections, or tooling recommendations
+- **PATCH**: Corrections, clarifications, or minor wording improvements
+
 
 #### 2. Core Identity Statement
 
@@ -317,9 +341,9 @@ All agents apply the *same structural pattern* (quality gates, engineering princ
 #### Content Variations
 
 ##### Model Specification
-- Most agents: `model: inherit`
-- Python, Rust, Elixir-Phoenix, C++/Qt: `model: sonnet`
-- **Recommendation**: Standardize or document rationale for model selection
+- `model:` tags have been removed from all agents as they are platform-specific and not portable across agent implementations.
+- See the top-level [AGENTS.md](../AGENTS.md) "Model Tags" section for the full rationale.
+- If a specific capability is required (e.g., large context window), document the *requirement* in `compatibility` metadata instead of hard-coding a model name.
 
 ##### Data Validation Libraries
 - Python: **Pydantic2** (explicitly: "ALWAYS use Pydantic2, never dataclasses")
@@ -431,25 +455,25 @@ Some concerns appear inconsistently:
 
 #### 7. Normalize Model Selection
 
-Currently inconsistent (`sonnet` vs `inherit`). Either:
-- Standardize all to `inherit`
-- Document rationale for when `sonnet` is appropriate
+Completed. All `model:` tags have been removed from agents. See [AGENTS.md](../AGENTS.md) "Model Tags" for the rationale.
 
 ### Agent Inventory
 
-| Agent | Lines | Language/Framework | Model | Notable Features |
-|-------|-------|-------------------|-------|------------------|
-| python-craftsperson | 316 | Python | sonnet | Pydantic2 mandate |
-| typescript-craftsperson | 431 | TypeScript/Node | sonnet | Zod validation, branded types |
-| java-craftsperson | 228 | Java/Maven/Gradle | inherit | Verbose workflow, anti-patterns |
-| kotlin-craftsperson | 234 | Kotlin/Ktor/Spring | inherit | Server-side focus |
-| kotlin-android-craftsperson | ~250 | Kotlin/Android | inherit | Module architecture diagrams |
-| go-craftsperson | ~200 | Go | inherit | Table-driven tests, channels |
-| rust-craftsperson | ~200 | Rust | sonnet | Zero clippy warnings mandate |
-| csharp-craftsperson | ~200 | C#/.NET | inherit | Roslyn analyzers |
-| swift-craftsperson | ~300 | Swift/SwiftPM | inherit | DocC, value types emphasis |
-| ruby-craftsperson | ~200 | Ruby/Rails | inherit | Capybara, Brakeman |
-| elixir-craftsperson | 258 | Elixir/OTP | sonnet | Pure Elixir focus |
-| elixir-phoenix-craftsperson | 802 | Phoenix/LiveView | sonnet | UI/dark mode, longest agent |
-| clojure-craftsperson | 288 | Clojure | inherit | REPL-driven, data-oriented |
-| cpp-qt-craftsperson | 395 | C++/Qt | sonnet | Memory safety, sanitizers |
+| Agent | Lines | Language/Framework | Notable Features |
+|-------|-------|--------------------|------------------|
+| python-craftsperson | 316 | Python | Pydantic2 mandate |
+| uv-python-craftsperson | ~300 | Python/uv | uv package management |
+| typescript-craftsperson | 431 | TypeScript/Node | Zod validation, branded types |
+| typescript-bun-cli-craftsperson | ~300 | TypeScript/Bun | Bun runtime, subprocess management |
+| java-craftsperson | 228 | Java/Maven/Gradle | Verbose workflow, anti-patterns |
+| kotlin-craftsperson | 234 | Kotlin/Ktor/Spring | Server-side focus |
+| kotlin-android-craftsperson | ~250 | Kotlin/Android | Module architecture diagrams |
+| go-craftsperson | ~200 | Go | Table-driven tests, channels |
+| rust-craftsperson | ~200 | Rust | Zero clippy warnings mandate |
+| csharp-craftsperson | ~200 | C#/.NET | Roslyn analyzers |
+| swift-craftsperson | ~300 | Swift/SwiftPM | DocC, value types emphasis |
+| ruby-craftsperson | ~200 | Ruby/Rails | Capybara, Brakeman |
+| elixir-craftsperson | 258 | Elixir/OTP | Pure Elixir focus |
+| elixir-phoenix-craftsperson | 802 | Phoenix/LiveView | UI/dark mode, longest agent |
+| clojure-craftsperson | 288 | Clojure | REPL-driven, data-oriented |
+| cpp-qt-craftsperson | 395 | C++/Qt | Memory safety, sanitizers |
