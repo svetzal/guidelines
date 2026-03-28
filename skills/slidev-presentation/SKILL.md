@@ -2,7 +2,7 @@
 name: slidev-presentation
 description: Create Slidev markdown presentations from scratch or by converting blog posts. Use when asked to "create a presentation", "make slides", "convert this post to slides", "build a slide deck", or "set up Slidev".
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: Stacey Vetzal
 ---
 
