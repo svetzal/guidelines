@@ -94,10 +94,9 @@ material to separate files.
 
 ### Recommended Sections
 
-1. **When to Use** -- bullet list of trigger scenarios
-2. **Step-by-step instructions** -- the core workflow
-3. **Gotchas** -- environment-specific facts that defy reasonable assumptions
-4. **Examples** -- concrete input/output pairs
+1. **Step-by-step instructions** -- the core workflow
+2. **Gotchas** -- environment-specific facts that defy reasonable assumptions
+3. **Examples** -- concrete input/output pairs
 
 ### Effective Instruction Patterns
 
