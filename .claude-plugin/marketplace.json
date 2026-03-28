@@ -33,7 +33,10 @@
       ],
       "skills": [
         "./skills/blog-image-generator",
-        "./skills/skill-writing"
+        "./skills/presentation-image-generator",
+        "./skills/presentation-stacey-voice",
+        "./skills/slidev-presentation",
+        "./skills/writing-stacey-voice"
       ]
     }
   ]
