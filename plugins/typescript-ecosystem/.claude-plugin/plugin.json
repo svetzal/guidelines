@@ -1,0 +1,11 @@
+{
+  "name": "typescript-ecosystem",
+  "version": "1.0.0",
+  "description": "TypeScript craftsperson agents for Node.js and Bun",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["typescript", "javascript", "node", "bun", "zod"]
+}

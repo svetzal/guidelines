@@ -1,0 +1,11 @@
+{
+  "name": "clojure-ecosystem",
+  "version": "1.0.0",
+  "description": "Clojure craftsperson agent",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["clojure", "deps-edn", "kaocha", "repl"]
+}

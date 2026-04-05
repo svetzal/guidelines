@@ -1,0 +1,11 @@
+{
+  "name": "ruby-ecosystem",
+  "version": "1.0.0",
+  "description": "Ruby craftsperson agent for Ruby and Rails applications",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["ruby", "rails", "rspec", "rubocop"]
+}

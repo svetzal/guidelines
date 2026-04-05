@@ -6,38 +6,86 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "1.0.0"
+    "version": "2.0.0"
   },
   "plugins": [
     {
-      "name": "craftsperson-agents",
-      "description": "Production-grade craftsperson agents for multiple tech stacks",
-      "source": "./",
-      "agents": [
-        "./agents/clojure-craftsperson.md",
-        "./agents/cpp-qt-craftsperson.md",
-        "./agents/csharp-craftsperson.md",
-        "./agents/elixir-craftsperson.md",
-        "./agents/elixir-phoenix-craftsperson.md",
-        "./agents/go-craftsperson.md",
-        "./agents/java-craftsperson.md",
-        "./agents/kotlin-android-craftsperson.md",
-        "./agents/kotlin-craftsperson.md",
-        "./agents/python-craftsperson.md",
-        "./agents/ruby-craftsperson.md",
-        "./agents/rust-craftsperson.md",
-        "./agents/swift-craftsperson.md",
-        "./agents/typescript-bun-cli-craftsperson.md",
-        "./agents/typescript-craftsperson.md",
-        "./agents/uv-python-craftsperson.md"
-      ],
-      "skills": [
-        "./skills/blog-image-generator",
-        "./skills/presentation-image-generator",
-        "./skills/presentation-stacey-voice",
-        "./skills/slidev-presentation",
-        "./skills/writing-stacey-voice"
-      ]
+      "name": "python-ecosystem",
+      "description": "Python craftsperson agent with uv and pip toolchain skills",
+      "source": "./plugins/python-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "elixir-ecosystem",
+      "description": "Elixir and Phoenix craftsperson agents",
+      "source": "./plugins/elixir-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "typescript-ecosystem",
+      "description": "TypeScript craftsperson agents for Node.js and Bun",
+      "source": "./plugins/typescript-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "jvm-ecosystem",
+      "description": "Java, Kotlin, and Kotlin Android craftsperson agents",
+      "source": "./plugins/jvm-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "go-ecosystem",
+      "description": "Go craftsperson agent",
+      "source": "./plugins/go-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "rust-ecosystem",
+      "description": "Rust craftsperson agent",
+      "source": "./plugins/rust-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "dotnet-ecosystem",
+      "description": "C# / .NET craftsperson agent",
+      "source": "./plugins/dotnet-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "swift-ecosystem",
+      "description": "Swift craftsperson agent for iOS, macOS, and server-side Swift",
+      "source": "./plugins/swift-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "ruby-ecosystem",
+      "description": "Ruby craftsperson agent for Ruby and Rails applications",
+      "source": "./plugins/ruby-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "clojure-ecosystem",
+      "description": "Clojure craftsperson agent",
+      "source": "./plugins/clojure-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "cpp-qt-ecosystem",
+      "description": "C++ / Qt craftsperson agent",
+      "source": "./plugins/cpp-qt-ecosystem",
+      "category": "ecosystem"
+    },
+    {
+      "name": "image-generators",
+      "description": "Cyberpunk-styled image generation for blog posts and presentations",
+      "source": "./plugins/image-generators",
+      "category": "functional"
+    },
+    {
+      "name": "stacey-voice",
+      "description": "Stacey Vetzal's writing and presentation voice guides",
+      "source": "./plugins/stacey-voice",
+      "category": "personal"
     }
   ]
 }

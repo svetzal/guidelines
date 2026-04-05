@@ -1,0 +1,11 @@
+{
+  "name": "python-ecosystem",
+  "version": "1.0.0",
+  "description": "Python craftsperson agent with uv and pip toolchain skills",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["python", "uv", "pip", "pytest", "ruff", "pydantic"]
+}

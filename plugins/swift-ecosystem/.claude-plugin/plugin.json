@@ -1,0 +1,11 @@
+{
+  "name": "swift-ecosystem",
+  "version": "1.0.0",
+  "description": "Swift craftsperson agent for iOS, macOS, and server-side Swift",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["swift", "ios", "macos", "swiftpm", "swiftui"]
+}

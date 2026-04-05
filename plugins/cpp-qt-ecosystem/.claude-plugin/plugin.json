@@ -1,0 +1,11 @@
+{
+  "name": "cpp-qt-ecosystem",
+  "version": "1.0.0",
+  "description": "C++ / Qt craftsperson agent",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["cpp", "qt", "cmake", "clang-tidy"]
+}

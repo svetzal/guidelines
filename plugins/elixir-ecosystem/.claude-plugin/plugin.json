@@ -1,0 +1,11 @@
+{
+  "name": "elixir-ecosystem",
+  "version": "1.0.0",
+  "description": "Elixir and Phoenix craftsperson agents",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["elixir", "phoenix", "liveview", "otp", "beam"]
+}

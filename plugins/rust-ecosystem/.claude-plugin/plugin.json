@@ -1,0 +1,11 @@
+{
+  "name": "rust-ecosystem",
+  "version": "1.0.0",
+  "description": "Rust craftsperson agent",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["rust", "cargo", "clippy", "tokio"]
+}

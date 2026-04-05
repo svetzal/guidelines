@@ -1,0 +1,11 @@
+{
+  "name": "go-ecosystem",
+  "version": "1.0.0",
+  "description": "Go craftsperson agent",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["go", "golang", "goroutines"]
+}

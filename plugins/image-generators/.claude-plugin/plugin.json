@@ -1,0 +1,11 @@
+{
+  "name": "image-generators",
+  "version": "1.0.0",
+  "description": "Cyberpunk-styled image generation for blog posts and presentations",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["images", "blog", "presentations", "cyberpunk"]
+}

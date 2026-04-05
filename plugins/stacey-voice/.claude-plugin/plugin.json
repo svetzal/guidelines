@@ -1,0 +1,11 @@
+{
+  "name": "stacey-voice",
+  "version": "1.0.0",
+  "description": "Stacey Vetzal's writing and presentation voice guides",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["writing", "presentations", "voice", "stacey-vetzal"]
+}
