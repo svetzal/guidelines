@@ -1,0 +1,11 @@
+{
+  "name": "design",
+  "version": "1.0.0",
+  "description": "Human-centered visual and UI design guidance",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["design", "ui", "ux", "visual-design", "accessibility"]
+}

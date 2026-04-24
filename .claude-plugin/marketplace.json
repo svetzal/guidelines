@@ -82,6 +82,12 @@
       "category": "functional"
     },
     {
+      "name": "design",
+      "description": "Human-centered visual and UI design guidance",
+      "source": "./plugins/design",
+      "category": "functional"
+    },
+    {
       "name": "stacey-voice",
       "description": "Stacey Vetzal's writing and presentation voice guides",
       "source": "./plugins/stacey-voice",
