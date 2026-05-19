@@ -2,100 +2,82 @@
   "ImageType": "diagram",
   "AspectRatio": "9:16",
   "Size": "1024x1536",
-  "Purpose": "Tall infographic or diagram, explains a process, system, or concept visually",
-
-  "Character": {
-    "Description": "A highly competent, focused woman coder and systems thinker",
-    "Age": "Middle-aged, mature, experienced",
-    "Ethnicity": "Eastern European build",
-    "Build": {
-      "Type": "Heavy set, sturdy",
-      "UpperBody": "Big arms, broad shoulders",
-      "LowerBody": "Slim hips"
-    },
-    "Face": {
-      "Eyes": "Blue-grey",
-      "Expression": "Thoughtful, analytical"
-    },
-    "Hair": {
-      "Color": "Grey/silver",
-      "Length": "Long",
-      "Style": "Wind-swept or naturally flowing"
-    },
-    "Wardrobe": {
-      "Base": [
-        {
-          "Name": "Dark blazer",
-          "Description": "Professional dark blazer over tech-casual attire, sleeves often pushed up",
-          "Context": "Always present, bridges corporate and technical worlds"
-        }
-      ],
-      "Situational": [
-        {
-          "Name": "Professional glasses",
-          "Description": "Modern rectangular frames, subtle tech integration",
-          "Context": "Teaching or presenting moments"
-        }
-      ]
-    }
-  },
+  "Purpose": "Tall infographic or diagram, explains a process, system, or concept visually. Default style is clean editorial infographic — see scene-variants/editorial.json.",
 
   "Style": {
-    "Genre": "Cyberpunk / Tech Noir with Infographic Elements",
-    "Rendering": "High-detail digital painting with clean graphic overlays, concept art quality",
+    "Genre": "Clean editorial infographic — like a magazine or technical blog diagram",
+    "Rendering": "Flat vector-style illustration with subtle paper-grain texture, clean lines, soft drop-shadows. NOT cyberpunk, NOT photorealistic, NOT painterly.",
     "Lighting": {
-      "Type": "Even, instructional, clear visibility prioritized",
-      "Sources": ["Ambient tech glow", "Even fill lighting", "Subtle rim accents"],
-      "Shadows": "Minimal, clarity over drama"
+      "Type": "Flat ambient, no dramatic light sources, no glow",
+      "Sources": ["Even ambient daylight implied"],
+      "Shadows": "Very subtle soft drop-shadows under panels for gentle depth — no high contrast"
     },
     "ColorPalette": {
-      "Primary": ["Magenta", "Cyan", "Electric Blue", "Lime Green"],
-      "Accents": ["Silver", "White", "Cool Blues", "Metallic purples"],
-      "Treatment": "Clear color coding for diagram elements, consistent visual hierarchy"
+      "Background": "Pure white (#ffffff) or nearly white (#fafafa)",
+      "Primary": [
+        "Soft slate blue (#007acc) for outlines and the title",
+        "Dark charcoal (#282c35) for label text"
+      ],
+      "Accents": [
+        "Warm amber/orange (#f59e0b) reserved for focal badges and key callouts",
+        "Light cool grey (#9ca3af) for secondary/harness labels"
+      ],
+      "Treatment": "Mostly white with thin coloured outlines. Amber appears only on focal-point badges so it reads as the editorial focal accent. Everything else is restrained black-text-on-white."
     },
     "Atmosphere": {
-      "Effects": ["Clean backgrounds", "Holographic UI elements", "Floating labels"],
-      "Mood": "Instructive, clear, educational yet stylish"
+      "Effects": [
+        "No glow, no neon, no scanlines, no holographic effects",
+        "Flat clean shapes with thin 1–2px outlines",
+        "Subtle soft drop-shadows for depth"
+      ],
+      "Mood": "Calm, clean, editorial — fits a serious technical blog post, not a sci-fi poster"
     }
   },
 
   "PromptKeywords": [
-    "highly detailed", "digital painting", "concept art",
-    "cyberpunk", "infographic style", "educational illustration",
+    "clean editorial infographic", "vector illustration style",
+    "white background", "minimal flat design",
     "9:16 aspect ratio", "vertical format", "diagram composition",
-    "clean visual hierarchy", "holographic UI elements"
+    "thin outlined rounded rectangles", "subtle drop shadows",
+    "sans-serif typography", "sharp readable text",
+    "no character", "no human figure",
+    "no glow", "no neon", "no scanlines", "no cyberpunk",
+    "minimal colour palette — black text on white with soft blue outlines and amber accent badges",
+    "CRITICAL: every text label must be spelled exactly, no letter substitutions, no missing or doubled letters"
   ],
 
   "CompositionNotes": {
-    "Framing": "Full figure or 3/4 figure, vertical space for diagram elements",
-    "SubjectPlacement": "Character to one side, diagram elements flowing vertically",
-    "DepthOfField": "Deep, all elements should be readable",
-    "Layout": "Clear visual flow from top to bottom, numbered or connected elements"
+    "Background": "Pure white #ffffff across the full canvas — no gradient, no texture, no border",
+    "Framing": "Pure flat-illustration infographic, no human figure, generous white margins around the content so it breathes",
+    "SubjectPlacement": "Content flows top-to-bottom (or whichever direction fits the diagram type), with comfortable spacing between elements",
+    "DepthOfField": "Flat, all elements crisp and readable",
+    "Layout": "Clear visual flow with numbered or connected elements; title at top, optional slim legend at bottom",
+    "TypographyTreatment": "Clean sans-serif (something like Inter, Helvetica, or system-ui). Section headings in medium-weight all-caps or semibold. Body labels in regular weight. Titles in semibold."
   },
 
   "DiagramTypes": [
     {
       "Name": "Process Flow",
-      "Description": "Character beside or within a vertical flowchart",
-      "Elements": ["Numbered steps", "Connecting arrows", "Decision points"],
-      "Example": "Development workflow from idea to deployment"
+      "Description": "Vertical flowchart of rounded-rectangle nodes connected by thin grey chevron arrows. Focal nodes use blue outline + amber badge; de-emphasized nodes use grey outline + grey label.",
+      "Elements": ["Numbered or named steps", "Connecting arrows", "Decision points", "Optional loop-back as thin dashed grey curve"],
+      "Example": "Hopper's plan-execute-validate pipeline"
     },
     {
       "Name": "Comparison",
-      "Description": "Character between two contrasting approaches",
-      "Elements": ["Left/right or before/after split", "Contrasting colors", "Labels"],
+      "Description": "Two columns or panels side-by-side, each with the same node structure so differences read at a glance.",
+      "Elements": ["Left/right or before/after split", "Matched panel structure", "Amber accent on the differentiator"],
       "Example": "Resolution vs Solution approaches"
     },
     {
       "Name": "Hierarchy",
-      "Description": "Character presenting layered or nested concepts",
-      "Elements": ["Stacked levels", "Size variation", "Containment"],
+      "Description": "Stacked layered panels showing nested or containment relationships.",
+      "Elements": ["Stacked levels", "Size variation", "Containment via nested rounded rectangles"],
       "Example": "Ackoff's problem treatment levels"
     },
     {
       "Name": "System Map",
-      "Description": "Character within or explaining an interconnected system",
-      "Elements": ["Nodes and connections", "Feedback loops", "Clusters"],
+      "Description": "Nodes and connections showing relationships between components — feedback loops drawn as thin dashed grey curves.",
+      "Elements": ["Nodes and connections", "Feedback loops as dashed curves", "Clusters grouped by light grey containers"],
       "Example": "Organizational feedback systems"
     }
   ],
@@ -103,37 +85,30 @@
   "UseCases": [
     {
       "Name": "Concept Explanation",
-      "Description": "Breaking down a complex idea into visual steps",
-      "CharacterRole": "Presenter/guide pointing to or interacting with elements"
+      "Description": "Breaking down a complex idea into visual steps with named panels"
     },
     {
       "Name": "Before/After",
-      "Description": "Showing transformation or improvement",
-      "CharacterRole": "Standing between states, gesturing to contrast"
+      "Description": "Showing transformation or improvement via matched-structure comparison panels"
     },
     {
       "Name": "Mental Model",
-      "Description": "Illustrating how to think about something",
-      "CharacterRole": "Contemplating or constructing the model"
+      "Description": "Illustrating how to think about something via hierarchy or system map"
     }
   ],
 
   "MoodVariations": {
     "optimistic": {
-      "LightingAdjustment": "Bright, clear, upward visual flow",
-      "DiagramStyle": "Green accents for positive outcomes, open structures"
+      "AccentAdjustment": "Use the warm amber sparingly on outcome/result panels; consider one small soft-green check icon as a positive marker"
     },
     "analytical": {
-      "LightingAdjustment": "Cool, even, clinical precision",
-      "DiagramStyle": "Blue/cyan dominant, precise lines, labeled clearly"
+      "AccentAdjustment": "Lean on the blue/charcoal palette; reserve amber only for the single focal point you want the eye to land on first"
     },
     "frustrated": {
-      "LightingAdjustment": "Red/amber warning accents",
-      "DiagramStyle": "Tangled elements, blocked paths, warning indicators"
+      "AccentAdjustment": "Use a muted warning amber on the blocked/broken node, with all other panels in plain grey outline — let the colour do the work"
     },
     "contemplative": {
-      "LightingAdjustment": "Soft, ethereal quality",
-      "DiagramStyle": "Organic connections, flowing rather than rigid"
+      "AccentAdjustment": "Drop amber accents almost entirely; let the diagram be quiet, mostly outlined panels on white"
     }
   }
 }

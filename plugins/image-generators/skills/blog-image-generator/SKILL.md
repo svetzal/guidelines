@@ -48,11 +48,13 @@ All three images are passed together to the OpenAI image edit API, giving the mo
 
 ## The Visual System
 
-All images share a consistent character and style:
+Two style families, applied by whether the character is present:
 
-### The Character
+### Character Imagery — Cyberpunk
 
-A middle-aged, silver-haired woman with blue-grey eyes — an experienced coder and systems thinker. She has a sturdy Eastern European build with broad shoulders. She typically wears a dark blazer over tech-casual attire, sleeves pushed up.
+Banners and character-focused callouts use the cyberpunk / tech-noir style.
+
+**The Character:** A middle-aged, silver-haired woman with blue-grey eyes — an experienced coder and systems thinker. She has a sturdy Eastern European build with broad shoulders. She typically wears a dark blazer over tech-casual attire, sleeves pushed up.
 
 **Base wardrobe** (always present):
 - Dark professional blazer bridging corporate and technical worlds
@@ -62,13 +64,31 @@ A middle-aged, silver-haired woman with blue-grey eyes — an experienced coder 
 - Professional glasses with modern frames (close-up work)
 - Futuristic sunglasses (outdoor urban, adds mystery)
 
-### The Style
-
+**Style:**
 - **Genre**: Cyberpunk / Tech Noir
 - **Rendering**: High-detail digital painting, photorealistic, concept art quality
 - **Lighting**: Dramatic, high-contrast, cinematic (neon signs, screen glow, rim lighting)
 - **Colors**: Magenta, Cyan, Electric Blue, Lime Green with Silver/White accents
 - **Atmosphere**: Bokeh, atmospheric haze, neon glow, reflections
+
+### Illustrative Graphics — Editorial Infographic
+
+Diagrams and prop/concept-focused callouts (anything without the character) use the clean editorial style. This is the default for any illustrative graphic. See `scene-variants/editorial.json` for the full spec; the seven-agents-hopper-phases workflow image is the canonical example.
+
+**Style:**
+- **Genre**: Clean editorial infographic — magazine or technical-blog feel
+- **Rendering**: Flat vector-style illustration, thin 1–2px outlines, subtle soft drop-shadows. No cyberpunk, no photorealism, no painterly textures.
+- **Background**: Pure white (#ffffff) — no gradient, no texture, no border
+- **Colors**: Soft slate blue (#007acc) outlines on focal panels; light grey (#9ca3af) on de-emphasized panels; dark charcoal (#282c35) text; warm amber (#f59e0b) reserved for focal badges
+- **Typography**: Clean sans-serif (Inter / Helvetica / system-ui), section headings in medium-weight all-caps or semibold mixed case
+- **Connectors**: Thin solid grey chevron arrows for primary flow; thin dashed grey curves for loop-backs or secondary relationships
+- **Mood**: Calm, clean, editorial. Restrained black-text-on-white with amber as the one focal accent.
+
+| Image Type | Default Style | Character Default |
+|------------|---------------|---------------------|
+| `banner` | Cyberpunk | Yes |
+| `callout` | Editorial (with character: cyberpunk) | No |
+| `diagram` | Editorial | No |
 
 ## Procedure for Creating Images
 

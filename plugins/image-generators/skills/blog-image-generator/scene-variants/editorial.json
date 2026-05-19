@@ -1,0 +1,59 @@
+{
+  "Style": {
+    "Genre": "Clean editorial infographic — like a magazine or technical blog diagram",
+    "Rendering": "Flat vector-style illustration with subtle paper-grain texture, clean lines, soft drop-shadows. NOT cyberpunk, NOT photorealistic, NOT painterly.",
+    "Lighting": {
+      "Type": "Flat ambient, no dramatic light sources, no glow",
+      "Sources": ["Even ambient daylight implied"],
+      "Shadows": "Very subtle soft drop-shadows under panels for gentle depth — no high contrast"
+    },
+    "ColorPalette": {
+      "Background": "Pure white (#ffffff) or nearly white (#fafafa)",
+      "Primary": [
+        "Soft slate blue (#007acc) for outlines and the title",
+        "Dark charcoal (#282c35) for label text"
+      ],
+      "Accents": [
+        "Warm amber/orange (#f59e0b) reserved for focal badges and key callouts",
+        "Light cool grey (#9ca3af) for secondary/harness labels"
+      ],
+      "Treatment": "Mostly white with thin coloured outlines. Amber appears only on focal-point badges so it reads as the editorial focal accent. Everything else is restrained black-text-on-white."
+    },
+    "Atmosphere": {
+      "Effects": [
+        "No glow, no neon, no scanlines, no holographic effects",
+        "Flat clean shapes with thin 1–2px outlines",
+        "Subtle soft drop-shadows for depth"
+      ],
+      "Mood": "Calm, clean, editorial — fits a serious technical blog post, not a sci-fi poster"
+    }
+  },
+  "PromptKeywords": [
+    "clean editorial infographic", "vector illustration style",
+    "white background", "minimal flat design",
+    "thin outlined rounded rectangles", "subtle drop shadows",
+    "sans-serif typography", "sharp readable text",
+    "no character", "no human figure",
+    "no glow", "no neon", "no scanlines", "no cyberpunk",
+    "minimal colour palette — black text on white with soft blue outlines and amber accent badges",
+    "CRITICAL: every text label must be spelled exactly, no letter substitutions, no missing or doubled letters"
+  ],
+  "CompositionNotes": {
+    "Background": "Pure white #ffffff across the full canvas — no gradient, no texture, no border",
+    "Framing": "Pure flat-illustration infographic, no human figure, generous white margins around the content so it breathes",
+    "DepthOfField": "Flat, no depth of field, all elements crisp",
+    "TypographyTreatment": "Clean sans-serif (something like Inter, Helvetica, or system-ui). Section headings in medium-weight all-caps or semibold mixed case. Body labels in regular weight. Titles in semibold."
+  },
+  "DefaultsForIllustrativeGraphics": {
+    "Description": "Use this scene variant for any article graphic that is NOT a character-driven hero banner — process diagrams, comparison charts, hierarchies, system maps, prop-focused callouts that don't include the recurring character.",
+    "VisualRecipe": [
+      "Pure white canvas, generous margins",
+      "Content laid out in rounded-rectangle node panels with thin 1–2px outlines",
+      "Soft slate blue (#007acc) outlines on focal/active panels; light grey (#9ca3af) outlines on de-emphasized panels",
+      "Dark charcoal (#282c35) text in clean sans-serif",
+      "Warm amber (#f59e0b) pill badges or callouts for the one or two elements you want the reader's eye drawn to first",
+      "Connector arrows: thin solid grey chevrons. Loop-backs or secondary flows: thin dashed grey",
+      "Optional slim legend at the bottom if multiple panel styles are in play"
+    ]
+  }
+}

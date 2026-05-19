@@ -3,6 +3,10 @@
   "AspectRatio": "1:1",
   "Size": "1024x1024",
   "Purpose": "Inline illustration within article body, emphasizes a specific point or concept",
+  "StyleSelection": {
+    "WithoutCharacter": "Use the clean editorial style (see scene-variants/editorial.json) — white canvas, soft slate-blue outlines, amber accent badges, charcoal text. This is the default for prop/concept-focused callouts.",
+    "WithCharacter": "Use the cyberpunk style block defined below in this file. Only applies when --with-character is passed to the generator."
+  },
 
   "Character": {
     "Description": "A highly competent, focused woman coder and systems thinker",
