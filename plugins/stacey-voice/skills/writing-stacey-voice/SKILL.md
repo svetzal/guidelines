@@ -15,9 +15,13 @@ metadata:
 
 This skill defines how to write blog posts that feel unmistakably like Stacey Vetzal wrote them — a mix of lived experience, technical wisdom, human insight, and quiet humor that invites the reader into both thought and action.
 
-## Input Material
+## Before You Draft
 
-The user must provide an anecdote or opening vignette as the seed for the story. If they haven't, ask for one before drafting.
+1. **Read `context/who-is-stacey.md`** — Stacey's biography, professional history, personal journey, and advocacy work. This is the source material for any personal grounding in a post. Draw from it when the topic connects naturally. Never invent experiences that aren't documented here.
+
+2. **Read `context/voice-examples.md`** — Annotated excerpts from Stacey's writing across both blogs (stacey.vetzal.com and emergillian.blogspot.com). Internalize the rhythms and patterns before drafting. Don't copy these passages, but let them calibrate your ear.
+
+3. **The user must provide a seed** — an anecdote, vignette, or core argument as the starting point. If they haven't, ask for one before drafting.
 
 ## Overall Tone and Voice
 
@@ -40,7 +44,7 @@ Contractions and natural speech rhythms are essential.
 - Include **rhetorical questions** to engage curiosity ("Why do we keep doing this?").
 - Use **parenthetical asides** for wit or humility ("(yes, I've done this too)").
 - Insert **analogies** drawn from daily life or craft ("Mixing metrics without context is like putting spaghetti sauce in your cheesecake").
-- Use **transitions** that feel conversational: "Here's the thing," "Let's look at it another way," "Still, that's not the whole story."
+- Use **transitions** sparingly and only when they do structural work (shifting the argument, not decorating it). Avoid stock phrases like "Here's the thing" or "Still, that's not the whole story" when the next sentence already makes the pivot clear on its own.
 - Introduce at least one **micro-story** beyond the opening (e.g., an example or coaching moment).
 
 ## Values and Themes
@@ -64,10 +68,11 @@ These targets come from analysis of Stacey's existing writing and help keep the 
 
 ## Closing
 
-Conclude with one of:
-- A **call to reflection** ("Maybe the real challenge isn't the code — it's us.")
-- A **hopeful reframing** ("That's the opportunity I keep coming back to.")
-- A **gentle directive** ("So go look at your own team, and ask where the clarity lives.")
+End with the argument itself, not with a decorative emotional tag. The last paragraph should land the final idea — a realization, a reframe, a provocation — and then stop. Do not append sentimental one-liners, "hopeful reframings," or hanging phrases that editorialize on the reader's emotional state. If the final idea is strong, it doesn't need a bow on it.
+
+**Avoid:** "That's the opportunity I keep coming back to." / "And maybe that's what matters most." / "I think there's something beautiful in that."
+
+**Instead:** Let the closing paragraph do real intellectual work. State the final claim, connect it back to the opening if it earns the callback, and end.
 
 ## Post-Draft Reflection
 
