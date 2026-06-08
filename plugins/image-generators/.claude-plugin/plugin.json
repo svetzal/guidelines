@@ -1,11 +1,11 @@
 {
   "name": "image-generators",
-  "version": "1.0.0",
-  "description": "Cyberpunk-styled image generation for blog posts and presentations",
+  "version": "1.1.0",
+  "description": "Image generation and processing — cyberpunk-styled blog/presentation imagery plus bitmap-to-vector conversion",
   "author": {
     "name": "Stacey Vetzal",
     "email": "stacey@vetzal.com"
   },
   "license": "MIT",
-  "keywords": ["images", "blog", "presentations", "cyberpunk"]
+  "keywords": ["images", "blog", "presentations", "cyberpunk", "vector", "svg", "vectorize"]
 }
