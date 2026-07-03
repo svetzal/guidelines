@@ -3,7 +3,7 @@ name: cli-ux
 scope: "UX principles for command-line tools — grammar, flags, output, safety, discoverability, install footprint"
 does-not-cover: "TUI/full-screen applications, daemon internals, language-specific CLI framework usage"
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   author: Stacey Vetzal
 ---
 
@@ -33,7 +33,7 @@ Use imperative base-form verbs, and reuse the same ones everywhere: `add`, `list
 The same flag means the same thing in every command and every tool:
 
 - `--json` — machine-readable output (see §6)
-- `--dry-run` / `--apply` or `--write` — mutation gating (see §5)
+- `--apply` — execute a mutation that previews by default (see §5)
 - `--yes` — skip confirmation prompts (scriptability escape hatch)
 - `--force` — override a safety refusal, never a synonym for `--yes`
 - `--quiet` / `--verbose` — volume control
@@ -43,9 +43,12 @@ In code, define flags once in a canonical options module and reuse them across c
 
 ## 5. Safe by default: plan, then apply
 
-Commands that mutate state show what *would* happen by default and require an explicit flag to do it. Pick one gate per tool and use it uniformly: `--write` (gilt) or `--apply` (parite) — both are fine; mixing them in one tool is not. Corollaries:
+Commands that mutate state show what *would* happen by default and require an explicit `--apply` flag to do it. `--apply` is the fleet standard — not `--write`, not `--commit`, not per-tool variants. The workflow this enables is the point: run the command, read the plan, hit up-arrow, append `--apply`. The dry run and the real run are the same command, so nothing has to be retyped or re-remembered, and the plan the user approved is exactly the plan that executes.
+
+For that workflow to be trustworthy, the dry run must *educate precisely*: name each concrete change it would make — which records, which files, which values, before and after — not a vague "would modify 3 items." A dry run the user can't verify against their intent is theater, not safety. Corollaries:
 
 - Mark mutating commands in their help text (`[Mutates]` / `[Mutates with --apply]`, parite's convention) so the read/write boundary is visible before running anything.
+- The dry-run output ends by telling the user how to proceed: "re-run with --apply to make these changes."
 - Read-only commands must NOT carry a `--dry-run` flag — a safety flag on a safe command teaches users the flag is meaningless.
 - Confirmation prompts always have a `--yes` bypass; a prompt with no bypass makes the tool unusable in scripts.
 - After a mutation, report what changed in countable terms ("categorized 14 transactions, 2 skipped").
@@ -89,7 +92,7 @@ Observed in review of foundry, hopper, gilt, evt, parite, and context-mixer — 
 
 | Tool | Exemplary | Gaps |
 | ---- | --------- | ---- |
-| gilt | dry-run default with `--write` gate; shared option helpers | no `--json` anywhere; shell completions explicitly disabled |
+| gilt | dry-run default on all mutations; shared option helpers | gate is `--write` rather than the standard `--apply`; no `--json` anywhere; shell completions explicitly disabled |
 | evt | canonical `cli_options.py`; pervasive `--json`; JSONL streaming | mixed command grammar; `--dry-run` present on read-only commands |
 | foundry | grouped `registry`/`sentinel` subcommands; span-tree traces | `--throttle dry_run` (underscore value); no `--json` on core commands |
 | hopper | `--json` on all commands; examples in help; single-binary distribution | hand-rolled arg parser; mixed verb styles (`requeue` vs `cancel`) |
