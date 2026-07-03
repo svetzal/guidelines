@@ -3,7 +3,7 @@ name: cli-ux
 scope: "UX principles for command-line tools — grammar, flags, output, safety, discoverability, install footprint"
 does-not-cover: "TUI/full-screen applications, daemon internals, language-specific CLI framework usage"
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
   author: Stacey Vetzal
 ---
 
@@ -87,7 +87,7 @@ When a tool needs background state — schedules, queues, long-running jobs — 
 
 ## 12. Ship a companion skill, and install it through the commons
 
-Every tool in the fleet ships a companion agent skill — the runtime guidance that lets an agent drive the tool well (see §7: agents arrive knowing nothing about our tools). But skill *installation* is shared infrastructure, not something each tool reinvents: five of our tools independently hand-rolled the same embed-copy-version-guard logic against hard-wired `.claude/skills/` paths, none of which can uninstall and none of which integrates with cmx-managed systems. The convention going forward: tools install their bundled skill through the shared cmx-core library (see `EMBEDDING.md` in the context-mixer2 repo), which detects and integrates with cmx management where present and performs a consistent, version-guarded, uninstallable install where not. The tool's surface stays simple — `<tool> init` — while the machinery underneath is written once.
+Every tool in the fleet ships a companion agent skill — the runtime guidance that lets an agent drive the tool well (see §7: agents arrive knowing nothing about our tools). But skill *installation* is shared infrastructure, not something each tool reinvents: five of our tools independently hand-rolled the same embed-copy-version-guard logic against hard-wired `.claude/skills/` paths, none of which can uninstall and none of which integrates with cmx-managed systems. The convention going forward: tools install their bundled skill through the shared cmx-core library (see `EMBEDDING.md` in the context-mixer2 repo), which detects and integrates with cmx management where present and performs a consistent, version-guarded, uninstallable install where not. The tool's surface stays simple while the machinery underneath is written once. Settled conventions (2026-07-03): the command is `<tool> init` (not `skill-init` or variants), and the skill installs at **global scope by default** — a companion skill describes the tool, not the project — with `--local` opting into project scope.
 
 ## Reviewing a tool against these principles
 
