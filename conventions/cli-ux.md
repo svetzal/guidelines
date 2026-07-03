@@ -3,7 +3,7 @@ name: cli-ux
 scope: "UX principles for command-line tools — grammar, flags, output, safety, discoverability, install footprint"
 does-not-cover: "TUI/full-screen applications, daemon internals, language-specific CLI framework usage"
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   author: Stacey Vetzal
 ---
 
@@ -11,10 +11,11 @@ metadata:
 
 Command-line tools ask users to carry the interface in their heads. Every inconsistency — a flag that means something different here than there, a verb that's `remove` in one tool and `delete` in another — is a tax on memory, and for people not yet comfortable at the command line, it's a source of fear. These principles exist so that our tools feel like one coherent system: learn one, and you've mostly learned them all.
 
-Two commitments frame everything below:
+Three commitments frame everything below:
 
 - **The Unix philosophy, at a humane altitude.** Small composable programs, but composition doesn't require every program to be low-level. A domain of related commands grouped under one easy-to-install executable (`gilt`, `parite`, `foundry`) is still a small program from the shell's point of view — it pipes, it exits, it composes.
 - **The user's memory is the scarcest resource.** Optimize for predictability over cleverness. A user who can *guess* the right command without reading docs is the success condition.
+- **Every output teaches.** This runs deeper than `--help`. Every line a tool prints — success confirmations, dry-run plans, error messages, empty results — is appropriately concise *and* continues to educate the user about the tool and the state of their world. A good command's output deepens the user's model of what just happened; a bad command's output shows the way back. Where this document requires educational dry-runs (§5), examples in help (§7), or errors that teach the next step (§8), those are not independent niceties — they are instances of this one stance, applied deliberately.
 
 ## 1. Consistency beats cleverness
 
@@ -66,7 +67,7 @@ Default output is for humans: tables, color, relative times. But every command t
 
 Most users meet a tool through `--help`, not the README. Every command's help carries a one-line summary and at least one realistic, copy-pasteable example. Top-level help reads as a scannable map of the domain. Shell completions ship enabled by default — completion is how users avoid memorizing in the first place; disabling it discards the cheapest discoverability we have. Unknown commands should suggest near-matches ("did you mean `categorize`?") rather than dumping full usage.
 
-Not all users are human. Agents drive our tools too, and our observation is that self-describing commands matter *more* for them, not less: an agent can be expected to know `awk` or `grep` in detail from training data, but `gilt` and `hopper` carry no such expectation — `--help` output, examples, and teaching errors are the only interface description an agent has. A tool whose surface fully explains itself needs no separate agent documentation to be driven correctly; one that doesn't will be driven by guesswork.
+Not all users are human. Agents drive our tools too, and our observation is that self-describing commands matter *more* for them, not less: an agent can be expected to know `awk` or `grep` in detail from training data, but `gilt` and `hopper` carry no such expectation — every output the tool produces (help, results, errors) is the only interface description an agent has. A tool whose surface fully explains itself needs no separate agent documentation to be driven correctly; one that doesn't will be driven by guesswork.
 
 ## 8. Errors teach the next step
 
