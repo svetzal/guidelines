@@ -3,7 +3,7 @@ name: cli-ux
 scope: "UX principles for command-line tools — grammar, flags, output, safety, discoverability, install footprint"
 does-not-cover: "TUI/full-screen applications, daemon internals, language-specific CLI framework usage"
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   author: Stacey Vetzal
 ---
 
@@ -65,6 +65,8 @@ Default output is for humans: tables, color, relative times. But every command t
 ## 7. Help is the front door
 
 Most users meet a tool through `--help`, not the README. Every command's help carries a one-line summary and at least one realistic, copy-pasteable example. Top-level help reads as a scannable map of the domain. Shell completions ship enabled by default — completion is how users avoid memorizing in the first place; disabling it discards the cheapest discoverability we have. Unknown commands should suggest near-matches ("did you mean `categorize`?") rather than dumping full usage.
+
+Not all users are human. Agents drive our tools too, and our observation is that self-describing commands matter *more* for them, not less: an agent can be expected to know `awk` or `grep` in detail from training data, but `gilt` and `hopper` carry no such expectation — `--help` output, examples, and teaching errors are the only interface description an agent has. A tool whose surface fully explains itself needs no separate agent documentation to be driven correctly; one that doesn't will be driven by guesswork.
 
 ## 8. Errors teach the next step
 
