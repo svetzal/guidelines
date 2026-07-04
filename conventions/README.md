@@ -10,8 +10,8 @@ Conventions start as plain documentation, mature through use in design and revie
 
 1. **Draft** — a convention document here, refined by reviewing real tools against it.
 2. **Review practice** — the document is used as the rubric for UX/design reviews of existing tools; findings feed back into the document.
-3. **Skill** — stable conventions get distilled into a runtime skill (e.g. a `cli-ux-review` skill) loaded when the project context matches.
+3. **Skill** — stable conventions get distilled into a runtime skill loaded when the project context matches. The CLI UX convention has graduated to the [`cli-ux`](../plugins/design/skills/cli-ux/SKILL.md) skill in the `design` plugin.
 
 ## Documents
 
-- [cli-ux.md](cli-ux.md) — UX principles for command-line tools
+- [cli-ux.md](cli-ux.md) — UX principles for command-line tools (graduated → [`cli-ux`](../plugins/design/skills/cli-ux/SKILL.md) skill)

@@ -1,11 +1,11 @@
 {
   "name": "design",
-  "version": "1.0.0",
-  "description": "Human-centered visual and UI design guidance",
+  "version": "1.1.0",
+  "description": "Human-centered design guidance — visual/UI design and command-line (CLI) UX",
   "author": {
     "name": "Stacey Vetzal",
     "email": "stacey@vetzal.com"
   },
   "license": "MIT",
-  "keywords": ["design", "ui", "ux", "visual-design", "accessibility"]
+  "keywords": ["design", "ui", "ux", "visual-design", "accessibility", "cli", "command-line"]
 }

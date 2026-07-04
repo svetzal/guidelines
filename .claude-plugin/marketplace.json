@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.1.0"
+    "version": "2.2.0"
   },
   "plugins": [
     {
@@ -83,7 +83,7 @@
     },
     {
       "name": "design",
-      "description": "Human-centered visual and UI design guidance",
+      "description": "Human-centered design guidance — visual/UI design and command-line (CLI) UX",
       "source": "./plugins/design",
       "category": "functional"
     },
