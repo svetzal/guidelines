@@ -1,0 +1,12 @@
+id = "guidelines.intent.keep-mdbook-aligned-with-implementation"
+title = "Keep mdBook documentation aligned with implementation"
+status = "hypothesized"
+confidence = 0.99
+capability = "Users can rely on the project's documentation to describe the behavior actually shipped."
+threat = "Public APIs and features change while examples and explanations retain obsolete behavior."
+expectation = "Implementation will evolve more frequently than users independently discover documentation drift."
+strategy = "Update book/src whenever public APIs or behavior change, remove obsolete material, and keep practical examples compilable."
+evidence = [{ type = "documentation_gate", description = "Affected mdBook pages match the implemented API and their practical examples compile and run.", required = true }]
+tradeoff = "Documentation synchronization increases the scope and delivery time of otherwise small implementation changes."
+scope = { project = "guidelines", paths = ["plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#documentation-synchronization", summary = "Requires book/src to remain aligned with public API and behavior changes.", confidence = 1.0 }]

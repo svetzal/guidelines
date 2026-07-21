@@ -1,0 +1,12 @@
+id = "guidelines.intent.validate-high-risk-code-with-specialized-tools"
+title = "Validate high-risk code with specialized tools"
+status = "hypothesized"
+confidence = 0.97
+capability = "Unsafe, FFI, parser, decoder, concurrent, and security-critical code receives evidence beyond ordinary unit tests."
+threat = "Undefined behavior, races, memory faults, and malformed-input bugs survive the standard stable-toolchain gate."
+expectation = "Some projects will contain low-level or adversarial surfaces whose failures are rare but severe."
+strategy = "Add Miri, appropriate sanitizers, and fuzzing when unsafe, FFI, concurrency, parsers, decoders, or security risk justify them."
+evidence = [{ type = "specialized_gate", description = "Applicable Miri, sanitizer, or fuzz targets run successfully with their platform and nightly constraints documented.", required = true }]
+tradeoff = "Nightly and sanitizer tooling is slower, platform-sensitive, and can make CI substantially more complex."
+scope = { project = "guidelines", paths = ["plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#optional-but-recommended-for-unsafeffi-or-security-critical-code", summary = "Recommends Miri, sanitizers, and fuzzing for high-risk surfaces.", confidence = 1.0 }]

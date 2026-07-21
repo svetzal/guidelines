@@ -1,0 +1,12 @@
+id = "guidelines.intent.use-structured-tracing"
+title = "Use structured tracing for observability"
+status = "hypothesized"
+confidence = 0.97
+capability = "Operators can correlate nested service operations and query their context."
+threat = "Flat formatted log messages lose span relationships and encode data in strings that are difficult to search."
+expectation = "Production systems will need diagnosis across asynchronous and multi-step operations."
+strategy = "Prefer the tracing ecosystem, create spans at service boundaries, and emit structured fields rather than interpolated messages."
+evidence = [{ type = "observability_review", description = "Service-boundary operations produce correlated spans with queryable identifiers and outcomes.", required = true }]
+tradeoff = "Structured instrumentation adds dependencies, annotations, and decisions about field cardinality and sensitive data."
+scope = { project = "guidelines", paths = ["plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#observability", summary = "Prefers tracing, tracing::instrument at service boundaries, and structured fields.", confidence = 1.0 }]
