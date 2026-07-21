@@ -1,0 +1,12 @@
+id = "guidelines.intent.inspect-project-context-before-changing-it"
+title = "Inspect project context before changing it"
+status = "hypothesized"
+confidence = 0.98
+capability = "Changes preserve the project's deliberate architecture, constraints, workflows, and compatibility promises."
+threat = "A locally plausible change silently violates conventions or invariants that are visible elsewhere in the project."
+expectation = "Contributors will often begin with incomplete context, especially when moving between projects or working through agents."
+strategy = "Read the project's guidance, build configuration, nearby code, tests, and change history before making a substantive decision."
+evidence = [{ type = "change_review", description = "The change follows documented project conventions and names any deliberately changed invariant.", required = true }]
+tradeoff = "Context gathering delays the first edit and can surface more constraints than the immediate task appears to require."
+scope = { project = "guidelines", paths = ["plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#detect--preserve-invariants-mandatory", summary = "Requires inspection of project guidance, manifests, toolchains, CI, and existing patterns before substantive change.", confidence = 1.0 }, { type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#working-with-project-context", summary = "Requires project conventions to be understood and respected before implementation.", confidence = 1.0 }]

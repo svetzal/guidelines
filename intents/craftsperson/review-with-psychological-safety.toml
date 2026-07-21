@@ -1,0 +1,12 @@
+id = "guidelines.intent.review-with-psychological-safety"
+title = "Review with psychological safety"
+status = "hypothesized"
+confidence = 0.99
+capability = "Review participants can examine correctness and design risks candidly without personal attack or defensiveness."
+threat = "Judgmental feedback targets the author, asserts preference as fact, or withholds the reasoning needed for collaboration."
+expectation = "Technical review will surface disagreement among people with different information, experience, and constraints."
+strategy = "Critique observable code and ideas with curiosity, distinguish defects from preferences, and acknowledge sound decisions."
+evidence = [{ type = "review_audit", description = "Review comments address code and consequences rather than personal attributes and clearly distinguish required changes from suggestions.", required = true }]
+tradeoff = "Careful framing takes time and can soften urgency if severe risks are not still stated plainly."
+scope = { project = "guidelines", paths = ["plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#when-reviewing-code", summary = "Makes psychological safety and classification of feedback part of code review.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/python-craftsperson.md#workflow--collaboration", summary = "Preserves psychological safety during technical review.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#code-review-philosophy", summary = "Critiques code rather than people and acknowledges sound choices.", confidence = 1.0 }]

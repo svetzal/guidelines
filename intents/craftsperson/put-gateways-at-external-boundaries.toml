@@ -1,0 +1,12 @@
+id = "guidelines.intent.put-gateways-at-external-boundaries"
+title = "Put gateways at external boundaries"
+status = "hypothesized"
+confidence = 0.99
+capability = "Core behavior can evolve and be tested independently from external systems and vendor implementations."
+threat = "Database, network, filesystem, clock, platform, or vendor details leak into decision-making code."
+expectation = "External services and infrastructure will be unavailable in tests and will change on a different cadence from domain policy."
+strategy = "Route each external interaction through a narrow application-owned gateway contract at the system boundary."
+evidence = [{ type = "architecture_review", description = "External implementation types and calls remain behind owned boundary contracts.", required = true }]
+tradeoff = "Gateway contracts add mapping and indirection and can become ceremony around stable trivial APIs."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#code-improvement-patterns", summary = "Places external interactions behind gateway protocols.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#architectural-patterns", summary = "Requires gateways at external boundaries.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md#engineering-principles-your-north-star", summary = "Isolates external effects behind application-owned gateways.", confidence = 1.0 }]

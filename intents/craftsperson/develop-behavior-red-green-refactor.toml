@@ -1,0 +1,12 @@
+id = "guidelines.intent.develop-behavior-red-green-refactor"
+title = "Develop behavior through red-green-refactor"
+status = "hypothesized"
+confidence = 0.99
+capability = "Each behavior change begins with executable evidence and finishes with a safe opportunity to improve its design."
+threat = "Implementation precedes a falsifiable expectation, allowing tests to pass for the wrong reason or omit the requested behavior."
+expectation = "Frequent changes need fast feedback that distinguishes missing behavior from regression and refactoring."
+strategy = "Write a decisively failing behavior test, make it pass with the smallest coherent change, then refactor while keeping it green."
+evidence = [{ type = "test_history", description = "The new test demonstrably fails without the behavior, passes with it, and protects subsequent refactoring.", required = true }]
+tradeoff = "Strict test-first work can feel slow during exploration when the desired behavior is still being discovered."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#engineering-principles-your-north-star", summary = "Clarifies behavior through red-green testing.", confidence = 1.0 }, { type = "document", ref = "plugins/ruby-ecosystem/agents/ruby-craftsperson.md#when-implementing-features", summary = "Drives new behavior through red, green, and refactor.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#engineering-practices", summary = "Treats tests as executable specifications and uses red-green-refactor.", confidence = 1.0 }]

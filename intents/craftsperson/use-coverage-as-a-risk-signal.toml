@@ -1,0 +1,12 @@
+id = "guidelines.intent.use-coverage-as-a-risk-signal"
+title = "Use coverage as a risk signal"
+status = "hypothesized"
+confidence = 0.97
+capability = "Important behavior retains executable regression protection as the system grows."
+threat = "Untested paths accumulate behind a passing happy-path suite, or a numeric target substitutes for meaningful assertions."
+expectation = "Feature growth will add alternate flows faster than reviewers can remember them."
+strategy = "Measure coverage to find unexercised risk, meet the project's justified floor, and inspect whether important outcomes are actually asserted."
+evidence = [{ type = "coverage_review", description = "Coverage meets the project threshold and uncovered changed paths are either tested or explicitly judged low risk.", required = true }]
+tradeoff = "Coverage measurement adds runtime and can incentivize low-value tests when the number is treated as the goal."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#quality-gates-mandatory", summary = "Maintains a project coverage floor while prioritizing critical paths.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#tests-are-the-executable-spec", summary = "Uses coverage to expose untested critical behavior rather than as proof by itself.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#coverage", summary = "Prioritizes critical business paths over indiscriminate percentage chasing.", confidence = 1.0 }]

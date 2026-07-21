@@ -1,0 +1,12 @@
+id = "guidelines.intent.deliver-small-independent-increments"
+title = "Deliver small independent increments"
+status = "hypothesized"
+confidence = 0.99
+capability = "Each change can be understood, validated, integrated, and reversed without carrying unrelated risk."
+threat = "Large multi-purpose changes entangle failures, hide intent, and make review or rollback ambiguous."
+expectation = "Projects will evolve through repeated uncertain requests rather than one perfectly known final design."
+strategy = "Deliver one coherent reason to change at a time, keep the smallest working increment green, and separate unrelated cleanup."
+evidence = [{ type = "change_review", description = "Each change set has one clear purpose, passes its gates independently, and contains no unrelated edits.", required = true }]
+tradeoff = "Incremental delivery creates more integration points and may defer efficiencies available from a broader redesign."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#engineering-principles-your-north-star", summary = "Delivers small independently valid increments.", confidence = 1.0 }, { type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-craftsperson.md#engineering-principles-your-north-star", summary = "Requires small single-reason increments that can ship independently.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#development-workflow", summary = "Delivers single-reason increments and keeps them green.", confidence = 1.0 }]

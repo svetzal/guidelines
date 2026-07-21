@@ -1,0 +1,12 @@
+id = "guidelines.intent.use-comments-to-preserve-rationale"
+title = "Use comments to preserve rationale"
+status = "hypothesized"
+confidence = 0.97
+capability = "A future maintainer can recover why a surprising constraint or choice exists."
+threat = "Comments narrate visible mechanics while non-obvious intent, rejected alternatives, and safety constraints disappear."
+expectation = "Code structure can explain what executes but cannot always encode the external history or tradeoff that selected it."
+strategy = "Make code explain what it does and reserve comments for why a surprising choice, constraint, workaround, or tradeoff must remain."
+evidence = [{ type = "review", description = "Comments add durable rationale not evident from the code and do not merely translate syntax into prose.", required = true }]
+tradeoff = "Rationale comments can become stale or discourage revisiting a decision whose original constraints no longer apply."
+scope = { project = "guidelines", paths = ["plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#documentation", summary = "Uses comments to explain why rather than narrate what.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#engineering-principles-you-follow", summary = "Preserves rationale in comments at surprising decisions.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md#documentation-standards", summary = "Records rationale at surprising implementation choices.", confidence = 1.0 }]

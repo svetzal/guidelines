@@ -1,0 +1,12 @@
+id = "guidelines.intent.validate-untrusted-input-at-boundaries"
+title = "Validate untrusted input at boundaries"
+status = "hypothesized"
+confidence = 0.97
+capability = "Core code operates on values whose shape and invariants are already known."
+threat = "External, decoded, persisted, or user-supplied data is trusted and propagates malformed or hostile state inward."
+expectation = "Every external producer can change independently and may send incomplete, invalid, or adversarial values."
+strategy = "Parse and validate untrusted data once at the boundary, reject invalid input explicitly, and pass narrowed domain values inward."
+evidence = [{ type = "boundary_test", description = "Malformed and adversarial inputs are rejected before they reach core operations, while valid inputs become constrained domain values.", required = true }]
+tradeoff = "Boundary schemas and validation mappings duplicate some type information and must evolve with external contracts."
+scope = { project = "guidelines", paths = ["plugins/typescript-ecosystem/agents/typescript-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#type-system-patterns", summary = "Narrows unknown values and validates untrusted boundaries.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md#cli-argument-parsing", summary = "Parses CLI input into validated internal values.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md#architectural-principles", summary = "Separates external data contracts from validated domain behavior.", confidence = 0.9 }]

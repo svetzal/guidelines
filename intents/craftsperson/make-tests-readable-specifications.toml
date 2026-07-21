@@ -1,0 +1,12 @@
+id = "guidelines.intent.make-tests-readable-specifications"
+title = "Make tests readable behavioral specifications"
+status = "hypothesized"
+confidence = 0.98
+capability = "A reader can learn required behavior and diagnose a failure directly from the test suite."
+threat = "Opaque names, oversized arrangements, and incidental assertions hide what a test protects."
+expectation = "Tests will serve as the most current executable account of behavior for maintainers and agents."
+strategy = "Give each test one behavior, intention-revealing names, visible arrange-act-assert flow, and assertions on meaningful outcomes."
+evidence = [{ type = "test_review", description = "Each test states one behavior and its failure identifies the violated expectation without reading implementation code.", required = true }]
+tradeoff = "More explicit test structure can repeat setup and produce longer suites."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#unit-tests-structure", summary = "Makes tests readable behavioral specifications.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/python-craftsperson.md#testing-patterns", summary = "Structures tests as readable specifications.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md#testing-patterns", summary = "Uses behavior-describing test names and separable setup.", confidence = 1.0 }]

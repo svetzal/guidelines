@@ -1,0 +1,12 @@
+id = "guidelines.intent.clarify-ambiguous-intent-before-implementation"
+title = "Clarify ambiguous intent before implementation"
+status = "hypothesized"
+confidence = 0.99
+capability = "Implemented behavior reflects the decision the product or domain actually requires."
+threat = "An implementer resolves material ambiguity by guessing and turns an unexamined assumption into code."
+expectation = "Requirements and existing behavior will sometimes conflict, omit edge cases, or admit several valid interpretations."
+strategy = "Surface consequential ambiguity with concrete options and resolve it before committing to an implementation."
+evidence = [{ type = "decision_review", description = "Material ambiguities are resolved in the task context, tests, or an explicit decision before implementation depends on them.", required = true }]
+tradeoff = "Clarification interrupts flow and may require waiting for someone with the necessary product or domain authority."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#when-to-escalate", summary = "Requires ambiguous business logic to be clarified rather than guessed.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#when-to-seek-clarification", summary = "Requires ambiguous business intent to be resolved before coding.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md#when-to-seek-clarification", summary = "Requires ambiguous product behavior to be resolved before implementation.", confidence = 1.0 }]

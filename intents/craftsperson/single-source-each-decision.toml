@@ -1,0 +1,12 @@
+id = "guidelines.intent.single-source-each-decision"
+title = "Single-source each decision"
+status = "hypothesized"
+confidence = 0.99
+capability = "A domain or engineering decision can change consistently from one authoritative representation."
+threat = "Duplicated knowledge drifts and produces contradictory behavior or configuration."
+expectation = "Shared rules, constants, schemas, and policies will evolve over the life of the system."
+strategy = "Represent each decision once and derive or delegate all other uses from that source."
+evidence = [{ type = "design_review", description = "A change to one decision requires editing one authoritative representation rather than coordinated copies.", required = true }]
+tradeoff = "Centralization can create an indirection or dependency that is not worthwhile for coincidentally similar values."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#engineering-principles-your-north-star", summary = "Single-sources each domain decision.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#simple-design-heuristics-in-priority-order", summary = "Eliminates duplication of knowledge after behavior and intent are clear.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#simple-design-heuristics", summary = "Centralizes shared decisions instead of duplicating their representation.", confidence = 1.0 }]

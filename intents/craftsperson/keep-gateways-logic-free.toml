@@ -1,0 +1,12 @@
+id = "guidelines.intent.keep-gateways-logic-free"
+title = "Keep gateways free of business logic"
+status = "hypothesized"
+confidence = 0.99
+capability = "Business decisions remain visible, portable, and directly testable in the core."
+threat = "Policy accumulates in adapters where it becomes coupled to infrastructure and difficult to exercise without that infrastructure."
+expectation = "Gateway code will already need mechanical translation, transport, and persistence concerns."
+strategy = "Limit gateway implementations to translating and forwarding data; move branching policy and transformation decisions into the core."
+evidence = [{ type = "architecture_review", description = "Gateway implementations contain only boundary mechanics while domain decisions have direct core tests.", required = true }]
+tradeoff = "Strictly thin gateways can require extra data mappings and orchestration functions for small integrations."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#code-improvement-patterns", summary = "Keeps gateway adapters thin and logic-free.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#functional-core-imperative-shell", summary = "Moves decisions out of gateway adapters and into the core.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#engineering-principles-your-north-star", summary = "Keeps gateways thin and free of business logic.", confidence = 1.0 }]

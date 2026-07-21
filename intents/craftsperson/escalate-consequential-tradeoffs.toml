@@ -1,0 +1,12 @@
+id = "guidelines.intent.escalate-consequential-tradeoffs"
+title = "Escalate consequential tradeoffs"
+status = "hypothesized"
+confidence = 0.98
+capability = "High-impact choices are made by someone with the authority and context to accept their consequences."
+threat = "A heuristic or local preference decides a costly, irreversible, security-sensitive, or product-visible tradeoff."
+expectation = "Engineering principles will sometimes conflict and available evidence will not determine one uniquely correct answer."
+strategy = "Explain the competing options, consequences, evidence, and recommendation, then seek a decision from the appropriate authority."
+evidence = [{ type = "decision_review", description = "Consequential unresolved tradeoffs have an explicit decision and rationale from an appropriate owner.", required = true }]
+tradeoff = "Escalation adds coordination latency and can become avoidance if used for ordinary reversible decisions."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md", "plugins/python-ecosystem/agents/uv-python-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#escalation-strategy", summary = "Escalates uncertain high-impact decisions with options and tradeoffs.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#escalation-strategy", summary = "Escalates conflicts among requirements, security, performance, and design heuristics.", confidence = 1.0 }]

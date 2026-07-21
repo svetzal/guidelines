@@ -1,0 +1,12 @@
+id = "guidelines.intent.minimize-dependency-surface"
+title = "Minimize dependency surface"
+status = "hypothesized"
+confidence = 0.97
+capability = "The system retains a small, understandable supply-chain and compatibility surface."
+threat = "Convenience dependencies add transitive code, upgrade constraints, vulnerabilities, and operational behavior disproportionate to their value."
+expectation = "Every dependency will evolve, disclose vulnerabilities, or eventually require replacement independently from the application."
+strategy = "Add a dependency only when its maintained capability clearly outweighs implementing or using an existing local or platform capability."
+evidence = [{ type = "dependency_review", description = "Each new dependency has a current use, maintenance rationale, and no simpler adequate existing alternative.", required = true }]
+tradeoff = "Avoiding a dependency can create locally maintained code that is less mature than a well-supported library."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#project-structure--tooling", summary = "Keeps namespace and project dependencies minimal and explicit.", confidence = 1.0 }, { type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-craftsperson.md#quality-assurance-process", summary = "Minimizes production and specialized dependencies.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#security-and-supply-chain", summary = "Minimizes dependency and supply-chain surface.", confidence = 1.0 }]

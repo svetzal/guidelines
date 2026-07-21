@@ -1,0 +1,12 @@
+id = "guidelines.intent.verify-before-declaring-completion"
+title = "Verify before declaring completion"
+status = "hypothesized"
+confidence = 0.99
+capability = "Completion claims accurately describe working, checked behavior rather than implementation effort or expectation."
+threat = "A contributor assumes the change works, reports success from partial checks, or hides limitations behind a confident summary."
+expectation = "Edits can appear locally correct while failing tests, integration, documentation, or environment-specific checks."
+strategy = "Self-review the diff, run proportionate evidence, inspect the results, and disclose exactly what was and was not verified."
+evidence = [{ type = "completion_report", description = "The completion report names the checks run, their outcomes, and any unverified or blocked evidence.", required = true }]
+tradeoff = "Thorough verification adds latency and can expose unrelated failures that complicate an otherwise focused task."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#self-verification", summary = "Requires self-verification against the complete quality gate.", confidence = 1.0 }, { type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#self-verification-steps", summary = "Self-reviews and transparently reports verification before delivery.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#behavioral-guidelines", summary = "Verifies evidence before declaring work complete.", confidence = 1.0 }]

@@ -1,0 +1,12 @@
+id = "guidelines.intent.manage-resource-lifetimes-explicitly"
+title = "Manage resource lifetimes explicitly"
+status = "hypothesized"
+confidence = 0.97
+capability = "Files, connections, processes, tasks, subscriptions, and other resources are released deterministically on every exit path."
+threat = "Implicit or mismatched ownership leaks resources, outlives the work that needs them, or cleans them up from the wrong context."
+expectation = "Operations will fail, cancel, return early, and cross concurrency or lifecycle boundaries."
+strategy = "Give each resource one clear owner, bind cleanup to that owner's lifetime, and make transfer or cancellation semantics explicit."
+evidence = [{ type = "lifecycle_test", description = "Success, failure, cancellation, and early-return paths release owned resources exactly once from the correct context.", required = true }]
+tradeoff = "Explicit ownership and cleanup add structure and can constrain otherwise convenient sharing."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#memory-management", summary = "Binds resource ownership and cleanup to explicit object lifetimes.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md#error-prevention", summary = "Releases coroutine and test resources on cancellation and every exit path.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/python-craftsperson.md#core-language-patterns", summary = "Makes resource cleanup deterministic with explicit lifetime scopes.", confidence = 1.0 }]

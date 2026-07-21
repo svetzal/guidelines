@@ -1,0 +1,12 @@
+id = "guidelines.intent.make-dependency-resolution-reproducible"
+title = "Make dependency resolution reproducible"
+status = "hypothesized"
+confidence = 0.97
+capability = "Developers, CI, and deployed artifacts resolve a deliberately equivalent dependency set."
+threat = "Floating or independently duplicated version decisions produce environment-specific builds and surprise upgrades."
+expectation = "Dependency registries and compatible version ranges will change between installations even when project source does not."
+strategy = "Use the ecosystem's appropriate lock or resolution mechanism, centralize version decisions, and verify environments from that source."
+evidence = [{ type = "reproducibility_gate", description = "A clean supported environment resolves the committed dependency decision without unexplained drift.", required = true }]
+tradeoff = "Locked resolution requires deliberate update work and can delay receiving compatible fixes until the lock is refreshed."
+scope = { project = "guidelines", paths = ["plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/python-ecosystem/agents/uv-python-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#build-and-dependency-management", summary = "Centralizes and pins production dependency decisions.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md#build-and-dependency-management", summary = "Centralizes dependency coordinates for consistent module resolution.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/uv-python-craftsperson.md#lockfile", summary = "Commits a cross-platform lockfile and synchronizes environments to it.", confidence = 1.0 }]

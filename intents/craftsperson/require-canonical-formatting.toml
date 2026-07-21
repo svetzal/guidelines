@@ -1,0 +1,12 @@
+id = "guidelines.intent.require-canonical-formatting"
+title = "Require canonical formatting"
+status = "hypothesized"
+confidence = 0.99
+capability = "Source changes remain visually consistent and reviews focus on behavior rather than personal formatting choices."
+threat = "Formatting drift creates noisy diffs, recurring style debate, and merge friction."
+expectation = "Many humans and agents will edit the same source with different local habits."
+strategy = "Use the project's canonical automated formatter and treat an unformatted result as incomplete."
+evidence = [{ type = "format_gate", description = "The project formatter reports no changes or violations across the completed scope.", required = true }]
+tradeoff = "Canonical formatting can produce unrelated churn when configuration or formatter versions change."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#quality-assurance-process", summary = "Requires deterministic automated formatting.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#quality-assurance", summary = "Keeps all source canonically formatted.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#quality-assurance-process", summary = "Applies the project formatter as a completion gate.", confidence = 1.0 }]

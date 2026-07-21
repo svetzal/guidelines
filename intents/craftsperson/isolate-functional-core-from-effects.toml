@@ -1,0 +1,12 @@
+id = "guidelines.intent.isolate-functional-core-from-effects"
+title = "Isolate the functional core from effects"
+status = "hypothesized"
+confidence = 0.99
+capability = "Business rules can be understood and tested without databases, networks, filesystems, clocks, or runtime orchestration."
+threat = "I/O and mutation spread through domain logic and make behavior expensive, fragile, or nondeterministic to test."
+expectation = "Infrastructure integrations and delivery mechanisms will change independently from core policy."
+strategy = "Keep decisions in a deterministic functional core and push external effects and orchestration to a thin imperative shell."
+evidence = [{ type = "test", description = "Core behavior tests run without real external infrastructure or process-global state.", required = true }]
+tradeoff = "Separating core and shell introduces mapping and orchestration code that can be excessive for simple behavior."
+scope = { project = "guidelines", paths = ["plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#functional-core-imperative-shell", summary = "Separates pure decision logic from effectful orchestration.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#architectural-patterns", summary = "Keeps business logic testable independently of infrastructure.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#functional-core-imperative-shell", summary = "Places pure logic in a functional core and I/O in an imperative shell.", confidence = 1.0 }]

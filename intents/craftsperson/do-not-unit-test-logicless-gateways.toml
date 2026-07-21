@@ -1,0 +1,12 @@
+id = "guidelines.intent.do-not-unit-test-logicless-gateways"
+title = "Do not unit-test logicless gateways"
+status = "hypothesized"
+confidence = 0.97
+capability = "The test suite spends effort on decisions and integration contracts rather than reproducing trivial forwarding code."
+threat = "Unit tests for mechanical adapters mirror implementation details and create maintenance cost without protecting meaningful behavior."
+expectation = "A well-factored gateway will contain little or no policy of its own."
+strategy = "Test decisions in the core and verify gateway behavior with focused integration or contract tests only where the boundary adds real risk."
+evidence = [{ type = "test_review", description = "Gateway tests cover translation or integration risk, while trivial forwarding wrappers have no mirrored unit tests.", required = true }]
+tradeoff = "A very thin adapter can still contain a wiring defect that is found only by an integration test or production exercise."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#functional-core-imperative-shell", summary = "Directs tests toward logic and away from logicless gateway wrappers.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#functional-core-imperative-shell", summary = "Does not unit-test gateway wrappers that contain no decisions.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#testing-strategy", summary = "Avoids unit tests for logicless gateways.", confidence = 1.0 }]

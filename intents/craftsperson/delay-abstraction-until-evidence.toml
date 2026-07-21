@@ -1,0 +1,12 @@
+id = "guidelines.intent.delay-abstraction-until-evidence"
+title = "Delay abstraction until evidence justifies it"
+status = "hypothesized"
+confidence = 0.98
+capability = "The design remains easy to change while its real variation points are still being discovered."
+threat = "Premature indirection freezes guessed similarities into interfaces that resist actual requirements."
+expectation = "Concrete implementations will reveal patterns and exceptions that cannot be predicted reliably in advance."
+strategy = "Tolerate local duplication and extract an abstraction only after repeated evidence reveals a stable concept or variation point."
+evidence = [{ type = "design_review", description = "Each new abstraction is justified by demonstrated repetition, variation, or substitution rather than hypothetical reuse.", required = true }]
+tradeoff = "Some duplication and later refactoring are accepted while evidence accumulates."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#engineering-principles-your-north-star", summary = "Delays abstraction until repetition demonstrates it.", confidence = 1.0 }, { type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-craftsperson.md#engineering-principles-your-north-star", summary = "Inlines premature abstractions until patterns emerge.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#engineering-principles-your-north-star", summary = "Defers abstractions until a pattern demands them.", confidence = 1.0 }]

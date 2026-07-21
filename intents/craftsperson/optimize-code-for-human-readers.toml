@@ -1,0 +1,12 @@
+id = "guidelines.intent.optimize-code-for-human-readers"
+title = "Optimize code for human readers"
+status = "hypothesized"
+confidence = 0.99
+capability = "A future maintainer can understand intent and change behavior safely without reconstructing clever hidden reasoning."
+threat = "Concise, magical, or overly clever code obscures decisions and raises the cost of modification."
+expectation = "Code will be read and changed more often than it is initially written, often by contributors lacking its full history."
+strategy = "Prefer intention-revealing names, explicit control and data flow, and straightforward structures over clever brevity."
+evidence = [{ type = "review", description = "A reviewer can explain the purpose and flow of changed code from its names and structure without external narration.", required = true }]
+tradeoff = "Explicit code can be longer and may repeat mechanics that a compact abstraction would hide."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#code-is-communication", summary = "Treats code as communication and optimizes it for the next reader.", confidence = 1.0 }, { type = "document", ref = "plugins/ruby-ecosystem/agents/ruby-craftsperson.md#code-is-communication", summary = "Prioritizes intention-revealing, explicit Ruby over clever brevity.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#engineering-principles-your-north-star", summary = "Requires code to communicate domain intent to human readers.", confidence = 1.0 }]

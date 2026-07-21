@@ -1,0 +1,12 @@
+id = "guidelines.intent.keep-documentation-aligned"
+title = "Keep documentation aligned with behavior"
+status = "hypothesized"
+confidence = 0.99
+capability = "Users and maintainers can rely on documentation as a current description of supported behavior and decisions."
+threat = "Implementation changes while examples, public contracts, architecture notes, or operational instructions continue describing obsolete behavior."
+expectation = "Documentation and implementation will otherwise evolve in separate edits and on separate schedules."
+strategy = "Change relevant narrative and API documentation with behavior, keep examples verifiable, and run the documentation build when one exists."
+evidence = [{ type = "documentation_gate", description = "Changed behavior has corresponding documentation updates and documented examples or builds verify successfully.", required = true }]
+tradeoff = "Synchronized documentation increases the scope and verification cost of behavior changes."
+scope = { project = "guidelines", paths = ["plugins/elixir-ecosystem/agents/elixir-phoenix-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-phoenix-craftsperson.md#quality-assurance-process", summary = "Keeps framework and application documentation aligned with behavior.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#engineering-principles-you-follow", summary = "Changes implementation and narrative documentation together.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#documentation", summary = "Keeps public contracts, examples, and implementation synchronized.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#quality-assurance-process", summary = "Keeps documentation examples executable and requires the documentation site to build.", confidence = 1.0 }]

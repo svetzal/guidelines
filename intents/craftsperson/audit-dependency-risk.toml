@@ -1,0 +1,12 @@
+id = "guidelines.intent.audit-dependency-risk"
+title = "Audit dependency risk"
+status = "hypothesized"
+confidence = 0.99
+capability = "Known dependency vulnerabilities and lifecycle risks are detected before they become shipped exposure or emergency migration debt."
+threat = "A trusted dependency version acquires a vulnerability, becomes unmaintained, or drifts beyond safe upgrade distance after adoption."
+expectation = "Dependency risk changes independently from application code and yesterday's safe version may not remain safe."
+strategy = "Run ecosystem-appropriate vulnerability and staleness audits, triage findings by impact, and record any consciously accepted residual risk."
+evidence = [{ type = "security_gate", description = "Dependency audits report no unaddressed unacceptable findings and accepted residual risks have explicit rationale.", required = true }]
+tradeoff = "Remediation can force upgrades, compatibility work, dependency replacement, or delivery delay."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#quality-gates-mandatory", summary = "Runs dependency security analysis and blocks known release vulnerabilities.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md#quality-gates-mandatory", summary = "Blocks known vulnerable dependencies and responds to newly disclosed risk.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/python-craftsperson.md#quality-assurance-process", summary = "Audits serious vulnerabilities and keeps dependency age visible.", confidence = 1.0 }]

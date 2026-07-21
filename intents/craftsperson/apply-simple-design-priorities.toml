@@ -1,0 +1,12 @@
+id = "guidelines.intent.apply-simple-design-priorities"
+title = "Apply simple design priorities in order"
+status = "hypothesized"
+confidence = 0.98
+capability = "Design decisions resolve toward the smallest structure that completely and clearly supports required behavior."
+threat = "Simplicity becomes a vague aesthetic and trades correctness or clarity for fewer lines or fewer types."
+expectation = "Design pressures will conflict and contributors need a stable order for resolving them."
+strategy = "Prioritize passing behavioral tests, revealing intent, eliminating duplicated knowledge, and only then minimizing structural entities."
+evidence = [{ type = "design_review", description = "Simplifications preserve behavior and clarity before reducing duplication or structure.", required = true }]
+tradeoff = "The ordered heuristic may retain more structure than a code-size-first definition of simplicity would permit."
+scope = { project = "guidelines", paths = ["plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#simple-design-heuristics-in-priority-order", summary = "Orders simple design around tests, intent, duplication, and minimal elements.", confidence = 1.0 }, { type = "document", ref = "plugins/ruby-ecosystem/agents/ruby-craftsperson.md#simple-design-heuristics-in-priority-order", summary = "Uses the same ordered simple-design heuristic for Ruby work.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#simple-design-heuristics-priority-order", summary = "Applies the ordered heuristic to Rust design decisions.", confidence = 1.0 }]

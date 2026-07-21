@@ -1,0 +1,12 @@
+id = "guidelines.intent.model-recoverable-errors-explicitly"
+title = "Model recoverable errors explicitly"
+status = "hypothesized"
+confidence = 0.98
+capability = "Callers can distinguish, handle, and test expected failure outcomes without parsing incidental diagnostics."
+threat = "Recoverable failures escape as unchecked exceptions, panics, ambiguous sentinel values, or unstructured strings."
+expectation = "Invalid input, unavailable dependencies, and ordinary domain rejection will occur during normal operation."
+strategy = "Represent expected failures as explicit domain outcomes with stable identity and preserve unexpected failures for exceptional handling."
+evidence = [{ type = "contract_test", description = "Public operations expose stable distinguishable failure outcomes and tests cover caller handling.", required = true }]
+tradeoff = "Explicit failure types and mappings add branches and maintenance when the failure vocabulary changes."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#error-handling", summary = "Models recoverable errors as explicit values.", confidence = 1.0 }, { type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-craftsperson.md#code-structure--patterns", summary = "Models recoverable errors explicitly and reserves exceptional failure mechanisms.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md#error-prevention", summary = "Uses exhaustive result values for recoverable outcomes.", confidence = 1.0 }]

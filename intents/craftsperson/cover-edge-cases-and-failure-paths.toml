@@ -1,0 +1,12 @@
+id = "guidelines.intent.cover-edge-cases-and-failure-paths"
+title = "Cover edge cases and failure paths"
+status = "hypothesized"
+confidence = 0.98
+capability = "The system retains intentional behavior at boundaries and under expected failure conditions."
+threat = "A happy-path suite passes while empty, malformed, extreme, concurrent, or failed interactions regress."
+expectation = "Production inputs and dependencies will exercise conditions absent from the primary example."
+strategy = "Identify meaningful boundaries and failure modes and specify their observable outcomes with focused tests."
+evidence = [{ type = "test_review", description = "Tests cover representative valid boundaries, invalid inputs, empty cases, and expected dependency failures for changed behavior.", required = true }]
+tradeoff = "Additional cases increase suite size and can overfit hypothetical failures if selected without risk judgment."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#testing-guidance", summary = "Tests edge cases and failure behavior explicitly.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#tests-are-the-executable-spec", summary = "Exercises edge cases and failure modes.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#testing-philosophy", summary = "Covers boundaries and edge cases with behavior tests.", confidence = 1.0 }]

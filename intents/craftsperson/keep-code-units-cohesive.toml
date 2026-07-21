@@ -1,0 +1,12 @@
+id = "guidelines.intent.keep-code-units-cohesive"
+title = "Keep code units cohesive"
+status = "hypothesized"
+confidence = 0.98
+capability = "Each unit can be understood and changed for one coherent reason without unrelated behavior moving with it."
+threat = "Functions, modules, classes, or components accumulate unrelated responsibilities and become change magnets."
+expectation = "Features will grow incrementally and nearby behavior will otherwise collect in convenient existing units."
+strategy = "Give each code unit one cohesive responsibility and split it when its reasons to change diverge."
+evidence = [{ type = "design_review", description = "Each changed unit has a concise purpose and its members support that purpose.", required = true }]
+tradeoff = "Smaller cohesive units increase navigation, naming, and composition overhead."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#engineering-principles-you-follow", summary = "Keeps functions focused on one reason to change.", confidence = 1.0 }, { type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-craftsperson.md#code-structure--patterns", summary = "Requires cohesive modules with navigable responsibilities.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#project-structure", summary = "Keeps functions and objects focused on cohesive concerns.", confidence = 1.0 }]

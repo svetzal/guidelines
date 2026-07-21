@@ -1,0 +1,12 @@
+id = "guidelines.intent.prefer-composition-over-inheritance"
+title = "Prefer composition over inheritance"
+status = "hypothesized"
+confidence = 0.97
+capability = "Behavior can evolve through replaceable collaborators without coupling change through a deep hierarchy."
+threat = "Inheritance for code reuse entangles contracts with implementation and makes local changes ripple through descendants."
+expectation = "New variants and integrations will need to reuse some behavior while changing other behavior independently."
+strategy = "Compose small collaborators behind explicit contracts and reserve inheritance-like mechanisms for genuine substitutability."
+evidence = [{ type = "architecture_review", description = "Reuse is expressed through focused collaborators and contracts rather than deep implementation inheritance.", required = true }]
+tradeoff = "Composition requires explicit delegation and can introduce more small objects, functions, or wiring."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#composition-over-inheritance", summary = "Prefers composition to inheritance trees for changeable behavior.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/python-craftsperson.md#engineering-principles-your-north-star", summary = "Prefers replaceable composition over inheritance hierarchies.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#simple-design-heuristics", summary = "Composes behavior rather than growing inheritance trees.", confidence = 1.0 }]

@@ -1,0 +1,12 @@
+id = "guidelines.intent.make-review-feedback-actionable"
+title = "Make review feedback actionable"
+status = "hypothesized"
+confidence = 0.98
+capability = "A contributor can understand, prioritize, and resolve each review finding without guessing the reviewer's intent."
+threat = "Vague criticism names a dislike without locating the evidence, explaining the consequence, or offering a path forward."
+expectation = "Reviewers and implementers will have different local context and may not share the same preferred solution."
+strategy = "Tie each finding to concrete evidence, explain why it matters, classify its severity, and offer alternatives with tradeoffs where useful."
+evidence = [{ type = "review_audit", description = "Each required finding identifies a location or behavior, consequence, priority, and feasible next action.", required = true }]
+tradeoff = "Detailed feedback takes longer to prepare and can over-prescribe implementation if alternatives are framed too narrowly."
+scope = { project = "guidelines", paths = ["plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#code-review-protocol", summary = "Makes findings actionable and explains technical rationale and tradeoffs.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#code-review-approach", summary = "Requires concrete actionable review findings.", confidence = 1.0 }, { type = "document", ref = "plugins/ruby-ecosystem/agents/ruby-craftsperson.md#communication-style", summary = "Makes review feedback specific, respectful, and actionable.", confidence = 1.0 }]

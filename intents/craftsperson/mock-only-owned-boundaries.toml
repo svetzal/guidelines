@@ -1,0 +1,12 @@
+id = "guidelines.intent.mock-only-owned-boundaries"
+title = "Mock only owned boundaries"
+status = "hypothesized"
+confidence = 0.98
+capability = "Tests isolate external effects without coupling themselves to third-party implementation details."
+threat = "Mocks of library internals duplicate someone else's implementation and pass while real integration behavior diverges."
+expectation = "Dependencies and infrastructure clients will change independently from application-owned contracts."
+strategy = "Substitute only narrow application-owned gateway contracts, preferring simple fakes when they communicate behavior clearly."
+evidence = [{ type = "test_review", description = "Test doubles implement owned boundary contracts and do not intercept third-party internals.", required = true }]
+tradeoff = "Owned boundaries and fakes require additional design and maintenance even when a direct mock would be quicker initially."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#testing", summary = "Mocks owned gateway contracts rather than library internals.", confidence = 1.0 }, { type = "document", ref = "plugins/ruby-ecosystem/agents/ruby-craftsperson.md#functional-core-imperative-shell", summary = "Mocks owned gateways instead of third-party internals.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#testing-strategy", summary = "Prefers fakes and confines mocks to owned boundaries.", confidence = 1.0 }]

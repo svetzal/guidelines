@@ -1,0 +1,12 @@
+id = "guidelines.intent.make-invalid-states-explicit"
+title = "Make invalid states explicit"
+status = "hypothesized"
+confidence = 0.96
+capability = "Invalid combinations are rejected at construction or handled as visible alternatives rather than circulating as ordinary domain state."
+threat = "Loose flags, nullable fields, unchecked strings, or partially initialized objects admit combinations the domain cannot interpret safely."
+expectation = "New states and variants will be added while callers continue assuming old invariants."
+strategy = "Model domain alternatives and absence explicitly, validate construction, and require exhaustive handling where the implementation medium permits it."
+evidence = [{ type = "model_review", description = "Invalid combinations cannot enter core operations silently and every valid alternative has an intentional handling path.", required = true }]
+tradeoff = "More precise models add types, constructors, validation, or branches and can complicate serialization and framework integration."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#modern-c-patterns", summary = "Models absence and alternatives explicitly.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#modern-java-mastery", summary = "Uses closed domains for compiler-checked exhaustive handling.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#type-system-patterns", summary = "Makes invalid state combinations unrepresentable and variants exhaustive.", confidence = 1.0 }]

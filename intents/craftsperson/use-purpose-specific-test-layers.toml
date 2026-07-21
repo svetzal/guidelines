@@ -1,0 +1,12 @@
+id = "guidelines.intent.use-purpose-specific-test-layers"
+title = "Use purpose-specific test layers"
+status = "hypothesized"
+confidence = 0.96
+capability = "The test suite provides fast local feedback and credible evidence across real system boundaries."
+threat = "One test style is stretched across every risk, producing either slow fragile feedback or unrealistic isolation."
+expectation = "Different defects require evidence at different scopes, from pure decisions to external integration."
+strategy = "Use fast focused tests for core behavior and add integration, contract, system, or property tests where their distinct evidence is needed."
+evidence = [{ type = "test_strategy_review", description = "Each test layer has a stated risk to cover and avoids duplicating evidence already provided more cheaply elsewhere.", required = true }]
+tradeoff = "Multiple layers require separate fixtures, tooling, and decisions about where each behavior belongs."
+scope = { project = "guidelines", paths = ["plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/elixir-ecosystem/agents/elixir-craftsperson.md#quality-assurance-process", summary = "Uses purpose-specific test layers rather than one undifferentiated suite.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#testing-philosophy", summary = "Separates unit, integration, contract, and higher-level evidence.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#testing-strategy", summary = "Uses purpose-specific Rust test layers based on risk.", confidence = 1.0 }]

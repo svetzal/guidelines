@@ -1,0 +1,12 @@
+id = "guidelines.intent.require-passing-tests-before-completion"
+title = "Require passing tests before completion"
+status = "hypothesized"
+confidence = 0.99
+capability = "Completed work preserves all behavior already protected by the project's executable specification."
+threat = "Known regressions are normalized, hidden, or deferred while a change is declared complete."
+expectation = "Every change can interact with behavior outside its immediate implementation area."
+strategy = "Run the complete relevant test suite and resolve every failure before declaring the work complete."
+evidence = [{ type = "test_gate", description = "The project's complete relevant test suite passes in the completion environment.", required = true }]
+tradeoff = "Full suites consume time and unrelated flaky tests can block otherwise sound changes."
+scope = { project = "guidelines", paths = ["plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md#quality-assurance-process", summary = "Requires a passing test suite before completion.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#quality-assurance", summary = "Never delivers with a failing test suite.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#quality-gates-mandatory", summary = "Requires all tests to pass before completion.", confidence = 1.0 }]

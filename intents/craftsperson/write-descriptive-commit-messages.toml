@@ -1,0 +1,12 @@
+id = "guidelines.intent.write-descriptive-commit-messages"
+title = "Write descriptive commit messages"
+status = "hypothesized"
+confidence = 0.98
+capability = "Future maintainers can recover the purpose and rationale of a change from version history."
+threat = "Generic or implementation-only messages make history useless for diagnosis, archaeology, and safe reversal."
+expectation = "The original task context and author memory will disappear while the commit remains."
+strategy = "Describe the behavior or decision changed in a concise imperative subject and preserve non-obvious rationale in the body."
+evidence = [{ type = "history_review", description = "The commit message identifies the coherent change and explains any rationale not evident from the diff.", required = true }]
+tradeoff = "Writing decision-rich messages takes time and can repeat information already captured durably elsewhere."
+scope = { project = "guidelines", paths = ["plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#version-control-etiquette", summary = "Writes commit messages that preserve rationale.", confidence = 1.0 }, { type = "document", ref = "plugins/ruby-ecosystem/agents/ruby-craftsperson.md#your-workflow", summary = "Makes commit intent discoverable from history.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#commit-messages", summary = "Uses specific messages that explain intent.", confidence = 1.0 }]

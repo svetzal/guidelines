@@ -1,0 +1,12 @@
+id = "guidelines.intent.document-public-contracts"
+title = "Document public contracts"
+status = "hypothesized"
+confidence = 0.98
+capability = "Consumers can use a public interface correctly without reading its implementation."
+threat = "Inputs, outputs, failure modes, invariants, and compatibility expectations remain implicit or drift from behavior."
+expectation = "Public interfaces will be used and changed by people who do not share the implementer's local context."
+strategy = "Document the purpose, accepted inputs, returned outcomes, failures, invariants, and non-obvious rationale at the public boundary."
+evidence = [{ type = "api_review", description = "Each changed public contract documents the information a consumer needs and agrees with executable behavior.", required = true }]
+tradeoff = "Rich contract documentation increases maintenance cost and can repeat information already made obvious by a precise interface."
+scope = { project = "guidelines", paths = ["plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#documentation", summary = "Documents public API contracts for consumers.", confidence = 1.0 }, { type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#engineering-principles-you-follow", summary = "Documents every exported contract.", confidence = 1.0 }, { type = "document", ref = "plugins/jvm-ecosystem/agents/java-craftsperson.md#documentation", summary = "Documents public contracts together with non-obvious rationale.", confidence = 1.0 }]

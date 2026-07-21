@@ -1,0 +1,12 @@
+id = "guidelines.intent.optimize-from-measurement"
+title = "Optimize from measurement"
+status = "hypothesized"
+confidence = 0.96
+capability = "Performance work improves an important observed constraint without sacrificing clarity for imagined bottlenecks."
+threat = "Speculative optimization adds complexity while targeting code that does not materially affect real workloads."
+expectation = "Human intuition about bottlenecks will often be wrong and workload priorities will vary by project."
+strategy = "Define the performance requirement, measure a representative baseline, optimize the demonstrated bottleneck, and compare the result."
+evidence = [{ type = "benchmark", description = "A representative measurement shows the change improves a stated performance requirement without unacceptable regression elsewhere.", required = true }]
+tradeoff = "Measurement infrastructure takes time and may not reproduce every production workload or long-tail condition."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#6-performance-considerations", summary = "Defines critical performance targets and optimizes measured hotspots.", confidence = 1.0 }, { type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#decision-making-framework", summary = "Reserves specialized performance primitives for demonstrated need.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#optional-for-performance-sensitive-code", summary = "Benchmarks performance-sensitive code before relying on optimization claims.", confidence = 1.0 }]

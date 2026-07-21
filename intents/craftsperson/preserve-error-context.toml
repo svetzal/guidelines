@@ -1,0 +1,12 @@
+id = "guidelines.intent.preserve-error-context"
+title = "Preserve actionable error context"
+status = "hypothesized"
+confidence = 0.96
+capability = "A failure can be diagnosed at its handling boundary without reproducing it or losing its original cause."
+threat = "Errors are swallowed, flattened, or reworded without operation, input, or causal context."
+expectation = "Failures will cross abstraction boundaries and be investigated far from where they originated."
+strategy = "Add boundary-relevant context while retaining stable error identity and the original cause."
+evidence = [{ type = "failure_test", description = "Representative failures expose both actionable boundary context and their underlying cause or identity.", required = true }]
+tradeoff = "Additional context can expose sensitive values or create noisy error chains unless data is selected carefully."
+scope = { project = "guidelines", paths = ["plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#error-handling-patterns", summary = "Wraps errors with operation context while preserving identity.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md#error-handling-patterns", summary = "Preserves actionable error context at CLI and subprocess boundaries.", confidence = 1.0 }, { type = "document", ref = "plugins/typescript-ecosystem/agents/typescript-craftsperson.md#nodejs-patterns", summary = "Preserves causes across asynchronous error boundaries.", confidence = 1.0 }]

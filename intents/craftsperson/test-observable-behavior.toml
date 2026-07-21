@@ -1,0 +1,12 @@
+id = "guidelines.intent.test-observable-behavior"
+title = "Test observable behavior, not implementation"
+status = "hypothesized"
+confidence = 0.99
+capability = "Tests detect meaningful regressions while allowing implementation structure to improve."
+threat = "Tests mirror private calls, incidental structure, or framework mechanics and fail during harmless refactoring."
+expectation = "Implementation details will change more often than required behavior."
+strategy = "Drive the system through public or domain boundaries and assert outcomes visible to its consumers."
+evidence = [{ type = "test_review", description = "Tests fail when required behavior is absent and remain valid across behavior-preserving refactors.", required = true }]
+tradeoff = "Behavior-level tests can require broader fixtures and make a low-level defect harder to localize."
+scope = { project = "guidelines", paths = ["plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/go-ecosystem/agents/go-craftsperson.md#tests-are-the-executable-spec", summary = "Tests stable behavior rather than internal structure.", confidence = 1.0 }, { type = "document", ref = "plugins/python-ecosystem/agents/python-craftsperson.md#testing-patterns", summary = "Specifies observable behavior rather than implementation structure.", confidence = 1.0 }, { type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#testing-philosophy", summary = "Tests observable behavior rather than implementation.", confidence = 1.0 }]

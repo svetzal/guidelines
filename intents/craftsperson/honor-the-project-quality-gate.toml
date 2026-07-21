@@ -1,0 +1,12 @@
+id = "guidelines.intent.honor-the-project-quality-gate"
+title = "Honor the project quality gate"
+status = "hypothesized"
+confidence = 0.99
+capability = "Completed changes satisfy the repository's agreed automated definition of technical readiness."
+threat = "A contributor runs a convenient subset, ignores failures, or substitutes personal judgment for the shared gate."
+expectation = "The quality gate will encode project-specific risks that are not obvious from the edited files alone."
+strategy = "Discover and run the complete project-defined gate, remediate failures, and report any check that could not run."
+evidence = [{ type = "quality_gate", description = "Every project-defined completion check passes, or an unavailable check is disclosed with its exact limitation.", required = true }]
+tradeoff = "Complete gates can be slow and may block work because of unrelated infrastructure or flaky checks."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/clojure-ecosystem/agents/clojure-craftsperson.md#quality-gates-mandatory", summary = "Defines a mandatory complete project quality gate.", confidence = 1.0 }, { type = "document", ref = "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md#quality-gates-mandatory", summary = "Treats the repository-wide quality gate as non-negotiable completion evidence.", confidence = 1.0 }, { type = "document", ref = "plugins/rust-ecosystem/agents/rust-craftsperson.md#mandatory-quality-gates-default-set-if-repo-doesnt-specify-its-own", summary = "Defers to the repository gate and supplies a complete default when absent.", confidence = 1.0 }]
