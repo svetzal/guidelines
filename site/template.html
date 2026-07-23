@@ -410,13 +410,11 @@ for (const d of DATA) (byCat[d.category] ??= []).push(d);
 for (const c in byCat) byCat[c].sort((a,b)=>a.title.localeCompare(b.title));
 
 /* ---------- stats ---------- */
-const nSources = DATA.reduce((s,d)=>s+d.nsources,0);
 const avgConf = DATA.reduce((s,d)=>s+d.confidence,0)/DATA.length;
 document.getElementById("statrow").innerHTML = [
   [DATA.length, "intents"],
   [Object.keys(byCat).length, "categories"],
   [ALL_ECOS.length, "language ecosystems"],
-  [nSources, "source citations"],
   [avgConf.toFixed(2), "mean confidence"],
 ].map(([b,l])=>`<div class="stat"><b>${b}</b><span>${l}</span></div>`).join("");
 

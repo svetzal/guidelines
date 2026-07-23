@@ -54,7 +54,6 @@ def load_intent(path: Path) -> dict:
             for e in record.get("evidence", [])
         ],
         "ecosystems": ecosystems,
-        "nsources": len(record.get("sources", [])),
     }
 
 
