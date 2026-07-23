@@ -54,6 +54,10 @@ def load_intent(path: Path) -> dict:
             for e in record.get("evidence", [])
         ],
         "ecosystems": ecosystems,
+        "examples": {
+            lang: {"good": ex.get("good", ""), "bad": ex.get("bad", "")}
+            for lang, ex in record.get("examples", {}).items()
+        },
     }
 
 
@@ -64,12 +68,20 @@ def build(out_dir: Path) -> Path:
 
     # `</` would terminate the inline <script> early if it ever appeared in data
     data = json.dumps(intents, separators=(",", ":")).replace("</", "<\\/")
+    hljs = "\n".join(
+        (ROOT / "site" / "vendor" / name).read_text()
+        for name in ("highlight.min.js", "clojure.min.js", "elixir.min.js")
+    )
+    if "</script" in hljs.lower():
+        sys.exit("vendored highlight.js would terminate the inline script tag")
     template = TEMPLATE.read_text()
-    for marker in ("/*__DATA__*/", "__BUILT__"):
+    for marker in ("/*__DATA__*/", "/*__HLJS__*/", "__BUILT__"):
         if marker not in template:
             sys.exit(f"template is missing the {marker} marker")
-    page = template.replace("/*__DATA__*/", data).replace(
-        "__BUILT__", datetime.date.today().isoformat()
+    page = (
+        template.replace("/*__DATA__*/", data)
+        .replace("/*__HLJS__*/", hljs)
+        .replace("__BUILT__", datetime.date.today().isoformat())
     )
 
     out_dir.mkdir(parents=True, exist_ok=True)

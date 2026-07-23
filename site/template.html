@@ -17,6 +17,13 @@
     --cat-l: 40%;
     --cat-l-soft: 46%;
     --chip-a: 12%;
+    --pass: #2c7a44;
+    --fail: #b3372e;
+    --code-kw: #6d4bbf;
+    --code-str: #33753f;
+    --code-num: #a06a10;
+    --code-typ: #17707a;
+    --code-fn: #2a5db0;
     --font-display: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
     --font-body: "Seravek", "Gill Sans", "Trebuchet MS", system-ui, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
@@ -34,17 +41,30 @@
       --cat-l: 62%;
       --cat-l-soft: 58%;
       --chip-a: 16%;
+      --pass: #6fbf85;
+      --fail: #e08078;
+      --code-kw: #b39df1;
+      --code-str: #8fce9d;
+      --code-num: #e0b568;
+      --code-typ: #6fc7d2;
+      --code-fn: #82aef5;
     }
   }
   :root[data-theme="light"] {
     --bg: #f3f4f2; --surface: #ffffff; --ink: #1d2227; --muted: #5b646c;
     --faint: #8b939a; --line: #dde0da; --line-strong: #c6cac2; --brass: #8a6c1e;
     --cat-l: 40%; --cat-l-soft: 46%; --chip-a: 12%;
+    --pass: #2c7a44; --fail: #b3372e;
+    --code-kw: #6d4bbf; --code-str: #33753f; --code-num: #a06a10;
+    --code-typ: #17707a; --code-fn: #2a5db0;
   }
   :root[data-theme="dark"] {
     --bg: #0f1317; --surface: #161b21; --ink: #e7e5df; --muted: #9aa3ab;
     --faint: #6b747c; --line: #262d34; --line-strong: #38414a; --brass: #d2a743;
     --cat-l: 62%; --cat-l-soft: 58%; --chip-a: 16%;
+    --pass: #6fbf85; --fail: #e08078;
+    --code-kw: #b39df1; --code-str: #8fce9d; --code-num: #e0b568;
+    --code-typ: #6fc7d2; --code-fn: #82aef5;
   }
 
   * { box-sizing: border-box; }
@@ -356,6 +376,108 @@
   }
   .evidence p { margin: 0; color: var(--ink); }
 
+  /* ---------- language bar ---------- */
+  .langbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-strong);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .langbar .langbar-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-right: 6px;
+  }
+  .langtab {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .langtab:hover { color: var(--ink); border-color: var(--line-strong); }
+  .langtab[aria-pressed="true"] {
+    color: var(--bg);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .langtab:focus-visible { outline: 2px solid var(--brass); outline-offset: 1px; }
+
+  /* ---------- code examples ---------- */
+  details[open].card { grid-column: 1 / -1; }
+  .examples { margin-bottom: 10px; }
+  .expair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 860px) { .expair { grid-template-columns: 1fr; } }
+  .expanel {
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .expanel .ex-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-bottom: 1px solid var(--line);
+  }
+  .expanel.pass .ex-head { color: var(--pass); box-shadow: inset 3px 0 0 var(--pass); }
+  .expanel.fail .ex-head { color: var(--fail); box-shadow: inset 3px 0 0 var(--fail); }
+  .expanel pre {
+    margin: 0;
+    padding: 10px 12px;
+    overflow-x: auto;
+    background: transparent;
+  }
+  .expanel code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.55;
+    white-space: pre;
+  }
+  .ex-none {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--faint);
+  }
+
+  /* highlight.js theme mapped to page tokens */
+  .hljs { color: var(--ink); background: transparent; }
+  .hljs-comment, .hljs-quote { color: var(--faint); font-style: italic; }
+  .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag,
+  .hljs-name { color: var(--code-kw); }
+  .hljs-string, .hljs-addition, .hljs-regexp { color: var(--code-str); }
+  .hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link,
+  .hljs-meta { color: var(--code-num); }
+  .hljs-type, .hljs-built_in, .hljs-class .hljs-title,
+  .hljs-title.class_ { color: var(--code-typ); }
+  .hljs-title, .hljs-section, .hljs-title.function_,
+  .hljs-function .hljs-title { color: var(--code-fn); }
+  .hljs-attr, .hljs-attribute, .hljs-variable,
+  .hljs-template-variable, .hljs-params { color: var(--ink); }
+  .hljs-deletion { color: var(--fail); }
+  .hljs-emphasis { font-style: italic; }
+  .hljs-strong { font-weight: 600; }
+
   footer {
     border-top: 1px solid var(--line-strong);
     padding: 20px 0 48px;
@@ -390,10 +512,13 @@
   <p class="map-caption">Hover to inspect · click an intent to open its record below</p>
 </section>
 
+<nav class="langbar wrap" id="langbar" aria-label="Example language"></nav>
+
 <main class="catalog wrap" id="catalog"></main>
 
 <footer class="wrap" id="foot"></footer>
 
+<script>/*__HLJS__*/</script>
 <script>
 const DATA = /*__DATA__*/;
 
@@ -404,6 +529,12 @@ const ECO_LABEL = { clojure:"clojure", "cpp-qt":"c++/qt", dotnet:".net", elixir:
                     go:"go", jvm:"jvm", python:"python", ruby:"ruby", rust:"rust",
                     swift:"swift", typescript:"ts" };
 const ALL_ECOS = Object.keys(ECO_LABEL);
+const LANGS = [
+  ["clojure","Clojure"], ["cpp","C++"], ["csharp","C#"], ["elixir","Elixir"],
+  ["go","Go"], ["java","Java"], ["kotlin","Kotlin"], ["python","Python"],
+  ["ruby","Ruby"], ["rust","Rust"], ["swift","Swift"], ["typescript","TypeScript"],
+];
+const LANG_LABEL = Object.fromEntries(LANGS);
 
 const byCat = {};
 for (const d of DATA) (byCat[d.category] ??= []).push(d);
@@ -411,12 +542,16 @@ for (const c in byCat) byCat[c].sort((a,b)=>a.title.localeCompare(b.title));
 
 /* ---------- stats ---------- */
 const avgConf = DATA.reduce((s,d)=>s+d.confidence,0)/DATA.length;
-document.getElementById("statrow").innerHTML = [
+const nExamples = DATA.reduce((s,d)=>s+Object.keys(d.examples||{}).length,0);
+const stats = [
   [DATA.length, "intents"],
   [Object.keys(byCat).length, "categories"],
   [ALL_ECOS.length, "language ecosystems"],
   [avgConf.toFixed(2), "mean confidence"],
-].map(([b,l])=>`<div class="stat"><b>${b}</b><span>${l}</span></div>`).join("");
+];
+if (nExamples > 0) stats.splice(3, 0, [nExamples, "example pairs"]);
+document.getElementById("statrow").innerHTML = stats
+  .map(([b,l])=>`<div class="stat"><b>${b}</b><span>${l}</span></div>`).join("");
 
 /* ---------- radial map ---------- */
 const NS = "http://www.w3.org/2000/svg";
@@ -586,6 +721,7 @@ for (const cat of sectionOrder) {
           <div class="ev-head"><b>Evidence</b><span class="ev-type">${esc(e.type.replace(/_/g," "))}</span>${e.required ? '<span class="ev-req">required</span>' : ''}</div>
           <p>${esc(e.description)}</p>
         </div>`).join("")}
+        <div class="examples" id="ex-${d.slug}"></div>
         <div class="field"><b>Admitted cost</b><p>${esc(d.tradeoff)}</p></div>
         <div class="field eco-field"><b>Referenced by</b><p>${covered || "—"}</p></div>
       </div>`;
@@ -599,8 +735,75 @@ function openCard(slug) {
   const card = document.getElementById("i-" + slug);
   if (!card) return;
   card.open = true;
+  history.replaceState(null, "", "#" + slug);
   card.scrollIntoView({ behavior:"smooth", block:"center" });
 }
+
+// deep link: #<intent-slug> opens that record on load
+if (location.hash) {
+  const card = document.getElementById("i-" + location.hash.slice(1));
+  if (card) {
+    card.open = true;
+    requestAnimationFrame(() => card.scrollIntoView({ block:"start" }));
+  }
+}
+
+/* ---------- language tabs & code examples ---------- */
+if (window.hljs) hljs.configure({ ignoreUnescapedHTML: true });
+const langbar = document.getElementById("langbar");
+let currentLang = new URLSearchParams(location.search).get("lang");
+if (!LANG_LABEL[currentLang]) {
+  try { currentLang = localStorage.getItem("atlas-lang"); } catch {}
+}
+if (!LANG_LABEL[currentLang]) currentLang = "python";
+
+const lbl = document.createElement("span");
+lbl.className = "langbar-label";
+lbl.textContent = "examples in";
+langbar.appendChild(lbl);
+for (const [key, label] of LANGS) {
+  const b = document.createElement("button");
+  b.className = "langtab";
+  b.type = "button";
+  b.textContent = label;
+  b.dataset.lang = key;
+  b.setAttribute("aria-pressed", String(key === currentLang));
+  b.addEventListener("click", () => setLang(key));
+  langbar.appendChild(b);
+}
+
+function setLang(key) {
+  currentLang = key;
+  try { localStorage.setItem("atlas-lang", key); } catch {}
+  langbar.querySelectorAll(".langtab").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.lang === key)));
+  renderExamples();
+}
+
+function renderExamples() {
+  for (const d of DATA) {
+    const holder = document.getElementById("ex-" + d.slug);
+    if (!holder) continue;
+    const ex = (d.examples || {})[currentLang];
+    if (!ex || !(ex.good && ex.bad)) {
+      holder.innerHTML =
+        `<p class="ex-none">No ${LANG_LABEL[currentLang]} example yet.</p>`;
+      continue;
+    }
+    holder.innerHTML = `<div class="expair">
+      <div class="expanel pass"><div class="ex-head">Would pass</div><pre><code></code></pre></div>
+      <div class="expanel fail"><div class="ex-head">Would not pass</div><pre><code></code></pre></div>
+    </div>`;
+    const codes = holder.querySelectorAll("code");
+    [ex.good, ex.bad].forEach((src, i) => {
+      const c = codes[i];
+      c.className = "language-" + currentLang;
+      c.textContent = src;
+      if (window.hljs) hljs.highlightElement(c);
+    });
+  }
+}
+renderExamples();
 
 document.getElementById("foot").textContent =
   `Derived from ${DATA.length} intent records in guidelines/intents/craftsperson · `
