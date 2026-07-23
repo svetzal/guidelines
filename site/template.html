@@ -317,6 +317,44 @@
   }
   .field p { margin: 0; color: var(--muted); }
   .field.eco-field p { font-family: var(--font-mono); font-size: 11.5px; }
+  .evidence {
+    background: hsl(var(--h) var(--s) var(--cat-l-soft) / 7%);
+    border: 1px solid hsl(var(--h) var(--s) var(--cat-l-soft) / 30%);
+    border-radius: 3px;
+    padding: 9px 11px 10px;
+    margin-bottom: 10px;
+  }
+  .evidence .ev-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .evidence b {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+  .ev-type {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: hsl(var(--h) var(--s) var(--cat-l));
+    background: hsl(var(--h) var(--s) var(--cat-l-soft) / var(--chip-a));
+    padding: 1px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .ev-req {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .evidence p { margin: 0; color: var(--ink); }
 
   footer {
     border-top: 1px solid var(--line-strong);
@@ -339,8 +377,8 @@
   <h1>Craftsperson<br>Intent Atlas</h1>
   <p class="lede">Every language-craftsperson agent in the guidelines fleet is governed by the same
   underlying doctrine. Each <strong>intent</strong> is one falsifiable claim about how software should be
-  built: the capability it enables, the threat it guards against, the practice that earns it — and the
-  cost it admits to.</p>
+  built: the capability it enables, the threat it guards against, the practice that earns it, the
+  evidence that shows it's being honored — and the cost it admits to.</p>
   <div class="statrow" id="statrow"></div>
 </header>
 
@@ -546,6 +584,10 @@ for (const cat of sectionOrder) {
         <div class="field"><b>Enables</b><p>${esc(d.capability)}</p></div>
         <div class="field"><b>Guards against</b><p>${esc(d.threat)}</p></div>
         <div class="field"><b>Practice</b><p>${esc(d.strategy)}</p></div>
+        ${d.evidence.map(e => `<div class="evidence">
+          <div class="ev-head"><b>Evidence</b><span class="ev-type">${esc(e.type.replace(/_/g," "))}</span>${e.required ? '<span class="ev-req">required</span>' : ''}</div>
+          <p>${esc(e.description)}</p>
+        </div>`).join("")}
         <div class="field"><b>Admitted cost</b><p>${esc(d.tradeoff)}</p></div>
         <div class="field eco-field"><b>Referenced by</b><p>${covered || "—"}</p></div>
       </div>`;

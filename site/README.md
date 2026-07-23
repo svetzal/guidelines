@@ -6,8 +6,9 @@ touches `intents/**` or `site/**`.
 
 - `build.py` — stdlib-only generator (Python 3.11+). Reads
   `intents/craftsperson/*.toml`, distills each record (title, category, tags,
-  confidence, capability/threat/strategy/tradeoff, ecosystem coverage from
-  `scope.paths`), and injects the set as JSON into the template.
+  confidence, capability/threat/strategy/tradeoff, the evidence criteria that
+  show the intent is being honored, ecosystem coverage from `scope.paths`),
+  and injects the set as JSON into the template.
 - `template.html` — the atlas page: an interactive radial map of every intent
   grouped by category, backed by expandable per-intent record cards. Fully
   self-contained (inline CSS/JS, system font stacks, no external requests),

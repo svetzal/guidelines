@@ -45,7 +45,14 @@ def load_intent(path: Path) -> dict:
         "expectation": record.get("expectation", ""),
         "strategy": record.get("strategy", ""),
         "tradeoff": record.get("tradeoff", ""),
-        "evidence": [e.get("type") for e in record.get("evidence", [])],
+        "evidence": [
+            {
+                "type": e.get("type", ""),
+                "description": e.get("description", ""),
+                "required": bool(e.get("required")),
+            }
+            for e in record.get("evidence", [])
+        ],
         "ecosystems": ecosystems,
         "nsources": len(record.get("sources", [])),
     }
