@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craftsperson Intent Atlas</title>
+<style>
+  :root {
+    --bg: #f3f4f2;
+    --surface: #ffffff;
+    --ink: #1d2227;
+    --muted: #5b646c;
+    --faint: #8b939a;
+    --line: #dde0da;
+    --line-strong: #c6cac2;
+    --brass: #8a6c1e;
+    --cat-l: 40%;
+    --cat-l-soft: 46%;
+    --chip-a: 12%;
+    --font-display: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --font-body: "Seravek", "Gill Sans", "Trebuchet MS", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1317;
+      --surface: #161b21;
+      --ink: #e7e5df;
+      --muted: #9aa3ab;
+      --faint: #6b747c;
+      --line: #262d34;
+      --line-strong: #38414a;
+      --brass: #d2a743;
+      --cat-l: 62%;
+      --cat-l-soft: 58%;
+      --chip-a: 16%;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f3f4f2; --surface: #ffffff; --ink: #1d2227; --muted: #5b646c;
+    --faint: #8b939a; --line: #dde0da; --line-strong: #c6cac2; --brass: #8a6c1e;
+    --cat-l: 40%; --cat-l-soft: 46%; --chip-a: 12%;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1317; --surface: #161b21; --ink: #e7e5df; --muted: #9aa3ab;
+    --faint: #6b747c; --line: #262d34; --line-strong: #38414a; --brass: #d2a743;
+    --cat-l: 62%; --cat-l-soft: 58%; --chip-a: 16%;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* category hues */
+  .c-dependencies  { --h: 4;   --s: 62%; }
+  .c-delivery      { --h: 28;  --s: 72%; }
+  .c-performance   { --h: 45;  --s: 78%; }
+  .c-testing       { --h: 220; --s: 15%; }
+  .c-quality       { --h: 92;  --s: 48%; }
+  .c-design        { --h: 148; --s: 45%; }
+  .c-reliability   { --h: 174; --s: 52%; }
+  .c-documentation { --h: 201; --s: 60%; }
+  .c-architecture  { --h: 226; --s: 60%; }
+  .c-collaboration { --h: 276; --s: 48%; }
+  .c-refactoring   { --h: 322; --s: 48%; }
+
+  /* ---------- hero ---------- */
+  header { padding: 72px 0 28px; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 0.98;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin: 10px 0 18px;
+    text-wrap: balance;
+  }
+  .lede {
+    max-width: 62ch;
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0 0 30px;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+  .statrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 40px;
+    border-top: 1px solid var(--line-strong);
+    padding-top: 16px;
+  }
+  .stat { padding: 2px 0 10px; }
+  .stat b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  /* ---------- map ---------- */
+  .map-section { padding: 8px 0 40px; }
+  .map-frame {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px;
+    overflow-x: auto;
+    position: relative;
+  }
+  .map-inner { min-width: 700px; position: relative; }
+  svg { display: block; width: 100%; height: auto; }
+  svg text { font-family: var(--font-body); }
+  .leaf-label {
+    font-size: 12.5px;
+    fill: var(--ink);
+    cursor: pointer;
+  }
+  .cat-arc { cursor: pointer; }
+  .cat-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    fill: var(--bg);
+    pointer-events: none;
+  }
+  .hub-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    fill: var(--ink);
+  }
+  .hub-sub { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; fill: var(--faint); }
+  .leaf-dot { fill: hsl(var(--h) var(--s) var(--cat-l-soft)); }
+  .leaf-line { stroke: hsl(var(--h) var(--s) var(--cat-l-soft) / 55%); stroke-width: 1; }
+  .arc-fill { fill: hsl(var(--h) var(--s) var(--cat-l-soft)); }
+  g.leaf, g.cat { transition: opacity 0.18s ease; }
+  svg.focus g.leaf:not(.hot) { opacity: 0.18; }
+  svg.focus g.cat:not(.hot) .arc-fill { opacity: 0.35; }
+  @media (prefers-reduced-motion: reduce) {
+    g.leaf, g.cat { transition: none; }
+    html { scroll-behavior: auto !important; }
+  }
+  .map-tip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 13px;
+    line-height: 1.35;
+    padding: 8px 11px;
+    border-radius: 4px;
+    max-width: 260px;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+    z-index: 5;
+  }
+  .map-tip .t-cat {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .map-caption {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- catalog ---------- */
+  .catalog { padding: 24px 0 60px; }
+  .cat-section { margin-bottom: 44px; }
+  .cat-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-bottom: 2px solid hsl(var(--h) var(--s) var(--cat-l-soft));
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+  .cat-head h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+    color: hsl(var(--h) var(--s) var(--cat-l));
+  }
+  .cat-head .count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--faint);
+    letter-spacing: 0.08em;
+  }
+  .cardgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 14px;
+    align-items: start;
+  }
+  details.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid hsl(var(--h) var(--s) var(--cat-l-soft));
+    padding: 0;
+  }
+  details.card > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 16px 12px;
+  }
+  details.card > summary::-webkit-details-marker { display: none; }
+  details.card > summary:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: -2px;
+  }
+  .card h3 {
+    font-size: 16.5px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    line-height: 1.3;
+    text-wrap: balance;
+    padding-right: 18px;
+    position: relative;
+  }
+  .card h3::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: var(--font-mono);
+    color: var(--faint);
+    font-weight: 400;
+  }
+  details[open].card h3::after { content: "–"; }
+  .tagrow { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: hsl(var(--h) var(--s) var(--cat-l));
+    background: hsl(var(--h) var(--s) var(--cat-l-soft) / var(--chip-a));
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .confbar {
+    flex: 0 0 64px;
+    height: 3px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .confbar i {
+    display: block;
+    height: 100%;
+    background: hsl(var(--h) var(--s) var(--cat-l-soft));
+  }
+  .ecos { margin-left: auto; text-align: right; letter-spacing: 0.04em; }
+  .card-body {
+    border-top: 1px solid var(--line);
+    padding: 12px 16px 16px;
+    font-size: 13.5px;
+  }
+  .field { margin-bottom: 10px; }
+  .field:last-child { margin-bottom: 0; }
+  .field b {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 2px;
+  }
+  .field p { margin: 0; color: var(--muted); }
+  .field.eco-field p { font-family: var(--font-mono); font-size: 11.5px; }
+
+  footer {
+    border-top: 1px solid var(--line-strong);
+    padding: 20px 0 48px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--faint);
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 640px) {
+    header { padding-top: 48px; }
+    .statrow { gap: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow">guidelines / intents / craftsperson</div>
+  <h1>Craftsperson<br>Intent Atlas</h1>
+  <p class="lede">Every language-craftsperson agent in the guidelines fleet is governed by the same
+  underlying doctrine. Each <strong>intent</strong> is one falsifiable claim about how software should be
+  built: the capability it enables, the threat it guards against, the practice that earns it — and the
+  cost it admits to.</p>
+  <div class="statrow" id="statrow"></div>
+</header>
+
+<section class="map-section wrap" aria-label="Radial map of intents">
+  <div class="map-frame">
+    <div class="map-inner" id="mapInner"></div>
+    <div class="map-tip" id="mapTip"></div>
+  </div>
+  <p class="map-caption">Hover to inspect · click an intent to open its record below</p>
+</section>
+
+<main class="catalog wrap" id="catalog"></main>
+
+<footer class="wrap" id="foot"></footer>
+
+<script>
+const DATA = /*__DATA__*/;
+
+const CAT_ORDER = ["delivery","performance","testing","quality","design",
+                   "reliability","documentation","architecture","collaboration",
+                   "refactoring","dependencies"];
+const ECO_LABEL = { clojure:"clojure", "cpp-qt":"c++/qt", dotnet:".net", elixir:"elixir",
+                    go:"go", jvm:"jvm", python:"python", ruby:"ruby", rust:"rust",
+                    swift:"swift", typescript:"ts" };
+const ALL_ECOS = Object.keys(ECO_LABEL);
+
+const byCat = {};
+for (const d of DATA) (byCat[d.category] ??= []).push(d);
+for (const c in byCat) byCat[c].sort((a,b)=>a.title.localeCompare(b.title));
+
+/* ---------- stats ---------- */
+const nSources = DATA.reduce((s,d)=>s+d.nsources,0);
+const avgConf = DATA.reduce((s,d)=>s+d.confidence,0)/DATA.length;
+document.getElementById("statrow").innerHTML = [
+  [DATA.length, "intents"],
+  [Object.keys(byCat).length, "categories"],
+  [ALL_ECOS.length, "language ecosystems"],
+  [nSources, "source citations"],
+  [avgConf.toFixed(2), "mean confidence"],
+].map(([b,l])=>`<div class="stat"><b>${b}</b><span>${l}</span></div>`).join("");
+
+/* ---------- radial map ---------- */
+const NS = "http://www.w3.org/2000/svg";
+const SIZE = 1280, CX = SIZE/2, CY = SIZE/2;
+const R_ARC_IN = 200, R_ARC_OUT = 236, R_LEAF = 318, R_LABEL = 330;
+const GAP_DEG = 2.6;
+
+function el(name, attrs, parent) {
+  const e = document.createElementNS(NS, name);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const pol = (r,a) => [CX + r*Math.cos(a), CY + r*Math.sin(a)];
+
+function arcPath(r0, r1, a0, a1) {
+  const [x0,y0]=pol(r1,a0), [x1,y1]=pol(r1,a1), [x2,y2]=pol(r0,a1), [x3,y3]=pol(r0,a0);
+  const large = (a1-a0) > Math.PI ? 1 : 0;
+  return `M${x0},${y0} A${r1},${r1} 0 ${large} 1 ${x1},${y1} L${x2},${y2} A${r0},${r0} 0 ${large} 0 ${x3},${y3} Z`;
+}
+
+const svg = el("svg", { viewBox:`0 0 ${SIZE} ${SIZE}`, role:"img",
+  "aria-label":"Radial map: 43 craftsperson intents in 11 categories" });
+document.getElementById("mapInner").appendChild(svg);
+
+const tip = document.getElementById("mapTip");
+const totalGap = GAP_DEG * CAT_ORDER.length;
+// small categories get a minimum angular span so their arc labels fit
+const MIN_UNITS = 3;
+const units = c => Math.max(byCat[c].length, MIN_UNITS);
+const totalUnits = CAT_ORDER.reduce((s,c)=>s+units(c), 0);
+const degPerUnit = (360 - totalGap) / totalUnits;
+const SHORT = { documentation:"docs", dependencies:"deps", performance:"perf",
+                refactoring:"refactor", collaboration:"collab", architecture:"arch",
+                reliability:"reliab" };
+let angle = -90 - degPerUnit * (units(CAT_ORDER[0]) / 2); // center first cat at top
+
+function showTip(evt, d) {
+  tip.innerHTML = `<span class="t-cat">${d.category} · conf ${d.confidence.toFixed(2)}</span>${d.title}`;
+  const frame = tip.parentElement.getBoundingClientRect();
+  tip.style.left = Math.min(evt.clientX - frame.left + 14, frame.width - 270) + "px";
+  tip.style.top  = (evt.clientY - frame.top + 14) + "px";
+  tip.style.opacity = 1;
+}
+const hideTip = () => tip.style.opacity = 0;
+
+for (const cat of CAT_ORDER) {
+  const items = byCat[cat];
+  const span = degPerUnit * units(cat);
+  const degPerLeaf = span / items.length;
+  const a0 = angle * Math.PI/180, a1 = (angle + span) * Math.PI/180;
+
+  const gCat = el("g", { class:`cat c-${cat}` }, svg);
+  gCat.dataset.cat = cat;
+  el("path", { class:"cat-arc arc-fill", d: arcPath(R_ARC_IN, R_ARC_OUT, a0, a1) }, gCat);
+
+  // category label along the arc
+  const mid = (a0+a1)/2;
+  const flip = Math.cos(mid) < 0 ? (mid > 0 && mid < Math.PI) : (mid > Math.PI/2 || mid < -Math.PI/2);
+  const upsideDown = Math.sin(mid) > 0; // bottom half
+  const rText = (R_ARC_IN + R_ARC_OUT)/2 + (upsideDown ? -4.5 : 4.5);
+  const pid = "arcp-" + cat;
+  const [sx,sy] = pol(rText, upsideDown ? a1 : a0);
+  const [ex,ey] = pol(rText, upsideDown ? a0 : a1);
+  const largeL = (a1-a0) > Math.PI ? 1 : 0;
+  el("path", { id: pid, d: `M${sx},${sy} A${rText},${rText} 0 ${largeL} ${upsideDown?0:1} ${ex},${ey}`, fill:"none" }, gCat);
+  const t = el("text", { class:"cat-label" }, gCat);
+  const tp = el("textPath", { href:"#"+pid, startOffset:"50%", "text-anchor":"middle" }, t);
+  tp.textContent = cat;
+  // shrink to the short label if the full name overflows the arc
+  const arcLen = rText * (a1 - a0);
+  requestAnimationFrame(() => {
+    if (t.getComputedTextLength() > arcLen - 12 && SHORT[cat]) {
+      tp.textContent = SHORT[cat];
+      if (t.getComputedTextLength() > arcLen - 12) tp.textContent = cat.slice(0,3);
+    }
+  });
+
+  // leaves
+  items.forEach((d, i) => {
+    const la = (angle + degPerLeaf*(i+0.5)) * Math.PI/180;
+    const deg = la * 180/Math.PI;
+    const gLeaf = el("g", { class:`leaf c-${cat}` }, svg);
+    gLeaf.dataset.slug = d.slug; gLeaf.dataset.cat = cat;
+    const [x0,y0] = pol(R_ARC_OUT + 3, la);
+    const [x1,y1] = pol(R_LEAF - 7, la);
+    el("line", { class:"leaf-line", x1:x0, y1:y0, x2:x1, y2:y1 }, gLeaf);
+    const [dx,dy] = pol(R_LEAF, la);
+    el("circle", { class:"leaf-dot", cx:dx, cy:dy, r:3.4 }, gLeaf);
+    const left = Math.cos(la) < 0;
+    const [lx,ly] = pol(R_LABEL, la);
+    const rot = left ? deg + 180 : deg;
+    const lbl = el("text", { class:"leaf-label",
+      x:lx, y:ly, dy:"0.35em",
+      "text-anchor": left ? "end" : "start",
+      transform:`rotate(${rot} ${lx} ${ly})` }, gLeaf);
+    lbl.textContent = d.title;
+    gLeaf.addEventListener("mouseenter", e => {
+      svg.classList.add("focus"); gLeaf.classList.add("hot");
+      svg.querySelector(`g.cat[data-cat="${cat}"]`).classList.add("hot");
+      showTip(e, d);
+    });
+    gLeaf.addEventListener("mousemove", e => showTip(e, d));
+    gLeaf.addEventListener("mouseleave", () => {
+      svg.classList.remove("focus"); gLeaf.classList.remove("hot");
+      svg.querySelector(`g.cat[data-cat="${cat}"]`).classList.remove("hot");
+      hideTip();
+    });
+    gLeaf.addEventListener("click", () => openCard(d.slug));
+  });
+
+  gCat.addEventListener("mouseenter", () => {
+    svg.classList.add("focus"); gCat.classList.add("hot");
+    svg.querySelectorAll(`g.leaf[data-cat="${cat}"]`).forEach(g => g.classList.add("hot"));
+  });
+  gCat.addEventListener("mouseleave", () => {
+    svg.classList.remove("focus"); gCat.classList.remove("hot");
+    svg.querySelectorAll("g.leaf.hot").forEach(g => g.classList.remove("hot"));
+  });
+  gCat.addEventListener("click", () => {
+    document.getElementById("sec-"+cat).scrollIntoView({ behavior:"smooth", block:"start" });
+  });
+
+  angle += span + GAP_DEG;
+}
+
+// hub
+const hub1 = el("text", { class:"hub-title", x:CX, y:CY-6, "text-anchor":"middle" }, svg);
+hub1.textContent = "craftsperson";
+const hub2 = el("text", { class:"hub-sub", x:CX, y:CY+18, "text-anchor":"middle" }, svg);
+hub2.textContent = DATA.length + " INTENTS · " + CAT_ORDER.length + " CATEGORIES";
+
+/* ---------- catalog ---------- */
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const catalog = document.getElementById("catalog");
+const sectionOrder = [...CAT_ORDER].sort((a,b)=>byCat[b].length-byCat[a].length || a.localeCompare(b));
+
+for (const cat of sectionOrder) {
+  const items = byCat[cat];
+  const sec = document.createElement("section");
+  sec.className = `cat-section c-${cat}`;
+  sec.id = "sec-" + cat;
+  sec.innerHTML = `<div class="cat-head"><h2>${cat}</h2>
+    <span class="count">${items.length} intent${items.length>1?"s":""}</span></div>`;
+  const grid = document.createElement("div");
+  grid.className = "cardgrid";
+  for (const d of items) {
+    const covered = d.ecosystems.map(e=>ECO_LABEL[e] ?? e).join(" · ");
+    const card = document.createElement("details");
+    card.className = "card";
+    card.id = "i-" + d.slug;
+    card.innerHTML = `
+      <summary>
+        <h3>${esc(d.title)}</h3>
+        <div class="tagrow">${d.tags.map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
+        <div class="meta">
+          <span class="confbar"><i style="width:${(d.confidence*100).toFixed(0)}%"></i></span>
+          <span>${d.confidence.toFixed(2)}</span>
+          <span class="ecos">${d.ecosystems.length}/${ALL_ECOS.length} ecosystems</span>
+        </div>
+      </summary>
+      <div class="card-body">
+        <div class="field"><b>Enables</b><p>${esc(d.capability)}</p></div>
+        <div class="field"><b>Guards against</b><p>${esc(d.threat)}</p></div>
+        <div class="field"><b>Practice</b><p>${esc(d.strategy)}</p></div>
+        <div class="field"><b>Admitted cost</b><p>${esc(d.tradeoff)}</p></div>
+        <div class="field eco-field"><b>Referenced by</b><p>${covered || "—"}</p></div>
+      </div>`;
+    grid.appendChild(card);
+  }
+  sec.appendChild(grid);
+  catalog.appendChild(sec);
+}
+
+function openCard(slug) {
+  const card = document.getElementById("i-" + slug);
+  if (!card) return;
+  card.open = true;
+  card.scrollIntoView({ behavior:"smooth", block:"center" });
+}
+
+document.getElementById("foot").textContent =
+  `Derived from ${DATA.length} intent records in guidelines/intents/craftsperson · `
+  + `status: hypothesized · built __BUILT__`;
+</script>
+</body>
+</html>
