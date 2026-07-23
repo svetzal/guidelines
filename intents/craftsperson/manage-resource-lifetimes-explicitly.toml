@@ -1,5 +1,7 @@
 id = "guidelines.intent.manage-resource-lifetimes-explicitly"
 title = "Manage resource lifetimes explicitly"
+category = "reliability"
+tags = ["resource-management", "cleanup", "ownership"]
 status = "hypothesized"
 confidence = 0.97
 capability = "Files, connections, processes, tasks, subscriptions, and other resources are released deterministically on every exit path."

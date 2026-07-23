@@ -1,5 +1,7 @@
 id = "guidelines.intent.escalate-consequential-tradeoffs"
 title = "Escalate consequential tradeoffs"
+category = "collaboration"
+tags = ["decision-making", "escalation", "tradeoffs"]
 status = "hypothesized"
 confidence = 0.98
 capability = "High-impact choices are made by someone with the authority and context to accept their consequences."

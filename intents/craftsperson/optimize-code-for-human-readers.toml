@@ -1,5 +1,7 @@
 id = "guidelines.intent.optimize-code-for-human-readers"
 title = "Optimize code for human readers"
+category = "design"
+tags = ["readability", "clarity", "maintainability"]
 status = "hypothesized"
 confidence = 0.99
 capability = "A future maintainer can understand intent and change behavior safely without reconstructing clever hidden reasoning."

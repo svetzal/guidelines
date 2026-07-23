@@ -1,5 +1,7 @@
 id = "guidelines.intent.cover-edge-cases-and-failure-paths"
 title = "Cover edge cases and failure paths"
+category = "testing"
+tags = ["edge-cases", "failure-paths", "risk-based-testing"]
 status = "hypothesized"
 confidence = 0.98
 capability = "The system retains intentional behavior at boundaries and under expected failure conditions."

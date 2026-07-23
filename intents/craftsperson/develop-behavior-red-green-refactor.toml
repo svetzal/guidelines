@@ -1,5 +1,7 @@
 id = "guidelines.intent.develop-behavior-red-green-refactor"
 title = "Develop behavior through red-green-refactor"
+category = "testing"
+tags = ["tdd", "red-green-refactor", "behavior"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each behavior change begins with executable evidence and finishes with a safe opportunity to improve its design."

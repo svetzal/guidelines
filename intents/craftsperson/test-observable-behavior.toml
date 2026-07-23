@@ -1,5 +1,7 @@
 id = "guidelines.intent.test-observable-behavior"
 title = "Test observable behavior, not implementation"
+category = "testing"
+tags = ["behavior", "public-boundaries", "refactor-safety"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Tests detect meaningful regressions while allowing implementation structure to improve."

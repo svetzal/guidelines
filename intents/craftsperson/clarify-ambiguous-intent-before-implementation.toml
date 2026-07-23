@@ -1,5 +1,7 @@
 id = "guidelines.intent.clarify-ambiguous-intent-before-implementation"
 title = "Clarify ambiguous intent before implementation"
+category = "collaboration"
+tags = ["requirements", "decision-making", "ambiguity"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Implemented behavior reflects the decision the product or domain actually requires."

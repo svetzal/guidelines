@@ -1,5 +1,7 @@
 id = "guidelines.intent.make-invalid-states-explicit"
 title = "Make invalid states explicit"
+category = "design"
+tags = ["domain-modeling", "type-safety", "invariants"]
 status = "hypothesized"
 confidence = 0.96
 capability = "Invalid combinations are rejected at construction or handled as visible alternatives rather than circulating as ordinary domain state."

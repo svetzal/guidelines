@@ -1,5 +1,7 @@
 id = "guidelines.intent.isolate-functional-core-from-effects"
 title = "Isolate the functional core from effects"
+category = "architecture"
+tags = ["functional-core", "side-effects", "separation-of-concerns"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Business rules can be understood and tested without databases, networks, filesystems, clocks, or runtime orchestration."

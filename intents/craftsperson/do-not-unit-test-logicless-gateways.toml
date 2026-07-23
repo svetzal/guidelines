@@ -1,5 +1,7 @@
 id = "guidelines.intent.do-not-unit-test-logicless-gateways"
 title = "Do not unit-test logicless gateways"
+category = "testing"
+tags = ["gateways", "unit-testing", "test-value"]
 status = "hypothesized"
 confidence = 0.97
 capability = "The test suite spends effort on decisions and integration contracts rather than reproducing trivial forwarding code."

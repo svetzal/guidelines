@@ -1,5 +1,7 @@
 id = "guidelines.intent.make-dependency-resolution-reproducible"
 title = "Make dependency resolution reproducible"
+category = "dependencies"
+tags = ["reproducibility", "lockfiles", "build-stability"]
 status = "hypothesized"
 confidence = 0.97
 capability = "Developers, CI, and deployed artifacts resolve a deliberately equivalent dependency set."

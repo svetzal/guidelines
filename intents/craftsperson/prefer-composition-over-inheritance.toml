@@ -1,5 +1,7 @@
 id = "guidelines.intent.prefer-composition-over-inheritance"
 title = "Prefer composition over inheritance"
+category = "design"
+tags = ["composition", "inheritance", "coupling"]
 status = "hypothesized"
 confidence = 0.97
 capability = "Behavior can evolve through replaceable collaborators without coupling change through a deep hierarchy."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.review-with-psychological-safety"
 title = "Review with psychological safety"
+category = "collaboration"
+tags = ["code-review", "psychological-safety", "feedback"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Review participants can examine correctness and design risks candidly without personal attack or defensiveness."

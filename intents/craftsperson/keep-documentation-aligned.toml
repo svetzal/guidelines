@@ -1,5 +1,7 @@
 id = "guidelines.intent.keep-documentation-aligned"
 title = "Keep documentation aligned with behavior"
+category = "documentation"
+tags = ["synchronization", "behavior", "maintenance"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users and maintainers can rely on documentation as a current description of supported behavior and decisions."

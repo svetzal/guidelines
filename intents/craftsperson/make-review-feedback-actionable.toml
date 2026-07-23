@@ -1,5 +1,7 @@
 id = "guidelines.intent.make-review-feedback-actionable"
 title = "Make review feedback actionable"
+category = "collaboration"
+tags = ["code-review", "feedback", "remediation"]
 status = "hypothesized"
 confidence = 0.98
 capability = "A contributor can understand, prioritize, and resolve each review finding without guessing the reviewer's intent."

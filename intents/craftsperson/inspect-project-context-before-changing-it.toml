@@ -1,5 +1,7 @@
 id = "guidelines.intent.inspect-project-context-before-changing-it"
 title = "Inspect project context before changing it"
+category = "delivery"
+tags = ["discovery", "project-conventions", "change-safety"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Changes preserve the project's deliberate architecture, constraints, workflows, and compatibility promises."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.require-passing-tests-before-completion"
 title = "Require passing tests before completion"
+category = "quality"
+tags = ["test-gate", "completion", "regression-safety"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Completed work preserves all behavior already protected by the project's executable specification."

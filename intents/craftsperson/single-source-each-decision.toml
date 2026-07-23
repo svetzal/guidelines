@@ -1,5 +1,7 @@
 id = "guidelines.intent.single-source-each-decision"
 title = "Single-source each decision"
+category = "design"
+tags = ["knowledge-duplication", "single-source-of-truth", "maintainability"]
 status = "hypothesized"
 confidence = 0.99
 capability = "A domain or engineering decision can change consistently from one authoritative representation."

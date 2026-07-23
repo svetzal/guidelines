@@ -1,5 +1,7 @@
 id = "guidelines.intent.mock-only-owned-boundaries"
 title = "Mock only owned boundaries"
+category = "testing"
+tags = ["test-doubles", "boundaries", "contracts"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Tests isolate external effects without coupling themselves to third-party implementation details."

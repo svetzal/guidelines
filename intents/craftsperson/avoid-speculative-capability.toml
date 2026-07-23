@@ -1,5 +1,7 @@
 id = "guidelines.intent.avoid-speculative-capability"
 title = "Avoid speculative capability"
+category = "design"
+tags = ["yagni", "scope-control", "maintainability"]
 status = "hypothesized"
 confidence = 0.99
 capability = "The product and codebase stay focused on behavior with demonstrated value."

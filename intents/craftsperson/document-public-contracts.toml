@@ -1,5 +1,7 @@
 id = "guidelines.intent.document-public-contracts"
 title = "Document public contracts"
+category = "documentation"
+tags = ["public-api", "contracts", "consumer-guidance"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Consumers can use a public interface correctly without reading its implementation."

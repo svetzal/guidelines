@@ -1,5 +1,7 @@
 id = "guidelines.intent.honor-the-project-quality-gate"
 title = "Honor the project quality gate"
+category = "quality"
+tags = ["quality-gates", "project-conventions", "completion"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Completed changes satisfy the repository's agreed automated definition of technical readiness."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.make-tests-readable-specifications"
 title = "Make tests readable behavioral specifications"
+category = "testing"
+tags = ["readability", "executable-specification", "behavior"]
 status = "hypothesized"
 confidence = 0.98
 capability = "A reader can learn required behavior and diagnose a failure directly from the test suite."

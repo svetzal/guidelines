@@ -1,5 +1,7 @@
 id = "guidelines.intent.put-gateways-at-external-boundaries"
 title = "Put gateways at external boundaries"
+category = "architecture"
+tags = ["gateways", "external-systems", "dependency-inversion"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Core behavior can evolve and be tested independently from external systems and vendor implementations."

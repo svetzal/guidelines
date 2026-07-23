@@ -1,5 +1,7 @@
 id = "guidelines.intent.delay-abstraction-until-evidence"
 title = "Delay abstraction until evidence justifies it"
+category = "design"
+tags = ["abstraction", "evidence", "duplication"]
 status = "hypothesized"
 confidence = 0.98
 capability = "The design remains easy to change while its real variation points are still being discovered."

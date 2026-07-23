@@ -1,5 +1,7 @@
 id = "guidelines.intent.keep-gateways-logic-free"
 title = "Keep gateways free of business logic"
+category = "architecture"
+tags = ["gateways", "business-logic", "separation-of-concerns"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Business decisions remain visible, portable, and directly testable in the core."

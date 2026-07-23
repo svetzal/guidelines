@@ -1,5 +1,7 @@
 id = "guidelines.intent.validate-untrusted-input-at-boundaries"
 title = "Validate untrusted input at boundaries"
+category = "architecture"
+tags = ["validation", "trust-boundaries", "security"]
 status = "hypothesized"
 confidence = 0.97
 capability = "Core code operates on values whose shape and invariants are already known."

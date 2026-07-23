@@ -1,5 +1,7 @@
 id = "guidelines.intent.apply-simple-design-priorities"
 title = "Apply simple design priorities in order"
+category = "design"
+tags = ["simplicity", "design-priorities", "maintainability"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Design decisions resolve toward the smallest structure that completely and clearly supports required behavior."

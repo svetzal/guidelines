@@ -1,5 +1,7 @@
 id = "guidelines.intent.use-purpose-specific-test-layers"
 title = "Use purpose-specific test layers"
+category = "testing"
+tags = ["test-strategy", "test-pyramid", "risk-based-testing"]
 status = "hypothesized"
 confidence = 0.96
 capability = "The test suite provides fast local feedback and credible evidence across real system boundaries."

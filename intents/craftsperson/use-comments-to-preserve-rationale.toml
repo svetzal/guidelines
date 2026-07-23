@@ -1,5 +1,7 @@
 id = "guidelines.intent.use-comments-to-preserve-rationale"
 title = "Use comments to preserve rationale"
+category = "documentation"
+tags = ["comments", "rationale", "maintainability"]
 status = "hypothesized"
 confidence = 0.97
 capability = "A future maintainer can recover why a surprising constraint or choice exists."

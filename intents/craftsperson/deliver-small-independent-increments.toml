@@ -1,5 +1,7 @@
 id = "guidelines.intent.deliver-small-independent-increments"
 title = "Deliver small independent increments"
+category = "delivery"
+tags = ["incremental-delivery", "change-scope", "reversibility"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each change can be understood, validated, integrated, and reversed without carrying unrelated risk."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.use-coverage-as-a-risk-signal"
 title = "Use coverage as a risk signal"
+category = "testing"
+tags = ["coverage", "risk", "critical-paths"]
 status = "hypothesized"
 confidence = 0.97
 capability = "Important behavior retains executable regression protection as the system grows."

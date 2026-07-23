@@ -1,5 +1,7 @@
 id = "guidelines.intent.audit-dependency-risk"
 title = "Audit dependency risk"
+category = "dependencies"
+tags = ["security", "vulnerability-management", "lifecycle-risk"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Known dependency vulnerabilities and lifecycle risks are detected before they become shipped exposure or emergency migration debt."

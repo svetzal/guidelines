@@ -1,5 +1,7 @@
 id = "guidelines.intent.preserve-behavior-during-refactoring"
 title = "Preserve behavior during refactoring"
+category = "refactoring"
+tags = ["behavior-preservation", "small-steps", "test-safety"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Internal design can improve without silently changing externally relied-upon behavior."

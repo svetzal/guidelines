@@ -1,5 +1,7 @@
 id = "guidelines.intent.minimize-dependency-surface"
 title = "Minimize dependency surface"
+category = "dependencies"
+tags = ["supply-chain", "complexity", "maintainability"]
 status = "hypothesized"
 confidence = 0.97
 capability = "The system retains a small, understandable supply-chain and compatibility surface."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.preserve-error-context"
 title = "Preserve actionable error context"
+category = "reliability"
+tags = ["error-handling", "diagnostics", "observability"]
 status = "hypothesized"
 confidence = 0.96
 capability = "A failure can be diagnosed at its handling boundary without reproducing it or losing its original cause."

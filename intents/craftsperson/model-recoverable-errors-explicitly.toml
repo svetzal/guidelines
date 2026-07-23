@@ -1,5 +1,7 @@
 id = "guidelines.intent.model-recoverable-errors-explicitly"
 title = "Model recoverable errors explicitly"
+category = "reliability"
+tags = ["error-modeling", "recoverability", "contracts"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Callers can distinguish, handle, and test expected failure outcomes without parsing incidental diagnostics."

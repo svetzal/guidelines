@@ -1,5 +1,7 @@
 id = "guidelines.intent.verify-before-declaring-completion"
 title = "Verify before declaring completion"
+category = "quality"
+tags = ["verification", "completion", "evidence"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Completion claims accurately describe working, checked behavior rather than implementation effort or expectation."

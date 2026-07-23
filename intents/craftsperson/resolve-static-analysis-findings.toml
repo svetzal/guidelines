@@ -1,5 +1,7 @@
 id = "guidelines.intent.resolve-static-analysis-findings"
 title = "Resolve static-analysis findings"
+category = "quality"
+tags = ["static-analysis", "warnings", "automation"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Cheap mechanically detectable defects and policy violations are removed before delivery."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.require-canonical-formatting"
 title = "Require canonical formatting"
+category = "quality"
+tags = ["formatting", "automation", "consistency"]
 status = "hypothesized"
 confidence = 0.99
 capability = "Source changes remain visually consistent and reviews focus on behavior rather than personal formatting choices."

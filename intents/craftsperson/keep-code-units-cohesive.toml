@@ -1,5 +1,7 @@
 id = "guidelines.intent.keep-code-units-cohesive"
 title = "Keep code units cohesive"
+category = "design"
+tags = ["cohesion", "single-responsibility", "maintainability"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Each unit can be understood and changed for one coherent reason without unrelated behavior moving with it."

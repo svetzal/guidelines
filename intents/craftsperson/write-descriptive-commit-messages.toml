@@ -1,5 +1,7 @@
 id = "guidelines.intent.write-descriptive-commit-messages"
 title = "Write descriptive commit messages"
+category = "delivery"
+tags = ["version-control", "history", "rationale"]
 status = "hypothesized"
 confidence = 0.98
 capability = "Future maintainers can recover the purpose and rationale of a change from version history."

@@ -1,5 +1,7 @@
 id = "guidelines.intent.optimize-from-measurement"
 title = "Optimize from measurement"
+category = "performance"
+tags = ["profiling", "evidence", "optimization"]
 status = "hypothesized"
 confidence = 0.96
 capability = "Performance work improves an important observed constraint without sacrificing clarity for imagined bottlenecks."
