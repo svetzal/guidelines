@@ -158,9 +158,100 @@
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
-  .canvas-wrap { position: relative; flex: 1; min-height: 590px; overflow: hidden; }
-  canvas { display: block; width: 100%; height: 100%; cursor: grab; }
-  canvas.dragging { cursor: grabbing; }
+  .graph-stage {
+    position: relative;
+    flex: 1;
+    min-height: 590px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at center, color-mix(in srgb, var(--ink) 3%, transparent), transparent 66%);
+  }
+  .graph-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+  }
+  .graph-svg:active { cursor: grabbing; }
+  .graph-edge {
+    fill: none;
+    stroke: var(--rule);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transition: opacity .15s ease, stroke .15s ease, stroke-width .15s ease;
+  }
+  .graph-edge.specializes { stroke: var(--rule-strong); }
+  .graph-edge.related-to { stroke-dasharray: 5 4; }
+  .graph-edge.category { opacity: .35; }
+  .graph-edge.hot {
+    stroke: var(--accent);
+    stroke-width: 2;
+    opacity: 1;
+  }
+  .graph-node {
+    cursor: pointer;
+    outline: none;
+    transition: opacity .15s ease;
+  }
+  .graph-node .node-surface {
+    fill: var(--panel);
+    stroke: var(--node-color);
+    stroke-width: 1.4;
+    vector-effect: non-scaling-stroke;
+    transition: fill .15s ease, stroke-width .15s ease, filter .15s ease;
+  }
+  .graph-node.general .node-surface { stroke-width: 2; }
+  .graph-node.specialization .node-surface {
+    fill: color-mix(in srgb, var(--accent) 8%, var(--panel));
+    stroke: var(--accent);
+  }
+  .graph-node.category .node-surface {
+    fill: var(--node-color);
+    stroke: var(--panel);
+    stroke-width: 2;
+  }
+  .graph-node text {
+    fill: var(--ink);
+    font-family: var(--ui);
+    pointer-events: none;
+    text-anchor: middle;
+  }
+  .graph-node .node-title { font-size: 10.5px; font-weight: 600; }
+  .graph-node.general .node-title { font-size: 11.5px; }
+  .graph-node.category .node-title {
+    fill: var(--panel);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .graph-node .node-kind {
+    fill: var(--faint);
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .graph-node.hot .node-surface,
+  .graph-node.selected .node-surface,
+  .graph-node:focus-visible .node-surface {
+    stroke-width: 3;
+    filter: drop-shadow(0 5px 8px rgb(0 0 0 / 18%));
+  }
+  .graph-node.selected .node-surface { fill: color-mix(in srgb, var(--node-color) 13%, var(--panel)); }
+  .graph-viewport.has-focus .graph-node:not(.connected),
+  .graph-viewport.has-focus .graph-edge:not(.hot) { opacity: .13; }
+  .graph-zoom {
+    display: flex;
+    gap: 5px;
+    align-items: end;
+  }
+  .graph-zoom button {
+    min-width: 38px;
+    padding-inline: 9px;
+    font-family: var(--mono);
+  }
   .graph-empty {
     position: absolute; inset: 0; display: none; place-items: center;
     color: var(--muted); font-family: var(--ui);
@@ -286,7 +377,7 @@
     header { padding-top: 42px; min-height: 0; }
     .section-head { display: block; }
     .section-head p { margin-top: 10px; }
-    .canvas-wrap { min-height: 480px; }
+    .graph-stage { min-height: 480px; }
     .card-body, .examples { grid-template-columns: 1fr; }
     .field.wide, .examples { grid-column: 1; }
   }
@@ -328,10 +419,15 @@
             <label for="graphSearch">Find in graph</label>
             <input id="graphSearch" type="search" placeholder="Try Ruff, supervision, documentation…">
           </div>
+          <div class="graph-zoom" aria-label="Graph view controls">
+            <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+            <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+            <button id="fitGraph" type="button">Fit</button>
+          </div>
           <button id="resetGraph" type="button">Recompose</button>
         </div>
-        <div class="canvas-wrap" id="canvasWrap">
-          <canvas id="graph" role="img" aria-label="Interactive graph of intent relationships"></canvas>
+        <div class="graph-stage" id="graphStage">
+          <svg class="graph-svg" id="graph" role="img" aria-label="Interactive graph of intent relationships"></svg>
           <div class="graph-tip" id="graphTip"></div>
           <div class="graph-empty" id="graphEmpty">No intents match this graph search.</div>
         </div>
@@ -346,8 +442,8 @@
         <div class="empty-mark">∴</div>
         <div class="label">How to read this field</div>
         <h3>Select an intent</h3>
-        <p>Large circles are generalized intents. Smaller bright nodes are
-        ecosystem-specific practices. Diamond landmarks are categories.</p>
+        <p>Large labelled cards are generalized intents. Compact pills are
+        ecosystem-specific practices. Solid landmarks are categories.</p>
       </aside>
     </div>
   </section>
@@ -385,6 +481,7 @@
 </footer>
 
 <script>/*__HLJS__*/</script>
+<script>/*__D3__*/</script>
 <script>
 const DATA = /*__DATA__*/;
 const CATEGORIES = ["delivery","performance","testing","quality","design","reliability",
@@ -424,28 +521,36 @@ document.getElementById("catalogCategory").innerHTML =
   CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
 
 /* Graph ------------------------------------------------------------------ */
-const canvas = document.getElementById("graph");
-const wrap = document.getElementById("canvasWrap");
-const ctx = canvas.getContext("2d");
+const graphStage = document.getElementById("graphStage");
+const graphSvg = d3.select("#graph");
 const tip = document.getElementById("graphTip");
-let graphNodes = [], graphEdges = [], hovered = null, selected = null, dragged = null;
-let width = 0, height = 0, dpr = 1, raf = 0, tick = 0;
+let graphNodes = [], graphEdges = [], selected = null;
+let graphWidth = 0, graphHeight = 0, simulation = null;
+let viewport = null, edgeSelection = null, nodeSelection = null;
 let graphScope = "", graphQuery = "";
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const zoomBehavior = d3.zoom()
+  .scaleExtent([.28, 4])
+  .on("zoom", event => viewport?.attr("transform", event.transform));
+graphSvg.call(zoomBehavior).on("dblclick.zoom", null);
 
-function cssColor(name) {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+function resizeGraph() {
+  const rect = graphStage.getBoundingClientRect();
+  graphWidth = Math.max(320, rect.width);
+  graphHeight = Math.max(420, rect.height);
+  graphSvg.attr("viewBox", `0 0 ${graphWidth} ${graphHeight}`);
+  const categories = graphNodes.filter(node => node.kind === "category");
+  categories.forEach((node, index) => {
+    const angle = -Math.PI / 2 + index * Math.PI * 2 / Math.max(categories.length, 1);
+    node.fx = graphWidth / 2 + Math.cos(angle) * graphWidth * .38;
+    node.fy = graphHeight / 2 + Math.sin(angle) * graphHeight * .39;
+  });
+  if (simulation) {
+    simulation.force("center", d3.forceCenter(graphWidth / 2, graphHeight / 2));
+    simulation.alpha(.18).restart();
+  }
 }
-function resizeCanvas() {
-  const rect = wrap.getBoundingClientRect();
-  dpr = Math.min(devicePixelRatio || 1, 2);
-  width = rect.width; height = rect.height;
-  canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-  canvas.style.width = width + "px"; canvas.style.height = height + "px";
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  draw();
-}
-new ResizeObserver(resizeCanvas).observe(wrap);
+new ResizeObserver(resizeGraph).observe(graphStage);
 
 function visibleRecords() {
   let records = graphScope
@@ -465,7 +570,7 @@ function visibleRecords() {
 }
 
 function composeGraph() {
-  cancelAnimationFrame(raf);
+  simulation?.stop();
   const records = visibleRecords();
   const activeCategories = CATEGORIES.filter(c => records.some(d => d.category === c));
   const nodes = [];
@@ -473,19 +578,25 @@ function composeGraph() {
   activeCategories.forEach((category, index) => {
     const angle = -Math.PI / 2 + index * Math.PI * 2 / activeCategories.length;
     const node = { key:"category/" + category, title:category, category, kind:"category",
-      x:width/2 + Math.cos(angle)*width*.36, y:height/2 + Math.sin(angle)*height*.37,
-      vx:0, vy:0, anchorX:width/2 + Math.cos(angle)*width*.36,
-      anchorY:height/2 + Math.sin(angle)*height*.37, r:10 };
+      x:graphWidth/2 + Math.cos(angle)*graphWidth*.38,
+      y:graphHeight/2 + Math.sin(angle)*graphHeight*.39,
+      fx:graphWidth/2 + Math.cos(angle)*graphWidth*.38,
+      fy:graphHeight/2 + Math.sin(angle)*graphHeight*.39,
+      width:92, height:30, radius:52 };
     nodes.push(node); nodeMap.set(node.key,node);
   });
   records.forEach((record,index) => {
     const categoryIndex = activeCategories.indexOf(record.category);
     const angle = -Math.PI/2 + categoryIndex*Math.PI*2/Math.max(activeCategories.length,1);
-    const spread = ((index * 47) % 31 - 15) * .013;
-    const radius = record.kind === "general" ? Math.min(width,height)*.23 : Math.min(width,height)*.12;
-    const node = { ...record, x:width/2 + Math.cos(angle+spread)*radius,
-      y:height/2 + Math.sin(angle+spread)*radius, vx:0, vy:0,
-      r:record.kind === "general" ? 6.5 : 3.4 };
+    const spread = ((index * 47) % 31 - 15) * .018;
+    const radius = record.kind === "general" ?
+      Math.min(graphWidth,graphHeight)*.27 : Math.min(graphWidth,graphHeight)*.13;
+    const general = record.kind === "general";
+    const node = { ...record,
+      x:graphWidth/2 + Math.cos(angle+spread)*radius,
+      y:graphHeight/2 + Math.sin(angle+spread)*radius,
+      width:general ? 150 : 126, height:general ? 52 : 38,
+      radius:general ? 84 : 70 };
     nodes.push(node); nodeMap.set(node.key,node);
   });
   const edges = [];
@@ -500,128 +611,191 @@ function composeGraph() {
       if (source && target) edges.push({source,target,type:rel.type});
     });
   });
-  graphNodes = nodes; graphEdges = edges; tick = reduceMotion ? 170 : 0;
+  graphNodes = nodes; graphEdges = edges;
   selected = selected && nodeMap.get(selected.key) || null;
   document.getElementById("graphEmpty").style.display = records.length ? "none" : "grid";
-  simulate();
+  renderGraph();
 }
 
-function simulate() {
-  const iterations = tick > 160 ? 0 : 1;
-  for (let step=0; step<iterations; step++) {
-    for (const n of graphNodes) {
-      if (n.kind === "category") {
-        n.vx += (n.anchorX-n.x)*.015; n.vy += (n.anchorY-n.y)*.015;
-      } else {
-        const cat = graphNodes.find(x => x.key === "category/" + n.category);
-        if (cat) {
-          const pull = n.kind === "general" ? .0018 : .0028;
-          n.vx += (cat.x-n.x)*pull; n.vy += (cat.y-n.y)*pull;
-        }
-        n.vx += (width/2-n.x)*.00045; n.vy += (height/2-n.y)*.00045;
+function splitLabel(label, maxCharacters, maxLines=2) {
+  const words=label.split(/\s+/);
+  const lines=[];
+  let line="";
+  for (const word of words) {
+    const candidate=line ? `${line} ${word}` : word;
+    if (candidate.length<=maxCharacters || !line) line=candidate;
+    else { lines.push(line); line=word; }
+  }
+  if (line) lines.push(line);
+  if (lines.length>maxLines) {
+    lines.length=maxLines;
+    lines[maxLines-1]=lines[maxLines-1].replace(/[.,;:]?$/, "…");
+  }
+  return lines;
+}
+
+function edgePath(edge) {
+  const sx=edge.source.x, sy=edge.source.y, tx=edge.target.x, ty=edge.target.y;
+  if (edge.type!=="related-to") return `M${sx},${sy}L${tx},${ty}`;
+  const dx=tx-sx, dy=ty-sy;
+  const curve=Math.min(34,Math.hypot(dx,dy)*.16);
+  const mx=(sx+tx)/2-dy/(Math.hypot(dx,dy)||1)*curve;
+  const my=(sy+ty)/2+dx/(Math.hypot(dx,dy)||1)*curve;
+  return `M${sx},${sy}Q${mx},${my} ${tx},${ty}`;
+}
+
+function renderGraph() {
+  graphSvg.selectAll("*").remove();
+  graphSvg.call(zoomBehavior.transform,d3.zoomIdentity);
+  viewport=graphSvg.append("g").attr("class","graph-viewport");
+  edgeSelection=viewport.append("g").attr("class","edge-layer")
+    .selectAll("path").data(graphEdges).join("path")
+    .attr("class",edge=>`graph-edge ${edge.type}`);
+  nodeSelection=viewport.append("g").attr("class","node-layer")
+    .selectAll("g").data(graphNodes,key=>key.key).join("g")
+    .attr("class",node=>`graph-node ${node.kind}`)
+    .attr("tabindex",node=>node.kind==="category"?null:0)
+    .attr("role",node=>node.kind==="category"?"img":"button")
+    .attr("aria-label",node=>node.kind==="category"?
+      `${node.title} category`:`${node.title}, ${node.kind} intent`)
+    .style("--node-color",node=>CATEGORY_COLOR[node.category]||"#777");
+
+  nodeSelection.append("rect").attr("class","node-surface")
+    .attr("x",node=>-node.width/2).attr("y",node=>-node.height/2)
+    .attr("width",node=>node.width).attr("height",node=>node.height)
+    .attr("rx",node=>node.kind==="category"?3:node.kind==="general"?7:12);
+
+  nodeSelection.each(function(node) {
+    const group=d3.select(this);
+    if (node.kind==="general") {
+      group.append("text").attr("class","node-kind").attr("y",-13)
+        .text(node.category);
+    }
+    const lines=splitLabel(node.title,node.kind==="general"?23:node.kind==="category"?16:20,2);
+    const text=group.append("text").attr("class","node-title")
+      .attr("y",node.kind==="general"?1:-(lines.length-1)*6);
+    lines.forEach((line,index)=>text.append("tspan")
+      .attr("x",0).attr("dy",index?12:0).text(line));
+    group.append("title").text(`${node.title} · ${node.kind} · ${node.category}`);
+  });
+
+  nodeSelection
+    .on("mouseenter",(event,node)=> {
+      highlightGraphNode(node);
+      const [x,y]=d3.pointer(event,graphStage);
+      tip.style.display="block";
+      tip.style.left=Math.min(x+12,graphWidth-292)+"px";
+      tip.style.top=Math.min(y+12,graphHeight-82)+"px";
+      tip.innerHTML=`<small>${esc(node.kind)} · ${esc(node.category)}</small>${esc(node.title)}`;
+    })
+    .on("mousemove",event=> {
+      const [x,y]=d3.pointer(event,graphStage);
+      tip.style.left=Math.min(x+12,graphWidth-292)+"px";
+      tip.style.top=Math.min(y+12,graphHeight-82)+"px";
+    })
+    .on("mouseleave",()=> {
+      tip.style.display="none";
+      selected ? highlightGraphNode(selected) : clearGraphFocus();
+    })
+    .on("click",(event,node)=> {
+      event.stopPropagation();
+      if (!event.defaultPrevented && node.kind!=="category") selectRecord(node);
+    })
+    .on("keydown",(event,node)=> {
+      if (node.kind!=="category" && (event.key==="Enter"||event.key===" ")) {
+        event.preventDefault(); selectRecord(node);
       }
-    }
-    for (const e of graphEdges) {
-      const dx=e.target.x-e.source.x, dy=e.target.y-e.source.y;
-      const dist=Math.hypot(dx,dy)||1;
-      const ideal=e.type==="specializes"?58:e.type==="category"?145:105;
-      const force=(dist-ideal)*.0009;
-      e.source.vx+=dx/dist*force; e.source.vy+=dy/dist*force;
-      e.target.vx-=dx/dist*force; e.target.vy-=dy/dist*force;
-    }
-    for (let i=0;i<graphNodes.length;i++) {
-      for (let j=i+1;j<graphNodes.length;j++) {
-        const a=graphNodes[i], b=graphNodes[j];
-        let dx=b.x-a.x, dy=b.y-a.y, dist2=dx*dx+dy*dy;
-        if (dist2>9000) continue;
-        if (dist2<1) { dx=.1; dy=.1; dist2=.02; }
-        const force=(a.kind==="category"||b.kind==="category"?22:8)/dist2;
-        a.vx-=dx*force; a.vy-=dy*force; b.vx+=dx*force; b.vy+=dy*force;
-      }
-    }
-    for (const n of graphNodes) {
-      if (n===dragged) continue;
-      n.vx*=.82; n.vy*=.82; n.x+=n.vx; n.y+=n.vy;
-      n.x=Math.max(18,Math.min(width-18,n.x)); n.y=Math.max(18,Math.min(height-18,n.y));
-    }
-    tick++;
+    })
+    .call(d3.drag()
+      .on("start",(event,node)=> {
+        if (!event.active) simulation.alphaTarget(.18).restart();
+        node.fx=node.x; node.fy=node.y;
+      })
+      .on("drag",(event,node)=> { node.fx=event.x; node.fy=event.y; })
+      .on("end",(event,node)=> {
+        if (!event.active) simulation.alphaTarget(0);
+        if (node.kind!=="category") { node.fx=null; node.fy=null; }
+      }));
+
+  graphSvg.on("click",()=> {
+    selected=null; clearGraphFocus();
+    document.getElementById("graphDetail").innerHTML=`<div class="empty-mark">∴</div>
+      <div class="label">How to read this field</div><h3>Select an intent</h3>
+      <p>Large labelled cards are generalized intents. Compact pills are ecosystem-specific practices. Solid landmarks are categories.</p>`;
+  });
+
+  simulation=d3.forceSimulation(graphNodes)
+    .force("link",d3.forceLink(graphEdges).id(node=>node.key)
+      .distance(edge=>edge.type==="category"?165:edge.type==="specializes"?112:142)
+      .strength(edge=>edge.type==="specializes"?.88:edge.type==="category"?.38:.28))
+    .force("charge",d3.forceManyBody().strength(node=>
+      node.kind==="category"?-700:node.kind==="general"?-390:-155))
+    .force("collision",d3.forceCollide().radius(node=>node.radius).iterations(2))
+    .force("center",d3.forceCenter(graphWidth/2,graphHeight/2))
+    .force("x",d3.forceX(graphWidth/2).strength(.012))
+    .force("y",d3.forceY(graphHeight/2).strength(.012))
+    .alphaDecay(.035)
+    .on("tick",()=> {
+      edgeSelection.attr("d",edgePath);
+      nodeSelection.attr("transform",node=>`translate(${node.x},${node.y})`);
+    })
+    .on("end",()=>fitGraph(false));
+
+  if (reduceMotion) {
+    simulation.stop();
+    for (let index=0;index<180;index++) simulation.tick();
+    edgeSelection.attr("d",edgePath);
+    nodeSelection.attr("transform",node=>`translate(${node.x},${node.y})`);
+    fitGraph(false);
   }
-  draw();
-  if (tick<=160) raf=requestAnimationFrame(simulate);
+  if (selected) highlightGraphNode(selected);
 }
 
-function draw() {
-  if (!width || !height) return;
-  ctx.clearRect(0,0,width,height);
-  ctx.lineWidth=1;
-  for (const e of graphEdges) {
-    const emphasized = selected && (e.source===selected || e.target===selected);
-    ctx.strokeStyle = emphasized ? cssColor("--accent") :
-      e.type==="specializes" ? cssColor("--rule-strong") : cssColor("--rule");
-    ctx.globalAlpha = selected && !emphasized ? .16 : e.type==="category" ? .28 : .55;
-    ctx.setLineDash(e.type==="related-to" ? [4,4] : []);
-    ctx.beginPath(); ctx.moveTo(e.source.x,e.source.y); ctx.lineTo(e.target.x,e.target.y); ctx.stroke();
-  }
-  ctx.setLineDash([]); ctx.globalAlpha=1;
-  for (const n of graphNodes) {
-    const connected = !selected || n===selected || graphEdges.some(e =>
-      (e.source===selected&&e.target===n)||(e.target===selected&&e.source===n));
-    ctx.globalAlpha = connected ? 1 : .18;
-    const color=CATEGORY_COLOR[n.category] || cssColor("--ink");
-    if (n.kind==="category") {
-      ctx.save(); ctx.translate(n.x,n.y); ctx.rotate(Math.PI/4);
-      ctx.fillStyle=cssColor("--panel"); ctx.strokeStyle=color; ctx.lineWidth=2;
-      ctx.fillRect(-n.r,-n.r,n.r*2,n.r*2); ctx.strokeRect(-n.r,-n.r,n.r*2,n.r*2); ctx.restore();
-    } else {
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.r+(n===hovered||n===selected?3:0),0,Math.PI*2);
-      ctx.fillStyle=n.kind==="general"?color:cssColor("--accent"); ctx.fill();
-      if (n===selected) { ctx.strokeStyle=cssColor("--ink"); ctx.lineWidth=2; ctx.stroke(); }
-    }
-    if (n.kind==="category" || n===hovered || n===selected ||
-        (n.kind==="general" && graphNodes.length<85)) {
-      ctx.fillStyle=cssColor("--ink"); ctx.font=n.kind==="category"?
-        "600 11px "+cssColor("--ui") : "11px "+getComputedStyle(document.body).fontFamily;
-      ctx.textAlign="center"; ctx.fillText(n.title,n.x,n.y+n.r+14);
-    }
-  }
-  ctx.globalAlpha=1;
+function clearGraphFocus() {
+  viewport?.classed("has-focus",false);
+  nodeSelection?.classed("connected",true).classed("hot",false).classed("selected",false);
+  edgeSelection?.classed("hot",false);
 }
 
-function pointFromEvent(event) {
-  const rect=canvas.getBoundingClientRect();
-  return {x:event.clientX-rect.left,y:event.clientY-rect.top};
-}
-function nodeAt(point) {
-  let best=null, distance=Infinity;
-  for (const n of graphNodes) {
-    const d=Math.hypot(point.x-n.x,point.y-n.y);
-    if (d<Math.max(n.r+7,12) && d<distance) { best=n; distance=d; }
+function highlightGraphNode(node) {
+  const connected=new Set([node.key]);
+  for (const edge of graphEdges) {
+    const source=edge.source.key??edge.source;
+    const target=edge.target.key??edge.target;
+    if (source===node.key) connected.add(target);
+    if (target===node.key) connected.add(source);
   }
-  return best;
+  viewport.classed("has-focus",true);
+  nodeSelection
+    .classed("connected",candidate=>connected.has(candidate.key))
+    .classed("hot",candidate=>candidate.key===node.key)
+    .classed("selected",candidate=>selected?.key===candidate.key);
+  edgeSelection.classed("hot",edge=>
+    (edge.source.key??edge.source)===node.key||(edge.target.key??edge.target)===node.key);
 }
-canvas.addEventListener("pointermove", event => {
-  const point=pointFromEvent(event);
-  if (dragged) {
-    dragged.x=point.x; dragged.y=point.y; dragged.vx=dragged.vy=0; draw(); return;
-  }
-  hovered=nodeAt(point); draw();
-  if (hovered) {
-    tip.style.display="block";
-    tip.style.left=Math.min(point.x+12,width-292)+"px";
-    tip.style.top=Math.min(point.y+12,height-80)+"px";
-    tip.innerHTML=`<small>${esc(hovered.kind)} · ${esc(hovered.category)}</small>${esc(hovered.title)}`;
-  } else tip.style.display="none";
-});
-canvas.addEventListener("pointerleave", () => { hovered=null; tip.style.display="none"; draw(); });
-canvas.addEventListener("pointerdown", event => {
-  dragged=nodeAt(pointFromEvent(event));
-  if (dragged) { canvas.setPointerCapture(event.pointerId); canvas.classList.add("dragging"); }
-});
-canvas.addEventListener("pointerup", event => {
-  const released=nodeAt(pointFromEvent(event));
-  if (dragged && released===dragged && dragged.kind!=="category") selectRecord(dragged);
-  dragged=null; canvas.classList.remove("dragging");
-});
+
+function fitGraph(animate=true) {
+  if (!viewport?.node()||!graphNodes.length) return;
+  const bounds=viewport.node().getBBox();
+  if (!bounds.width||!bounds.height) return;
+  const scale=Math.max(.28,Math.min(2.2,.86/Math.max(bounds.width/graphWidth,bounds.height/graphHeight)));
+  const transform=d3.zoomIdentity
+    .translate(graphWidth/2,graphHeight/2)
+    .scale(scale)
+    .translate(-(bounds.x+bounds.width/2),-(bounds.y+bounds.height/2));
+  const target=animate&&!reduceMotion?graphSvg.transition().duration(420):graphSvg;
+  target.call(zoomBehavior.transform,transform);
+}
+
+function focusGraphNode(node) {
+  if (!node||node.x==null||node.y==null) return;
+  const current=d3.zoomTransform(graphSvg.node());
+  const scale=Math.max(1.15,current.k);
+  const transform=d3.zoomIdentity
+    .translate(graphWidth/2,graphHeight/2).scale(scale).translate(-node.x,-node.y);
+  const target=reduceMotion?graphSvg:graphSvg.transition().duration(380);
+  target.call(zoomBehavior.transform,transform);
+}
 
 function relationButtons(record) {
   const outgoing=record.relations.map(r => ({...r, record:RECORD_BY_KEY.get(r.target)}));
@@ -631,7 +805,8 @@ function relationButtons(record) {
     `<button class="relation-link" data-key="${esc(x.record.key)}"><span>${esc(x.type)}</span>${esc(x.record.title)}</button>`).join("");
 }
 function selectRecord(record) {
-  selected=record; draw();
+  selected=record;
+  highlightGraphNode(record);
   const detail=document.getElementById("graphDetail");
   detail.innerHTML=`<div class="label">${esc(record.category)} · ${esc(prettyCollection(record.collection))}</div>
     <h3>${esc(record.title)}</h3><p>${esc(record.capability)}</p>
@@ -647,7 +822,7 @@ function selectRecord(record) {
       composeGraph();
     }
     const visible=graphNodes.find(n=>n.key===target.key);
-    if (visible) selectRecord(visible);
+    if (visible) { selectRecord(visible); focusGraphNode(visible); }
   }));
   detail.querySelector("[data-jump]").addEventListener("click", () => openCatalogRecord(record.key));
 }
@@ -660,6 +835,15 @@ document.getElementById("graphSearch").addEventListener("input", event => {
 document.getElementById("resetGraph").addEventListener("click", () => {
   selected=null; composeGraph();
 });
+document.getElementById("zoomIn").addEventListener("click",()=> {
+  const target=reduceMotion?graphSvg:graphSvg.transition().duration(220);
+  target.call(zoomBehavior.scaleBy,1.35);
+});
+document.getElementById("zoomOut").addEventListener("click",()=> {
+  const target=reduceMotion?graphSvg:graphSvg.transition().duration(220);
+  target.call(zoomBehavior.scaleBy,1/1.35);
+});
+document.getElementById("fitGraph").addEventListener("click",()=>fitGraph(true));
 
 /* Catalogue -------------------------------------------------------------- */
 const catalog=document.getElementById("catalog");
@@ -745,7 +929,7 @@ function openCatalogRecord(key) {
 }
 
 renderCatalog();
-requestAnimationFrame(() => { resizeCanvas(); composeGraph(); });
+requestAnimationFrame(() => { resizeGraph(); composeGraph(); });
 if (location.hash) {
   const key=decodeURIComponent(location.hash.slice(1));
   if (RECORD_BY_KEY.has(key)) requestAnimationFrame(() => openCatalogRecord(key));

@@ -103,15 +103,19 @@ def build(out_dir: Path) -> Path:
         (ROOT / "site" / "vendor" / name).read_text()
         for name in ("highlight.min.js", "clojure.min.js", "elixir.min.js")
     )
+    d3 = (ROOT / "site" / "vendor" / "d3.min.js").read_text()
     if "</script" in hljs.lower():
         sys.exit("vendored highlight.js would terminate the inline script tag")
+    if "</script" in d3.lower():
+        sys.exit("vendored D3 would terminate the inline script tag")
     template = TEMPLATE.read_text()
-    for marker in ("/*__DATA__*/", "/*__HLJS__*/", "__BUILT__"):
+    for marker in ("/*__DATA__*/", "/*__HLJS__*/", "/*__D3__*/", "__BUILT__"):
         if marker not in template:
             sys.exit(f"template is missing the {marker} marker")
     page = (
         template.replace("/*__DATA__*/", data)
         .replace("/*__HLJS__*/", hljs)
+        .replace("/*__D3__*/", d3)
         .replace("__BUILT__", datetime.date.today().isoformat())
     )
 

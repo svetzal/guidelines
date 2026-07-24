@@ -19,9 +19,11 @@ touches `intents/**` or `site/**`.
 - `vendor/` — pinned highlight.js 11.11.1 (BSD-3-Clause) from cdnjs:
   the common-languages bundle plus clojure and elixir grammars. Inlined
   into the page at build time so the site stays a single self-contained
-  file.
+  file. Also includes D3 7.9.0 (ISC) for force simulation, SVG selection,
+  dragging, and zooming.
 - `template.html` — the atlas page: an interactive force-directed relationship
-  field with progressive ecosystem disclosure, backed by a searchable,
+  field rendered as labelled SVG elements with pan, zoom, drag, focus, and
+  progressive ecosystem disclosure, backed by a searchable,
   filterable, incrementally rendered catalogue of every record. Fully
   self-contained (inline CSS/JS, no external requests), responsive, and
   available in light and dark themes. The `/*__DATA__*/` and `__BUILT__`
