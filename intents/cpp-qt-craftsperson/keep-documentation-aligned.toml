@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-documentation-aligned"
 title = "Keep documentation aligned"
+category = "documentation"
+tags = ["cpp", "qt", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users can trust docs to match current interfaces."

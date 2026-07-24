@@ -1,5 +1,10 @@
 id = "guidelines.intent.standardize-data-containers-on-pydantic2"
 title = "Standardize data containers on Pydantic 2"
+category = "design"
+tags = ["uv", "python", "pydantic", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Data containers enforce validation and share one serialization and schema model across layers."

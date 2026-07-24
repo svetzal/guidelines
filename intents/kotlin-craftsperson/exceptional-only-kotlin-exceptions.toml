@@ -1,5 +1,10 @@
 id = "guidelines.intent.exceptional-only-kotlin-exceptions"
 title = "Reserve exceptions for genuinely exceptional conditions"
+category = "design"
+tags = ["kotlin", "error-handling", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to distinguish expected domain outcomes from abnormal execution failures."

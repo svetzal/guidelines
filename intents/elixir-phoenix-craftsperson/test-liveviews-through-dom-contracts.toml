@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-liveviews-through-dom-contracts"
 title = "Test LiveViews through DOM contracts"
+category = "quality"
+tags = ["elixir", "phoenix", "testing", "formatting", "persistence", "error-handling"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "UI tests verify user-observable structure and interaction without coupling to serialized HTML."

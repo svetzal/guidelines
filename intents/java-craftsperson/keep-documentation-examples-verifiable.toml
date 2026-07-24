@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-documentation-examples-verifiable"
 title = "Keep documentation examples verifiable"
+category = "documentation"
+tags = ["java", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Readers can distinguish runnable guidance from illustrative shorthand and trust examples to match supported APIs."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.strict-aggregate-lint-gate"
 title = "Require a warning-free aggregate lint gate"
+category = "quality"
+tags = ["go", "static-analysis", "build-and-delivery", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The whole Go tree conforms to a consistent, centrally configured defect and style policy."

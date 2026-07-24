@@ -1,5 +1,10 @@
 id = "guidelines.intent.consistent-dependency-repositories"
 title = "Preserve deterministic repository resolution"
+category = "design"
+tags = ["kotlin", "android", "dependencies", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for every module and environment to resolve dependencies from an approved, consistent source set."

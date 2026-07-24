@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-gateways-logic-free"
 title = "Keep gateway adapters free of business logic"
+category = "architecture"
+tags = ["swift", "testing", "gateways", "business-logic", "separation-of-concerns"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-gateways-logic-free" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Domain decisions receive direct, deterministic tests instead of being trapped in I/O adapters."

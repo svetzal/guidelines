@@ -1,5 +1,10 @@
 id = "guidelines.intent.timestamp-persisted-schemas"
 title = "Timestamp persisted schemas"
+category = "reliability"
+tags = ["elixir", "phoenix", "persistence", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.86
 capability = "Persisted records retain basic creation and update chronology for operations and diagnosis."

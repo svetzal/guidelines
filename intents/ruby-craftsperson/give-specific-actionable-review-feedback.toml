@@ -1,5 +1,10 @@
 id = "guidelines.intent.give-specific-actionable-review-feedback"
 title = "Make review feedback specific and actionable"
+category = "collaboration"
+tags = ["ruby", "security", "testing", "code-review", "feedback", "remediation"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-review-feedback-actionable" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability for an author to act on review feedback without guessing the desired change"

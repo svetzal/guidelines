@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-repository-build-system"
 title = "Preserve the repository's established build system"
+category = "quality"
+tags = ["java", "documentation", "build-and-delivery", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Contributors can build and verify Java projects through one familiar, repository-supported toolchain."

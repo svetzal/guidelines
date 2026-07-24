@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-edge-cases-and-error-paths"
 title = "Test edge cases and error paths"
+category = "testing"
+tags = ["csharp", "testing", "error-handling", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The system behaves deliberately under boundary inputs and expected failures, not only on the happy path."

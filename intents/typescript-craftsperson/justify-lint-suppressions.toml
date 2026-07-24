@@ -1,5 +1,10 @@
 id = "guidelines.intent.justify-lint-suppressions"
 title = "Make lint suppressions exceptional and explained"
+category = "quality"
+tags = ["typescript", "documentation", "static-analysis", "error-handling", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to distinguish intentional exceptions from hidden violations of static policy"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.escalate-uncertain-high-impact-decisions"
 title = "Escalate uncertain high-impact decisions"
+category = "performance"
+tags = ["elixir", "phoenix", "security", "performance", "profiling", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Irreversible or requirement-sensitive choices reflect stakeholder intent rather than implementer assumptions."

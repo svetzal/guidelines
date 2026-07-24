@@ -1,5 +1,10 @@
 id = "guidelines.intent.structured-kotlin-coroutine-lifetimes"
 title = "Bind coroutine work to an explicit owner"
+category = "reliability"
+tags = ["kotlin", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to observe, cancel, and await asynchronous work as part of a defined operation lifecycle."

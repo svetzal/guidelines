@@ -1,5 +1,10 @@
 id = "guidelines.intent.semantic-ui-contracts"
 title = "Preserve accessible and testable UI meaning"
+category = "design"
+tags = ["kotlin", "android", "testing", "persistence", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for assistive technologies and UI tests to identify controls and content by meaning."

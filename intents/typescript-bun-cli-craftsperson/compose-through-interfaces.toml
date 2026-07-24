@@ -1,5 +1,10 @@
 id = "guidelines.intent.compose-through-interfaces"
 title = "Compose behavior through interfaces"
+category = "reliability"
+tags = ["typescript", "bun", "cli", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Behavior can be combined or substituted without inheriting implementation and lifecycle assumptions."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-tests-fast-and-deterministic"
 title = "Keep tests fast and deterministic"
+category = "quality"
+tags = ["swift", "testing", "build-and-delivery", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Developers and CI can trust and run the test suite frequently for rapid feedback."

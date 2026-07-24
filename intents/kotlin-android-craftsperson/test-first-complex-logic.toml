@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-first-complex-logic"
 title = "Drive complex business logic from executable examples"
+category = "testing"
+tags = ["kotlin", "android", "concurrency", "testing", "tdd", "red-green-refactor"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to shape complex behavior around explicit outcomes and refactor it safely."

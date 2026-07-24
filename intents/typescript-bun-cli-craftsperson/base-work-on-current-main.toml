@@ -1,5 +1,10 @@
 id = "guidelines.intent.base-work-on-current-main"
 title = "Base isolated work on the shared main line"
+category = "delivery"
+tags = ["typescript", "bun", "cli", "dependencies", "version-control", "history"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "Each proposed change starts from a known shared integration baseline while remaining isolated for review."

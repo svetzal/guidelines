@@ -1,5 +1,10 @@
 id = "guidelines.intent.readable-kotlin-scope-functions"
 title = "Use scope functions only when their semantics clarify the flow"
+category = "collaboration"
+tags = ["kotlin", "testing", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.91
 capability = "Ability to read object setup and nullable control flow without mentally decoding incidental syntax."

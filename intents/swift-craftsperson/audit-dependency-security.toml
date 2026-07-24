@@ -1,5 +1,10 @@
 id = "guidelines.intent.audit-dependency-security"
 title = "Audit dependencies for known vulnerabilities"
+category = "quality"
+tags = ["swift", "security", "testing", "dependencies", "build-and-delivery", "quality-gates"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The released dependency graph avoids known exploitable package versions."

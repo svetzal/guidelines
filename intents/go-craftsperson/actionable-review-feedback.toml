@@ -1,5 +1,10 @@
 id = "guidelines.intent.actionable-review-feedback"
 title = "Make review findings concrete and actionable"
+category = "collaboration"
+tags = ["go", "security", "testing", "code-review", "feedback", "remediation"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-review-feedback-actionable" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "An author can understand the impact of a review concern and apply a verifiable improvement."

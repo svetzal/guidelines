@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-review-findings-actionable"
 title = "Make review findings directly actionable"
+category = "collaboration"
+tags = ["java", "code-review", "feedback", "remediation"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-review-feedback-actionable" },
+]
 status = "hypothesized"
 confidence = 0.92
 capability = "A contributor can locate, understand, and evaluate a reported Java issue without rediscovering the reviewer's analysis."

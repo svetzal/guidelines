@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-modern-null-safe-operators"
 title = "Express optional access and defaults with null-safe operators"
+category = "design"
+tags = ["typescript", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.86
 capability = "Ability to handle nullish values without conflating them with valid falsy data"

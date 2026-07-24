@@ -1,5 +1,10 @@
 id = "guidelines.intent.cache-dialyzer-project-plt"
 title = "Cache the project Dialyzer PLT"
+category = "quality"
+tags = ["elixir", "phoenix", "dialyzer", "performance", "build-and-delivery", "static-analysis"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Static type analysis remains fast enough to run routinely in CI."

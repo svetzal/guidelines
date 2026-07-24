@@ -1,5 +1,10 @@
 id = "guidelines.intent.choose-simplest-sufficient-design"
 title = "Choose the simplest sufficient design"
+category = "design"
+tags = ["csharp", "testing", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A solution meets current behavior with the least accidental complexity compatible with correctness and clarity."

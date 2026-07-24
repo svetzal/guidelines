@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-new-async-std-usage"
 title = "Avoid introducing async-std"
+category = "reliability"
+tags = ["rust", "concurrency", "dependencies", "persistence", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Async code depends on an actively supported runtime ecosystem."

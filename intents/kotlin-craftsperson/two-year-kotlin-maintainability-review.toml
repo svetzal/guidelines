@@ -1,5 +1,10 @@
 id = "guidelines.intent.two-year-kotlin-maintainability-review"
 title = "Review Kotlin changes for a two-year maintenance horizon"
+category = "quality"
+tags = ["kotlin", "testing", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.92
 capability = "Ability for future maintainers to understand and safely modify delivered Kotlin code."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.consistent-kotlin-plugin-versions"
 title = "Apply a coherent plugin set across Kotlin builds"
+category = "documentation"
+tags = ["kotlin", "documentation", "dependencies", "build-and-delivery", "synchronization", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "Ability to build and document modules under a compatible, predictable toolchain."

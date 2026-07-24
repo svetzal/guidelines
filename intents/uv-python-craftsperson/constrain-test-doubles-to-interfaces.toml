@@ -1,5 +1,10 @@
 id = "guidelines.intent.constrain-test-doubles-to-interfaces"
 title = "Constrain test doubles to real interfaces"
+category = "testing"
+tags = ["uv", "python", "concurrency", "testing", "test-doubles", "boundaries"]
+relations = [
+  { type = "specializes", target = "craftsperson/mock-only-owned-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Mock-based tests detect when production collaborators change their callable interface."

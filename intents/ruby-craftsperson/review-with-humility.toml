@@ -1,5 +1,10 @@
 id = "guidelines.intent.review-with-humility"
 title = "Present review judgments as discussable proposals"
+category = "collaboration"
+tags = ["ruby", "security", "code-review", "psychological-safety", "feedback"]
+relations = [
+  { type = "specializes", target = "craftsperson/review-with-psychological-safety" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to combine technical expertise with context held by the code's author and user"

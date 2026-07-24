@@ -1,5 +1,10 @@
 id = "guidelines.intent.delay-abstraction-until-needed"
 title = "Delay abstraction until need is demonstrated"
+category = "design"
+tags = ["uv", "python", "concurrency", "abstraction", "evidence", "duplication"]
+relations = [
+  { type = "specializes", target = "craftsperson/delay-abstraction-until-evidence" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The design remains direct and easy to change until recurring structure provides evidence for abstraction."

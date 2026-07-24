@@ -1,5 +1,10 @@
 id = "guidelines.intent.treat-compiler-warnings-as-errors"
 title = "Treat compiler warnings as errors"
+category = "quality"
+tags = ["elixir", "phoenix", "testing", "static-analysis", "error-handling", "build-and-delivery"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The test build remains free of compiler-detected ambiguity and deprecated or suspicious constructs."

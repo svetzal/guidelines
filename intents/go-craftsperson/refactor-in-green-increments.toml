@@ -1,5 +1,10 @@
 id = "guidelines.intent.refactor-in-green-increments"
 title = "Refactor through small verified steps"
+category = "refactoring"
+tags = ["go", "concurrency", "testing", "error-handling", "behavior-preservation", "small-steps"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-behavior-during-refactoring" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Structural improvement can proceed while preserving known behavior at every checkpoint."

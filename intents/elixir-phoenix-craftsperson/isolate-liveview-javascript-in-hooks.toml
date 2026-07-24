@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolate-liveview-javascript-in-hooks"
 title = "Isolate LiveView JavaScript in hooks"
+category = "design"
+tags = ["elixir", "phoenix", "build-and-delivery", "abstraction", "evidence", "duplication"]
+relations = [
+  { type = "specializes", target = "craftsperson/delay-abstraction-until-evidence" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Client behavior survives LiveView patching and participates in the application asset build."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.provide-a-standard-supervision-backbone"
 title = "Provide a standard supervision backbone"
+category = "reliability"
+tags = ["elixir", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.86
 capability = "Ephemeral workers and background tasks have named discovery and supervised lifecycle facilities available."

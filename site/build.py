@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static intent atlas site from intents/craftsperson/*.toml.
+"""Build the static intent atlas site from every craftsperson intent record.
 
 Stdlib only (requires Python 3.11+ for tomllib). Reads every intent record,
 distills the fields the atlas presents, injects them into site/template.html,
@@ -17,7 +17,7 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-INTENTS_DIR = ROOT / "intents" / "craftsperson"
+INTENTS_DIR = ROOT / "intents"
 TEMPLATE = ROOT / "site" / "template.html"
 
 ECOSYSTEM_RE = re.compile(r"plugins/([a-z-]+)-ecosystem/")
@@ -33,11 +33,23 @@ def load_intent(path: Path) -> dict:
             if (m := ECOSYSTEM_RE.match(p))
         }
     )
+    collection = path.parent.name
     return {
+        "key": f"{collection}/{path.stem}",
         "slug": path.stem,
+        "id": record["id"],
+        "collection": collection,
+        "kind": "general" if collection == "craftsperson" else "specialization",
         "title": record["title"],
         "category": record["category"],
         "tags": record.get("tags", []),
+        "relations": [
+            {
+                "type": relation.get("type", "related-to"),
+                "target": relation["target"],
+            }
+            for relation in record.get("relations", [])
+        ],
         "confidence": record.get("confidence"),
         "status": record.get("status"),
         "capability": record.get("capability", ""),
@@ -62,9 +74,28 @@ def load_intent(path: Path) -> dict:
 
 
 def build(out_dir: Path) -> Path:
-    intents = [load_intent(p) for p in sorted(INTENTS_DIR.glob("*.toml"))]
+    paths = sorted(
+        path
+        for collection in INTENTS_DIR.iterdir()
+        if collection.is_dir()
+        and (
+            collection.name == "craftsperson"
+            or collection.name.endswith("-craftsperson")
+        )
+        for path in collection.glob("*.toml")
+    )
+    intents = [load_intent(path) for path in paths]
     if not intents:
         sys.exit(f"no intent records found in {INTENTS_DIR}")
+    keys = {intent["key"] for intent in intents}
+    dangling = [
+        f"{intent['key']} -> {relation['target']}"
+        for intent in intents
+        for relation in intent["relations"]
+        if relation["target"] not in keys
+    ]
+    if dangling:
+        sys.exit("dangling intent relationships:\n" + "\n".join(dangling))
 
     # `</` would terminate the inline <script> early if it ever appeared in data
     data = json.dumps(intents, separators=(",", ":")).replace("</", "<\\/")

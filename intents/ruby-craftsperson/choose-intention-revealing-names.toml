@@ -1,5 +1,10 @@
 id = "guidelines.intent.choose-intention-revealing-names"
 title = "Choose names that reveal intent immediately"
+category = "design"
+tags = ["ruby", "testing", "readability", "clarity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-code-for-human-readers" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to infer a Ruby collaborator's role and behavior from its name"

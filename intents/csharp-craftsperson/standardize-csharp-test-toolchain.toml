@@ -1,5 +1,10 @@
 id = "guidelines.intent.standardize-csharp-test-toolchain"
 title = "Standardize the C# test toolchain"
+category = "delivery"
+tags = ["csharp", "testing", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Tests share a familiar structure and vocabulary that contributors can read and extend consistently."

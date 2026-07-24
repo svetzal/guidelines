@@ -1,5 +1,10 @@
 id = "guidelines.intent.cache-rust-ci-artifacts"
 title = "Cache Rust CI dependencies and build artifacts"
+category = "delivery"
+tags = ["rust", "dependencies", "performance", "build-and-delivery", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Nontrivial Rust projects receive timely CI feedback without rebuilding unchanged dependencies on every run."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.write-descriptive-commit-messages"
 title = "Make commit intent discoverable from history"
+category = "delivery"
+tags = ["ruby", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to understand why a Ruby change entered the codebase from version history"

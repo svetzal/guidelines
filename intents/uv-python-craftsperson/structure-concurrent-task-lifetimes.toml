@@ -1,5 +1,10 @@
 id = "guidelines.intent.structure-concurrent-task-lifetimes"
 title = "Structure concurrent task lifetimes"
+category = "reliability"
+tags = ["uv", "python", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Spawned concurrent work finishes, fails, or is cancelled within an explicit parent lifetime."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-regressions-with-coverage"
 title = "Gate changes on passing behavior coverage"
+category = "testing"
+tags = ["typescript", "bun", "cli", "testing", "error-handling", "coverage"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Supported behavior, including edge cases and failures, remains protected against regression."

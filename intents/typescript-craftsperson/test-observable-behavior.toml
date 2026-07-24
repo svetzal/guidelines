@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-observable-behavior"
 title = "Test observable behavior rather than implementation details"
+category = "testing"
+tags = ["typescript", "concurrency", "testing", "behavior", "public-boundaries", "refactor-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/test-observable-behavior" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to refactor internals without invalidating the executable specification"

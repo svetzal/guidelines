@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralized-kotlin-user-guides"
 title = "Keep end-user Kotlin guidance in one discoverable home"
+category = "documentation"
+tags = ["kotlin", "concurrency", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.91
 capability = "Ability for users to find task-oriented documentation independently of source API pages."

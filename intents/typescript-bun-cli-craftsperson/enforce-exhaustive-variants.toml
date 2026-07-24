@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-exhaustive-variants"
 title = "Make variant handling exhaustive"
+category = "design"
+tags = ["typescript", "bun", "cli", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Every supported finite variant is handled explicitly and additions surface all affected decision points."

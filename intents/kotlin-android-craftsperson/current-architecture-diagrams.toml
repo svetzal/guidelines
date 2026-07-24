@@ -1,5 +1,10 @@
 id = "guidelines.intent.current-architecture-diagrams"
 title = "Keep system structure visually traceable"
+category = "design"
+tags = ["kotlin", "android", "documentation", "dependencies", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to understand module and dependency relationships without reconstructing them from source."

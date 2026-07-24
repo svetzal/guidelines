@@ -1,5 +1,10 @@
 id = "guidelines.intent.typed-public-contracts"
 title = "Make public Python contracts statically explicit"
+category = "design"
+tags = ["python", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Callers and tooling can understand accepted inputs and returned values at API boundaries."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-documentation-examples-verifiable"
 title = "Keep code examples verifiable"
+category = "documentation"
+tags = ["csharp", "testing", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Readers can copy or adapt examples with confidence that they represent executable current behavior."

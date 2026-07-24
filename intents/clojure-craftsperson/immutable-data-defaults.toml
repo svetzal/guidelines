@@ -1,5 +1,10 @@
 id = "guidelines.intent.immutable-data-defaults"
 title = "Preserve state reasoning with immutable data defaults"
+category = "design"
+tags = ["clojure", "dependencies", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to reason about state changes as explicit value transformations"

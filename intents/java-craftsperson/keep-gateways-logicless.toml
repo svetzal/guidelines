@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-gateways-logicless"
 title = "Keep gateway adapters free of business logic"
+category = "testing"
+tags = ["java", "testing", "persistence", "gateways", "unit-testing", "test-value"]
+relations = [
+  { type = "specializes", target = "craftsperson/do-not-unit-test-logicless-gateways" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Business decisions remain reusable and directly testable outside infrastructure code."

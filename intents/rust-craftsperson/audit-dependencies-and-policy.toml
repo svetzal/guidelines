@@ -1,5 +1,10 @@
 id = "guidelines.intent.audit-dependencies-and-policy"
 title = "Audit dependency vulnerabilities and policy"
+category = "dependencies"
+tags = ["rust", "security", "dependencies", "vulnerability-management", "lifecycle-risk"]
+relations = [
+  { type = "specializes", target = "craftsperson/audit-dependency-risk" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The dependency graph remains free of known advisories and complies with license, source, ban, and duplication policy."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.minimize-production-dependencies"
 title = "Minimize production dependencies"
+category = "dependencies"
+tags = ["elixir", "dependencies", "supply-chain", "complexity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/minimize-dependency-surface" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Production code retains a small, understood third-party risk surface."

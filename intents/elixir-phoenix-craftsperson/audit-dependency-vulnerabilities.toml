@@ -1,5 +1,10 @@
 id = "guidelines.intent.audit-dependency-vulnerabilities"
 title = "Audit dependency vulnerabilities"
+category = "delivery"
+tags = ["elixir", "phoenix", "security", "documentation", "dependencies", "build-and-delivery"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Known vulnerable dependency versions are detected before release."

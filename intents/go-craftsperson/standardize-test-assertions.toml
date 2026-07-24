@@ -1,5 +1,10 @@
 id = "guidelines.intent.standardize-test-assertions"
 title = "Use a shared readable assertion vocabulary"
+category = "design"
+tags = ["go", "testing", "dependencies", "error-handling", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Test intent and fatal versus nonfatal expectations remain immediately recognizable across packages."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-capability"
 title = "Build only capabilities required now"
+category = "design"
+tags = ["go", "testing", "build-and-delivery", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Delivery effort stays focused on validated business needs."

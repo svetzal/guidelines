@@ -1,5 +1,10 @@
 id = "guidelines.intent.exhaustive-state-transition-tests"
 title = "Preserve every intended presentation-state transition"
+category = "testing"
+tags = ["kotlin", "android", "testing", "error-handling", "edge-cases", "failure-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to prove how ViewModels respond across success, failure, empty, cancellation, and boundary cases."

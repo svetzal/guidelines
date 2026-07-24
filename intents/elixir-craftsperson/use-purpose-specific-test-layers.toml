@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-purpose-specific-test-layers"
 title = "Use purpose-specific test layers"
+category = "testing"
+tags = ["elixir", "testing", "error-handling", "test-strategy", "test-pyramid", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-purpose-specific-test-layers" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Defects are caught at the cheapest layer that faithfully exercises the relevant boundary."

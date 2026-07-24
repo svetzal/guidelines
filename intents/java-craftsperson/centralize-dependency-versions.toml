@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-dependency-versions"
 title = "Centralize dependency version decisions"
+category = "dependencies"
+tags = ["java", "security", "dependencies", "build-and-delivery", "reproducibility", "lockfiles"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-dependency-resolution-reproducible" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A multi-module build can upgrade a shared dependency consistently from one authoritative version decision."

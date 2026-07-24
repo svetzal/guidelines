@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-pattern-matching-for-control-flow"
 title = "Prefer pattern matching for control flow"
+category = "design"
+tags = ["elixir", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Function variants and data-shape assumptions remain explicit at the point of dispatch."

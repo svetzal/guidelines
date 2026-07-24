@@ -1,5 +1,10 @@
 id = "guidelines.intent.review-code-with-psychological-safety"
 title = "Review code with psychological safety"
+category = "collaboration"
+tags = ["java", "security", "testing", "code-review", "psychological-safety", "feedback"]
+relations = [
+  { type = "specializes", target = "craftsperson/review-with-psychological-safety" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The team can surface defects and design disagreement without discouraging participation or learning."

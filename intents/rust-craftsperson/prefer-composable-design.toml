@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-composable-design"
 title = "Prefer composable behavior over inheritance-like structure"
+category = "design"
+tags = ["rust", "testing", "dependencies", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Behavior can be recombined and tested without depending on rigid structural hierarchies."

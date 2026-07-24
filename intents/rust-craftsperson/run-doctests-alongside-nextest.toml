@@ -1,5 +1,10 @@
 id = "guidelines.intent.run-doctests-alongside-nextest"
 title = "Run doctests alongside cargo nextest"
+category = "delivery"
+tags = ["rust", "cargo", "testing", "documentation", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Documentation examples remain compiled and behaviorally verified when the project uses a faster test runner."

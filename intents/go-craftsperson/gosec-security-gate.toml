@@ -1,5 +1,10 @@
 id = "guidelines.intent.gosec-security-gate"
 title = "Gate Go code on security-focused static analysis"
+category = "design"
+tags = ["go", "security", "testing", "dependencies", "static-analysis", "cohesion"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Common Go-specific insecure coding patterns are detected before delivery."

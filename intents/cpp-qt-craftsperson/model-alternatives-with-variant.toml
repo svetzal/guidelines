@@ -1,5 +1,10 @@
 id = "guidelines.intent.model-alternatives-with-variant"
 title = "Model closed alternatives with variant"
+category = "design"
+tags = ["cpp", "qt", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A value can represent one of a known set of alternatives without unsafe storage or parallel type tags."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-msrv"
 title = "Preserve the minimum supported Rust version"
+category = "architecture"
+tags = ["rust", "security", "dependencies", "build-and-delivery", "trust-boundaries", "authorization"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Downstream users can continue building the crate with the project's promised minimum Rust toolchain."

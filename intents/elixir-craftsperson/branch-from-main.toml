@@ -1,5 +1,10 @@
 id = "guidelines.intent.branch-from-main"
 title = "Branch from main for new work"
+category = "delivery"
+tags = ["elixir", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Each line of work begins from the current integration baseline."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.edge-and-error-tests"
 title = "Test edge cases and failure behavior explicitly"
+category = "testing"
+tags = ["clojure", "testing", "error-handling", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to preserve defined behavior at input boundaries and under failure conditions"

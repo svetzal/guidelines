@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-interfaces-for-contracts-only"
 title = "Use interfaces for contracts, not code sharing"
+category = "reliability"
+tags = ["csharp", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "An interface communicates a meaningful substitution boundary rather than serving as ceremony or an inheritance workaround."

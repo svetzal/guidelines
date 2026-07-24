@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-green-rspec-before-completion"
 title = "Require a green RSpec suite before completion"
+category = "quality"
+tags = ["ruby", "rspec", "testing", "build-and-delivery", "test-gate", "completion"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to release changes without knowingly violating specified behavior"

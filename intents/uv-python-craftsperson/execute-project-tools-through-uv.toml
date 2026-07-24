@@ -1,5 +1,10 @@
 id = "guidelines.intent.execute-project-tools-through-uv"
 title = "Execute project-aware tools through uv"
+category = "delivery"
+tags = ["uv", "python", "testing", "dependencies", "static-analysis", "tooling"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Project commands consistently see the project's installed code, interpreter, and dependency set."

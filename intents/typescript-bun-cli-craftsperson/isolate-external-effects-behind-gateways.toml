@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolate-external-effects-behind-gateways"
 title = "Isolate external effects behind owned gateways"
+category = "architecture"
+tags = ["typescript", "bun", "cli", "concurrency", "testing", "gateways"]
+relations = [
+  { type = "specializes", target = "craftsperson/put-gateways-at-external-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Business behavior can be exercised deterministically without invoking filesystems, subprocesses, APIs, or environment state."

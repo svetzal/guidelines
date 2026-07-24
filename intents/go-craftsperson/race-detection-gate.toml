@@ -1,5 +1,10 @@
 id = "guidelines.intent.race-detection-gate"
 title = "Gate concurrent code on dynamic race detection"
+category = "quality"
+tags = ["go", "concurrency", "testing", "dependencies", "persistence", "test-gate"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Memory accesses exercised by tests remain free of unsynchronized data races."

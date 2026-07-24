@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-shared-build-configuration"
 title = "Centralize shared build configuration"
+category = "delivery"
+tags = ["java", "concurrency", "dependencies", "build-and-delivery", "builds", "configuration"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Build policy changes can be made consistently without editing every module."

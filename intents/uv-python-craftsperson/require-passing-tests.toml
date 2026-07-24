@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-passing-tests"
 title = "Require all tests to pass before completion"
+category = "quality"
+tags = ["uv", "python", "testing", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Delivered changes preserve all behavior currently protected by the test suite."

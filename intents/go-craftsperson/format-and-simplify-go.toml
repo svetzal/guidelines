@@ -1,5 +1,10 @@
 id = "guidelines.intent.format-and-simplify-go"
 title = "Keep all Go source canonical and simplified"
+category = "quality"
+tags = ["go", "testing", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Every production, test, and example source file remains mechanically consistent and easy to scan."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.fail-closed-on-quality-gates"
 title = "Fail closed on quality-gate failures"
+category = "quality"
+tags = ["swift", "documentation", "error-handling", "quality-gates", "project-conventions", "completion"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "A completed change has trustworthy evidence rather than unexplained or suppressed failures."

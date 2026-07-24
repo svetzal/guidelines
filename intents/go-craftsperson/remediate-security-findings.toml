@@ -1,5 +1,10 @@
 id = "guidelines.intent.remediate-security-findings"
 title = "Resolve security findings before completion"
+category = "reliability"
+tags = ["go", "security", "dependencies", "data-integrity", "transactions", "database-constraints"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A completed change has no known unaddressed security defect in its code or dependency path."

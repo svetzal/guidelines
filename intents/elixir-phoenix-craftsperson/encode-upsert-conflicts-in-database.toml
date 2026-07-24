@@ -1,5 +1,10 @@
 id = "guidelines.intent.encode-upsert-conflicts-in-database"
 title = "Encode upsert conflicts in the database"
+category = "reliability"
+tags = ["elixir", "phoenix", "concurrency", "persistence", "data-integrity", "transactions"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Retryable or concurrent creates converge on one deterministic persisted row."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.put-effects-behind-gateways"
 title = "Route every external interaction through a gateway"
+category = "architecture"
+tags = ["go", "persistence", "gateways", "external-systems", "dependency-inversion"]
+relations = [
+  { type = "specializes", target = "craftsperson/put-gateways-at-external-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The application can replace or simulate external systems without changing its business logic."

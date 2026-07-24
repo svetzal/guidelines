@@ -1,5 +1,10 @@
 id = "guidelines.intent.prevent-implicit-single-argument-conversions"
 title = "Prevent accidental implicit construction"
+category = "design"
+tags = ["cpp", "qt", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Values are not silently reinterpreted as domain objects."

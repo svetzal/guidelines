@@ -1,5 +1,10 @@
 id = "guidelines.intent.audit-known-dependency-vulnerabilities"
 title = "Gate changes on known dependency vulnerabilities"
+category = "delivery"
+tags = ["typescript", "security", "dependencies", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to avoid shipping dependencies with known exploitable defects"

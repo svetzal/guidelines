@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-green-ci-before-integration"
 title = "Integrate only changes that pass CI"
+category = "quality"
+tags = ["typescript", "bun", "cli", "build-and-delivery", "test-gate", "completion"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The shared integration branch remains in a verified state."

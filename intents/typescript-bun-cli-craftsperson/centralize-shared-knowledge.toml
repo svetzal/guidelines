@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-shared-knowledge"
 title = "Keep each shared decision in one place"
+category = "design"
+tags = ["typescript", "bun", "cli", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A single conceptual decision can change without coordinating edits across unrelated locations."

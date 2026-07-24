@@ -1,5 +1,10 @@
 id = "guidelines.intent.mutate-dependencies-through-uv"
 title = "Mutate dependency declarations through uv"
+category = "delivery"
+tags = ["uv", "python", "dependencies", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Dependency metadata, lock state, and environment state remain synchronized after additions and removals."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.reserve-bang-functions-for-exceptions"
 title = "Reserve bang functions for exceptional failure"
+category = "reliability"
+tags = ["elixir", "concurrency", "error-handling", "error-modeling", "recoverability", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Call sites communicate whether failure is expected or should terminate the current process."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-ambiguous-requirements"
 title = "Resolve ambiguous product behavior before implementation"
+category = "collaboration"
+tags = ["kotlin", "android", "build-and-delivery", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to build behavior that matches the intended business logic and user experience."

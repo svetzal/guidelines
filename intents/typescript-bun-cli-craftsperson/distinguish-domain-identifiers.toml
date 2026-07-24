@@ -1,5 +1,10 @@
 id = "guidelines.intent.distinguish-domain-identifiers"
 title = "Distinguish domain identifiers at compile time"
+category = "design"
+tags = ["typescript", "bun", "cli", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Values with the same primitive representation but different domain meanings cannot be interchanged accidentally."

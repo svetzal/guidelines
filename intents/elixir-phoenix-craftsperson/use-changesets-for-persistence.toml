@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-changesets-for-persistence"
 title = "Use changesets for persistence"
+category = "reliability"
+tags = ["elixir", "phoenix", "security", "persistence", "build-and-delivery", "data-integrity"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Every database insert and update passes through explicit casting, validation, and constraint translation."

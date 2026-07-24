@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-purpose-specific-test-layers"
 title = "Use purpose-specific Java test layers"
+category = "testing"
+tags = ["java", "testing", "test-strategy", "test-pyramid", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-purpose-specific-test-layers" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Business rules and assembled adapters are each verified at the cheapest realistic layer."

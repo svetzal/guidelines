@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-elixir-1-14-compatibility"
 title = "Preserve the declared Elixir compatibility floor"
+category = "design"
+tags = ["elixir", "build-and-delivery", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "The project continues to build and behave correctly on every declared supported Elixir version."

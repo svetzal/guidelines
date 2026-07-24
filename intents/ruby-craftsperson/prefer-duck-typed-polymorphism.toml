@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-duck-typed-polymorphism"
 title = "Polymorph on behavior instead of concrete type"
+category = "design"
+tags = ["ruby", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to add interchangeable Ruby collaborators without modifying consumers"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.express-transformations-declaratively"
 title = "Express data transformations declaratively"
+category = "design"
+tags = ["java", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.92
 capability = "Readers can understand a data transformation from its operations without tracing mutable loop state."

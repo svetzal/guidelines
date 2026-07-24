@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-runtime-upgrades"
 title = "Gate Elixir and OTP upgrades explicitly"
+category = "delivery"
+tags = ["elixir", "phoenix", "persistence", "build-and-delivery", "compatibility", "runtime-versions"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-supported-platform-baselines" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Runtime migrations occur as intentional changes with their compatibility impact understood."

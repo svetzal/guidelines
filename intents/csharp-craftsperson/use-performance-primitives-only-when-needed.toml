@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-performance-primitives-only-when-needed"
 title = "Reserve specialized primitives for demonstrated performance needs"
+category = "performance"
+tags = ["csharp", "testing", "performance", "profiling", "evidence", "optimization"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.86
 capability = "Performance-sensitive paths can reduce allocation or copying without making ordinary code needlessly difficult to understand."

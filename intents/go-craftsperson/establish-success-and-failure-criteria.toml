@@ -1,5 +1,10 @@
 id = "guidelines.intent.establish-success-and-failure-criteria"
 title = "Define success and failure before design"
+category = "testing"
+tags = ["go", "testing", "error-handling", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The team can determine objectively whether the delivered behavior solves the requested problem."

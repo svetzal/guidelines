@@ -1,5 +1,10 @@
 id = "guidelines.intent.design-boundary-contracts-first"
 title = "Design boundary contracts before concrete integration code"
+category = "reliability"
+tags = ["go", "dependencies", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Dependencies are shaped by consumer needs and lifecycle requirements rather than by a concrete vendor API."

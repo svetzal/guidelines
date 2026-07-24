@@ -1,5 +1,10 @@
 id = "guidelines.intent.confine-gui-access-to-main-thread"
 title = "Confine GUI access to the main thread"
+category = "reliability"
+tags = ["cpp", "qt", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "GUI state remains consistent."

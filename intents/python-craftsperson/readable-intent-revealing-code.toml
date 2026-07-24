@@ -1,5 +1,10 @@
 id = "guidelines.intent.readable-intent-revealing-code"
 title = "Keep Python code legible as an explanation of the domain"
+category = "design"
+tags = ["python", "dependencies", "error-handling", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Maintainers can understand behavior, contracts, and domain boundaries directly from the code."

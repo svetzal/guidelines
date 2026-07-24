@@ -1,5 +1,10 @@
 id = "guidelines.intent.layered-kotlin-module-boundaries"
 title = "Enforce dependency direction with Kotlin modules"
+category = "delivery"
+tags = ["kotlin", "dependencies", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to evolve domain, application, and infrastructure concerns independently."

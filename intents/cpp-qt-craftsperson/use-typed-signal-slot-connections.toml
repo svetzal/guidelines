@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-typed-signal-slot-connections"
 title = "Use typed signal-slot connections"
+category = "design"
+tags = ["cpp", "qt", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Signature mismatches fail at compile time."

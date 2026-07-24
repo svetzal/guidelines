@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-edition-and-resolver"
 title = "Preserve the declared Rust edition and resolver"
+category = "delivery"
+tags = ["rust", "dependencies", "formatting", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The project continues to compile and resolve dependencies under its intentionally selected Rust language and Cargo semantics."

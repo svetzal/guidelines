@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-units-cohesive"
 title = "Keep code units cohesive"
+category = "design"
+tags = ["typescript", "bun", "cli", "testing", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "Each function and object has a small, comprehensible responsibility that can change for one reason."

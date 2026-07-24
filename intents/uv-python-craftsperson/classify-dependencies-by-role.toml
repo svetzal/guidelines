@@ -1,5 +1,10 @@
 id = "guidelines.intent.classify-dependencies-by-role"
 title = "Classify dependencies by runtime and development role"
+category = "design"
+tags = ["uv", "python", "dependencies", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Published artifacts and local workflows include only the dependencies appropriate to their role."

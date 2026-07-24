@@ -1,5 +1,10 @@
 id = "guidelines.intent.validate-high-risk-code-with-specialized-tools"
 title = "Match specialized validation to high-risk code"
+category = "quality"
+tags = ["rust", "concurrency", "security", "testing", "error-handling", "static-analysis"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "High-risk code receives validation proportional to failure modes that ordinary tests cannot expose."

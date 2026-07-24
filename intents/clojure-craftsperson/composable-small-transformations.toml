@@ -1,5 +1,10 @@
 id = "guidelines.intent.composable-small-transformations"
 title = "Express data processing as small composable transformations"
+category = "design"
+tags = ["clojure", "concurrency", "testing", "build-and-delivery", "cohesion", "single-responsibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to rearrange, reuse, and test individual stages of data processing"

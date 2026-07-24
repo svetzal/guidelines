@@ -1,5 +1,10 @@
 id = "guidelines.intent.type-safe-kotlin-builders"
 title = "Make Kotlin DSL construction type-safe"
+category = "design"
+tags = ["kotlin", "build-and-delivery", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.88
 capability = "Ability to construct valid declarative configurations with compiler guidance."

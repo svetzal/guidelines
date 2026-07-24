@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-accessibility-requirements"
 title = "Make accessibility expectations explicit"
+category = "collaboration"
+tags = ["kotlin", "android", "testing", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to deliver interactions that work for users with diverse access needs."

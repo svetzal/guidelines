@@ -1,5 +1,10 @@
 id = "guidelines.intent.demonstrate-recommendations-with-code"
 title = "Demonstrate Ruby recommendations with examples"
+category = "design"
+tags = ["ruby", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability for developers to translate review advice into an applicable implementation"

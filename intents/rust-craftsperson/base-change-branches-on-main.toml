@@ -1,5 +1,10 @@
 id = "guidelines.intent.base-change-branches-on-main"
 title = "Base change branches on main"
+category = "delivery"
+tags = ["rust", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Isolated work begins from the project's current integration baseline."

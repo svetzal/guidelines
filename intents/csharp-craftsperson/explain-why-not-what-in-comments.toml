@@ -1,5 +1,10 @@
 id = "guidelines.intent.explain-why-not-what-in-comments"
 title = "Use comments to preserve rationale"
+category = "documentation"
+tags = ["csharp", "documentation", "comments", "rationale", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-comments-to-preserve-rationale" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Future maintainers can recover the non-obvious reason a code choice or constraint exists."

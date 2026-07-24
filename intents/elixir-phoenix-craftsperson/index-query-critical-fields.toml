@@ -1,5 +1,10 @@
 id = "guidelines.intent.index-query-critical-fields"
 title = "Index query-critical fields"
+category = "reliability"
+tags = ["elixir", "phoenix", "persistence", "data-integrity", "transactions", "database-constraints"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Common lookups and association joins remain responsive as tables grow."

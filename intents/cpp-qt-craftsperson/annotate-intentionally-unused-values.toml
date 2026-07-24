@@ -1,5 +1,10 @@
 id = "guidelines.intent.annotate-intentionally-unused-values"
 title = "Annotate intentionally unused values"
+category = "quality"
+tags = ["cpp", "qt", "static-analysis", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Warnings distinguish intentional interface obligations from forgotten or obsolete code."

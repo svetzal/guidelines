@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-behavior-red-green"
 title = "Specify behavior through red-green tests"
+category = "testing"
+tags = ["elixir", "phoenix", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Required behavior remains executable and stable while implementations evolve."

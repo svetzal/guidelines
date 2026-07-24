@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-protocol-witnesses"
 title = "Prefer protocol witnesses to delegate protocols"
+category = "design"
+tags = ["swift", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.79
 capability = "Collaborator behavior can be supplied explicitly and composed from small, focused operations."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-readable-type-inference"
 title = "Use inference only when readable"
+category = "documentation"
+tags = ["cpp", "qt", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Important semantic types stay visible without template noise."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.build-lists-by-prepending"
 title = "Build lists by prepending"
+category = "design"
+tags = ["elixir", "build-and-delivery", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Incremental list construction remains linear as collection size grows."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-technical-debt-actionable"
 title = "Turn identified technical debt into an actionable decision"
+category = "collaboration"
+tags = ["ruby", "error-handling", "code-review", "feedback", "remediation"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-review-feedback-actionable" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to manage consciously accepted design liabilities before their cost compounds"

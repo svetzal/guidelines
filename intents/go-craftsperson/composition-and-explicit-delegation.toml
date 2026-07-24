@@ -1,5 +1,10 @@
 id = "guidelines.intent.composition-and-explicit-delegation"
 title = "Assemble behavior through composition and explicit delegation"
+category = "design"
+tags = ["go", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Types can reuse and combine behavior without hidden inheritance-style coupling."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.verify-before-declaring-completion"
 title = "Verify before declaring work complete"
+category = "quality"
+tags = ["java", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A completion claim reliably means the Java change has passed all applicable repository quality policy."

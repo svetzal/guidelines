@@ -1,5 +1,10 @@
 id = "guidelines.intent.adopt-modern-csharp-idioms"
 title = "Use modern C# idioms to express intent"
+category = "design"
+tags = ["csharp", "concurrency", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.92
 capability = "C# code expresses domain behavior concisely with language constructs that current maintainers and tooling understand."

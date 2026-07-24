@@ -1,5 +1,10 @@
 id = "guidelines.intent.executable-doc-examples"
 title = "Keep documentation examples executable"
+category = "documentation"
+tags = ["go", "testing", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Readers can copy documented usage patterns with confidence that they still work."

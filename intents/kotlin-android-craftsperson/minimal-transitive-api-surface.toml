@@ -1,5 +1,10 @@
 id = "guidelines.intent.minimal-transitive-api-surface"
 title = "Prevent accidental dependency exposure"
+category = "delivery"
+tags = ["kotlin", "android", "dependencies", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to change an internal dependency without forcing consumers to compile against it."

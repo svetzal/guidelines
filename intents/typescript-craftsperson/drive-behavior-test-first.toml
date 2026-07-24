@@ -1,5 +1,10 @@
 id = "guidelines.intent.drive-behavior-test-first"
 title = "Clarify behavior with a failing test first"
+category = "collaboration"
+tags = ["typescript", "concurrency", "testing", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to define expected behavior before implementation choices bias the contract"

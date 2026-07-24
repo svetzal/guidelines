@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralized-build-conventions"
 title = "Keep Gradle policy consistent and reusable"
+category = "delivery"
+tags = ["kotlin", "android", "gradle", "dependencies", "build-and-delivery", "builds"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to change common build behavior once and apply it coherently across modules."

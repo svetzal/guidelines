@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-behavior-red-green-refactor"
 title = "Develop behavior through red-green-refactor"
+category = "testing"
+tags = ["csharp", "concurrency", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "New behavior is specified observably and protected from regression before its implementation settles."

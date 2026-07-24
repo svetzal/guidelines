@@ -1,5 +1,10 @@
 id = "guidelines.intent.organize-tests-as-readable-specs"
 title = "Organize tests as readable behavioral specifications"
+category = "testing"
+tags = ["uv", "python", "testing", "error-handling", "readability", "executable-specification"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-tests-readable-specifications" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A reader can understand expected behavior and failure context directly from the test suite."

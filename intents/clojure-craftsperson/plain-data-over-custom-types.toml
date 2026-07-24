@@ -1,5 +1,10 @@
 id = "guidelines.intent.plain-data-over-custom-types"
 title = "Model domain information as ordinary Clojure data"
+category = "design"
+tags = ["clojure", "testing", "persistence", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to inspect, transform, serialize, and compose domain information with standard Clojure functions"

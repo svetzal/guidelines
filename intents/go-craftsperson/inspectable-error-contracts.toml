@@ -1,5 +1,10 @@
 id = "guidelines.intent.inspectable-error-contracts"
 title = "Give machine-readable identity to actionable failures"
+category = "delivery"
+tags = ["go", "testing", "error-handling", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Callers can branch reliably on failure categories that require distinct behavior."

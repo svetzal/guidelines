@@ -1,5 +1,10 @@
 id = "guidelines.intent.remediate-quality-gate-failures"
 title = "Remediate quality-gate failures before proceeding"
+category = "quality"
+tags = ["csharp", "documentation", "error-handling", "quality-gates", "project-conventions", "completion"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A failed quality signal leads to a durable correction rather than normalized debt or accidental regression."

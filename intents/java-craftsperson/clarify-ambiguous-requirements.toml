@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-ambiguous-requirements"
 title = "Clarify ambiguous requirements before implementation"
+category = "collaboration"
+tags = ["java", "testing", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Implemented behavior reflects stakeholder intent rather than an engineer's silent assumptions."

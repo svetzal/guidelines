@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-behavioral-coverage-thresholds"
 title = "Enforce line and branch coverage thresholds"
+category = "testing"
+tags = ["java", "testing", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Broad behavioral areas remain exercised as the Java codebase changes."

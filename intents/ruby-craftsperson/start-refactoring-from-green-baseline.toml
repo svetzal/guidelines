@@ -1,5 +1,10 @@
 id = "guidelines.intent.start-refactoring-from-green-baseline"
 title = "Begin refactoring only from a green baseline"
+category = "testing"
+tags = ["ruby", "concurrency", "testing", "error-handling", "tdd", "red-green-refactor"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to attribute any new test failure to the refactoring step that caused it"

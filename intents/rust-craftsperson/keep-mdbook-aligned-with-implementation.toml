@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-mdbook-aligned-with-implementation"
 title = "Keep mdBook documentation aligned with implementation"
+category = "documentation"
+tags = ["rust", "testing", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users can rely on the project's documentation to describe the behavior actually shipped."

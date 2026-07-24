@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-ambiguous-requirements"
 title = "Resolve ambiguous business intent before coding"
+category = "collaboration"
+tags = ["go", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Implementation decisions remain aligned with the business problem the user actually needs solved."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.escalate-uncertain-high-impact-decisions"
 title = "Escalate uncertain high-impact decisions"
+category = "performance"
+tags = ["uv", "python", "security", "documentation", "performance", "profiling"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Requirement-sensitive and high-impact choices reflect stakeholder intent rather than implementer assumptions."

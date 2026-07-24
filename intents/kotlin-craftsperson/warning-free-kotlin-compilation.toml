@@ -1,5 +1,10 @@
 id = "guidelines.intent.warning-free-kotlin-compilation"
 title = "Deliver Kotlin code that compiles without warnings"
+category = "quality"
+tags = ["kotlin", "documentation", "static-analysis", "error-handling", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to notice new compiler diagnostics rather than losing them in an accepted warning baseline."

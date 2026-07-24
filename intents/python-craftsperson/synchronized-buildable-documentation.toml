@@ -1,5 +1,10 @@
 id = "guidelines.intent.synchronized-buildable-documentation"
 title = "Keep documentation buildable and synchronized with behavior"
+category = "documentation"
+tags = ["python", "documentation", "build-and-delivery", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users and maintainers can rely on documentation and examples as accurate guides to the current system."

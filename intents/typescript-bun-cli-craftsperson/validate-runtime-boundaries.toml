@@ -1,5 +1,10 @@
 id = "guidelines.intent.validate-runtime-boundaries"
 title = "Validate data at runtime boundaries"
+category = "architecture"
+tags = ["typescript", "bun", "cli", "validation", "trust-boundaries", "security"]
+relations = [
+  { type = "specializes", target = "craftsperson/validate-untrusted-input-at-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Only data proven to satisfy domain constraints enters the typed core."

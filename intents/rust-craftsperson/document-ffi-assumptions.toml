@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-ffi-assumptions"
 title = "Document FFI memory and concurrency assumptions"
+category = "documentation"
+tags = ["rust", "concurrency", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Foreign-function boundaries remain sound across language and runtime assumptions."

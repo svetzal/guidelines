@@ -1,5 +1,10 @@
 id = "guidelines.intent.resolve-consequential-uncertainty-with-the-user"
 title = "Resolve consequential uncertainty with the user"
+category = "testing"
+tags = ["swift", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Implementation and architectural choices remain aligned with actual user intent."

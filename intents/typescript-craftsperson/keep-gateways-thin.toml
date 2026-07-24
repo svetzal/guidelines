@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-gateways-thin"
 title = "Keep gateways thin and free of business logic"
+category = "architecture"
+tags = ["typescript", "testing", "gateways", "external-systems", "dependency-inversion"]
+relations = [
+  { type = "specializes", target = "craftsperson/put-gateways-at-external-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to test business decisions without exercising external I/O"

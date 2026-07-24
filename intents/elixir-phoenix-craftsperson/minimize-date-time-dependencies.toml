@@ -1,5 +1,10 @@
 id = "guidelines.intent.minimize-date-time-dependencies"
 title = "Minimize date and time dependencies"
+category = "dependencies"
+tags = ["elixir", "phoenix", "dependencies", "supply-chain", "complexity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/minimize-dependency-surface" },
+]
 status = "hypothesized"
 confidence = 0.91
 capability = "Ordinary calendar and clock logic remains understandable without unnecessary third-party maintenance."

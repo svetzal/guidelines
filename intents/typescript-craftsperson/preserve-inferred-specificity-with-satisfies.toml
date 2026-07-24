@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-inferred-specificity-with-satisfies"
 title = "Check structural conformance without widening inferred values"
+category = "quality"
+tags = ["typescript", "testing", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.85
 capability = "Ability to verify a value satisfies a contract while retaining its useful inferred specificity"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.eliminate-knowledge-duplication"
 title = "Keep each design decision in one authoritative place"
+category = "design"
+tags = ["ruby", "security", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to change one design decision without coordinating edits across unrelated locations"

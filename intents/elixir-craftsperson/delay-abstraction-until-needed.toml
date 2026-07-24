@@ -1,5 +1,10 @@
 id = "guidelines.intent.delay-abstraction-until-needed"
 title = "Delay abstraction until evidence demands it"
+category = "design"
+tags = ["elixir", "concurrency", "abstraction", "evidence", "duplication"]
+relations = [
+  { type = "specializes", target = "craftsperson/delay-abstraction-until-evidence" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The design remains easy to change while the problem and its variation points are still being discovered."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-components-focused"
 title = "Keep UI and domain components focused"
+category = "design"
+tags = ["swift", "dependencies", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "A component can change for one coherent reason and be understood without loading unrelated behavior."

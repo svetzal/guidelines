@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-explicit-ruby-over-cleverness"
 title = "Prefer explicit Ruby over clever brevity"
+category = "design"
+tags = ["ruby", "readability", "clarity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-code-for-human-readers" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to reason predictably about Ruby behavior during maintenance"

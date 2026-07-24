@@ -1,5 +1,10 @@
 id = "guidelines.intent.fail-fast-kotlin-gate-recovery"
 title = "Repair quality-gate failures before continuing"
+category = "quality"
+tags = ["kotlin", "error-handling", "quality-gates", "project-conventions", "completion"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to keep the working revision in a trusted, diagnosable state throughout change work."

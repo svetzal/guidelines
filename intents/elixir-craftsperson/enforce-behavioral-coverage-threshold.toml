@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-behavioral-coverage-threshold"
 title = "Enforce a behavioral coverage threshold"
+category = "testing"
+tags = ["elixir", "testing", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Important behavior retains executable regression protection as the system grows."

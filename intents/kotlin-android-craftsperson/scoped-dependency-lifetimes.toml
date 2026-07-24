@@ -1,5 +1,10 @@
 id = "guidelines.intent.scoped-dependency-lifetimes"
 title = "Align dependency lifetimes with Android ownership"
+category = "reliability"
+tags = ["kotlin", "android", "dependencies", "build-and-delivery", "resource-management", "cleanup"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to retain and release shared state according to the lifecycle that owns it."

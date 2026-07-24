@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-non-owning-view-types"
 title = "Use explicit non-owning views"
+category = "reliability"
+tags = ["cpp", "qt", "concurrency", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "APIs process slices without copying while exposing bounds."

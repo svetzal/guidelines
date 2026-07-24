@@ -1,5 +1,10 @@
 id = "guidelines.intent.clean-up-owned-process-resources"
 title = "Clean up process-owned resources when possible"
+category = "reliability"
+tags = ["elixir", "concurrency", "build-and-delivery", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.89
 capability = "Resources owned by a terminating process are released predictably when lifecycle callbacks can run."

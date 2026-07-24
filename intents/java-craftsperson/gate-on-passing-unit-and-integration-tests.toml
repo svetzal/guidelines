@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-on-passing-unit-and-integration-tests"
 title = "Gate delivery on passing unit and integration tests"
+category = "quality"
+tags = ["java", "testing", "build-and-delivery", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A delivered change preserves both isolated behavior and assembled system wiring."

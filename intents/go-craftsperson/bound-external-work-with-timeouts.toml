@@ -1,5 +1,10 @@
 id = "guidelines.intent.bound-external-work-with-timeouts"
 title = "Time-bound operations that consume external resources"
+category = "design"
+tags = ["go", "concurrency", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The service recovers resources when external work stalls or exceeds its useful lifetime."

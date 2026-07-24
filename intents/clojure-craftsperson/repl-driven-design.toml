@@ -1,5 +1,10 @@
 id = "guidelines.intent.repl-driven-design"
 title = "Design code for rapid REPL exploration"
+category = "design"
+tags = ["clojure", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to inspect and exercise small units of behavior interactively during development"

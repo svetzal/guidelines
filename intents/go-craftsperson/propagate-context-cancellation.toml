@@ -1,5 +1,10 @@
 id = "guidelines.intent.propagate-context-cancellation"
 title = "Carry cancellation and deadlines through call chains"
+category = "reliability"
+tags = ["go", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A caller can cancel an in-flight operation across every downstream layer."

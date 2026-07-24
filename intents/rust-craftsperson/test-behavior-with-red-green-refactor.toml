@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-behavior-with-red-green-refactor"
 title = "Test behavior through red-green-refactor"
+category = "testing"
+tags = ["rust", "concurrency", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Tests specify user-visible or domain behavior and detect meaningful regressions while permitting refactoring."

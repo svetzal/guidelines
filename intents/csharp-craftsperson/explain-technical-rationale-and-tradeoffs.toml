@@ -1,5 +1,10 @@
 id = "guidelines.intent.explain-technical-rationale-and-tradeoffs"
 title = "Explain technical rationale and tradeoffs"
+category = "delivery"
+tags = ["csharp", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Users and future maintainers can evaluate a technical choice and adapt it when its assumptions change."

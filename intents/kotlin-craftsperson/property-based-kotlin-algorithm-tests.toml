@@ -1,5 +1,10 @@
 id = "guidelines.intent.property-based-kotlin-algorithm-tests"
 title = "Test algorithmic invariants across generated inputs"
+category = "testing"
+tags = ["kotlin", "testing", "error-handling", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to expose algorithm failures outside a small set of hand-picked examples."

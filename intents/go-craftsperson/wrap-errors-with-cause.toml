@@ -1,5 +1,10 @@
 id = "guidelines.intent.wrap-errors-with-cause"
 title = "Add operational context without losing error identity"
+category = "design"
+tags = ["go", "testing", "error-handling", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Failures remain diagnosable at higher layers while callers can still inspect their underlying causes."

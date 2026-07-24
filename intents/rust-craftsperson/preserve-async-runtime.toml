@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-async-runtime"
 title = "Preserve the project's async runtime"
+category = "reliability"
+tags = ["rust", "concurrency", "security", "dependencies", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Async code remains interoperable with the runtime, scheduling, and operational model already chosen by the project."

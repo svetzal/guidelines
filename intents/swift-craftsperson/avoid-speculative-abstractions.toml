@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-abstractions"
 title = "Require abstractions to earn their place"
+category = "design"
+tags = ["swift", "testing", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The design remains simple enough to understand and change for current requirements."

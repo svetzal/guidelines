@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-documentation-aligned"
 title = "Keep documentation aligned with implementation"
+category = "documentation"
+tags = ["uv", "python", "documentation", "build-and-delivery", "synchronization", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users and maintainers can rely on guides, examples, and docstrings as current operating instructions."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.capture-subprocess-diagnostics"
 title = "Capture subprocess diagnostics"
+category = "architecture"
+tags = ["typescript", "bun", "cli", "concurrency", "error-handling", "gateways"]
+relations = [
+  { type = "specializes", target = "craftsperson/put-gateways-at-external-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The CLI can preserve the output needed to consume and explain an external command's outcome."

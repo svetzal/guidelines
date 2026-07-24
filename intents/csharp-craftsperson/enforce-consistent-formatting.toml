@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-consistent-formatting"
 title = "Enforce repository-wide formatting"
+category = "quality"
+tags = ["csharp", "testing", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Code changes remain mechanically consistent and reviews focus on behavior rather than formatting noise."

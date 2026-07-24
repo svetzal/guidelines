@@ -1,5 +1,10 @@
 id = "guidelines.intent.propagate-current-scope-through-data-access"
 title = "Propagate current scope through data access"
+category = "reliability"
+tags = ["elixir", "phoenix", "security", "persistence", "data-integrity", "transactions"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Every user-scoped query and UI render is anchored to the authenticated request scope."

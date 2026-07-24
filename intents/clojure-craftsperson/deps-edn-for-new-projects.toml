@@ -1,5 +1,10 @@
 id = "guidelines.intent.deps-edn-for-new-projects"
 title = "Start new projects on the Clojure CLI"
+category = "delivery"
+tags = ["clojure", "dependencies", "persistence", "build-and-delivery", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to manage dependencies and development workflows with current Clojure-native tooling"

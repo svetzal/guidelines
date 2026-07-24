@@ -1,5 +1,10 @@
 id = "guidelines.intent.configure-release-runtime-through-env-scripts"
 title = "Configure release runtime through environment scripts"
+category = "delivery"
+tags = ["elixir", "security", "testing", "documentation", "build-and-delivery", "builds"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "A release receives host-specific runtime identity and secrets without rebuilding the application artifact."

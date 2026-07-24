@@ -1,5 +1,10 @@
 id = "guidelines.intent.standardize-domain-errors"
 title = "Expose stable domain error metadata"
+category = "reliability"
+tags = ["typescript", "error-handling", "error-modeling", "recoverability", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Ability for callers to classify failures without parsing human-readable messages"

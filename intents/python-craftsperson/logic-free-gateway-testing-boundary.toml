@@ -1,5 +1,10 @@
 id = "guidelines.intent.logic-free-gateway-testing-boundary"
 title = "Test decisions in the core rather than forwarding gateways"
+category = "architecture"
+tags = ["python", "testing", "gateways", "business-logic", "separation-of-concerns"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-gateways-logic-free" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The test suite concentrates effort on project-owned behavior instead of duplicating third-party library verification."

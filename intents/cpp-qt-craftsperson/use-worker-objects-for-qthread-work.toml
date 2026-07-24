@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-worker-objects-for-qthread-work"
 title = "Use worker objects for QThread work"
+category = "reliability"
+tags = ["cpp", "qt", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Work and lifecycle follow Qt affinity rules."

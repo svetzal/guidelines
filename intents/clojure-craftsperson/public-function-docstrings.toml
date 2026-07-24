@@ -1,5 +1,10 @@
 id = "guidelines.intent.public-function-docstrings"
 title = "Document every public function at its definition"
+category = "documentation"
+tags = ["clojure", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for callers to understand a public function's contract without reading its implementation"

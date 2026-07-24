@@ -1,5 +1,10 @@
 id = "guidelines.intent.gradual-leiningen-migration"
 title = "Modernize Leiningen projects without breaking their workflows"
+category = "delivery"
+tags = ["clojure", "leiningen", "testing", "documentation", "build-and-delivery", "tooling"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to adopt modern Clojure tooling while keeping an existing project operable"

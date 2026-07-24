@@ -1,5 +1,10 @@
 id = "guidelines.intent.nonblocking-async-io"
 title = "Keep blocking work off the asynchronous event loop"
+category = "reliability"
+tags = ["python", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "An asynchronous service remains responsive while multiple I/O operations are in flight."

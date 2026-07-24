@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-authentication-at-routing-boundaries"
 title = "Enforce authentication at routing boundaries"
+category = "architecture"
+tags = ["elixir", "phoenix", "security", "trust-boundaries", "authorization"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Unauthenticated requests cannot mount or invoke protected controllers and LiveViews."

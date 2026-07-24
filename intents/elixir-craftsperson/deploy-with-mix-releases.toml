@@ -1,5 +1,10 @@
 id = "guidelines.intent.deploy-with-mix-releases"
 title = "Deploy with Mix releases"
+category = "delivery"
+tags = ["elixir", "mix", "dependencies", "build-and-delivery", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Production deployments package the application and BEAM runtime reproducibly with current supported tooling."

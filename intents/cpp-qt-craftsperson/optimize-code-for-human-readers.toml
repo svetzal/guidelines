@@ -1,5 +1,10 @@
 id = "guidelines.intent.optimize-code-for-human-readers"
 title = "Make code communicate domain intent"
+category = "design"
+tags = ["cpp", "qt", "readability", "clarity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-code-for-human-readers" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Future maintainers can understand domain behavior without reconstructing hidden reasoning."

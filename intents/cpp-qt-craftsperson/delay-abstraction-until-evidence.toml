@@ -1,5 +1,10 @@
 id = "guidelines.intent.delay-abstraction-until-evidence"
 title = "Delay abstraction until repetition proves it"
+category = "design"
+tags = ["cpp", "qt", "abstraction", "evidence", "duplication"]
+relations = [
+  { type = "specializes", target = "craftsperson/delay-abstraction-until-evidence" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Abstractions match observed variation."

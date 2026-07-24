@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-swiftlint"
 title = "Gate changes on SwiftLint compliance"
+category = "design"
+tags = ["swift", "swiftlint", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Swift code consistently satisfies the project's statically enforceable style and safety rules."

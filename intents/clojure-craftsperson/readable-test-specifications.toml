@@ -1,5 +1,10 @@
 id = "guidelines.intent.readable-test-specifications"
 title = "Make tests readable behavioral specifications"
+category = "testing"
+tags = ["clojure", "testing", "error-handling", "readability", "executable-specification", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-tests-readable-specifications" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability for maintainers to infer intended behavior and diagnose failures from the test suite"

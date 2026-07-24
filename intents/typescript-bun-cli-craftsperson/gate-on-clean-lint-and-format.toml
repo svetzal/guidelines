@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-on-clean-lint-and-format"
 title = "Gate changes on clean lint and formatting"
+category = "quality"
+tags = ["typescript", "bun", "cli", "documentation", "formatting", "static-analysis"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The codebase retains mechanically enforceable consistency and catches configured quality defects before integration."

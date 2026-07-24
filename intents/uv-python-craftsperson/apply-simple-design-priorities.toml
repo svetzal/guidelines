@@ -1,5 +1,10 @@
 id = "guidelines.intent.apply-simple-design-priorities"
 title = "Apply simple design priorities in order"
+category = "design"
+tags = ["uv", "python", "testing", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Design tradeoffs are resolved consistently toward correct, understandable, low-duplication, minimal systems."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.complete-automated-test-gate"
 title = "Block completion on automated regression evidence"
+category = "reliability"
+tags = ["kotlin", "android", "concurrency", "testing", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 1
 capability = "Ability to preserve previously verified behavior after each change."

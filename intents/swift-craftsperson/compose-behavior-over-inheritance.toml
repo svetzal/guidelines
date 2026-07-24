@@ -1,5 +1,10 @@
 id = "guidelines.intent.compose-behavior-over-inheritance"
 title = "Compose behavior instead of growing inheritance trees"
+category = "design"
+tags = ["swift", "dependencies", "error-handling", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Behavior can be combined and replaced without depending on fragile superclass hierarchies."

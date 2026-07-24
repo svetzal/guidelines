@@ -1,5 +1,10 @@
 id = "guidelines.intent.narrow-unknown-inputs"
 title = "Narrow unknown values before use"
+category = "design"
+tags = ["typescript", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to retain type safety when data has not yet been proven to match a contract"

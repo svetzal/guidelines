@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-genserver-state-simple"
 title = "Keep GenServer state simple"
+category = "reliability"
+tags = ["elixir", "concurrency", "testing", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "A running service can be inspected, restarted, and reasoned about from a clear state representation."

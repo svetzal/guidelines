@@ -1,5 +1,10 @@
 id = "guidelines.intent.handle-absence-explicitly"
 title = "Handle absent values explicitly"
+category = "design"
+tags = ["typescript", "bun", "cli", "error-handling", "domain-modeling", "type-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Missing data follows a deliberate success, fallback, or error path rather than crashing unexpectedly."

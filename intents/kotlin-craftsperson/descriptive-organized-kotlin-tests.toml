@@ -1,5 +1,10 @@
 id = "guidelines.intent.descriptive-organized-kotlin-tests"
 title = "Make test intent legible from names and structure"
+category = "testing"
+tags = ["kotlin", "testing", "readability", "executable-specification", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-tests-readable-specifications" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to understand the behavior under test and the failed scenario without reverse-engineering setup code."

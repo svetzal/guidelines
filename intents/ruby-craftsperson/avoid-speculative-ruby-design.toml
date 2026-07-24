@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-ruby-design"
 title = "Build only for demonstrated Ruby requirements"
+category = "design"
+tags = ["ruby", "testing", "build-and-delivery", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to keep the design proportional to behavior the product actually needs"

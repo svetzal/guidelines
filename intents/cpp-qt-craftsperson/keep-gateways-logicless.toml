@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-gateways-logicless"
 title = "Keep gateways free of policy"
+category = "testing"
+tags = ["cpp", "qt", "testing", "gateways", "unit-testing", "test-value"]
+relations = [
+  { type = "specializes", target = "craftsperson/do-not-unit-test-logicless-gateways" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Business policy stays reusable and testable."

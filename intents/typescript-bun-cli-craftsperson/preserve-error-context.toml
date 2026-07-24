@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-error-context"
 title = "Preserve actionable error context"
+category = "reliability"
+tags = ["typescript", "bun", "cli", "testing", "error-handling", "diagnostics"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-error-context" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Users and maintainers can identify the failed operation and the underlying diagnostic."

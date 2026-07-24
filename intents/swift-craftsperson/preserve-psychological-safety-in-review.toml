@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-psychological-safety-in-review"
 title = "Critique ideas without diminishing people"
+category = "collaboration"
+tags = ["swift", "testing", "code-review", "psychological-safety", "feedback"]
+relations = [
+  { type = "specializes", target = "craftsperson/review-with-psychological-safety" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Developers can ask questions, receive feedback, and improve code without fear of condescension or personal blame."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.deliberate-coroutine-failure-isolation"
 title = "Choose sibling cancellation semantics deliberately"
+category = "reliability"
+tags = ["kotlin", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to preserve independent concurrent results when one child operation fails."

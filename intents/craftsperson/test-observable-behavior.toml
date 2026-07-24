@@ -2,6 +2,10 @@ id = "guidelines.intent.test-observable-behavior"
 title = "Test observable behavior, not implementation"
 category = "testing"
 tags = ["behavior", "public-boundaries", "refactor-safety"]
+relations = [
+  { type = "related-to", target = "craftsperson/preserve-behavior-during-refactoring" },
+  { type = "related-to", target = "craftsperson/document-public-contracts" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Tests detect meaningful regressions while allowing implementation structure to improve."

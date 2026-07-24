@@ -1,5 +1,10 @@
 id = "guidelines.intent.static-analysis-gate"
 title = "Catch Kotlin defects before completion"
+category = "quality"
+tags = ["kotlin", "android", "testing", "static-analysis", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 1
 capability = "Ability to detect maintainability and correctness risks not exercised by tests."

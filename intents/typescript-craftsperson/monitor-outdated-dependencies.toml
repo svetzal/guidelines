@@ -1,5 +1,10 @@
 id = "guidelines.intent.monitor-outdated-dependencies"
 title = "Monitor dependency version drift"
+category = "dependencies"
+tags = ["typescript", "security", "dependencies", "reproducibility", "lockfiles", "build-stability"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-dependency-resolution-reproducible" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to plan upgrades before dependencies become unsupported or dangerously stale"

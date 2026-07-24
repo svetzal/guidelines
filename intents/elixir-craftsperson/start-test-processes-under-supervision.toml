@@ -1,5 +1,10 @@
 id = "guidelines.intent.start-test-processes-under-supervision"
 title = "Start test processes under supervision"
+category = "reliability"
+tags = ["elixir", "concurrency", "testing", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each process test cleans up reliably and remains isolated from later tests."

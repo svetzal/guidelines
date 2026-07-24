@@ -1,5 +1,10 @@
 id = "guidelines.intent.descriptive-names"
 title = "Name code after its intent"
+category = "design"
+tags = ["go", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A future reader can infer the role of a symbol without reconstructing local context."

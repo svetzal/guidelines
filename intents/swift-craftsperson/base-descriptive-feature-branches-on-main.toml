@@ -1,5 +1,10 @@
 id = "guidelines.intent.base-descriptive-feature-branches-on-main"
 title = "Base descriptively named feature branches on main"
+category = "delivery"
+tags = ["swift", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Feature work begins from the shared integration baseline and remains identifiable while isolated."

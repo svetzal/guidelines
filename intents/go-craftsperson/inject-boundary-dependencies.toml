@@ -1,5 +1,10 @@
 id = "guidelines.intent.inject-boundary-dependencies"
 title = "Inject effectful dependencies through contracts"
+category = "design"
+tags = ["go", "testing", "dependencies", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Core behavior can run with different boundary implementations in tests and production."

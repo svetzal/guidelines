@@ -1,5 +1,10 @@
 id = "guidelines.intent.enable-qt-code-generation-in-cmake"
 title = "Enable Qt code generation in CMake"
+category = "delivery"
+tags = ["cpp", "qt", "cmake", "build-and-delivery", "builds", "configuration"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Meta-object, resource, and UI code stays current."

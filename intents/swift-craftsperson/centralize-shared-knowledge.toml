@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-shared-knowledge"
 title = "Centralize shared decisions"
+category = "design"
+tags = ["swift", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A business or technical decision can change once without leaving contradictory implementations behind."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.escalate-high-impact-changes"
 title = "Escalate high-impact invariant changes"
+category = "dependencies"
+tags = ["rust", "security", "dependencies", "vulnerability-management", "lifecycle-risk"]
+relations = [
+  { type = "specializes", target = "craftsperson/audit-dependency-risk" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Humans retain authority over compatibility, safety, and supply-chain decisions with broad consequences."

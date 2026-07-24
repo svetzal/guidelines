@@ -1,5 +1,10 @@
 id = "guidelines.intent.root-cause-quality-remediation"
 title = "Preserve the signal of quality gates"
+category = "documentation"
+tags = ["kotlin", "android", "documentation", "error-handling", "synchronization", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to trust that a green gate means the underlying defect was resolved."

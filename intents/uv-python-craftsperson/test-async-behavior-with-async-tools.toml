@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-async-behavior-with-async-tools"
 title = "Test async behavior in its native execution model"
+category = "reliability"
+tags = ["uv", "python", "concurrency", "testing", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Tests exercise coroutine scheduling and await contracts rather than approximating them synchronously."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-features"
 title = "Avoid speculative features"
+category = "design"
+tags = ["elixir", "phoenix", "testing", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The product and codebase stay focused on behavior with demonstrated value."

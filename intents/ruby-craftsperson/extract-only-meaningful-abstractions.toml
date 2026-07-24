@@ -1,5 +1,10 @@
 id = "guidelines.intent.extract-only-meaningful-abstractions"
 title = "Extract abstractions that expose domain meaning"
+category = "design"
+tags = ["ruby", "dependencies", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to navigate complex behavior through coherent named concepts"

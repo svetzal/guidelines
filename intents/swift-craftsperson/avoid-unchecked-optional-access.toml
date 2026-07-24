@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-unchecked-optional-access"
 title = "Avoid unjustified force unwrapping"
+category = "design"
+tags = ["swift", "error-handling", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Absence is handled deliberately instead of terminating execution unexpectedly."

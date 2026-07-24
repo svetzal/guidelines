@@ -1,5 +1,10 @@
 id = "guidelines.intent.pin-python-runtime"
 title = "Pin the project Python runtime"
+category = "delivery"
+tags = ["uv", "python", "dependencies", "compatibility", "runtime-versions", "platform-support"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-supported-platform-baselines" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Every uv command and contributor runs the project against the intended Python interpreter version."

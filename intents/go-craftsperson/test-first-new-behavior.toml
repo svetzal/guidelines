@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-first-new-behavior"
 title = "Specify new behavior before implementing it"
+category = "testing"
+tags = ["go", "concurrency", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "New behavior begins with an executable statement of its expected contract."

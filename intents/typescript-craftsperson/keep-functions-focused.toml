@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-functions-focused"
 title = "Keep functions short enough to reveal one coherent behavior"
+category = "design"
+tags = ["typescript", "testing", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.91
 capability = "Ability to understand and test a function as one focused unit"

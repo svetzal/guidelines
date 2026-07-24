@@ -1,5 +1,10 @@
 id = "guidelines.intent.start-simple-then-refactor"
 title = "Start with the simplest working design, then refactor"
+category = "refactoring"
+tags = ["typescript", "concurrency", "testing", "behavior-preservation", "small-steps", "test-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-behavior-during-refactoring" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to discover an appropriate design from working behavior rather than guesses"

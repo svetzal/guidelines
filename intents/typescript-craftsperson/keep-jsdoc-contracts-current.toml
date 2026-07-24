@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-jsdoc-contracts-current"
 title = "Keep JSDoc aligned with code contracts"
+category = "design"
+tags = ["typescript", "documentation", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability for callers to understand exported behavior, constraints, and usage at the point of use"

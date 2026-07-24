@@ -1,5 +1,10 @@
 id = "guidelines.intent.explicit-design-tension-escalation"
 title = "Escalate decisions when engineering heuristics cannot resolve intent"
+category = "documentation"
+tags = ["python", "security", "testing", "documentation", "performance", "synchronization"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Consequential tradeoffs remain aligned with user intent rather than being silently decided by implementation convention."

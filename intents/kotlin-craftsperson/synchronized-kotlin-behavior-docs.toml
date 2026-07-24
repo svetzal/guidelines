@@ -1,5 +1,10 @@
 id = "guidelines.intent.synchronized-kotlin-behavior-docs"
 title = "Update Kotlin documentation with behavior changes"
+category = "documentation"
+tags = ["kotlin", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability for maintainers and users to rely on documentation as a description of current behavior."

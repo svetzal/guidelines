@@ -1,5 +1,10 @@
 id = "guidelines.intent.benchmark-performance-sensitive-code"
 title = "Benchmark performance-sensitive code"
+category = "performance"
+tags = ["rust", "performance", "profiling", "evidence", "optimization"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Performance-sensitive behavior can be changed with measured evidence of regressions or improvements."

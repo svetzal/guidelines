@@ -1,5 +1,10 @@
 id = "guidelines.intent.minimize-structural-entities"
 title = "Minimize structural entities"
+category = "design"
+tags = ["csharp", "testing", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The design remains easy to navigate because every class, interface, and indirection has a concrete purpose."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.model-domain-errors-explicitly"
 title = "Model domain errors explicitly"
+category = "documentation"
+tags = ["uv", "python", "testing", "documentation", "error-handling", "synchronization"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Callers can distinguish expected domain failures and handle them according to the contract."

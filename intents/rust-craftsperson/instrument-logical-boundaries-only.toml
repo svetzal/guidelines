@@ -1,5 +1,10 @@
 id = "guidelines.intent.instrument-logical-boundaries-only"
 title = "Instrument meaningful operation boundaries"
+category = "design"
+tags = ["rust", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Telemetry remains legible and economical enough to reveal significant operations."

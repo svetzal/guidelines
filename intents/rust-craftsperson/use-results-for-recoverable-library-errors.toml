@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-results-for-recoverable-library-errors"
 title = "Use Result for recoverable library failures"
+category = "reliability"
+tags = ["rust", "concurrency", "testing", "error-handling", "error-modeling", "recoverability"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Library callers can handle expected failure modes without process termination."

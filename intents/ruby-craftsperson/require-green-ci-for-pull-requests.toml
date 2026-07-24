@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-green-ci-for-pull-requests"
 title = "Require green CI for pull requests"
+category = "quality"
+tags = ["ruby", "security", "testing", "static-analysis", "error-handling", "build-and-delivery"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to integrate reviewed changes only after automated project checks succeed"

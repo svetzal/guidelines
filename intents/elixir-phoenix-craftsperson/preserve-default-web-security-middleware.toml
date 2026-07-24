@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-default-web-security-middleware"
 title = "Preserve default web security middleware"
+category = "architecture"
+tags = ["elixir", "phoenix", "security", "trust-boundaries", "authorization"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Browser requests retain baseline CSRF and security-header protection as routes evolve."

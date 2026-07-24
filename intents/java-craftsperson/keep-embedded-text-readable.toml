@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-embedded-text-readable"
 title = "Keep embedded multi-line text readable"
+category = "quality"
+tags = ["java", "formatting", "error-handling", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "Embedded SQL, JSON, and other multi-line payloads remain legible and structurally comparable to their native form."

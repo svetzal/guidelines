@@ -1,5 +1,10 @@
 id = "guidelines.intent.immutable-domain-models"
 title = "Make domain model values immutable by default"
+category = "design"
+tags = ["python", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Domain values remain stable after validation and can be reasoned about without hidden mutation."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.pin-production-dependencies"
 title = "Pin production dependency versions"
+category = "dependencies"
+tags = ["java", "dependencies", "build-and-delivery", "supply-chain", "complexity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/minimize-dependency-surface" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Production builds resolve a reproducible, reviewable dependency graph."

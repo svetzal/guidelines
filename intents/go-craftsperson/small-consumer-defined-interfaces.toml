@@ -1,5 +1,10 @@
 id = "guidelines.intent.small-consumer-defined-interfaces"
 title = "Define narrow interfaces beside their consumers"
+category = "reliability"
+tags = ["go", "dependencies", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Consumers depend only on the behavior they need and can substitute boundary implementations independently."

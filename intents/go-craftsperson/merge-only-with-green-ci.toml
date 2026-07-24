@@ -1,5 +1,10 @@
 id = "guidelines.intent.merge-only-with-green-ci"
 title = "Merge only an independently verified green change"
+category = "quality"
+tags = ["go", "dependencies", "build-and-delivery", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The shared main line retains an automated signal that integrated changes satisfy repository gates."

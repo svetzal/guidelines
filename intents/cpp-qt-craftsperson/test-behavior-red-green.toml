@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-behavior-red-green"
 title = "Clarify behavior through red-green testing"
+category = "testing"
+tags = ["cpp", "qt", "concurrency", "testing", "tdd", "red-green-refactor"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Expected behavior is explicit before implementation constrains it."

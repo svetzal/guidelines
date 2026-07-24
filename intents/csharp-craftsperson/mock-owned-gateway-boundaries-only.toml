@@ -1,5 +1,10 @@
 id = "guidelines.intent.mock-owned-gateway-boundaries-only"
 title = "Mock only owned gateway boundaries"
+category = "testing"
+tags = ["csharp", "testing", "test-doubles", "boundaries", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/mock-only-owned-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Tests isolate external effects through stable contracts controlled by the application."

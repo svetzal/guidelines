@@ -4,12 +4,14 @@ A static visualization of the intent records in this repository, published to
 GitHub Pages by `.github/workflows/pages.yml` on every push to `main` that
 touches `intents/**` or `site/**`.
 
-- `build.py` — stdlib-only generator (Python 3.11+). Reads
-  `intents/craftsperson/*.toml`, distills each record (title, category, tags,
-  confidence, capability/threat/strategy/tradeoff, the evidence criteria that
-  show the intent is being honored, per-language good/bad code examples,
-  ecosystem coverage from `scope.paths`), and injects the set as JSON into
-  the template along with the vendored highlight.js bundle.
+- `build.py` — stdlib-only generator (Python 3.11+). Reads every generalized
+  and ecosystem-specific craftsperson intent, validates relationship targets,
+  distills the catalogue fields, and injects the set as JSON into the template
+  along with the vendored highlight.js bundle.
+- `enrich_intents.py` — deterministic editorial classification for ecosystem
+  records. It adds or refreshes each record's category, topical/tool tags, and
+  explicit specialization edge. Run it after adding or renaming ecosystem
+  intents and review the resulting taxonomy changes.
 - `merge_examples.py` — merges per-language example fragments
   (`<lang>.json` keyed by intent slug, values `{good, bad}`) into the
   `[examples.<lang>]` tables of the intent records. Idempotent: everything
@@ -18,11 +20,12 @@ touches `intents/**` or `site/**`.
   the common-languages bundle plus clojure and elixir grammars. Inlined
   into the page at build time so the site stays a single self-contained
   file.
-- `template.html` — the atlas page: an interactive radial map of every intent
-  grouped by category, backed by expandable per-intent record cards. Fully
-  self-contained (inline CSS/JS, system font stacks, no external requests),
-  light and dark themes. The `/*__DATA__*/` and `__BUILT__` markers are
-  replaced at build time.
+- `template.html` — the atlas page: an interactive force-directed relationship
+  field with progressive ecosystem disclosure, backed by a searchable,
+  filterable, incrementally rendered catalogue of every record. Fully
+  self-contained (inline CSS/JS, no external requests), responsive, and
+  available in light and dark themes. The `/*__DATA__*/` and `__BUILT__`
+  markers are replaced at build time.
 - Output lands in `_site/` (gitignored).
 
 Build locally:

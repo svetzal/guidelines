@@ -1,5 +1,10 @@
 id = "guidelines.intent.model-recoverable-errors-as-results"
 title = "Model recoverable failures as explicit results"
+category = "reliability"
+tags = ["typescript", "error-handling", "error-modeling", "recoverability", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability for callers to handle expected failure as part of a function's typed contract"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.adopt-swift-testing-for-new-code"
 title = "Use Swift Testing for new behavior tests"
+category = "testing"
+tags = ["swift", "testing", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "New tests can use the modern behavior-focused testing capabilities of the Swift toolchain."

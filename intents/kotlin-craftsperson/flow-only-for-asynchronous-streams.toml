@@ -1,5 +1,10 @@
 id = "guidelines.intent.flow-only-for-asynchronous-streams"
 title = "Use Flow only when stream semantics are asynchronous"
+category = "reliability"
+tags = ["kotlin", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to represent lazy data processing with the simplest abstraction that preserves required timing and cancellation behavior."

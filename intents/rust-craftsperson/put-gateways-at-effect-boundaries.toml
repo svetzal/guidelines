@@ -1,5 +1,10 @@
 id = "guidelines.intent.put-gateways-at-effect-boundaries"
 title = "Put gateway traits at effect boundaries"
+category = "design"
+tags = ["rust", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Core behavior can substitute controlled adapters without coupling to third-party libraries."

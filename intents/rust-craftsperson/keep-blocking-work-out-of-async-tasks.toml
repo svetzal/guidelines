@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-blocking-work-out-of-async-tasks"
 title = "Keep blocking work out of async tasks"
+category = "reliability"
+tags = ["rust", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The async runtime can continue scheduling unrelated work responsively under load."

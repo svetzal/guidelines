@@ -1,5 +1,10 @@
 id = "guidelines.intent.deterministic-kotlin-test-cleanup"
 title = "Release test resources on every path"
+category = "reliability"
+tags = ["kotlin", "testing", "build-and-delivery", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to run tests repeatedly and independently without leaked state or resources."

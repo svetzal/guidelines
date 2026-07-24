@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-public-api-contracts"
 title = "Document public API contracts"
+category = "documentation"
+tags = ["csharp", "documentation", "error-handling", "public-api", "contracts", "consumer-guidance"]
+relations = [
+  { type = "specializes", target = "craftsperson/document-public-contracts" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Consumers can use public APIs correctly without reading their implementation."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.clean-kotlin-format-gate"
 title = "Reject Kotlin changes that violate the shared format"
+category = "quality"
+tags = ["kotlin", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to read diffs and code under one mechanically enforced Kotlin style."

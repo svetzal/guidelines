@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-enum-over-manual-recursion"
 title = "Prefer Enum over manual recursion"
+category = "design"
+tags = ["elixir", "testing", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Common collection transformations remain recognizable and rely on well-tested library semantics."

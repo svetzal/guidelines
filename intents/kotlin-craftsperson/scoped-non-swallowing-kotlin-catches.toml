@@ -1,5 +1,10 @@
 id = "guidelines.intent.scoped-non-swallowing-kotlin-catches"
 title = "Catch only failures that can be handled"
+category = "reliability"
+tags = ["kotlin", "error-handling", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to observe unexpected failures while recovering from explicitly understood ones."

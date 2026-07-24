@@ -1,5 +1,10 @@
 id = "guidelines.intent.bound-subprocess-lifetime"
 title = "Bound every subprocess lifetime"
+category = "reliability"
+tags = ["typescript", "bun", "cli", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The CLI can regain control when an invoked program hangs or never exits."

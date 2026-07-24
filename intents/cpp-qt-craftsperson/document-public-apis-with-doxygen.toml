@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-public-apis-with-doxygen"
 title = "Document and render public APIs"
+category = "documentation"
+tags = ["cpp", "qt", "documentation", "public-api", "contracts", "consumer-guidance"]
+relations = [
+  { type = "specializes", target = "craftsperson/document-public-contracts" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Consumers can discover public contracts."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.independently-shippable-increments"
 title = "Deliver changes as independently shippable increments"
+category = "delivery"
+tags = ["python", "incremental-delivery", "change-scope", "reversibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/deliver-small-independent-increments" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each logical change can be understood, validated, shipped, or reverted independently."

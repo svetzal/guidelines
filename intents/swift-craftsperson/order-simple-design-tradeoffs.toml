@@ -1,5 +1,10 @@
 id = "guidelines.intent.order-simple-design-tradeoffs"
 title = "Resolve design tradeoffs in an explicit priority order"
+category = "design"
+tags = ["swift", "concurrency", "testing", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.93
 capability = "Engineers can make consistent design decisions when correctness, clarity, duplication, and minimality conflict."

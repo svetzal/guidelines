@@ -1,5 +1,10 @@
 id = "guidelines.intent.build-standard-python-distributions"
 title = "Build standard Python distributions through uv"
+category = "delivery"
+tags = ["uv", "python", "dependencies", "build-and-delivery", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.88
 capability = "A publishable project produces installable artifacts understood by standard Python package tooling."

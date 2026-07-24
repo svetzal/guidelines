@@ -1,5 +1,10 @@
 id = "guidelines.intent.compose-with-protocols"
 title = "Compose behavior through protocols"
+category = "design"
+tags = ["uv", "python", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Behavior can vary without binding components to inherited implementation hierarchies."

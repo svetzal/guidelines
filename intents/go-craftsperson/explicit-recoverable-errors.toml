@@ -1,5 +1,10 @@
 id = "guidelines.intent.explicit-recoverable-errors"
 title = "Represent recoverable failure with returned errors"
+category = "reliability"
+tags = ["go", "error-handling", "error-modeling", "recoverability", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Callers retain control over expected failure and recovery behavior."

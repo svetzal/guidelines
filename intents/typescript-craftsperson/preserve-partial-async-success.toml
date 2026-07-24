@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-partial-async-success"
 title = "Preserve successful results when peer operations fail"
+category = "reliability"
+tags = ["typescript", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.93
 capability = "Ability to use successful asynchronous results when all-or-nothing semantics are unnecessary"

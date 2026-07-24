@@ -1,5 +1,10 @@
 id = "guidelines.intent.manage-resource-lifetimes-with-contexts"
 title = "Manage resource lifetimes with context managers"
+category = "reliability"
+tags = ["uv", "python", "error-handling", "build-and-delivery", "concurrency", "structured-concurrency"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Files, connections, locks, and dynamically acquired resources are released on every exit path."

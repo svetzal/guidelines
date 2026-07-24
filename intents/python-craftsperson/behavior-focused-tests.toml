@@ -1,5 +1,10 @@
 id = "guidelines.intent.behavior-focused-tests"
 title = "Specify observable behavior rather than implementation structure"
+category = "design"
+tags = ["python", "concurrency", "testing", "error-handling", "cohesion", "single-responsibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Internal design can be refactored without rewriting tests when externally meaningful behavior is unchanged."

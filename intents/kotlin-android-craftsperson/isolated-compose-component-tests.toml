@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolated-compose-component-tests"
 title = "Verify reusable composables without full-screen assembly"
+category = "quality"
+tags = ["kotlin", "android", "testing", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to test component rendering and interaction under controlled state."

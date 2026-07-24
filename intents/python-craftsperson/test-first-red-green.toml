@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-first-red-green"
 title = "Clarify behavior through a failing test before implementation"
+category = "testing"
+tags = ["python", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "New behavior begins with an explicit, executable statement of the requirement."

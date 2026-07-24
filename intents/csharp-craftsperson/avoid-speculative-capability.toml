@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-capability"
 title = "Avoid speculative capability"
+category = "design"
+tags = ["csharp", "testing", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The system remains focused on currently understood needs and carries only behavior that has evidence of value."

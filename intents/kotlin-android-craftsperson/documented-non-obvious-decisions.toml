@@ -1,5 +1,10 @@
 id = "guidelines.intent.documented-non-obvious-decisions"
 title = "Preserve rationale at surprising implementation choices"
+category = "documentation"
+tags = ["kotlin", "android", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for future maintainers to distinguish deliberate constraints from accidental complexity."

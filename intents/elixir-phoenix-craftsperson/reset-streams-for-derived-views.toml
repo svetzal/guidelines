@@ -1,5 +1,10 @@
 id = "guidelines.intent.reset-streams-for-derived-views"
 title = "Reset streams for derived collection views"
+category = "reliability"
+tags = ["elixir", "phoenix", "security", "persistence", "data-integrity", "transactions"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Filtered, pruned, or refreshed collection views exactly match authoritative query results."

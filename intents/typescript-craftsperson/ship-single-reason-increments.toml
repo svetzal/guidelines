@@ -1,5 +1,10 @@
 id = "guidelines.intent.ship-single-reason-increments"
 title = "Ship independently safe single-reason increments"
+category = "delivery"
+tags = ["typescript", "error-handling", "build-and-delivery", "incremental-delivery", "change-scope", "reversibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/deliver-small-independent-increments" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to review, release, and reverse changes in small coherent units"

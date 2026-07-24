@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotest-behavior-acceptance-specs"
 title = "Express acceptance behavior in scenario language"
+category = "design"
+tags = ["kotlin", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.93
 capability = "Ability for technical and product readers to connect executable acceptance tests to business scenarios."

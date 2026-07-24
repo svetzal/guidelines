@@ -1,5 +1,10 @@
 id = "guidelines.intent.reuse-bun-runtime-capabilities"
 title = "Prefer Bun capabilities before adding dependencies"
+category = "delivery"
+tags = ["typescript", "bun", "cli", "testing", "dependencies", "tooling"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The CLI retains a small, coherent dependency surface while using runtime-supported facilities."

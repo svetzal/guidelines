@@ -1,5 +1,10 @@
 id = "guidelines.intent.put-gateways-at-external-boundaries"
 title = "Put gateways at external boundaries"
+category = "architecture"
+tags = ["uv", "python", "testing", "dependencies", "persistence", "gateways"]
+relations = [
+  { type = "specializes", target = "craftsperson/put-gateways-at-external-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Core behavior can substitute controlled adapters without depending directly on external libraries or services."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.single-source-of-knowledge"
 title = "Keep each shared decision in one place"
+category = "design"
+tags = ["python", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A business or technical decision can be changed consistently without coordinating edits across multiple locations."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.explicit-kotlin-flow-errors"
 title = "Handle recoverable stream failures in the Flow pipeline"
+category = "reliability"
+tags = ["kotlin", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to define observable recovery behavior for asynchronous stream failures."

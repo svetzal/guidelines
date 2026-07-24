@@ -2,6 +2,10 @@ id = "guidelines.intent.deliver-small-independent-increments"
 title = "Deliver small independent increments"
 category = "delivery"
 tags = ["incremental-delivery", "change-scope", "reversibility"]
+relations = [
+  { type = "related-to", target = "craftsperson/avoid-speculative-capability" },
+  { type = "related-to", target = "craftsperson/preserve-behavior-during-refactoring" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each change can be understood, validated, integrated, and reversed without carrying unrelated risk."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-mutable-default-state"
 title = "Avoid shared mutable default state"
+category = "design"
+tags = ["uv", "python", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each function call receives independent mutable state unless sharing is explicit."

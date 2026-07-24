@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-xctest-compatibility"
 title = "Preserve XCTest and XCUITest coverage"
+category = "testing"
+tags = ["swift", "testing", "persistence", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Existing test suites and UI automation continue to protect behavior during testing-framework evolution."

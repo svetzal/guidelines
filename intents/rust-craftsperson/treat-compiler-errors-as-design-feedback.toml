@@ -1,5 +1,10 @@
 id = "guidelines.intent.treat-compiler-errors-as-design-feedback"
 title = "Treat compiler diagnostics as design feedback"
+category = "reliability"
+tags = ["rust", "error-handling", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ownership and type constraints improve the design instead of being bypassed by tactical workarounds."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-expressive-blocks-and-enumerables"
 title = "Express collection transformations with Ruby enumerables"
+category = "collaboration"
+tags = ["ruby", "concurrency", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to read collection processing as a sequence of domain-relevant transformations"

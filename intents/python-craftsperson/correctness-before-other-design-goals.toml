@@ -1,5 +1,10 @@
 id = "guidelines.intent.correctness-before-other-design-goals"
 title = "Preserve correctness before optimizing other design qualities"
+category = "design"
+tags = ["python", "testing", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The system continues to satisfy its verified behavior while design improvements are made."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-value-semantics"
 title = "Prefer value semantics unless identity is essential"
+category = "design"
+tags = ["swift", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "State can be reasoned about locally without hidden aliasing or lifecycle coupling."

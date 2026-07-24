@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-every-unsafe-contract"
 title = "Document every unsafe contract at the call site"
+category = "documentation"
+tags = ["rust", "documentation", "dependencies", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Reviewers and maintainers can verify the invariants that make each unsafe operation sound."

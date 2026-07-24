@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolate-external-interactions-with-gateways"
 title = "Put every external interaction behind a gateway"
+category = "architecture"
+tags = ["ruby", "persistence", "gateways", "external-systems", "dependency-inversion"]
+relations = [
+  { type = "specializes", target = "craftsperson/put-gateways-at-external-boundaries" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to change or substitute external systems without spreading integration details through domain code"

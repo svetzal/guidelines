@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-green-ci-before-merge"
 title = "Require green CI before integration"
+category = "quality"
+tags = ["uv", "python", "build-and-delivery", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The shared mainline contains only changes that pass the repository's automated checks."

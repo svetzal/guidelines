@@ -1,5 +1,10 @@
 id = "guidelines.intent.reserve-optionals-for-absence"
 title = "Reserve Optional for ordinary absence"
+category = "design"
+tags = ["swift", "error-handling", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "A function signature distinguishes missing data from failed computation."

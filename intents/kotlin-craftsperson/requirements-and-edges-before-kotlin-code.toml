@@ -1,5 +1,10 @@
 id = "guidelines.intent.requirements-and-edges-before-kotlin-code"
 title = "Clarify behavior and edge cases before implementation"
+category = "testing"
+tags = ["kotlin", "testing", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to implement the intended business behavior without avoidable rework."

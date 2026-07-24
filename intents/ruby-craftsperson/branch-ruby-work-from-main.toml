@@ -1,5 +1,10 @@
 id = "guidelines.intent.branch-ruby-work-from-main"
 title = "Start Ruby change branches from main"
+category = "delivery"
+tags = ["ruby", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to develop changes against the current integration baseline"

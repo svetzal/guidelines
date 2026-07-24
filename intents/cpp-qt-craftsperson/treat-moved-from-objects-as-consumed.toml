@@ -1,5 +1,10 @@
 id = "guidelines.intent.treat-moved-from-objects-as-consumed"
 title = "Treat moved-from objects as consumed"
+category = "reliability"
+tags = ["cpp", "qt", "dependencies", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ownership transfer cannot lead to invalid reuse."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-test-names-describe-behavior"
 title = "Make test names describe behavior"
+category = "testing"
+tags = ["typescript", "bun", "cli", "testing", "error-handling", "readability"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-tests-readable-specifications" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "The test suite serves as a readable catalog of supported behavior and failures identify the broken expectation."

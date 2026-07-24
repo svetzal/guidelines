@@ -1,5 +1,10 @@
 id = "guidelines.intent.coroutine-flow-reactivity"
 title = "Preserve non-blocking reactive state propagation"
+category = "reliability"
+tags = ["kotlin", "android", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to represent asynchronous work and evolving state without blocking threads or manual callback coordination."

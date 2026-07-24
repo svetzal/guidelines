@@ -1,5 +1,10 @@
 id = "guidelines.intent.compile-public-documentation"
 title = "Compile public documentation as a quality gate"
+category = "quality"
+tags = ["rust", "testing", "documentation", "error-handling", "build-and-delivery", "quality-gates"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Users can generate and navigate the crate's public API documentation from the delivered source."

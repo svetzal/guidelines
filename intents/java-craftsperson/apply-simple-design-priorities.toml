@@ -1,5 +1,10 @@
 id = "guidelines.intent.apply-simple-design-priorities"
 title = "Resolve design conflicts with ordered heuristics"
+category = "design"
+tags = ["java", "testing", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Conflicting design improvements can be resolved through a stable, explainable priority order."

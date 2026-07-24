@@ -1,5 +1,10 @@
 id = "guidelines.intent.supervise-and-time-bound-tasks"
 title = "Supervise and time-bound tasks"
+category = "reliability"
+tags = ["elixir", "phoenix", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Asynchronous work fails and stalls within an observable, recoverable lifecycle."

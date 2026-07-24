@@ -1,5 +1,10 @@
 id = "guidelines.intent.communicate-quality-failures-transparently"
 title = "Communicate quality failures transparently"
+category = "quality"
+tags = ["java", "error-handling", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Collaborators can see what failed, why the remediation changed the code, and whether verification recovered."

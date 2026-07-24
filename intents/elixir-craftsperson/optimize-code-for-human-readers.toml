@@ -1,5 +1,10 @@
 id = "guidelines.intent.optimize-code-for-human-readers"
 title = "Optimize code for the next human reader"
+category = "design"
+tags = ["elixir", "dependencies", "readability", "clarity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-code-for-human-readers" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Maintainers can infer behavior, contracts, and domain boundaries directly from the code."

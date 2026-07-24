@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-review-findings-actionable"
 title = "Make review findings actionable"
+category = "collaboration"
+tags = ["csharp", "security", "testing", "code-review", "feedback", "remediation"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-review-feedback-actionable" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A code author can understand and resolve a review concern without guessing the desired outcome."

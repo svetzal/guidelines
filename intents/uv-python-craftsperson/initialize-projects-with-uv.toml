@@ -1,5 +1,10 @@
 id = "guidelines.intent.initialize-projects-with-uv"
 title = "Initialize projects with a standard uv scaffold"
+category = "delivery"
+tags = ["uv", "python", "dependencies", "persistence", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "New Python projects begin with the minimum metadata and runtime files required for a consistent uv workflow."

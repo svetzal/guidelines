@@ -1,5 +1,10 @@
 id = "guidelines.intent.logic-free-gateway-adapters"
 title = "Keep integration adapters behaviorally thin"
+category = "architecture"
+tags = ["kotlin", "android", "testing", "gateways", "business-logic", "separation-of-concerns"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-gateways-logic-free" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to concentrate business decisions in fast, deterministic core tests."

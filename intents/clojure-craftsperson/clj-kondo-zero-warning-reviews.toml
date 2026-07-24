@@ -1,5 +1,10 @@
 id = "guidelines.intent.clj-kondo-zero-warning-reviews"
 title = "Make clj-kondo a zero-warning review gate"
+category = "quality"
+tags = ["clojure", "clj-kondo", "static-analysis", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to catch idiom, correctness, and structural problems during every code review"

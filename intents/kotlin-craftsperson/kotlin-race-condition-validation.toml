@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotlin-race-condition-validation"
 title = "Validate shared-state concurrency under contention"
+category = "design"
+tags = ["kotlin", "concurrency", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to preserve state invariants when operations execute concurrently."

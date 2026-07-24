@@ -1,5 +1,10 @@
 id = "guidelines.intent.production-code-shrinking"
 title = "Preserve production package efficiency"
+category = "design"
+tags = ["kotlin", "android", "dependencies", "build-and-delivery", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to ship smaller and more optimized Android artifacts."

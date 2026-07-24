@@ -1,5 +1,10 @@
 id = "guidelines.intent.capture-closure-bindings"
 title = "Capture loop-dependent closure bindings"
+category = "design"
+tags = ["uv", "python", "concurrency", "dependencies", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Deferred callables retain the value intended when each callable was created."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-kotlin-dsl-for-gradle"
 title = "Use Kotlin DSL for Gradle builds"
+category = "delivery"
+tags = ["java", "gradle", "build-and-delivery", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Gradle build logic benefits from typed, discoverable configuration that Java teams can navigate."

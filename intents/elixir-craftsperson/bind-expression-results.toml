@@ -1,5 +1,10 @@
 id = "guidelines.intent.bind-expression-results"
 title = "Bind expression results explicitly"
+category = "delivery"
+tags = ["elixir", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "State transformations performed by branch expressions are retained by later code."

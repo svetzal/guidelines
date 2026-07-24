@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-green-ci-before-merge"
 title = "Require green CI before merge"
+category = "quality"
+tags = ["swift", "build-and-delivery", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "The shared mainline receives only changes that pass the project's automated quality evidence."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.kaocha-interactive-test-runner"
 title = "Use Kaocha when richer test feedback is available"
+category = "testing"
+tags = ["clojure", "kaocha", "testing", "error-handling", "readability", "executable-specification"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-tests-readable-specifications" },
+]
 status = "hypothesized"
 confidence = 0.87
 capability = "Ability to organize tests and receive rapid, actionable failure feedback during interactive development"

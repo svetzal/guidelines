@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolate-ephemeral-tools-with-uvx"
 title = "Isolate standalone tools with uvx"
+category = "delivery"
+tags = ["uv", "python", "testing", "dependencies", "tooling", "project-management"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "One-off utilities can run reproducibly without becoming project dependencies or polluting global environments."

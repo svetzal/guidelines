@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-nullable-state"
 title = "Make absence and UI states explicit"
+category = "design"
+tags = ["kotlin", "android", "error-handling", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to distinguish valid absence, loading, success, and failure states exhaustively."

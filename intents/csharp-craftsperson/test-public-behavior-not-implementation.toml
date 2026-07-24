@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-public-behavior-not-implementation"
 title = "Test observable behavior rather than implementation"
+category = "testing"
+tags = ["csharp", "concurrency", "testing", "behavior", "public-boundaries", "refactor-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/test-observable-behavior" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Internal designs can be refactored freely while tests continue to protect externally meaningful behavior."

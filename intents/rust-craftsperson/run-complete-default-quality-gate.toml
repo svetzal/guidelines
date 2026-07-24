@@ -1,5 +1,10 @@
 id = "guidelines.intent.run-complete-default-quality-gate"
 title = "Run a complete default Rust quality gate"
+category = "quality"
+tags = ["rust", "security", "testing", "documentation", "dependencies", "formatting", "static-analysis"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A Rust change is checked for formatting, static correctness, behavior, documentation, coverage, vulnerabilities, and dependency policy before delivery."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.detect-undefined-behavior-with-miri"
 title = "Detect undefined behavior with Miri"
+category = "quality"
+tags = ["rust", "testing", "static-analysis", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Unsafe and FFI code can be exercised against Rust's interpreter-level validity rules."

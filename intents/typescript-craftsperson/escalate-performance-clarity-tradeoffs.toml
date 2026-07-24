@@ -1,5 +1,10 @@
 id = "guidelines.intent.escalate-performance-clarity-tradeoffs"
 title = "Escalate performance changes that compromise clarity"
+category = "performance"
+tags = ["typescript", "performance", "profiling", "evidence", "optimization"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to make an accountable choice between maintainability and measured performance needs"

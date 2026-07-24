@@ -1,5 +1,10 @@
 id = "guidelines.intent.bundle-assets-through-app-entrypoints"
 title = "Bundle assets through application entrypoints"
+category = "reliability"
+tags = ["elixir", "phoenix", "dependencies", "performance", "build-and-delivery", "concurrency"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Browser dependencies are versioned, built, and deployed with the Phoenix application."

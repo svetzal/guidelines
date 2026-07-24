@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-on-green-tests"
 title = "Never deliver with a failing test suite"
+category = "quality"
+tags = ["go", "testing", "error-handling", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The repository always has a trusted executable baseline for expected behavior at delivery boundaries."

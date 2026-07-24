@@ -1,5 +1,10 @@
 id = "guidelines.intent.fully-cover-functional-core"
 title = "Fully cover business logic in the functional core"
+category = "architecture"
+tags = ["java", "testing", "error-handling", "functional-core", "side-effects", "separation-of-concerns"]
+relations = [
+  { type = "specializes", target = "craftsperson/isolate-functional-core-from-effects" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Every business rule and decision path has executable regression evidence."

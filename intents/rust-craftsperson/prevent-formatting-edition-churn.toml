@@ -1,5 +1,10 @@
 id = "guidelines.intent.prevent-formatting-edition-churn"
 title = "Prevent formatting-edition churn"
+category = "quality"
+tags = ["rust", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Formatting checks produce stable, reviewable diffs across toolchain and edition changes."

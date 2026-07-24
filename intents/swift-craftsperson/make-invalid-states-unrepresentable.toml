@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-invalid-states-unrepresentable"
 title = "Make invalid domain states unrepresentable"
+category = "design"
+tags = ["swift", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Domain invariants are preserved whenever values are constructed and passed through the system."

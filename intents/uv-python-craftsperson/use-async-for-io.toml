@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-async-for-io"
 title = "Use async concurrency for I/O-bound work"
+category = "reliability"
+tags = ["uv", "python", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The process can make progress on other work while an operation waits on external I/O."

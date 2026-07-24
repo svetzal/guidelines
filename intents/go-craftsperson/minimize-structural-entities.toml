@@ -1,5 +1,10 @@
 id = "guidelines.intent.minimize-structural-entities"
 title = "Use no more structure than the solution needs"
+category = "design"
+tags = ["go", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The codebase remains easy to navigate and change without ceremony unrelated to behavior."

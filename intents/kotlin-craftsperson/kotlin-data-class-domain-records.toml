@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotlin-data-class-domain-records"
 title = "Give domain records explicit value semantics"
+category = "design"
+tags = ["kotlin", "testing", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to compare, copy, and inspect domain data consistently without hand-written structural boilerplate."

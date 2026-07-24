@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-tests-reveal-one-behavior"
 title = "Make each test reveal one behavior"
+category = "design"
+tags = ["java", "testing", "error-handling", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "A failing test communicates the specific business behavior that regressed."

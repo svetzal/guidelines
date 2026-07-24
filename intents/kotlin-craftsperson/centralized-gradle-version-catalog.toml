@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralized-gradle-version-catalog"
 title = "Centralize dependency coordinates in a Gradle version catalog"
+category = "delivery"
+tags = ["kotlin", "gradle", "security", "testing", "dependencies", "builds"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to inspect and update shared dependency versions consistently across modules."

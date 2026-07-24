@@ -1,5 +1,10 @@
 id = "guidelines.intent.exhaust-safe-alternatives-before-unsafe"
 title = "Exhaust safe alternatives before using unsafe"
+category = "quality"
+tags = ["rust", "performance", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The codebase retains compiler-enforced memory safety wherever a safe design can satisfy the requirement."

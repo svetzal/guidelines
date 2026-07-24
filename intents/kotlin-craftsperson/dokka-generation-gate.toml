@@ -1,5 +1,10 @@
 id = "guidelines.intent.dokka-generation-gate"
 title = "Treat generated Kotlin documentation as a build artifact"
+category = "documentation"
+tags = ["kotlin", "documentation", "build-and-delivery", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to publish navigable API documentation from the current source."

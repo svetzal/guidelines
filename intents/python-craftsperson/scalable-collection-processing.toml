@@ -1,5 +1,10 @@
 id = "guidelines.intent.scalable-collection-processing"
 title = "Match collection processing to readability and data scale"
+category = "design"
+tags = ["python", "concurrency", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Collection transformations remain both understandable and memory-efficient at their expected scale."

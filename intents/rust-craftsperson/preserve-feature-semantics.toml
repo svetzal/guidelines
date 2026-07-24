@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-feature-semantics"
 title = "Preserve feature-flag and default-feature semantics"
+category = "architecture"
+tags = ["rust", "security", "trust-boundaries", "authorization"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Consumers can opt into and out of crate capabilities without unexpected compatibility changes."

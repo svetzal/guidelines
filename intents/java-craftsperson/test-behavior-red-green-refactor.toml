@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-behavior-red-green-refactor"
 title = "Clarify behavior through red-green-refactor"
+category = "testing"
+tags = ["java", "concurrency", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Expected behavior is executable before design changes obscure the intended outcome."

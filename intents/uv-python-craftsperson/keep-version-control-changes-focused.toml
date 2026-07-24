@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-version-control-changes-focused"
 title = "Keep version-control changes focused and reviewable"
+category = "delivery"
+tags = ["uv", "python", "error-handling", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Reviewers can understand, validate, and safely integrate each change from its history and description."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-csrf-protection"
 title = "Preserve Rails CSRF protection"
+category = "architecture"
+tags = ["ruby", "security", "trust-boundaries", "authorization"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to ensure state-changing browser requests originate from the intended application session"

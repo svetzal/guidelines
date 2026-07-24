@@ -1,5 +1,10 @@
 id = "guidelines.intent.drive-behavior-with-red-green-refactor"
 title = "Drive new behavior through red, green, refactor"
+category = "testing"
+tags = ["ruby", "concurrency", "testing", "tdd", "red-green-refactor", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/develop-behavior-red-green-refactor" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to demonstrate that new production code is necessary and behaviorally correct"

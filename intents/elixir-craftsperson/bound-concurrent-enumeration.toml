@@ -1,5 +1,10 @@
 id = "guidelines.intent.bound-concurrent-enumeration"
 title = "Bound concurrent enumeration"
+category = "reliability"
+tags = ["elixir", "concurrency", "dependencies", "backpressure", "resource-bounds"]
+relations = [
+  { type = "specializes", target = "craftsperson/bound-concurrent-work" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Batch concurrency remains responsive without exhausting workers, connections, or memory."

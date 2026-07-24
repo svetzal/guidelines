@@ -1,5 +1,10 @@
 id = "guidelines.intent.sync-environment-to-lockfile"
 title = "Synchronize the environment to the lockfile"
+category = "dependencies"
+tags = ["uv", "python", "dependencies", "reproducibility", "lockfiles", "build-stability"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-dependency-resolution-reproducible" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Local execution reflects the dependency state recorded by the repository."

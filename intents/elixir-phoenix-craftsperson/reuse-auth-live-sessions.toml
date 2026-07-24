@@ -1,5 +1,10 @@
 id = "guidelines.intent.reuse-auth-live-sessions"
 title = "Reuse authentication live sessions"
+category = "architecture"
+tags = ["elixir", "phoenix", "security", "error-handling", "trust-boundaries", "authorization"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "All routes sharing an authentication mode receive one consistent mount policy and scope assignment."

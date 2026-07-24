@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-api-contracts"
 title = "Resolve external API contracts before binding implementations"
+category = "collaboration"
+tags = ["kotlin", "android", "error-handling", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to integrate against stable, correctly understood request, response, error, and lifecycle semantics."

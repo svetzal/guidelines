@@ -1,5 +1,10 @@
 id = "guidelines.intent.initialize-liveview-assigns-before-static-render"
 title = "Initialize assigns before static render"
+category = "design"
+tags = ["elixir", "phoenix", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Every LiveView can render successfully during both disconnected HTTP and connected WebSocket phases."

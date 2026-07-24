@@ -1,5 +1,10 @@
 id = "guidelines.intent.cover-boundaries-and-edge-cases"
 title = "Cover boundaries and edge cases with behavior tests"
+category = "testing"
+tags = ["swift", "testing", "error-handling", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "The test suite detects failures at domain boundaries and unusual but valid inputs, not only the happy path."

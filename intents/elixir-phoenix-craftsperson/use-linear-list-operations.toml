@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-linear-list-operations"
 title = "Use list operations that respect linked-list structure"
+category = "design"
+tags = ["elixir", "phoenix", "concurrency", "testing", "domain-modeling", "type-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Sequence processing remains correct and predictably efficient for Elixir linked lists."

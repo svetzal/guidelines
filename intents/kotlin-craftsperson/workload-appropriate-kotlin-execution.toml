@@ -1,5 +1,10 @@
 id = "guidelines.intent.workload-appropriate-kotlin-execution"
 title = "Match coroutine use to the workload"
+category = "reliability"
+tags = ["kotlin", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to keep I/O and parallel work responsive without imposing asynchronous machinery on trivial synchronous work."

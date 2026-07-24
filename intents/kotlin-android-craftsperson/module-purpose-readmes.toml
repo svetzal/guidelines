@@ -1,5 +1,10 @@
 id = "guidelines.intent.module-purpose-readmes"
 title = "Preserve module-level orientation"
+category = "documentation"
+tags = ["kotlin", "android", "documentation", "dependencies", "synchronization", "behavior"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for contributors to quickly understand why a module exists and how it should be used."

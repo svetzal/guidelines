@@ -1,5 +1,10 @@
 id = "guidelines.intent.composition-and-protocol-polymorphism"
 title = "Prefer replaceable composition over inheritance hierarchies"
+category = "design"
+tags = ["python", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Behavior can be combined and substituted without inheriting unwanted implementation or hierarchy constraints."

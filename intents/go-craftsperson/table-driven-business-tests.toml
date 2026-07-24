@@ -1,5 +1,10 @@
 id = "guidelines.intent.table-driven-business-tests"
 title = "Express business scenarios as table-driven tests"
+category = "testing"
+tags = ["go", "testing", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Many related business scenarios can be expanded and compared consistently without duplicating test control flow."

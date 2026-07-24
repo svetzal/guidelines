@@ -1,5 +1,10 @@
 id = "guidelines.intent.green-focused-change-integration"
 title = "Integrate only focused changes that pass automation"
+category = "delivery"
+tags = ["python", "build-and-delivery", "incremental-delivery", "change-scope", "reversibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/deliver-small-independent-increments" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Changes reach the main line with bounded review scope and verified repository-wide compatibility."

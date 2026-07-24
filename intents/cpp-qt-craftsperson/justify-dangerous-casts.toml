@@ -1,5 +1,10 @@
 id = "guidelines.intent.justify-dangerous-casts"
 title = "Justify type-safety escape hatches"
+category = "documentation"
+tags = ["cpp", "qt", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Low-level interoperation remains auditable."

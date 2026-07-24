@@ -1,5 +1,10 @@
 id = "guidelines.intent.replace-boolean-mode-parameters"
 title = "Replace boolean mode parameters with explicit behaviors"
+category = "design"
+tags = ["typescript", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability for call sites to communicate which behavior they request"

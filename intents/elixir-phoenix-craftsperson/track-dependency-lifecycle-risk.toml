@@ -1,5 +1,10 @@
 id = "guidelines.intent.track-dependency-lifecycle-risk"
 title = "Track dependency lifecycle risk"
+category = "dependencies"
+tags = ["elixir", "phoenix", "security", "dependencies", "supply-chain", "complexity"]
+relations = [
+  { type = "specializes", target = "craftsperson/minimize-dependency-surface" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Maintainers can plan replacement or upgrades before dependencies become unsupported."

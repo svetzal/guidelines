@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-async-error-causes"
 title = "Translate asynchronous failures without losing their cause"
+category = "reliability"
+tags = ["typescript", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to present domain-appropriate async errors while retaining diagnostic provenance"

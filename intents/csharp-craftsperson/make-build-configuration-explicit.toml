@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-build-configuration-explicit"
 title = "Make build configuration intent explicit"
+category = "delivery"
+tags = ["csharp", "build-and-delivery", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Maintainers can determine why a build behaves as it does from versioned configuration."

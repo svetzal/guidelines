@@ -1,5 +1,10 @@
 id = "guidelines.intent.composition-over-inheritance"
 title = "Preserve locally understandable behavior composition"
+category = "design"
+tags = ["kotlin", "android", "dependencies", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to combine and replace behavior without depending on fragile class hierarchies."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.handle-task-cancellation"
 title = "Handle async task cancellation gracefully"
+category = "reliability"
+tags = ["uv", "python", "concurrency", "build-and-delivery", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Async operations release resources and preserve cancellation semantics when their caller no longer needs them."

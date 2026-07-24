@@ -1,5 +1,10 @@
 id = "guidelines.intent.explain-technical-rationale"
 title = "Explain the rationale behind technical guidance"
+category = "delivery"
+tags = ["java", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "The team can adapt a Java practice intelligently when its original context changes."

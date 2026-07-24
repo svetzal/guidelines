@@ -1,5 +1,10 @@
 id = "guidelines.intent.generated-public-api-docs"
 title = "Keep public APIs discoverable and usable"
+category = "documentation"
+tags = ["kotlin", "android", "documentation", "dependencies", "error-handling", "public-api"]
+relations = [
+  { type = "specializes", target = "craftsperson/document-public-contracts" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for module consumers to understand public contracts and apply them correctly."

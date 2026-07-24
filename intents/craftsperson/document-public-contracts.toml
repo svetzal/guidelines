@@ -2,6 +2,9 @@ id = "guidelines.intent.document-public-contracts"
 title = "Document public contracts"
 category = "documentation"
 tags = ["public-api", "contracts", "consumer-guidance"]
+relations = [
+  { type = "related-to", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Consumers can use a public interface correctly without reading its implementation."

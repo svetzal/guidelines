@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-workspace-dependencies"
 title = "Centralize dependency versions across workspaces"
+category = "design"
+tags = ["rust", "dependencies", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Workspace members share one coherent dependency policy and can be upgraded together."

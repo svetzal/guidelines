@@ -1,5 +1,10 @@
 id = "guidelines.intent.scan-rails-static-security"
 title = "Statically scan Rails changes for security defects"
+category = "architecture"
+tags = ["ruby", "security", "testing", "static-analysis", "build-and-delivery", "trust-boundaries"]
+relations = [
+  { type = "specializes", target = "craftsperson/enforce-security-at-trust-boundaries" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to catch Rails-specific security weaknesses before deployment"

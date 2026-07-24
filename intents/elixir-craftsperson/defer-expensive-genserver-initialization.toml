@@ -1,5 +1,10 @@
 id = "guidelines.intent.defer-expensive-genserver-initialization"
 title = "Defer expensive GenServer initialization"
+category = "reliability"
+tags = ["elixir", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A process joins its supervision tree promptly before performing expensive warm-up work."

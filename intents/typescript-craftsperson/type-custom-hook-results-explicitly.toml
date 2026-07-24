@@ -1,5 +1,10 @@
 id = "guidelines.intent.type-custom-hook-results-explicitly"
 title = "Give custom hooks explicit result contracts"
+category = "design"
+tags = ["typescript", "concurrency", "error-handling", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.89
 capability = "Ability for React consumers to rely on a stable, discoverable hook state contract"

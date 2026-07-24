@@ -2,6 +2,11 @@ id = "guidelines.intent.honor-the-project-quality-gate"
 title = "Honor the project quality gate"
 category = "quality"
 tags = ["quality-gates", "project-conventions", "completion"]
+relations = [
+  { type = "related-to", target = "craftsperson/require-passing-tests-before-completion" },
+  { type = "related-to", target = "craftsperson/require-canonical-formatting" },
+  { type = "related-to", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Completed changes satisfy the repository's agreed automated definition of technical readiness."

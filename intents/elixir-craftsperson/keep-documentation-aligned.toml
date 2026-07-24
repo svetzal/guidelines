@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-documentation-aligned"
 title = "Keep documentation aligned with behavior"
+category = "documentation"
+tags = ["elixir", "documentation", "dependencies", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Users and maintainers can rely on guides and API documentation as accurate operating instructions."

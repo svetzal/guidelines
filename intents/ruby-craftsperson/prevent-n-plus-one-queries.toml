@@ -1,5 +1,10 @@
 id = "guidelines.intent.prevent-n-plus-one-queries"
 title = "Prevent N+1 database access patterns"
+category = "reliability"
+tags = ["ruby", "concurrency", "persistence", "data-integrity", "transactions", "database-constraints"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to render and process collections with bounded database round trips"

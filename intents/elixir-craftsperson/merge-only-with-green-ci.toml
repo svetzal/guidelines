@@ -1,5 +1,10 @@
 id = "guidelines.intent.merge-only-with-green-ci"
 title = "Merge only with green CI"
+category = "quality"
+tags = ["elixir", "build-and-delivery", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The integration branch retains its automated correctness and quality baseline."

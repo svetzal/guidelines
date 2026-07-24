@@ -1,5 +1,10 @@
 id = "guidelines.intent.catch-only-intended-exceptions"
 title = "Catch only intended exceptions"
+category = "reliability"
+tags = ["uv", "python", "concurrency", "error-handling", "error-modeling", "recoverability"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Unexpected failures and process-control signals remain visible instead of being silently swallowed."

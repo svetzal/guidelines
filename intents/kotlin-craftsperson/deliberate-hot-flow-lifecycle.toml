@@ -1,5 +1,10 @@
 id = "guidelines.intent.deliberate-hot-flow-lifecycle"
 title = "Make hot Flow lifetime and replay semantics explicit"
+category = "reliability"
+tags = ["kotlin", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Ability to share stream work without retaining producers or stale values beyond their intended lifetime."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.deliver-small-independent-changes"
 title = "Deliver changes in independently shippable increments"
+category = "delivery"
+tags = ["typescript", "bun", "cli", "dependencies", "error-handling", "incremental-delivery"]
+relations = [
+  { type = "specializes", target = "craftsperson/deliver-small-independent-increments" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Each change can be understood, validated, shipped, or reverted without depending on unrelated work."

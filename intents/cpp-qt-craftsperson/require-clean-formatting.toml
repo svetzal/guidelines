@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-clean-formatting"
 title = "Require deterministic formatting"
+category = "quality"
+tags = ["cpp", "qt", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Diffs emphasize semantic changes."

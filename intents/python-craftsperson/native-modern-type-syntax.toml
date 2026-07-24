@@ -1,5 +1,10 @@
 id = "guidelines.intent.native-modern-type-syntax"
 title = "Target one modern annotation model natively"
+category = "design"
+tags = ["python", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Type annotations remain concise and have consistent runtime semantics across the supported Python environment."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.critical-path-coverage"
 title = "Use coverage to expose untested critical behavior"
+category = "testing"
+tags = ["go", "testing", "error-handling", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Important business paths have observable test protection without optimizing for a vanity percentage."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-swiftpm-as-build-source-of-truth"
 title = "Use SwiftPM as the package build source of truth"
+category = "delivery"
+tags = ["swift", "dependencies", "build-and-delivery", "tooling", "project-management", "repeatability"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Modules, targets, and dependency resolution can be reproduced from one versioned package definition."

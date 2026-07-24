@@ -1,5 +1,10 @@
 id = "guidelines.intent.type-public-api-contracts"
 title = "Type public API contracts"
+category = "quality"
+tags = ["uv", "python", "verification", "completion", "evidence"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Callers and static tools can discover and verify the inputs and outputs of supported interfaces."

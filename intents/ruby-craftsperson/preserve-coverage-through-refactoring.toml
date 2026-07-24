@@ -1,5 +1,10 @@
 id = "guidelines.intent.preserve-coverage-through-refactoring"
 title = "Preserve or improve coverage during refactoring"
+category = "testing"
+tags = ["ruby", "concurrency", "testing", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to retain behavioral confidence while changing internal structure"

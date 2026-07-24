@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-domain-core-pure"
 title = "Keep domain calculations pure"
+category = "architecture"
+tags = ["ruby", "testing", "dependencies", "functional-core", "side-effects", "separation-of-concerns"]
+relations = [
+  { type = "specializes", target = "craftsperson/isolate-functional-core-from-effects" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to reason about and test domain behavior deterministically"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.review-code-with-psychological-safety"
 title = "Review code with psychological safety"
+category = "collaboration"
+tags = ["uv", "python", "code-review", "psychological-safety", "feedback"]
+relations = [
+  { type = "specializes", target = "craftsperson/review-with-psychological-safety" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Collaborators can surface uncertainty, defects, and alternatives without personal threat."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.respect-project-specific-conventions"
 title = "Respect project-specific conventions"
+category = "documentation"
+tags = ["csharp", "testing", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A change fits the architecture, terminology, and quality expectations of the project it joins."

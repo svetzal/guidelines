@@ -1,5 +1,10 @@
 id = "guidelines.intent.go-vet-defect-gate"
 title = "Gate changes on Go compiler-aware diagnostics"
+category = "quality"
+tags = ["go", "testing", "dependencies", "formatting", "static-analysis", "warnings"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Common Go mistakes that compile successfully are detected before delivery."

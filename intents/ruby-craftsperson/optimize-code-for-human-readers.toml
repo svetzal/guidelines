@@ -1,5 +1,10 @@
 id = "guidelines.intent.optimize-code-for-human-readers"
 title = "Optimize Ruby code for its next human reader"
+category = "design"
+tags = ["ruby", "security", "readability", "clarity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-code-for-human-readers" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for future maintainers to understand code without reconstructing the author's mental model"

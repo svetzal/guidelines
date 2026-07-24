@@ -1,5 +1,10 @@
 id = "guidelines.intent.maintain-short-lived-main-based-branches"
 title = "Maintain short-lived branches from main"
+category = "delivery"
+tags = ["csharp", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Parallel work stays close enough to the integration baseline to merge predictably."

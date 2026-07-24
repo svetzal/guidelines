@@ -1,5 +1,10 @@
 id = "guidelines.intent.colocate-module-tests"
 title = "Co-locate each module with its specification"
+category = "delivery"
+tags = ["typescript", "bun", "cli", "testing", "dependencies", "tooling"]
+relations = [
+  { type = "specializes", target = "craftsperson/standardize-project-tooling" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Maintainers can discover a module's tests immediately and notice when a module has no specification."

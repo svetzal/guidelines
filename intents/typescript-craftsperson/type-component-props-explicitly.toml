@@ -1,5 +1,10 @@
 id = "guidelines.intent.type-component-props-explicitly"
 title = "Give React components explicit prop contracts"
+category = "design"
+tags = ["typescript", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability for component callers to discover required data, optional behavior, and callback signatures statically"

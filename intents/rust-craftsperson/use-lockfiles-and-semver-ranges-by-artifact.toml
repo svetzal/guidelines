@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-lockfiles-and-semver-ranges-by-artifact"
 title = "Use dependency resolution appropriate to the artifact"
+category = "delivery"
+tags = ["rust", "dependencies", "build-and-delivery", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Applications build reproducibly while libraries remain compatible with downstream dependency resolution."

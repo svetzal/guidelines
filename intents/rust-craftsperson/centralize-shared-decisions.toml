@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-shared-decisions"
 title = "Centralize knowledge that changes for one reason"
+category = "design"
+tags = ["rust", "security", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "A single engineering decision can be changed consistently without finding every duplicated expression of it."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-behavior-test-first"
 title = "Clarify intended behavior with a failing test"
+category = "collaboration"
+tags = ["typescript", "bun", "cli", "testing", "requirements", "decision-making"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The team can establish an executable behavioral target before implementation choices constrain it."

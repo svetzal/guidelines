@@ -1,5 +1,10 @@
 id = "guidelines.intent.public-function-tests"
 title = "Specify every public function with automated tests"
+category = "testing"
+tags = ["clojure", "testing", "behavior", "public-boundaries", "refactor-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/test-observable-behavior" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to change implementations while preserving every supported public behavior"

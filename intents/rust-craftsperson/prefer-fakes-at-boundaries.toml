@@ -1,5 +1,10 @@
 id = "guidelines.intent.prefer-fakes-at-boundaries"
 title = "Prefer fakes and mock only boundaries"
+category = "testing"
+tags = ["rust", "testing", "test-doubles", "boundaries", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/mock-only-owned-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Tests remain deterministic while exercising meaningful behavior through stable project-owned contracts."

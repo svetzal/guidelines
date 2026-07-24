@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolate-functional-core-from-effects"
 title = "Isolate the functional core from effects"
+category = "architecture"
+tags = ["elixir", "concurrency", "testing", "dependencies", "persistence", "functional-core"]
+relations = [
+  { type = "specializes", target = "craftsperson/isolate-functional-core-from-effects" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Business rules can be understood and tested without databases, networks, filesystems, or process state."

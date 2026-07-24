@@ -1,5 +1,10 @@
 id = "guidelines.intent.align-modules-with-domain-concepts"
 title = "Align module boundaries with domain concepts"
+category = "design"
+tags = ["typescript", "dependencies", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to locate and evolve behavior according to the business concepts it implements"

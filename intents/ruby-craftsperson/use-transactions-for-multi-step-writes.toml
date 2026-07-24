@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-transactions-for-multi-step-writes"
 title = "Make multi-step database operations atomic"
+category = "reliability"
+tags = ["ruby", "concurrency", "persistence", "error-handling", "data-integrity", "transactions"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to preserve database invariants when part of a multi-step operation fails"

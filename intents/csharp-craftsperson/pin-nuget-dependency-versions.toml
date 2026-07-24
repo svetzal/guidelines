@@ -1,5 +1,10 @@
 id = "guidelines.intent.pin-nuget-dependency-versions"
 title = "Pin NuGet dependency versions"
+category = "design"
+tags = ["csharp", "dependencies", "build-and-delivery", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The same source revision resolves a reproducible dependency graph across environments and dates."

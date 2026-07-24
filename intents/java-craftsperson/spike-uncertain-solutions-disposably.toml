@@ -1,5 +1,10 @@
 id = "guidelines.intent.spike-uncertain-solutions-disposably"
 title = "Explore uncertainty with disposable spikes"
+category = "design"
+tags = ["java", "testing", "build-and-delivery", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The team can learn about unfamiliar technology without allowing exploratory compromises into production design."

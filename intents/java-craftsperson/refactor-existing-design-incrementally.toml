@@ -1,5 +1,10 @@
 id = "guidelines.intent.refactor-existing-design-incrementally"
 title = "Refactor existing design incrementally"
+category = "refactoring"
+tags = ["java", "concurrency", "behavior-preservation", "small-steps", "test-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-behavior-during-refactoring" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "A working Java system can improve without discarding context or destabilizing unrelated behavior."

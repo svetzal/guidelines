@@ -1,5 +1,10 @@
 id = "guidelines.intent.property-tests-for-complex-logic"
 title = "Exercise complex logic with generated properties"
+category = "testing"
+tags = ["clojure", "testing", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to validate invariants across input spaces too large for hand-selected examples"

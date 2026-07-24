@@ -1,5 +1,10 @@
 id = "guidelines.intent.check-subprocess-exit-status"
 title = "Check every subprocess exit status"
+category = "reliability"
+tags = ["typescript", "bun", "cli", "concurrency", "testing", "error-handling"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The CLI distinguishes successful child-process completion from command failure."

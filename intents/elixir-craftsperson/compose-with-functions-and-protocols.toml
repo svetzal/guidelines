@@ -1,5 +1,10 @@
 id = "guidelines.intent.compose-with-functions-and-protocols"
 title = "Compose behavior with functions and protocols"
+category = "design"
+tags = ["elixir", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Behavior can be extended without inheriting implementation coupling."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-macros-on-explicit-need"
 title = "Gate macros on explicit need"
+category = "design"
+tags = ["elixir", "phoenix", "abstraction", "evidence", "duplication"]
+relations = [
+  { type = "specializes", target = "craftsperson/delay-abstraction-until-evidence" },
+]
 status = "hypothesized"
 confidence = 0.84
 capability = "Program behavior remains traceable through ordinary functions unless compile-time generation is deliberately required."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-public-apis-with-docc"
 title = "Document every public API with decision-rich DocC"
+category = "documentation"
+tags = ["swift", "documentation", "error-handling", "public-api", "contracts", "consumer-guidance"]
+relations = [
+  { type = "specializes", target = "craftsperson/document-public-contracts" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "API consumers can use public Swift contracts correctly without reading their implementation."

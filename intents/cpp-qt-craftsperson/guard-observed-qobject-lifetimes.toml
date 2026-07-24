@@ -1,5 +1,10 @@
 id = "guidelines.intent.guard-observed-qobject-lifetimes"
 title = "Guard observed QObject lifetimes"
+category = "design"
+tags = ["cpp", "qt", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Observers detect QObject deletion before dereference."

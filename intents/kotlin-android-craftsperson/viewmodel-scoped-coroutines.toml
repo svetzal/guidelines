@@ -1,5 +1,10 @@
 id = "guidelines.intent.viewmodel-scoped-coroutines"
 title = "Bind presentation work to ViewModel lifetime"
+category = "reliability"
+tags = ["kotlin", "android", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to cancel presentation coroutines when their owning ViewModel is cleared."

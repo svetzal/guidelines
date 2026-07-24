@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-swiftformat"
 title = "Gate changes on canonical Swift formatting"
+category = "quality"
+tags = ["swift", "swiftformat", "formatting", "static-analysis", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Swift source retains a consistent machine-checkable format across contributors and tools."

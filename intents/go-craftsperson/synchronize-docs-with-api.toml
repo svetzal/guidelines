@@ -1,5 +1,10 @@
 id = "guidelines.intent.synchronize-docs-with-api"
 title = "Change implementation and narrative documentation together"
+category = "documentation"
+tags = ["go", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users can rely on docs as an accurate description of the current API and implementation."

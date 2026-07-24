@@ -1,5 +1,10 @@
 id = "guidelines.intent.encode-state-validity-in-types"
 title = "Encode state validity in types"
+category = "design"
+tags = ["typescript", "bun", "cli", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Invalid combinations of state cannot be constructed as ordinary program values."

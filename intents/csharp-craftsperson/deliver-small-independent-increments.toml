@@ -1,5 +1,10 @@
 id = "guidelines.intent.deliver-small-independent-increments"
 title = "Deliver small independent increments"
+category = "delivery"
+tags = ["csharp", "incremental-delivery", "change-scope", "reversibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/deliver-small-independent-increments" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each change can be understood, validated, reverted, and integrated independently."

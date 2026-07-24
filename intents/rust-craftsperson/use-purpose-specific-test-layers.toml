@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-purpose-specific-test-layers"
 title = "Use purpose-specific Rust test layers"
+category = "testing"
+tags = ["rust", "testing", "documentation", "dependencies", "test-strategy", "test-pyramid"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-purpose-specific-test-layers" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Pure behavior, boundary wiring, cross-module flows, and published examples are each verified at the cheapest useful layer."

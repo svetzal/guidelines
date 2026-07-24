@@ -1,5 +1,10 @@
 id = "guidelines.intent.negotiate-principle-exceptions"
 title = "Make exceptions to design principles explicit"
+category = "collaboration"
+tags = ["ruby", "testing", "error-handling", "decision-making", "escalation", "tradeoffs"]
+relations = [
+  { type = "specializes", target = "craftsperson/escalate-consequential-tradeoffs" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to adapt design principles without silently abandoning their rationale"

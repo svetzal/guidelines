@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-clean-formatting"
 title = "Require canonical formatting"
+category = "quality"
+tags = ["elixir", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Source formatting stays deterministic and does not consume review attention."

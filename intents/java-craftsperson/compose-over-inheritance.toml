@@ -1,5 +1,10 @@
 id = "guidelines.intent.compose-over-inheritance"
 title = "Compose behavior instead of building deep hierarchies"
+category = "design"
+tags = ["java", "build-and-delivery", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Behavior can change through small replaceable collaborators without fragile superclass coupling."

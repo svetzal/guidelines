@@ -1,5 +1,10 @@
 id = "guidelines.intent.write-descriptive-commit-messages"
 title = "Write commit messages that preserve rationale"
+category = "delivery"
+tags = ["csharp", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Future maintainers can understand what a change did and why without reconstructing the original conversation."

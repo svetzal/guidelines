@@ -1,5 +1,10 @@
 id = "guidelines.intent.move-data-to-owning-task"
 title = "Move data to the task that owns it"
+category = "reliability"
+tags = ["rust", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Concurrent code has clear ownership and minimizes coordination hazards."

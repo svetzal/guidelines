@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-accepted-moderate-vulnerabilities"
 title = "Record accepted moderate dependency risk"
+category = "documentation"
+tags = ["typescript", "documentation", "dependencies", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to make residual dependency risk visible and revisit it deliberately"

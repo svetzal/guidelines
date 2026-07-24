@@ -1,5 +1,10 @@
 id = "guidelines.intent.write-explanatory-commit-messages"
 title = "Write specific commit messages that explain intent"
+category = "delivery"
+tags = ["swift", "testing", "dependencies", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Future maintainers can recover what changed and why from version history."

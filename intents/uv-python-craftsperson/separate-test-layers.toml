@@ -1,5 +1,10 @@
 id = "guidelines.intent.separate-test-layers"
 title = "Separate fast unit tests from integration tests"
+category = "reliability"
+tags = ["uv", "python", "testing", "build-and-delivery", "resource-management", "cleanup"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Developers and CI can select fast isolated feedback or broader integration confidence deliberately."

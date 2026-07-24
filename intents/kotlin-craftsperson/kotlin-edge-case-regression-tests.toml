@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotlin-edge-case-regression-tests"
 title = "Exercise Kotlin behavior at input boundaries"
+category = "testing"
+tags = ["kotlin", "testing", "error-handling", "edge-cases", "failure-paths", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to preserve correct behavior for empty, absent, and boundary-valued inputs."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralize-curated-lint-policy"
 title = "Centralize a curated lint policy"
+category = "quality"
+tags = ["rust", "static-analysis", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "All workspace members apply one visible, intentional static-analysis standard."

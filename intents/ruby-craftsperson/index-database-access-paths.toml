@@ -1,5 +1,10 @@
 id = "guidelines.intent.index-database-access-paths"
 title = "Index database access paths that matter"
+category = "reliability"
+tags = ["ruby", "persistence", "data-integrity", "transactions", "database-constraints"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to keep common Rails database queries responsive as data grows"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.centralized-version-catalog"
 title = "Keep dependency versions consistent across modules"
+category = "delivery"
+tags = ["kotlin", "android", "dependencies", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to upgrade and audit libraries from a single coherent dependency inventory."

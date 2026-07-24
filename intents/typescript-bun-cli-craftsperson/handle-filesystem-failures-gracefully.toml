@@ -1,5 +1,10 @@
 id = "guidelines.intent.handle-filesystem-failures-gracefully"
 title = "Handle expected filesystem failures gracefully"
+category = "design"
+tags = ["typescript", "bun", "cli", "error-handling", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "The CLI produces deliberate behavior when files are absent or inaccessible."

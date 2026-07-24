@@ -1,5 +1,10 @@
 id = "guidelines.intent.test-edge-and-error-paths"
 title = "Exercise edge cases and failure modes explicitly"
+category = "testing"
+tags = ["go", "testing", "dependencies", "error-handling", "edge-cases", "failure-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Behavior remains predictable at boundaries and when dependencies or inputs fail."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.single-source-each-domain-decision"
 title = "Keep each domain decision in one place"
+category = "design"
+tags = ["elixir", "phoenix", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "A domain rule can change without coordinating edits across unrelated locations."

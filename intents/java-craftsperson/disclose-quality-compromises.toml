@@ -1,5 +1,10 @@
 id = "guidelines.intent.disclose-quality-compromises"
 title = "Disclose temporary quality compromises"
+category = "design"
+tags = ["java", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Stakeholders can distinguish verified production work from consciously incomplete exploration."

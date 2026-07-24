@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-guards-simple-and-reusable"
 title = "Keep guards simple and reusable"
+category = "design"
+tags = ["elixir", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Function-head eligibility checks remain readable, legal in guards, and consistent across clauses."

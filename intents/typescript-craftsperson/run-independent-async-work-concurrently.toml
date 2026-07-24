@@ -1,5 +1,10 @@
 id = "guidelines.intent.run-independent-async-work-concurrently"
 title = "Run independent asynchronous operations concurrently"
+category = "reliability"
+tags = ["typescript", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to complete independent I/O within the latency of the slowest operation rather than their sum"

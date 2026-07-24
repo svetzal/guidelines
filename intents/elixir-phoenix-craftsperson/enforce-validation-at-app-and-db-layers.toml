@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-validation-at-app-and-db-layers"
 title = "Enforce validation at application and database layers"
+category = "architecture"
+tags = ["elixir", "phoenix", "security", "persistence", "error-handling", "validation"]
+relations = [
+  { type = "specializes", target = "craftsperson/validate-untrusted-input-at-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Users receive timely validation feedback while persisted invariants survive races and alternate writers."

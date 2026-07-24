@@ -1,5 +1,10 @@
 id = "guidelines.intent.handle-expected-genserver-messages"
 title = "Handle expected GenServer messages explicitly"
+category = "reliability"
+tags = ["elixir", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "A GenServer exposes a complete, understandable runtime protocol."

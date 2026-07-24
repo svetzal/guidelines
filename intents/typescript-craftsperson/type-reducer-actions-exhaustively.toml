@@ -1,5 +1,10 @@
 id = "guidelines.intent.type-reducer-actions-exhaustively"
 title = "Model reducer actions as an exhaustive union"
+category = "design"
+tags = ["typescript", "testing", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Ability to keep state transitions explicit and type-safe as actions evolve"

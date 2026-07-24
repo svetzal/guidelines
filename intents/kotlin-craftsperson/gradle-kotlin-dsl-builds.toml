@@ -1,5 +1,10 @@
 id = "guidelines.intent.gradle-kotlin-dsl-builds"
 title = "Keep Kotlin builds in a statically navigable DSL"
+category = "delivery"
+tags = ["kotlin", "gradle", "concurrency", "build-and-delivery", "builds", "configuration"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to maintain build configuration with Kotlin-aware completion, refactoring, and type checking."

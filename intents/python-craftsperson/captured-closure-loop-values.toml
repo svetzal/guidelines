@@ -1,5 +1,10 @@
 id = "guidelines.intent.captured-closure-loop-values"
 title = "Bind loop values when constructing deferred closures"
+category = "design"
+tags = ["python", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each generated closure retains the value intended at its creation."

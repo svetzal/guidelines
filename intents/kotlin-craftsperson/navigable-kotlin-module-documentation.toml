@@ -1,5 +1,10 @@
 id = "guidelines.intent.navigable-kotlin-module-documentation"
 title = "Give Kotlin modules an executable documentation entry point"
+category = "documentation"
+tags = ["kotlin", "documentation", "dependencies", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability for newcomers to understand a module's purpose and reach representative usage examples."

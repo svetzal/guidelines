@@ -1,5 +1,10 @@
 id = "guidelines.intent.business-logic-coverage-floor"
 title = "Retain broad executable evidence for business logic"
+category = "testing"
+tags = ["kotlin", "android", "concurrency", "testing", "coverage", "risk"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to refactor core decisions with confidence that important paths remain exercised."

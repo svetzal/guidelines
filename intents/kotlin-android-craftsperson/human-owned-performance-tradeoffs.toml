@@ -1,5 +1,10 @@
 id = "guidelines.intent.human-owned-performance-tradeoffs"
 title = "Keep product-sensitive performance tradeoffs human-owned"
+category = "performance"
+tags = ["kotlin", "android", "performance", "profiling", "evidence", "optimization"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to optimize the quality attributes users and the business actually value."

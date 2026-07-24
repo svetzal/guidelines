@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-unconstrained-any"
 title = "Avoid unconstrained Any in typed code"
+category = "design"
+tags = ["uv", "python", "dependencies", "static-analysis", "composition", "inheritance"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Static analysis continues to check how values flow through generic and polymorphic code."

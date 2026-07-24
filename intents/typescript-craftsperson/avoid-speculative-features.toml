@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-features"
 title = "Build only capabilities that are currently needed"
+category = "design"
+tags = ["typescript", "testing", "build-and-delivery", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to keep the system focused on validated needs"

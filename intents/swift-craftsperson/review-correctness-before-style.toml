@@ -1,5 +1,10 @@
 id = "guidelines.intent.review-correctness-before-style"
 title = "Review correctness before maintainability concerns"
+category = "design"
+tags = ["swift", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Code review surfaces behavior defects before spending attention on lower-risk design and style concerns."

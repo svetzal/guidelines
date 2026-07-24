@@ -1,5 +1,10 @@
 id = "guidelines.intent.precise-generic-abstractions"
 title = "Preserve type relationships in reusable abstractions"
+category = "design"
+tags = ["python", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Reusable components retain the relationships among their input, stored, and returned types."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.standardize-dotnet-build-surface"
 title = "Standardize builds on the .NET CLI and SDK projects"
+category = "delivery"
+tags = ["csharp", "testing", "dependencies", "formatting", "build-and-delivery", "builds"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Contributors and automation can build, test, format, and package a project through a predictable cross-environment interface."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-capability"
 title = "Avoid speculative capability"
+category = "design"
+tags = ["java", "testing", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The codebase contains only abstractions and flexibility justified by current behavior."

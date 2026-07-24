@@ -1,5 +1,10 @@
 id = "guidelines.intent.audit-gem-vulnerabilities"
 title = "Reject dependencies with known vulnerabilities"
+category = "dependencies"
+tags = ["ruby", "security", "dependencies", "vulnerability-management", "lifecycle-risk"]
+relations = [
+  { type = "specializes", target = "craftsperson/audit-dependency-risk" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to ship Ruby applications without known vulnerable gem versions"

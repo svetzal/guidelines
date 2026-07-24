@@ -1,5 +1,10 @@
 id = "guidelines.intent.delay-abstraction-until-evidence"
 title = "Delay abstraction until evidence justifies it"
+category = "design"
+tags = ["rust", "testing", "abstraction", "evidence", "duplication"]
+relations = [
+  { type = "specializes", target = "craftsperson/delay-abstraction-until-evidence" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The design retains only abstractions that represent demonstrated variation or shared decisions."

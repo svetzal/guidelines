@@ -1,5 +1,10 @@
 id = "guidelines.intent.follow-rust-2024-unsafe-rules"
 title = "Follow Rust 2024 unsafe syntax rules"
+category = "design"
+tags = ["rust", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Unsafe and FFI code remains valid and explicit under the Rust 2024 language model."

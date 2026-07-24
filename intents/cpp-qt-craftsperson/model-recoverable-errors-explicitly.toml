@@ -1,5 +1,10 @@
 id = "guidelines.intent.model-recoverable-errors-explicitly"
 title = "Model recoverable errors as values"
+category = "reliability"
+tags = ["cpp", "qt", "testing", "error-handling", "error-modeling", "recoverability"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Callers inspect routine failures in the type."

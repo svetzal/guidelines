@@ -1,5 +1,10 @@
 id = "guidelines.intent.mock-only-owned-boundaries"
 title = "Mock owned gateways instead of library internals"
+category = "testing"
+tags = ["ruby", "testing", "test-doubles", "boundaries", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/mock-only-owned-boundaries" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability for isolated tests to remain stable across third-party library implementation changes"

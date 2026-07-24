@@ -1,5 +1,10 @@
 id = "guidelines.intent.idiomatic-kotlin-expression"
 title = "Keep Kotlin code aligned with language idioms"
+category = "design"
+tags = ["kotlin", "android", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.93
 capability = "Ability for Kotlin developers and tools to read and evolve code using familiar language constructs."

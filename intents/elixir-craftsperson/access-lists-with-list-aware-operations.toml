@@ -1,5 +1,10 @@
 id = "guidelines.intent.access-lists-with-list-aware-operations"
 title = "Access lists with list-aware operations"
+category = "design"
+tags = ["elixir", "dependencies", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "List elements are accessed with operations that are valid for linked lists."

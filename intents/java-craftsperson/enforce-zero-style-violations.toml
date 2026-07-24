@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-zero-style-violations"
 title = "Enforce a zero-violation style gate"
+category = "delivery"
+tags = ["java", "formatting", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Java code remains mechanically consistent and review attention stays on behavior and design."

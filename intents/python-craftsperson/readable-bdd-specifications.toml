@@ -1,5 +1,10 @@
 id = "guidelines.intent.readable-bdd-specifications"
 title = "Make test structure read as a behavioral specification"
+category = "testing"
+tags = ["python", "testing", "documentation", "error-handling", "readability", "executable-specification"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-tests-readable-specifications" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Readers can understand component behavior from test names and layout without decoding implementation-oriented labels."

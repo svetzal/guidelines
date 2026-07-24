@@ -1,5 +1,10 @@
 id = "guidelines.intent.eafp-failure-handling"
 title = "Handle operation failure at the point it occurs"
+category = "design"
+tags = ["python", "testing", "error-handling", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Code remains correct when state changes between a precondition check and the attempted operation."

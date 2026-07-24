@@ -1,5 +1,10 @@
 id = "guidelines.intent.smoke-test-compiled-executable"
 title = "Smoke-test the compiled executable"
+category = "design"
+tags = ["typescript", "bun", "cli", "testing", "build-and-delivery", "idioms"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The artifact delivered to users can start and execute as a standalone program."

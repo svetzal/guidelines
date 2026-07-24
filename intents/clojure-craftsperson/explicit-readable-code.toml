@@ -1,5 +1,10 @@
 id = "guidelines.intent.explicit-readable-code"
 title = "Prefer explicit readable code over clever abstraction"
+category = "design"
+tags = ["clojure", "readability", "clarity", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-code-for-human-readers" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability for a Clojure developer to understand and safely modify code months after it was written"

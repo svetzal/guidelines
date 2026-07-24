@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolated-async-tests"
 title = "Make asynchronous tests explicit and leak-free"
+category = "reliability"
+tags = ["python", "concurrency", "testing", "dependencies", "error-handling", "structured-concurrency"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Async behavior can be tested deterministically without tasks leaking between test cases."

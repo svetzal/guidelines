@@ -1,5 +1,10 @@
 id = "guidelines.intent.synchronize-yard-documentation"
 title = "Keep YARD documentation synchronized with implementation"
+category = "documentation"
+tags = ["ruby", "documentation", "public-api", "contracts", "consumer-guidance"]
+relations = [
+  { type = "specializes", target = "craftsperson/document-public-contracts" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability for users and maintainers to rely on documented Ruby APIs and behavior"

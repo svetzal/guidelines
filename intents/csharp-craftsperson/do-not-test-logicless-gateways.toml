@@ -1,5 +1,10 @@
 id = "guidelines.intent.do-not-test-logicless-gateways"
 title = "Do not unit-test logicless gateways"
+category = "testing"
+tags = ["csharp", "testing", "gateways", "unit-testing", "test-value"]
+relations = [
+  { type = "specializes", target = "craftsperson/do-not-unit-test-logicless-gateways" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Test effort remains concentrated on application-owned behavior rather than duplicating verification of external libraries."

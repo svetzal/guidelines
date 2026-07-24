@@ -1,5 +1,10 @@
 id = "guidelines.intent.mock-owned-boundaries-only"
 title = "Mock only application-owned gateway contracts"
+category = "testing"
+tags = ["go", "testing", "dependencies", "test-doubles", "boundaries", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/mock-only-owned-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Tests isolate external effects without coupling themselves to third-party implementation details."

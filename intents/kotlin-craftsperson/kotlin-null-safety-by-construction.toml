@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotlin-null-safety-by-construction"
 title = "Keep absence explicit in Kotlin control flow"
+category = "design"
+tags = ["kotlin", "error-handling", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to handle missing values without unexpected null-pointer failures."

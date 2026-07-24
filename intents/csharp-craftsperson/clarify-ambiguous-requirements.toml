@@ -1,5 +1,10 @@
 id = "guidelines.intent.clarify-ambiguous-requirements"
 title = "Clarify ambiguous requirements before implementation"
+category = "collaboration"
+tags = ["csharp", "requirements", "decision-making", "ambiguity"]
+relations = [
+  { type = "specializes", target = "craftsperson/clarify-ambiguous-intent-before-implementation" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Implementation decisions reflect the user's intended behavior and acceptable tradeoffs."

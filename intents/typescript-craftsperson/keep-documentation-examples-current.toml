@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-documentation-examples-current"
 title = "Keep documentation examples executable against current behavior"
+category = "documentation"
+tags = ["typescript", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for users to learn and integrate through examples that actually work"

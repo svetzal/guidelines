@@ -1,5 +1,10 @@
 id = "guidelines.intent.do-not-test-logicless-gateways"
 title = "Do not test logicless gateway wrappers"
+category = "testing"
+tags = ["rust", "testing", "gateways", "unit-testing", "test-value"]
+relations = [
+  { type = "specializes", target = "craftsperson/do-not-unit-test-logicless-gateways" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "The test suite concentrates on project behavior rather than reasserting third-party library mechanics."

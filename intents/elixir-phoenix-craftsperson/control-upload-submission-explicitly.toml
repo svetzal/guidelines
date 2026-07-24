@@ -1,5 +1,10 @@
 id = "guidelines.intent.control-upload-submission-explicitly"
 title = "Control upload submission explicitly"
+category = "reliability"
+tags = ["elixir", "phoenix", "data-integrity", "transactions", "database-constraints"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "The server knows when an upload is complete and can coordinate it with form validation and persistence."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.lifecycle-aware-hot-flows"
 title = "Expose lifecycle-aware observable UI state"
+category = "reliability"
+tags = ["kotlin", "android", "persistence", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability for UI collectors to receive current state without keeping upstream work active unnecessarily."

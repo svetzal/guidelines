@@ -1,5 +1,10 @@
 id = "guidelines.intent.pin-elixir-otp-in-ci"
 title = "Pin Elixir and OTP in CI"
+category = "delivery"
+tags = ["elixir", "phoenix", "testing", "formatting", "build-and-delivery", "compatibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/preserve-supported-platform-baselines" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Builds, tests, and formatting remain reproducible across developer and CI environments."

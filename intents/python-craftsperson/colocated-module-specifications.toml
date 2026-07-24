@@ -1,5 +1,10 @@
 id = "guidelines.intent.colocated-module-specifications"
 title = "Keep each module's executable specification beside it"
+category = "testing"
+tags = ["python", "testing", "dependencies", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Maintainers can immediately find a module's tests and see when a module lacks specification coverage."

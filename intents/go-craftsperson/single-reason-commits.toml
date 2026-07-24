@@ -1,5 +1,10 @@
 id = "guidelines.intent.single-reason-commits"
 title = "Make each commit explain one coherent change"
+category = "delivery"
+tags = ["go", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "History can be reviewed, reverted, and understood as a sequence of independent decisions."

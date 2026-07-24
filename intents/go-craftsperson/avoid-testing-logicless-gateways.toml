@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-testing-logicless-gateways"
 title = "Do not unit-test logicless gateway wrappers"
+category = "testing"
+tags = ["go", "testing", "dependencies", "gateways", "unit-testing", "test-value"]
+relations = [
+  { type = "specializes", target = "craftsperson/do-not-unit-test-logicless-gateways" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The test suite concentrates on application-owned decisions instead of reproducing dependency behavior."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.logic-free-gateway-adapters"
 title = "Keep gateway adapters thin and logic-free"
+category = "architecture"
+tags = ["clojure", "testing", "gateways", "business-logic", "separation-of-concerns"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-gateways-logic-free" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to test business decisions without exercising external I/O adapters"

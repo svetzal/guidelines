@@ -1,5 +1,10 @@
 id = "guidelines.intent.explicit-coroutine-dispatchers"
 title = "Preserve deliberate execution-context control"
+category = "reliability"
+tags = ["kotlin", "android", "concurrency", "testing", "performance", "structured-concurrency"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to keep blocking and CPU-heavy work off the UI thread and test scheduling deterministically."

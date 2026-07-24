@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-blocking-io-out-of-async"
 title = "Keep blocking I/O out of async tasks"
+category = "reliability"
+tags = ["uv", "python", "concurrency", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The event loop remains responsive while async operations wait on external work."

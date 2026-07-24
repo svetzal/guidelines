@@ -1,5 +1,10 @@
 id = "guidelines.intent.apply-simple-design-priorities"
 title = "Resolve design tensions by explicit priority"
+category = "design"
+tags = ["csharp", "testing", "error-handling", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Conflicting design heuristics are resolved consistently without sacrificing correctness for aesthetics."

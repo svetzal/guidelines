@@ -1,5 +1,10 @@
 id = "guidelines.intent.deterministic-resource-cleanup"
 title = "Make resource cleanup deterministic on every exit path"
+category = "reliability"
+tags = ["python", "error-handling", "build-and-delivery", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Files, connections, locks, and dynamic resource groups are reliably released after use."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.connect-feedback-to-principles"
 title = "Ground review feedback in named principles"
+category = "collaboration"
+tags = ["ruby", "code-review", "feedback", "remediation"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-review-feedback-actionable" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to make review decisions consistent and teach reusable engineering reasoning"

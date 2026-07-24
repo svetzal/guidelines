@@ -1,5 +1,10 @@
 id = "guidelines.intent.validate-external-inputs"
 title = "Validate data at external trust boundaries"
+category = "architecture"
+tags = ["go", "validation", "trust-boundaries", "security"]
+relations = [
+  { type = "specializes", target = "craftsperson/validate-untrusted-input-at-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The system admits only data that satisfies the assumptions of its internal behavior."

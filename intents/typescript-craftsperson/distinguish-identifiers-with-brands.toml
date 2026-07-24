@@ -1,5 +1,10 @@
 id = "guidelines.intent.distinguish-identifiers-with-brands"
 title = "Distinguish semantically different identifiers at compile time"
+category = "design"
+tags = ["typescript", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to prevent identifiers with the same runtime representation from being interchanged"

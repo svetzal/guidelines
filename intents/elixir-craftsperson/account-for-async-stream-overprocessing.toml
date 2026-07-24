@@ -1,5 +1,10 @@
 id = "guidelines.intent.account-for-async-stream-overprocessing"
 title = "Account for async-stream overprocessing"
+category = "reliability"
+tags = ["elixir", "concurrency", "backpressure", "resource-bounds"]
+relations = [
+  { type = "specializes", target = "craftsperson/bound-concurrent-work" },
+]
 status = "hypothesized"
 confidence = 0.92
 capability = "A bounded request for concurrent results does not silently violate side-effect or work-budget expectations."

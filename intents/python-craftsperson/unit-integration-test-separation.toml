@@ -1,5 +1,10 @@
 id = "guidelines.intent.unit-integration-test-separation"
 title = "Distinguish fast isolated tests from integration tests"
+category = "testing"
+tags = ["python", "testing", "dependencies", "test-strategy", "test-pyramid", "risk-based-testing"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-purpose-specific-test-layers" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Developers and automation can select rapid local feedback or broader integration confidence deliberately."

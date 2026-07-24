@@ -1,5 +1,10 @@
 id = "guidelines.intent.keep-tests-passing"
 title = "Keep the verified behavior passing"
+category = "quality"
+tags = ["typescript", "testing", "error-handling", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to preserve behavior already established by the executable specification"

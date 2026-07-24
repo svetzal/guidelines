@@ -1,5 +1,10 @@
 id = "guidelines.intent.gate-on-passing-test-suite"
 title = "Gate completion on a fully passing test suite"
+category = "quality"
+tags = ["csharp", "testing", "test-gate", "completion", "regression-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-passing-tests-before-completion" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Known behavioral contracts remain intact at every accepted change."

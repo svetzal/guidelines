@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotlin-business-logic-coverage-floor"
 title = "Keep business logic under a meaningful coverage floor"
+category = "testing"
+tags = ["kotlin", "testing", "coverage", "risk", "critical-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to change business behavior with automated regression feedback."

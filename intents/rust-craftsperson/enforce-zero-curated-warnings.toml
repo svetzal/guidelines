@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-zero-curated-warnings"
 title = "Enforce zero curated warnings in CI"
+category = "quality"
+tags = ["rust", "static-analysis", "build-and-delivery", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "New compiler and Clippy diagnostics remain visible and actionable instead of accumulating as background noise."

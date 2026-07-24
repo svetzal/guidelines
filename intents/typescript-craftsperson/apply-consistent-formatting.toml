@@ -1,5 +1,10 @@
 id = "guidelines.intent.apply-consistent-formatting"
 title = "Apply the project's automated formatting"
+category = "quality"
+tags = ["typescript", "formatting", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to maintain a consistent visual code style without recurring manual debate"

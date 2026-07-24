@@ -1,5 +1,10 @@
 id = "guidelines.intent.make-multi-step-writes-atomic"
 title = "Make multi-step writes atomic"
+category = "reliability"
+tags = ["elixir", "phoenix", "persistence", "error-handling", "data-integrity", "transactions"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "A business operation either commits all required persistence changes or leaves none behind."

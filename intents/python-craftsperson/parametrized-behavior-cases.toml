@@ -1,5 +1,10 @@
 id = "guidelines.intent.parametrized-behavior-cases"
 title = "Express equivalent behavior cases as data"
+category = "design"
+tags = ["python", "testing", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.9
 capability = "A family of input-output examples can expand without duplicating test procedure."

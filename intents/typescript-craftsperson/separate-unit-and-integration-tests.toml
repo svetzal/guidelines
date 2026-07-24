@@ -1,5 +1,10 @@
 id = "guidelines.intent.separate-unit-and-integration-tests"
 title = "Separate fast unit feedback from integration coverage"
+category = "testing"
+tags = ["typescript", "testing", "dependencies", "error-handling", "coverage", "risk"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to run rapid isolated checks independently from slower environment-dependent verification"

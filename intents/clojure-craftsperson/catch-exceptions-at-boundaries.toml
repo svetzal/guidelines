@@ -1,5 +1,10 @@
 id = "guidelines.intent.catch-exceptions-at-boundaries"
 title = "Catch exceptions only at meaningful boundaries"
+category = "reliability"
+tags = ["clojure", "error-handling", "error-modeling", "recoverability", "contracts"]
+relations = [
+  { type = "specializes", target = "craftsperson/model-recoverable-errors-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.93
 capability = "Ability to preserve actionable failures until a layer can translate, recover, or report them responsibly"

@@ -1,5 +1,10 @@
 id = "guidelines.intent.typed-kotlin-recoverable-results"
 title = "Model recoverable outcomes as exhaustive result values"
+category = "design"
+tags = ["kotlin", "error-handling", "domain-modeling", "type-safety", "invariants"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability for callers to see and exhaustively handle expected success and failure outcomes."

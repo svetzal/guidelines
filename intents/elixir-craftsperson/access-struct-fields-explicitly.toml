@@ -1,5 +1,10 @@
 id = "guidelines.intent.access-struct-fields-explicitly"
 title = "Access struct fields explicitly"
+category = "design"
+tags = ["elixir", "testing", "persistence", "error-handling", "idioms", "language-design"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Field access respects the declared semantics of structs and changesets."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-architecture-and-domain-concepts"
 title = "Document architecture and domain concepts"
+category = "documentation"
+tags = ["csharp", "documentation", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Future contributors can understand system boundaries, important decisions, and shared business language."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.separate-unit-and-integration-tests"
 title = "Keep unit and integration feedback separable"
+category = "quality"
+tags = ["typescript", "bun", "cli", "testing", "dependencies", "error-handling"]
+relations = [
+  { type = "specializes", target = "craftsperson/verify-before-declaring-completion" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Developers can run fast deterministic checks independently from slower environment-dependent verification."

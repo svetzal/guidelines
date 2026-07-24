@@ -1,5 +1,10 @@
 id = "guidelines.intent.cover-edge-and-error-behavior"
 title = "Exercise edge and error behavior"
+category = "testing"
+tags = ["cpp", "qt", "testing", "error-handling", "edge-cases", "failure-paths"]
+relations = [
+  { type = "specializes", target = "craftsperson/cover-edge-cases-and-failure-paths" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "The system responds predictably outside happy paths."

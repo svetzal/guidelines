@@ -1,5 +1,10 @@
 id = "guidelines.intent.gateway-isolated-external-io"
 title = "Isolate all external interactions behind owned boundaries"
+category = "testing"
+tags = ["kotlin", "android", "testing", "persistence", "test-doubles", "boundaries"]
+relations = [
+  { type = "specializes", target = "craftsperson/mock-only-owned-boundaries" },
+]
 status = "hypothesized"
 confidence = 1
 capability = "Ability to test core behavior deterministically and replace external systems without rewriting callers."

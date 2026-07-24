@@ -1,5 +1,10 @@
 id = "guidelines.intent.enforce-warning-free-builds"
 title = "Keep builds free of errors and warnings"
+category = "quality"
+tags = ["csharp", "static-analysis", "error-handling", "build-and-delivery", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Compiler diagnostics remain a trustworthy signal of defects and compatibility problems."

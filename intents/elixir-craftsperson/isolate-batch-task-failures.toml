@@ -1,5 +1,10 @@
 id = "guidelines.intent.isolate-batch-task-failures"
 title = "Isolate batch task failures from callers"
+category = "reliability"
+tags = ["elixir", "concurrency", "error-handling", "structured-concurrency", "cancellation"]
+relations = [
+  { type = "specializes", target = "craftsperson/structure-concurrent-lifetimes" },
+]
 status = "hypothesized"
 confidence = 0.93
 capability = "Concurrent batch processing can report an individual task failure without unexpectedly terminating the consuming process."

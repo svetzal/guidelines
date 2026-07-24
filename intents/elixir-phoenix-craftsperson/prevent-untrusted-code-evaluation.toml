@@ -1,5 +1,10 @@
 id = "guidelines.intent.prevent-untrusted-code-evaluation"
 title = "Prevent untrusted code evaluation"
+category = "architecture"
+tags = ["elixir", "phoenix", "validation", "trust-boundaries", "security"]
+relations = [
+  { type = "specializes", target = "craftsperson/validate-untrusted-input-at-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "User-controlled text cannot execute code with application privileges."

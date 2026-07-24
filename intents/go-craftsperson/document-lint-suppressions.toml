@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-lint-suppressions"
 title = "Make every lint suppression explainable"
+category = "quality"
+tags = ["go", "documentation", "static-analysis", "error-handling", "warnings", "automation"]
+relations = [
+  { type = "specializes", target = "craftsperson/resolve-static-analysis-findings" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Future maintainers can distinguish deliberate lint exceptions from concealed defects."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-features"
 title = "Avoid speculative features"
+category = "design"
+tags = ["uv", "python", "testing", "error-handling", "build-and-delivery", "yagni"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The codebase carries only behavior justified by current requirements."

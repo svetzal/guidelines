@@ -1,5 +1,10 @@
 id = "guidelines.intent.escalate-architectural-security-findings"
 title = "Escalate security findings that require architectural change"
+category = "design"
+tags = ["typescript", "security", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to choose security remediation with accountable product and architectural tradeoffs"

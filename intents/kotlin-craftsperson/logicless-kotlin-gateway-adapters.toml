@@ -1,5 +1,10 @@
 id = "guidelines.intent.logicless-kotlin-gateway-adapters"
 title = "Keep gateway adapters mechanically thin"
+category = "testing"
+tags = ["kotlin", "testing", "gateways", "unit-testing", "test-value"]
+relations = [
+  { type = "specializes", target = "craftsperson/do-not-unit-test-logicless-gateways" },
+]
 status = "hypothesized"
 confidence = 1.0
 capability = "Ability to test business decisions in a deterministic core while replacing I/O technologies independently."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.require-comprehensive-simplecov-coverage"
 title = "Cover changed Ruby behavior comprehensively"
+category = "testing"
+tags = ["ruby", "simplecov", "testing", "error-handling", "coverage", "risk"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-coverage-as-a-risk-signal" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to detect unexercised paths introduced or altered by a change"

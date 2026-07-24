@@ -1,5 +1,10 @@
 id = "guidelines.intent.focused-functions"
 title = "Keep behavior changes locally comprehensible"
+category = "design"
+tags = ["kotlin", "android", "testing", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to understand, test, and modify a unit of behavior without unrelated context."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.deliver-single-reason-increments"
 title = "Deliver single-reason increments"
+category = "delivery"
+tags = ["swift", "concurrency", "testing", "version-control", "history", "rationale"]
+relations = [
+  { type = "specializes", target = "craftsperson/write-descriptive-commit-messages" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Each change can be understood, tested, reverted, and integrated independently."

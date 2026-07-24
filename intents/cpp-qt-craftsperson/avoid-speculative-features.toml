@@ -1,5 +1,10 @@
 id = "guidelines.intent.avoid-speculative-features"
 title = "Avoid speculative capability"
+category = "design"
+tags = ["cpp", "qt", "testing", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Delivery remains focused on demonstrated needs."

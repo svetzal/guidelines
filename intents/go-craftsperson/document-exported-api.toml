@@ -1,5 +1,10 @@
 id = "guidelines.intent.document-exported-api"
 title = "Document every exported Go contract"
+category = "documentation"
+tags = ["go", "documentation", "dependencies", "synchronization", "behavior", "maintenance"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-documentation-aligned" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Consumers can understand the purpose and contract of public packages, types, and functions without reading their implementation."

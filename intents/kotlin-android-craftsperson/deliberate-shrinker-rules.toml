@@ -1,5 +1,10 @@
 id = "guidelines.intent.deliberate-shrinker-rules"
 title = "Protect required runtime behavior during shrinking"
+category = "performance"
+tags = ["kotlin", "android", "build-and-delivery", "profiling", "evidence", "optimization"]
+relations = [
+  { type = "specializes", target = "craftsperson/optimize-from-measurement" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "Ability to optimize release artifacts without removing or renaming code reached indirectly."

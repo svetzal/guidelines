@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-interfaces-for-contracts"
 title = "Express contracts with interfaces, not abstract classes"
+category = "design"
+tags = ["typescript", "composition", "inheritance", "coupling"]
+relations = [
+  { type = "specializes", target = "craftsperson/prefer-composition-over-inheritance" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Ability to define substitutable contracts independently of implementation and construction"

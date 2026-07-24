@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-idiomatic-modern-python"
 title = "Use Python's idiomatic modern language strengths"
+category = "design"
+tags = ["uv", "python", "concurrency", "idioms", "language-design", "ecosystem-conventions"]
+relations = [
+  { type = "specializes", target = "craftsperson/use-language-and-ecosystem-idioms" },
+]
 status = "hypothesized"
 confidence = 0.91
 capability = "Python code remains concise, recognizable, and natural for maintainers who know the language ecosystem."

@@ -1,5 +1,10 @@
 id = "guidelines.intent.kotlin-extension-domain-operations"
 title = "Keep domain operations close to the types they enrich"
+category = "reliability"
+tags = ["kotlin", "resource-management", "cleanup", "ownership"]
+relations = [
+  { type = "specializes", target = "craftsperson/manage-resource-lifetimes-explicitly" },
+]
 status = "hypothesized"
 confidence = 0.94
 capability = "Ability to expose cohesive domain operations without expanding or wrapping the owned type."

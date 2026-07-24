@@ -1,5 +1,10 @@
 id = "guidelines.intent.single-responsibility-namespaces"
 title = "Keep namespace responsibilities narrow and explicit"
+category = "design"
+tags = ["clojure", "cohesion", "single-responsibility", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/keep-code-units-cohesive" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "Ability to locate, change, and reuse behavior without understanding unrelated concerns"

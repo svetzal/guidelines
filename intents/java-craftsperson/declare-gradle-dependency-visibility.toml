@@ -1,5 +1,10 @@
 id = "guidelines.intent.declare-gradle-dependency-visibility"
 title = "Declare Gradle dependency visibility precisely"
+category = "delivery"
+tags = ["java", "gradle", "testing", "dependencies", "builds", "configuration"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
 status = "hypothesized"
 confidence = 0.95
 capability = "Each Gradle module exposes only the dependencies that form part of its consumer-facing contract."

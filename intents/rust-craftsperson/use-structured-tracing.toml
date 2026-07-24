@@ -1,5 +1,10 @@
 id = "guidelines.intent.use-structured-tracing"
 title = "Use structured tracing for observability"
+category = "reliability"
+tags = ["rust", "formatting", "persistence", "data-integrity", "transactions", "database-constraints"]
+relations = [
+  { type = "specializes", target = "craftsperson/protect-persistent-data-integrity" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "Operators can correlate nested service operations and query their context."

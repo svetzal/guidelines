@@ -1,5 +1,10 @@
 id = "guidelines.intent.parse-cli-input-into-validated-types"
 title = "Parse CLI input into validated domain values"
+category = "architecture"
+tags = ["typescript", "bun", "cli", "validation", "trust-boundaries", "security"]
+relations = [
+  { type = "specializes", target = "craftsperson/validate-untrusted-input-at-boundaries" },
+]
 status = "hypothesized"
 confidence = 0.96
 capability = "Command handlers receive a structured, typed representation of valid user intent."

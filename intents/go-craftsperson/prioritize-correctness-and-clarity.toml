@@ -1,5 +1,10 @@
 id = "guidelines.intent.prioritize-correctness-and-clarity"
 title = "Resolve design tension in favor of correctness and clarity"
+category = "design"
+tags = ["go", "testing", "simplicity", "design-priorities", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/apply-simple-design-priorities" },
+]
 status = "hypothesized"
 confidence = 0.97
 capability = "The team can resolve conflicts among otherwise useful design heuristics consistently."

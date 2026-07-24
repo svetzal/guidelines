@@ -1,5 +1,10 @@
 id = "guidelines.intent.minimal-necessary-abstractions"
 title = "Delay abstractions and features until concrete need emerges"
+category = "design"
+tags = ["python", "testing", "build-and-delivery", "yagni", "scope-control", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/avoid-speculative-capability" },
+]
 status = "hypothesized"
 confidence = 0.99
 capability = "The codebase remains simple enough to change in response to demonstrated requirements."

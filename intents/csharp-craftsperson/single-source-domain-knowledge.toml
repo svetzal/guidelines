@@ -1,5 +1,10 @@
 id = "guidelines.intent.single-source-domain-knowledge"
 title = "Keep each domain decision in one source"
+category = "design"
+tags = ["csharp", "security", "knowledge-duplication", "single-source-of-truth", "maintainability"]
+relations = [
+  { type = "specializes", target = "craftsperson/single-source-each-decision" },
+]
 status = "hypothesized"
 confidence = 0.98
 capability = "A business rule or shared concept can be changed coherently in one authoritative place."
