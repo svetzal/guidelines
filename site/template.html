@@ -343,9 +343,25 @@
   .example { min-width: 0; border: 1px solid var(--rule); }
   .example b { display: block; padding: 5px 8px; border-bottom: 1px solid var(--rule); }
   .example pre { margin: 0; padding: 10px; max-height: 360px; overflow: auto; font: 11px/1.5 var(--mono); }
+  .example pre code.hljs { padding: 0; background: transparent; }
+  .hljs { color: var(--ink); background: transparent; }
+  .hljs-comment, .hljs-quote { color: var(--faint); font-style: italic; }
+  .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag, .hljs-name { color: var(--code-kw); }
+  .hljs-string, .hljs-addition, .hljs-regexp { color: var(--code-str); }
+  .hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link, .hljs-meta { color: var(--code-num); }
+  .hljs-type, .hljs-built_in, .hljs-title.class_ { color: var(--code-typ); }
+  .hljs-title, .hljs-section, .hljs-title.function_ { color: var(--code-fn); }
+  .hljs-attr, .hljs-attribute, .hljs-variable, .hljs-template-variable, .hljs-params { color: var(--ink); }
   .load-more { display: block; margin: 36px auto 0; min-width: 220px; }
   .no-results { padding: 60px 0; color: var(--muted); font-style: italic; }
   footer { border-top: 1px solid var(--rule-strong); padding: 22px 0 50px; color: var(--faint); font-size: 9px; }
+
+  :root { --code-kw: #5a5f9e; --code-str: #4a7a4e; --code-num: #94641a;
+    --code-typ: #0f6f78; --code-fn: #38668e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --code-kw: #9ea3e0; --code-str: #8fbf93; --code-num: #d8ad55;
+      --code-typ: #63b7c0; --code-fn: #76a7cf; }
+  }
 
   .c-delivery { --cat: #a64b31; }
   .c-performance { --cat: #946b16; }
@@ -461,6 +477,10 @@
           <input id="catalogSearch" type="search" placeholder="Title, strategy, tag, collection…">
         </div>
         <div class="control">
+          <label for="catalogLanguage">Target language</label>
+          <select id="catalogLanguage"></select>
+        </div>
+        <div class="control">
           <label for="catalogCollection">Collection</label>
           <select id="catalogCollection"></select>
         </div>
@@ -503,6 +523,17 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, ch =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const fold = value => String(value ?? "").toLocaleLowerCase();
 
+const LANGS = [["clojure","Clojure"],["cpp","C++"],["csharp","C#"],["elixir","Elixir"],
+  ["go","Go"],["java","Java"],["kotlin","Kotlin"],["python","Python"],["ruby","Ruby"],
+  ["rust","Rust"],["swift","Swift"],["typescript","TypeScript"]];
+const LANG_LABEL = Object.fromEntries(LANGS);
+const collectionsFor = lang => COLLECTIONS.filter(c => c.split("-").includes(lang));
+const languageOf = collection =>
+  (LANGS.find(([key]) => collection.split("-").includes(key)) ?? [null])[0];
+let targetLang = new URLSearchParams(location.search).get("lang");
+if (!LANG_LABEL[targetLang]) { try { targetLang = localStorage.getItem("atlas-lang"); } catch {} }
+if (!LANG_LABEL[targetLang]) targetLang = "python";
+
 document.getElementById("metrics").innerHTML = [
   [DATA.length, "records"],
   [GENERAL.length, "general"],
@@ -515,7 +546,20 @@ function fillCollectionSelect(select, allLabel) {
     COLLECTIONS.map(c => `<option value="${esc(c)}">${esc(prettyCollection(c))}</option>`).join("");
 }
 fillCollectionSelect(document.getElementById("graphCollection"), "General intents only");
-fillCollectionSelect(document.getElementById("catalogCollection"), "Every collection");
+const catalogLanguageSelect = document.getElementById("catalogLanguage");
+catalogLanguageSelect.innerHTML =
+  LANGS.map(([key, label]) => `<option value="${key}">${label}</option>`).join("");
+catalogLanguageSelect.value = targetLang;
+function refreshCatalogCollections() {
+  const select = document.getElementById("catalogCollection");
+  const previous = select.value;
+  const subset = collectionsFor(targetLang);
+  select.innerHTML = `<option value="">Every collection</option>` +
+    `<option value="craftsperson">General craftsperson</option>` +
+    subset.map(c => `<option value="${esc(c)}">${esc(prettyCollection(c))}</option>`).join("");
+  select.value = previous === "craftsperson" || subset.includes(previous) ? previous : "";
+}
+refreshCatalogCollections();
 document.getElementById("catalogCategory").innerHTML =
   `<option value="">Every category</option>` +
   CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
@@ -858,19 +902,22 @@ function searchable(record) {
 }
 function filteredCatalog() {
   const query=fold(catalogSearch.value.trim());
-  return DATA.filter(d => (!catalogCollection.value || d.collection===catalogCollection.value) &&
+  const langCollections=collectionsFor(targetLang);
+  return DATA.filter(d => (d.kind==="general" || langCollections.includes(d.collection)) &&
+    (!catalogCollection.value || d.collection===catalogCollection.value) &&
     (!catalogCategory.value || d.category===catalogCategory.value) &&
     (!query || searchable(d).includes(query)))
     .sort((a,b) => CATEGORIES.indexOf(a.category)-CATEGORIES.indexOf(b.category) ||
       (a.kind==="general"?-1:1)-(b.kind==="general"?-1:1) || a.title.localeCompare(b.title));
 }
 function exampleMarkup(record) {
-  const entries=Object.entries(record.examples||{});
-  if (!entries.length) return "";
-  const [lang,example]=entries[0];
+  if (!Object.keys(record.examples||{}).length) return "";
+  const example=(record.examples||{})[targetLang];
+  if (!example || !(example.good && example.bad))
+    return `<div class="field wide"><b>Examples</b><p>No ${esc(LANG_LABEL[targetLang])} example yet.</p></div>`;
   return `<div class="examples">
-    <div class="example"><b class="label">${esc(lang)} · earns the intent</b><pre><code>${esc(example.good)}</code></pre></div>
-    <div class="example"><b class="label">${esc(lang)} · violates the intent</b><pre><code>${esc(example.bad)}</code></pre></div>
+    <div class="example"><b class="label">earns the intent</b><pre><code class="language-${esc(targetLang)}">${esc(example.good)}</code></pre></div>
+    <div class="example"><b class="label">violates the intent</b><pre><code class="language-${esc(targetLang)}">${esc(example.bad)}</code></pre></div>
   </div>`;
 }
 function cardMarkup(record) {
@@ -910,15 +957,34 @@ function renderCatalog() {
   catalog.querySelectorAll("[data-rel]").forEach(button => button.addEventListener("click", event => {
     event.preventDefault(); openCatalogRecord(button.dataset.rel);
   }));
+  if (window.hljs) catalog.querySelectorAll('pre code[class^="language-"]')
+    .forEach(block => hljs.highlightElement(block));
 }
 function resetCatalogPage() { pageSize=72; renderCatalog(); }
 [catalogSearch,catalogCollection,catalogCategory].forEach(control =>
   control.addEventListener(control===catalogSearch?"input":"change",resetCatalogPage));
+function setTargetLang(lang) {
+  if (!LANG_LABEL[lang] || lang===targetLang) return;
+  targetLang=lang;
+  catalogLanguageSelect.value=lang;
+  try { localStorage.setItem("atlas-lang", lang); } catch {}
+  const url=new URL(location); url.searchParams.set("lang", lang);
+  history.replaceState(null,"",url);
+  refreshCatalogCollections();
+  resetCatalogPage();
+}
+catalogLanguageSelect.addEventListener("change",()=>setTargetLang(catalogLanguageSelect.value));
 document.getElementById("loadMore").addEventListener("click", () => { pageSize+=72; renderCatalog(); });
 
 function openCatalogRecord(key) {
   const record=RECORD_BY_KEY.get(key); if (!record) return;
+  // a relation may cross into another language's collection — follow it
+  if (record.kind==="specialization") {
+    const lang=languageOf(record.collection);
+    if (lang) setTargetLang(lang);
+  }
   catalogSearch.value="";
+  refreshCatalogCollections();
   catalogCollection.value=record.collection;
   catalogCategory.value=record.category;
   pageSize=Math.max(72, DATA.filter(d=>d.collection===record.collection&&d.category===record.category).length);

@@ -12,6 +12,11 @@ touches `intents/**` or `site/**`.
   records. It adds or refreshes each record's category, topical/tool tags, and
   explicit specialization edge. Run it after adding or renaming ecosystem
   intents and review the resulting taxonomy changes.
+- The catalogue's **Target language** control (also `?lang=<key>`, persisted
+  across visits) drives the whole page: every general record's example pair
+  renders in that language with syntax highlighting, and specialization
+  records are scoped to the matching `*-craftsperson` collections. Following
+  a relation into another ecosystem's record switches the target language.
 - `merge_examples.py` — merges per-language example fragments
   (`<lang>.json` keyed by intent slug, values `{good, bad}`) into the
   `[examples.<lang>]` tables of the intent records. Idempotent: everything
