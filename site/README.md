@@ -15,8 +15,9 @@ touches `intents/**` or `site/**`.
 - The catalogue's **Target language** control (also `?lang=<key>`, persisted
   across visits) drives the whole page: every general record's example pair
   renders in that language with syntax highlighting, and specialization
-  records are scoped to the matching `*-craftsperson` collections. Following
-  a relation into another ecosystem's record switches the target language.
+  records are scoped to the matching nested realization collections under
+  `intents/craftsperson/`. Following a relation into another ecosystem's record
+  switches the target language.
 - `merge_examples.py` — merges per-language example fragments
   (`<lang>.json` keyed by intent slug, values `{good, bad}`) into the
   `[examples.<lang>]` tables of the intent records. Idempotent: everything
@@ -38,6 +39,6 @@ touches `intents/**` or `site/**`.
 Build locally:
 
 ```bash
-python3 site/build.py
+python3.11 site/build.py
 open _site/index.html
 ```

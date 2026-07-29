@@ -516,9 +516,13 @@ const RECORD_BY_KEY = new Map(DATA.map(d => [d.key, d]));
 const GENERAL = DATA.filter(d => d.kind === "general");
 const COLLECTIONS = [...new Set(DATA.filter(d => d.kind === "specialization")
   .map(d => d.collection))].sort();
+const collectionParts = s => s.split("/").filter(x => x && x !== "craftsperson")
+  .flatMap(x => x.split("-"));
+const prettyPart = x => x === "uv" ? "uv" : x === "cpp" ? "C++" :
+  x === "csharp" ? "C#" : x === "typescript" ? "TypeScript" :
+  x === "cli" ? "CLI" : x[0].toUpperCase() + x.slice(1);
 const prettyCollection = s => s === "craftsperson" ? "General craftsperson" :
-  s.replace(/-craftsperson$/, "").split("-").map(x => x === "uv" ? "uv" :
-  x === "cpp" ? "C++" : x[0].toUpperCase() + x.slice(1)).join(" · ");
+  collectionParts(s).map(prettyPart).join(" · ");
 const esc = value => String(value ?? "").replace(/[&<>"']/g, ch =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const fold = value => String(value ?? "").toLocaleLowerCase();
@@ -527,9 +531,9 @@ const LANGS = [["clojure","Clojure"],["cpp","C++"],["csharp","C#"],["elixir","El
   ["go","Go"],["java","Java"],["kotlin","Kotlin"],["python","Python"],["ruby","Ruby"],
   ["rust","Rust"],["swift","Swift"],["typescript","TypeScript"]];
 const LANG_LABEL = Object.fromEntries(LANGS);
-const collectionsFor = lang => COLLECTIONS.filter(c => c.split("-").includes(lang));
+const collectionsFor = lang => COLLECTIONS.filter(c => collectionParts(c).includes(lang));
 const languageOf = collection =>
-  (LANGS.find(([key]) => collection.split("-").includes(key)) ?? [null])[0];
+  (LANGS.find(([key]) => collectionParts(collection).includes(key)) ?? [null])[0];
 let targetLang = new URLSearchParams(location.search).get("lang");
 if (!LANG_LABEL[targetLang]) { try { targetLang = localStorage.getItem("atlas-lang"); } catch {} }
 if (!LANG_LABEL[targetLang]) targetLang = "python";

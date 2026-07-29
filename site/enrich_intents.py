@@ -124,8 +124,12 @@ TOPIC_PATTERNS: list[tuple[str, str]] = [
 ]
 
 
-def collection_tag(collection: str) -> list[str]:
-    return [part for part in collection.removesuffix("-craftsperson").split("-") if part]
+def collection_tag(path: Path) -> list[str]:
+    relative = path.parent.relative_to(CENTRAL)
+    parts: list[str] = []
+    for component in relative.parts:
+        parts.extend(part for part in component.split("-") if part)
+    return parts
 
 
 def central_metadata() -> tuple[dict[str, str], dict[str, list[str]]]:
@@ -163,7 +167,7 @@ def classify(path: Path, categories: dict[str, str], parent_tags: dict[str, list
         for field in ("title", "capability", "threat", "strategy")
     ).lower().replace("-", " ")
     parent = choose_parent(path.stem, title, context, set(categories))
-    tags = collection_tag(path.parent.name)
+    tags = collection_tag(path)
     for pattern, tag in TOOL_PATTERNS:
         if re.search(pattern, title) and tag not in tags:
             tags.append(tag)
@@ -213,10 +217,11 @@ def main() -> None:
     args = parser.parse_args()
     categories, parent_tags = central_metadata()
     changed = 0
-    for collection in sorted(INTENTS.glob("*-craftsperson")):
-        for path in sorted(collection.glob("*.toml")):
-            category, tags, parent = classify(path, categories, parent_tags)
-            changed += enrich(path, render_block(category, tags, parent), args.check)
+    for path in sorted(CENTRAL.rglob("*.toml")):
+        if path.parent == CENTRAL:
+            continue
+        category, tags, parent = classify(path, categories, parent_tags)
+        changed += enrich(path, render_block(category, tags, parent), args.check)
     mode = "would update" if args.check else "updated"
     print(f"{mode} {changed} intent records")
     if args.check and changed:

@@ -33,7 +33,7 @@ def load_intent(path: Path) -> dict:
             if (m := ECOSYSTEM_RE.match(p))
         }
     )
-    collection = path.parent.name
+    collection = path.parent.relative_to(INTENTS_DIR).as_posix()
     return {
         "key": f"{collection}/{path.stem}",
         "slug": path.stem,
@@ -74,16 +74,7 @@ def load_intent(path: Path) -> dict:
 
 
 def build(out_dir: Path) -> Path:
-    paths = sorted(
-        path
-        for collection in INTENTS_DIR.iterdir()
-        if collection.is_dir()
-        and (
-            collection.name == "craftsperson"
-            or collection.name.endswith("-craftsperson")
-        )
-        for path in collection.glob("*.toml")
-    )
+    paths = sorted(INTENTS_DIR.rglob("*.toml"))
     intents = [load_intent(path) for path in paths]
     if not intents:
         sys.exit(f"no intent records found in {INTENTS_DIR}")

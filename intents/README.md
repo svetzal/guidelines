@@ -1,8 +1,12 @@
 # Intent records
 
 Intent records describe falsifiable engineering guidance. The
-`craftsperson/` collection contains generalized intents; each
-`*-craftsperson/` collection contains language or ecosystem specializations.
+`craftsperson/` collection contains generalized intents at its root and
+language or ecosystem specializations in nested directories. The directory
+hierarchy denotes the realization hierarchy: for example,
+`craftsperson/cpp-qt/` specializes the general craftsperson catalogue for
+C++/Qt, while `craftsperson/python/uv/` specializes Python guidance for uv-based
+projects.
 
 ## Classification
 
@@ -14,8 +18,9 @@ fields:
 - `relations` are typed, directed edges to other intent records.
 
 Relationship targets use the repository-relative record key
-`<collection>/<slug>` without the `.toml` suffix. This avoids ambiguity because
-the semantic `id` field may intentionally recur in more than one collection.
+`<collection>/<slug>` without the `.toml` suffix. Collections may be nested,
+such as `craftsperson/python/uv`. This avoids ambiguity because the semantic
+`id` field may intentionally recur in more than one collection.
 
 ```toml
 category = "quality"
@@ -41,7 +46,7 @@ Run the deterministic enrichment tool after adding or renaming ecosystem
 records:
 
 ```bash
-python3 site/enrich_intents.py
+python3.11 site/enrich_intents.py
 ```
 
 The tool inserts or replaces the classification block immediately after each
