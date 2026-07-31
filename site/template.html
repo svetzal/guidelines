@@ -7,14 +7,15 @@
 <style>
   :root {
     color-scheme: light dark;
-    --paper: #ece9df;
-    --paper-deep: #ded9cb;
-    --panel: #f8f5ec;
+    --paper: #e9e5da;
+    --paper-deep: #d9d3c4;
+    --panel: #f7f3e9;
+    --panel-raised: #fffdf6;
     --ink: #172127;
     --muted: #5f696b;
-    --faint: #8a918f;
-    --rule: #c6c2b7;
-    --rule-strong: #8f918a;
+    --faint: #858d8c;
+    --rule: #c3beb1;
+    --rule-strong: #898c86;
     --accent: #b64a2d;
     --accent-soft: #e2b5a7;
     --focus: #096c73;
@@ -22,150 +23,103 @@
     --body: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
     --ui: "Avenir Next", Avenir, "Gill Sans", sans-serif;
     --mono: "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
-    --shadow: 0 18px 50px rgb(35 39 37 / 10%);
+    --shadow: 0 18px 50px rgb(35 39 37 / 12%);
+    --panel-width: 390px;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper: #11181b;
-      --paper-deep: #0c1214;
-      --panel: #192226;
+      --paper: #101719;
+      --paper-deep: #0a1012;
+      --panel: #182125;
+      --panel-raised: #1e292d;
       --ink: #e9e5d9;
-      --muted: #a8b0ae;
-      --faint: #737e7d;
+      --muted: #abb2b0;
+      --faint: #778180;
       --rule: #354044;
-      --rule-strong: #576164;
+      --rule-strong: #626b6d;
       --accent: #e36c4c;
       --accent-soft: #6e372d;
       --focus: #7ecbd0;
-      --shadow: 0 18px 50px rgb(0 0 0 / 28%);
+      --shadow: 0 18px 50px rgb(0 0 0 / 30%);
     }
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
   body {
     margin: 0;
-    background:
-      linear-gradient(90deg, transparent 49.8%, rgb(85 86 79 / 5%) 50%, transparent 50.2%),
-      radial-gradient(circle at 14% 7%, rgb(255 255 255 / 35%), transparent 30rem),
-      var(--paper);
+    background: var(--paper);
     color: var(--ink);
     font-family: var(--body);
-    line-height: 1.55;
+    line-height: 1.5;
   }
   button, input, select { font: inherit; }
-  button, select, input, summary { outline-color: var(--focus); }
-  .shell { width: min(1480px, calc(100% - 40px)); margin-inline: auto; }
-  .kicker, .label, .chip, .metric small, .control label, .count, .legend, footer {
-    font-family: var(--mono);
-    letter-spacing: .095em;
-    text-transform: uppercase;
-  }
-
-  header {
-    min-height: 430px;
-    padding: 70px 0 44px;
-    border-bottom: 1px solid var(--rule-strong);
-    position: relative;
-    overflow: hidden;
-  }
-  header::after {
-    content: "∴";
-    position: absolute;
-    right: max(2vw, calc((100vw - 1480px) / 2));
-    top: -130px;
-    font: 500 520px/1 var(--display);
-    color: var(--ink);
-    opacity: .035;
-    pointer-events: none;
-  }
-  .kicker { color: var(--accent); font-size: 11px; }
-  h1 {
-    font: 600 clamp(58px, 9vw, 136px)/.78 var(--display);
-    letter-spacing: -.025em;
-    text-transform: uppercase;
-    margin: 22px 0 32px;
-    max-width: 1050px;
-  }
-  h1 span { display: block; padding-left: clamp(38px, 9vw, 150px); }
-  .intro {
-    display: grid;
-    grid-template-columns: minmax(300px, 690px) 1fr;
-    gap: 56px;
-    align-items: end;
-  }
-  .lede { margin: 0; color: var(--muted); font-size: 18px; max-width: 65ch; }
-  .metrics { display: flex; gap: 28px; justify-content: flex-end; flex-wrap: wrap; }
-  .metric { border-left: 1px solid var(--rule-strong); padding-left: 12px; min-width: 82px; }
-  .metric b { display: block; font: 600 34px/1 var(--display); }
-  .metric small { color: var(--faint); font-size: 9px; }
-
-  .atlas { padding: 42px 0 70px; }
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 30px;
-    margin-bottom: 18px;
-  }
-  .section-head h2 {
-    font: 600 clamp(34px, 4vw, 58px)/1 var(--display);
-    text-transform: uppercase;
-    letter-spacing: .01em;
-    margin: 0;
-  }
-  .section-head p { color: var(--muted); max-width: 55ch; margin: 0; }
-  .graph-shell {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 330px;
-    min-height: 680px;
-    background: var(--panel);
-    border: 1px solid var(--rule-strong);
-    box-shadow: var(--shadow);
-  }
-  .graph-main { min-width: 0; display: flex; flex-direction: column; }
-  .graph-tools, .catalog-tools {
-    display: flex;
-    gap: 14px;
-    align-items: end;
-    flex-wrap: wrap;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--ui);
-  }
-  .control { display: grid; gap: 4px; min-width: 180px; }
-  .control.grow { flex: 1; }
-  .control label { font-size: 9px; color: var(--faint); }
-  select, input[type="search"] {
-    color: var(--ink);
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--rule-strong);
-    border-radius: 0;
-    padding: 6px 2px;
-    min-height: 38px;
-  }
-  button {
-    color: var(--ink);
-    background: transparent;
-    border: 1px solid var(--rule-strong);
-    padding: 8px 12px;
-    min-height: 38px;
-    cursor: pointer;
-    font-family: var(--ui);
-  }
-  button:hover { border-color: var(--accent); color: var(--accent); }
-  button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible {
+  button, input, select, summary { outline-color: var(--focus); }
+  button:focus-visible, input:focus-visible, select:focus-visible,
+  summary:focus-visible, [tabindex]:focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
-  .graph-stage {
+  button {
+    color: inherit;
+    background: transparent;
+    border: 1px solid var(--rule-strong);
+    min-height: 38px;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--ui);
+    cursor: pointer;
+  }
+  button:hover { color: var(--accent); border-color: var(--accent); }
+  .label, .eyebrow, .record-key, .chip, .relation-type, .canvas-status,
+  .canvas-hint, .nav-count, .field-label, .graph-controls {
+    font-family: var(--mono);
+    letter-spacing: .085em;
+    text-transform: uppercase;
+  }
+
+  .workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 8px var(--panel-width);
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .map-shell {
     position: relative;
-    flex: 1;
-    min-height: 590px;
+    min-width: 0;
+    min-height: 0;
     overflow: hidden;
     background:
-      radial-gradient(circle at center, color-mix(in srgb, var(--ink) 3%, transparent), transparent 66%);
+      radial-gradient(circle at 48% 42%, color-mix(in srgb, var(--ink) 4%, transparent), transparent 53%),
+      linear-gradient(90deg, transparent 49.9%, color-mix(in srgb, var(--ink) 4%, transparent) 50%, transparent 50.1%),
+      linear-gradient(0deg, transparent 49.9%, color-mix(in srgb, var(--ink) 4%, transparent) 50%, transparent 50.1%),
+      var(--paper);
   }
+  .map-title {
+    position: absolute;
+    z-index: 5;
+    top: var(--space-5);
+    left: var(--space-5);
+    pointer-events: none;
+  }
+  .map-title h1 {
+    margin: 0;
+    font: 600 clamp(28px, 3.4vw, 52px)/.9 var(--display);
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+  .map-title h1 span { color: var(--accent); }
+  .canvas-hint {
+    margin-top: var(--space-2);
+    color: var(--faint);
+    font-size: 8px;
+  }
+  .graph-stage { position: absolute; inset: 0; overflow: hidden; }
   .graph-svg {
     display: block;
     width: 100%;
@@ -176,53 +130,45 @@
   .graph-svg:active { cursor: grabbing; }
   .graph-edge {
     fill: none;
-    stroke: var(--rule);
-    stroke-width: 1;
+    stroke: var(--rule-strong);
+    stroke-width: 1.15;
     vector-effect: non-scaling-stroke;
-    transition: opacity .15s ease, stroke .15s ease, stroke-width .15s ease;
+    transition: opacity .16s ease, stroke .16s ease, stroke-width .16s ease;
   }
-  .graph-edge.specializes { stroke: var(--rule-strong); }
+  .graph-edge.specializes { stroke-width: 1.5; }
   .graph-edge.related-to { stroke-dasharray: 5 4; }
-  .graph-edge.category { opacity: .35; }
-  .graph-edge.hot {
-    stroke: var(--accent);
-    stroke-width: 2;
-    opacity: 1;
-  }
-  .graph-node {
-    cursor: pointer;
-    outline: none;
-    transition: opacity .15s ease;
-  }
+  .graph-edge.category { opacity: .28; }
+  .graph-edge.hot { stroke: var(--accent); stroke-width: 2.3; opacity: 1; }
+  .graph-node { cursor: pointer; outline: none; transition: opacity .16s ease; }
   .graph-node .node-surface {
-    fill: var(--panel);
+    fill: var(--panel-raised);
     stroke: var(--node-color);
-    stroke-width: 1.4;
+    stroke-width: 1.5;
     vector-effect: non-scaling-stroke;
-    transition: fill .15s ease, stroke-width .15s ease, filter .15s ease;
+    transition: fill .16s ease, stroke-width .16s ease, filter .16s ease;
   }
   .graph-node.general .node-surface { stroke-width: 2; }
   .graph-node.specialization .node-surface {
-    fill: color-mix(in srgb, var(--accent) 8%, var(--panel));
+    fill: color-mix(in srgb, var(--accent) 8%, var(--panel-raised));
     stroke: var(--accent);
   }
   .graph-node.category .node-surface {
     fill: var(--node-color);
-    stroke: var(--panel);
+    stroke: var(--panel-raised);
     stroke-width: 2;
   }
   .graph-node text {
     fill: var(--ink);
     font-family: var(--ui);
-    pointer-events: none;
     text-anchor: middle;
+    pointer-events: none;
   }
-  .graph-node .node-title { font-size: 10.5px; font-weight: 600; }
-  .graph-node.general .node-title { font-size: 11.5px; }
+  .graph-node .node-title { font-size: 11px; font-weight: 600; }
+  .graph-node.general .node-title { font-size: 12px; }
   .graph-node.category .node-title {
-    fill: var(--panel);
+    fill: var(--panel-raised);
     font-family: var(--mono);
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: .08em;
     text-transform: uppercase;
   }
@@ -236,132 +182,274 @@
   .graph-node.hot .node-surface,
   .graph-node.selected .node-surface,
   .graph-node:focus-visible .node-surface {
-    stroke-width: 3;
-    filter: drop-shadow(0 5px 8px rgb(0 0 0 / 18%));
+    stroke-width: 3.2;
+    filter: drop-shadow(0 6px 9px rgb(0 0 0 / 20%));
   }
-  .graph-node.selected .node-surface { fill: color-mix(in srgb, var(--node-color) 13%, var(--panel)); }
+  .graph-node.selected .node-surface {
+    fill: color-mix(in srgb, var(--node-color) 18%, var(--panel-raised));
+  }
   .graph-viewport.has-focus .graph-node:not(.connected),
-  .graph-viewport.has-focus .graph-edge:not(.hot) { opacity: .13; }
-  .graph-zoom {
-    display: flex;
-    gap: 5px;
-    align-items: end;
-  }
-  .graph-zoom button {
-    min-width: 38px;
-    padding-inline: 9px;
-    font-family: var(--mono);
-  }
-  .graph-empty {
-    position: absolute; inset: 0; display: none; place-items: center;
-    color: var(--muted); font-family: var(--ui);
-  }
+  .graph-viewport.has-focus .graph-edge:not(.hot) { opacity: .08; }
   .graph-tip {
     position: absolute;
+    z-index: 6;
     display: none;
     width: min(280px, calc(100% - 24px));
+    padding: 9px 11px;
     background: var(--ink);
     color: var(--paper);
-    padding: 9px 11px;
     font: 12px/1.4 var(--ui);
     pointer-events: none;
-    z-index: 3;
+    box-shadow: var(--shadow);
   }
   .graph-tip small {
-    display: block; color: var(--accent-soft); font: 9px var(--mono);
-    letter-spacing: .09em; text-transform: uppercase; margin-bottom: 3px;
+    display: block;
+    margin-bottom: 3px;
+    color: var(--accent-soft);
+    font: 9px var(--mono);
+    letter-spacing: .09em;
+    text-transform: uppercase;
   }
-  .legend {
-    display: flex; gap: 18px; flex-wrap: wrap; padding: 8px 16px 12px;
-    color: var(--faint); font-size: 9px;
+  .graph-controls {
+    position: absolute;
+    z-index: 5;
+    left: var(--space-5);
+    bottom: var(--space-5);
+    display: flex;
+    gap: var(--space-1);
+    font-size: 9px;
   }
-  .legend span::before {
-    content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px;
-    border: 1px solid currentColor; border-radius: 50%; vertical-align: -1px;
-  }
-  .legend .general::before { background: var(--ink); }
-  .legend .specific::before { background: var(--accent); border-color: var(--accent); }
-  .legend .category::before { border-radius: 0; transform: rotate(45deg); }
-  .graph-detail {
-    border-left: 1px solid var(--rule);
-    padding: 28px 24px;
-    min-width: 0;
-    position: relative;
-  }
-  .graph-detail .empty-mark { font: 500 86px/1 var(--display); color: var(--rule); }
-  .graph-detail h3 { font: 600 29px/1.05 var(--display); margin: 10px 0 14px; text-transform: uppercase; }
-  .graph-detail p { color: var(--muted); font-size: 14px; }
-  .graph-detail .label { font-size: 9px; color: var(--accent); }
-  .detail-relations { display: grid; gap: 7px; margin: 20px 0; }
-  .relation-link {
-    width: 100%; text-align: left; border: 0; border-top: 1px solid var(--rule);
-    padding: 8px 0; min-height: 0; font-size: 12px;
-  }
-  .relation-link span { display: block; color: var(--faint); font: 9px var(--mono); text-transform: uppercase; }
-  .jump { margin-top: 14px; width: 100%; }
-
-  .catalog-section { border-top: 1px solid var(--rule-strong); padding: 68px 0 80px; }
-  .catalog-tools {
-    position: sticky; top: 0; z-index: 10;
-    background: color-mix(in srgb, var(--paper) 94%, transparent);
+  .graph-controls button {
+    min-width: 38px;
+    min-height: 36px;
+    padding: 6px 10px;
+    background: color-mix(in srgb, var(--panel) 88%, transparent);
     backdrop-filter: blur(12px);
-    border: 1px solid var(--rule);
-    margin: 24px 0;
   }
-  .count { margin-left: auto; color: var(--faint); font-size: 10px; padding-bottom: 8px; }
-  .category-block { margin: 48px 0; }
-  .category-title {
-    display: grid; grid-template-columns: 1fr auto; align-items: baseline;
-    border-bottom: 2px solid var(--cat); margin-bottom: 14px; padding-bottom: 7px;
+  .canvas-status {
+    position: absolute;
+    z-index: 5;
+    right: var(--space-5);
+    bottom: var(--space-5);
+    color: var(--faint);
+    font-size: 8px;
+    pointer-events: none;
   }
-  .category-title h3 { margin: 0; font: 600 31px var(--display); text-transform: uppercase; color: var(--cat); }
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
-  details.card {
-    background: var(--panel); border: 1px solid var(--rule); border-top: 3px solid var(--cat);
+
+  .splitter {
+    position: relative;
+    z-index: 10;
+    width: 8px;
+    min-width: 8px;
+    border: 0;
+    border-left: 1px solid var(--rule-strong);
+    border-right: 1px solid var(--rule);
+    background: var(--paper-deep);
+    padding: 0;
+    cursor: col-resize;
+    touch-action: none;
+  }
+  .splitter::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 2px;
+    height: 54px;
+    transform: translateY(-50%);
+    border-left: 1px solid var(--rule-strong);
+    border-right: 1px solid var(--rule-strong);
+  }
+  .splitter:hover, .splitter.is-dragging { background: var(--accent); }
+  .splitter:hover::after, .splitter.is-dragging::after { border-color: var(--panel-raised); }
+
+  .navigator {
     min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    box-shadow: -12px 0 36px rgb(21 28 29 / 8%);
   }
-  details.card[open] { grid-column: 1 / -1; box-shadow: var(--shadow); }
-  summary { list-style: none; cursor: pointer; padding: 15px; min-height: 116px; }
-  summary::-webkit-details-marker { display: none; }
-  .card h4 { margin: 0 0 10px; font: 600 18px/1.2 var(--ui); }
-  .record-key { font: 9px var(--mono); color: var(--faint); word-break: break-all; margin-bottom: 8px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .navigator-head {
+    flex: 0 0 auto;
+    padding: var(--space-5);
+    border-bottom: 1px solid var(--rule-strong);
+    background: color-mix(in srgb, var(--panel) 94%, transparent);
+  }
+  .nav-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); }
+  .navigator-head h2 {
+    margin: 0;
+    font: 600 28px/1 var(--display);
+    text-transform: uppercase;
+  }
+  .nav-count { color: var(--faint); font-size: 8px; white-space: nowrap; }
+  .nav-search {
+    width: 100%;
+    min-height: 42px;
+    margin-top: var(--space-4);
+    padding: 9px 0;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule-strong);
+    border-radius: 0;
+    font-family: var(--ui);
+  }
+  .nav-search::placeholder { color: var(--faint); }
+  .navigator-scroll {
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+  .nav-content { padding: var(--space-4); }
+  .nav-intro {
+    margin: 0 0 var(--space-5);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .eyebrow { color: var(--accent); font-size: 9px; }
+  .nav-section-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-2);
+    color: var(--faint);
+    font: 9px var(--mono);
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+  .nav-list { display: grid; gap: 2px; margin-bottom: var(--space-5); }
+  .nav-link {
+    display: grid;
+    grid-template-columns: 7px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-2) var(--space-3);
+    border: 0;
+    border-top: 1px solid var(--rule);
+    text-align: left;
+  }
+  .nav-link:last-child { border-bottom: 1px solid var(--rule); }
+  .nav-link:hover { background: color-mix(in srgb, var(--cat) 7%, transparent); }
+  .nav-marker { width: 7px; height: 7px; background: var(--cat); transform: rotate(45deg); }
+  .nav-link.record .nav-marker { border-radius: 50%; transform: none; }
+  .nav-link.specialization .nav-marker { background: var(--accent); }
+  .nav-link-title { min-width: 0; color: var(--ink); font: 600 13px/1.25 var(--ui); }
+  .nav-link-meta { color: var(--faint); font: 8px var(--mono); text-transform: uppercase; white-space: nowrap; }
+  .nav-link:hover .nav-link-title { color: var(--accent); }
+
+  .home-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    margin-bottom: var(--space-3);
+    padding: 5px 0;
+    border: 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .trail { display: grid; gap: var(--space-2); margin-bottom: var(--space-3); }
+  .trail-card {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--cat);
+    background: color-mix(in srgb, var(--cat) 4%, var(--panel-raised));
+    text-align: left;
+  }
+  .trail-card::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    bottom: -9px;
+    width: 1px;
+    height: 8px;
+    background: var(--rule-strong);
+  }
+  .trail-card:last-child::after { display: none; }
+  .trail-card small { display: block; color: var(--faint); font: 8px var(--mono); text-transform: uppercase; }
+  .trail-card strong { display: block; margin-top: 2px; font: 600 13px/1.25 var(--ui); }
+
+  .detail-card {
+    --cat: var(--accent);
+    border-top: 4px solid var(--cat);
+    background: var(--panel-raised);
+    box-shadow: var(--shadow);
+  }
+  .detail-head { padding: var(--space-5); border-bottom: 1px solid var(--rule); }
+  .detail-head h3 {
+    margin: var(--space-2) 0 var(--space-3);
+    font: 600 29px/1.04 var(--display);
+    text-transform: uppercase;
+  }
+  .detail-head p { margin: 0; color: var(--muted); font-size: 14px; }
+  .record-key { margin-top: var(--space-3); color: var(--faint); font-size: 8px; word-break: break-all; }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-3); }
   .chip {
-    color: var(--cat); border: 1px solid color-mix(in srgb, var(--cat) 45%, transparent);
-    padding: 2px 5px; font-size: 8px; background: color-mix(in srgb, var(--cat) 7%, transparent);
+    padding: 2px 5px;
+    color: var(--cat);
+    border: 1px solid color-mix(in srgb, var(--cat) 45%, transparent);
+    background: color-mix(in srgb, var(--cat) 7%, transparent);
+    font-size: 8px;
   }
-  .card-body {
-    border-top: 1px solid var(--rule); padding: 17px;
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 26px;
+  .detail-section { padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--rule); }
+  .detail-section:last-child { border-bottom: 0; }
+  .field { margin-bottom: var(--space-4); }
+  .field:last-child { margin-bottom: 0; }
+  .field-label { display: block; margin-bottom: var(--space-1); color: var(--accent); font-size: 8px; }
+  .field p { margin: 0; color: var(--muted); font-size: 13px; }
+  .relation-groups { display: grid; gap: var(--space-5); }
+  .relation-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-2);
+    width: 100%;
+    min-height: 47px;
+    padding: var(--space-2) 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    text-align: left;
   }
-  .field.wide { grid-column: 1 / -1; }
-  .field b { display: block; color: var(--accent); font: 9px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
-  .field p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
-  .relation-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
-  .relation-list button { min-height: 0; padding: 4px 7px; font-size: 11px; }
-  .examples { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .example { min-width: 0; border: 1px solid var(--rule); }
-  .example b { display: block; padding: 5px 8px; border-bottom: 1px solid var(--rule); }
-  .example pre { margin: 0; padding: 10px; max-height: 360px; overflow: auto; font: 11px/1.5 var(--mono); }
+  .relation-link:last-child { border-bottom: 1px solid var(--rule); }
+  .relation-link strong { font: 600 12px/1.25 var(--ui); }
+  .relation-type { color: var(--faint); font-size: 7px; white-space: nowrap; }
+  .relation-link:hover strong { color: var(--accent); }
+  details.more-detail { border-bottom: 1px solid var(--rule); }
+  details.more-detail > summary {
+    min-height: 46px;
+    padding: var(--space-3) var(--space-5);
+    list-style: none;
+    cursor: pointer;
+    color: var(--ink);
+    font: 9px var(--mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  details.more-detail > summary::-webkit-details-marker { display: none; }
+  details.more-detail > summary::after { content: "+"; float: right; color: var(--accent); }
+  details.more-detail[open] > summary::after { content: "−"; }
+  .more-detail-body { padding: 0 var(--space-5) var(--space-5); }
+  .evidence-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+  .example { margin-top: var(--space-3); border: 1px solid var(--rule); }
+  .example b { display: block; padding: 5px 8px; border-bottom: 1px solid var(--rule); font: 8px var(--mono); text-transform: uppercase; }
+  .example pre { margin: 0; padding: 10px; max-height: 260px; overflow: auto; font: 10px/1.5 var(--mono); }
   .example pre code.hljs { padding: 0; background: transparent; }
+  .empty-state { padding: var(--space-6) var(--space-3); color: var(--muted); text-align: center; font-style: italic; }
   .hljs { color: var(--ink); background: transparent; }
   .hljs-comment, .hljs-quote { color: var(--faint); font-style: italic; }
-  .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag, .hljs-name { color: var(--code-kw); }
-  .hljs-string, .hljs-addition, .hljs-regexp { color: var(--code-str); }
-  .hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link, .hljs-meta { color: var(--code-num); }
-  .hljs-type, .hljs-built_in, .hljs-title.class_ { color: var(--code-typ); }
-  .hljs-title, .hljs-section, .hljs-title.function_ { color: var(--code-fn); }
-  .hljs-attr, .hljs-attribute, .hljs-variable, .hljs-template-variable, .hljs-params { color: var(--ink); }
-  .load-more { display: block; margin: 36px auto 0; min-width: 220px; }
-  .no-results { padding: 60px 0; color: var(--muted); font-style: italic; }
-  footer { border-top: 1px solid var(--rule-strong); padding: 22px 0 50px; color: var(--faint); font-size: 9px; }
-
-  :root { --code-kw: #5a5f9e; --code-str: #4a7a4e; --code-num: #94641a;
-    --code-typ: #0f6f78; --code-fn: #38668e; }
-  @media (prefers-color-scheme: dark) {
-    :root { --code-kw: #9ea3e0; --code-str: #8fbf93; --code-num: #d8ad55;
-      --code-typ: #63b7c0; --code-fn: #76a7cf; }
-  }
+  .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag, .hljs-name { color: #696cb2; }
+  .hljs-string, .hljs-addition, .hljs-regexp { color: #4e8252; }
+  .hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link, .hljs-meta { color: #9a681b; }
+  .hljs-type, .hljs-built_in, .hljs-title.class_ { color: #117681; }
+  .hljs-title, .hljs-section, .hljs-title.function_ { color: #3d6f9a; }
 
   .c-delivery { --cat: #a64b31; }
   .c-performance { --cat: #946b16; }
@@ -381,124 +469,64 @@
     .c-documentation { --cat: #a899cf; } .c-architecture { --cat: #bf8bb5; }
     .c-collaboration { --cat: #d98494; } .c-refactoring { --cat: #dc826d; }
     .c-dependencies { --cat: #b49a80; }
+    .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag, .hljs-name { color: #a9ace8; }
+    .hljs-string, .hljs-addition, .hljs-regexp { color: #91c695; }
+    .hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link, .hljs-meta { color: #deb25c; }
+    .hljs-type, .hljs-built_in, .hljs-title.class_ { color: #67bdc6; }
+    .hljs-title, .hljs-section, .hljs-title.function_ { color: #7cadd5; }
   }
-  @media (max-width: 930px) {
-    .intro { grid-template-columns: 1fr; gap: 30px; }
-    .metrics { justify-content: flex-start; }
-    .graph-shell { grid-template-columns: 1fr; }
-    .graph-detail { border-left: 0; border-top: 1px solid var(--rule); min-height: 250px; }
-  }
-  @media (max-width: 620px) {
-    .shell { width: min(100% - 24px, 1480px); }
-    header { padding-top: 42px; min-height: 0; }
-    .section-head { display: block; }
-    .section-head p { margin-top: 10px; }
-    .graph-stage { min-height: 480px; }
-    .card-body, .examples { grid-template-columns: 1fr; }
-    .field.wide, .examples { grid-column: 1; }
+  @media (max-width: 760px) {
+    :root { --panel-width: min(42vw, 360px); }
+    .workspace { grid-template-columns: minmax(0, 1fr) 8px minmax(290px, var(--panel-width)); }
+    .map-title { top: var(--space-4); left: var(--space-4); }
+    .canvas-hint, .canvas-status { display: none; }
+    .graph-controls { left: var(--space-4); bottom: var(--space-4); }
+    .navigator-head { padding: var(--space-4); }
+    .nav-content { padding: var(--space-3); }
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
   }
 </style>
 </head>
 <body>
-<header>
-  <div class="shell">
-    <div class="kicker">Guidelines / intent inventory / relational edition</div>
-    <h1>Intent <span>Atlas</span></h1>
-    <div class="intro">
-      <p class="lede">A living map of the elemental engineering claims hidden inside
-      language and ecosystem guidance. Categories provide bearings. Explicit
-      specialization and related-to edges reveal how concrete practices belong together
-      without pretending the result is a strict hierarchy.</p>
-      <div class="metrics" id="metrics"></div>
+<main class="workspace" id="workspace" data-built="__BUILT__">
+  <section class="map-shell" aria-labelledby="mapTitle">
+    <div class="map-title">
+      <h1 id="mapTitle">Intent <span>Atlas</span></h1>
+      <div class="canvas-hint">drag to pan · wheel to zoom · select to follow</div>
     </div>
-  </div>
-</header>
-
-<main>
-  <section class="atlas shell" aria-labelledby="graph-title">
-    <div class="section-head">
-      <h2 id="graph-title">Relationship field</h2>
-      <p>Begin with the generalized doctrine, then bring one ecosystem into view.
-      Drag nodes to inspect a cluster; select one to trace its declared relationships.</p>
+    <div class="graph-stage" id="graphStage">
+      <svg class="graph-svg" id="graph" role="img" aria-label="Interactive graph of intent relationships"></svg>
+      <div class="graph-tip" id="graphTip"></div>
     </div>
-    <div class="graph-shell">
-      <div class="graph-main">
-        <div class="graph-tools">
-          <div class="control">
-            <label for="graphCollection">Graph scope</label>
-            <select id="graphCollection"></select>
-          </div>
-          <div class="control grow">
-            <label for="graphSearch">Find in graph</label>
-            <input id="graphSearch" type="search" placeholder="Try Ruff, supervision, documentation…">
-          </div>
-          <div class="graph-zoom" aria-label="Graph view controls">
-            <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
-            <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
-            <button id="fitGraph" type="button">Fit</button>
-          </div>
-          <button id="resetGraph" type="button">Recompose</button>
-        </div>
-        <div class="graph-stage" id="graphStage">
-          <svg class="graph-svg" id="graph" role="img" aria-label="Interactive graph of intent relationships"></svg>
-          <div class="graph-tip" id="graphTip"></div>
-          <div class="graph-empty" id="graphEmpty">No intents match this graph search.</div>
-        </div>
-        <div class="legend">
-          <span class="category">category</span>
-          <span class="general">general intent</span>
-          <span class="specific">ecosystem specialization</span>
-          <span>line = declared relation</span>
-        </div>
-      </div>
-      <aside class="graph-detail" id="graphDetail" aria-live="polite">
-        <div class="empty-mark">∴</div>
-        <div class="label">How to read this field</div>
-        <h3>Select an intent</h3>
-        <p>Large labelled cards are generalized intents. Compact pills are
-        ecosystem-specific practices. Solid landmarks are categories.</p>
-      </aside>
+    <div class="graph-controls" aria-label="Graph view controls">
+      <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+      <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      <button id="fitGraph" type="button">Fit</button>
+      <button id="showOverview" type="button">Overview</button>
     </div>
+    <div class="canvas-status" id="canvasStatus"></div>
   </section>
 
-  <section class="catalog-section" aria-labelledby="catalog-title">
-    <div class="shell">
-      <div class="section-head">
-        <h2 id="catalog-title">Full catalogue</h2>
-        <p>Browse every record, including its claim, evidence, admitted cost,
-        topical facets, and graph relationships.</p>
+  <button class="splitter" id="splitter" type="button" role="separator"
+    aria-label="Resize intent navigator" aria-orientation="vertical"
+    aria-valuemin="300" aria-valuemax="720" aria-valuenow="390"></button>
+
+  <aside class="navigator" aria-labelledby="navigatorTitle">
+    <div class="navigator-head">
+      <div class="nav-title-row">
+        <h2 id="navigatorTitle">Explore</h2>
+        <span class="nav-count" id="navCount"></span>
       </div>
-      <div class="catalog-tools">
-        <div class="control grow">
-          <label for="catalogSearch">Search records</label>
-          <input id="catalogSearch" type="search" placeholder="Title, strategy, tag, collection…">
-        </div>
-        <div class="control">
-          <label for="catalogLanguage">Target language</label>
-          <select id="catalogLanguage"></select>
-        </div>
-        <div class="control">
-          <label for="catalogCollection">Collection</label>
-          <select id="catalogCollection"></select>
-        </div>
-        <div class="control">
-          <label for="catalogCategory">Category</label>
-          <select id="catalogCategory"></select>
-        </div>
-        <span class="count" id="catalogCount"></span>
-      </div>
-      <div id="catalog"></div>
-      <button class="load-more" id="loadMore" type="button">Load more records</button>
+      <input class="nav-search" id="navSearch" type="search"
+        placeholder="Find an intent, tool, practice…" aria-label="Search intent catalogue">
     </div>
-  </section>
+    <div class="navigator-scroll" id="navigatorScroll">
+      <div class="nav-content" id="navContent" aria-live="polite"></div>
+    </div>
+  </aside>
 </main>
-
-<footer>
-  <div class="shell">Built __BUILT__ · self-contained static atlas · source of truth: intents/**/*.toml</div>
-</footer>
 
 <script>/*__HLJS__*/</script>
 <script>/*__D3__*/</script>
@@ -512,498 +540,605 @@ const CATEGORY_COLOR = {
   architecture:"#985f8e", collaboration:"#ad566b", refactoring:"#b45945",
   dependencies:"#8b735b"
 };
-const RECORD_BY_KEY = new Map(DATA.map(d => [d.key, d]));
-const GENERAL = DATA.filter(d => d.kind === "general");
-const COLLECTIONS = [...new Set(DATA.filter(d => d.kind === "specialization")
-  .map(d => d.collection))].sort();
-const collectionParts = s => s.split("/").filter(x => x && x !== "craftsperson")
-  .flatMap(x => x.split("-"));
-const prettyPart = x => x === "uv" ? "uv" : x === "cpp" ? "C++" :
-  x === "csharp" ? "C#" : x === "typescript" ? "TypeScript" :
-  x === "cli" ? "CLI" : x[0].toUpperCase() + x.slice(1);
-const prettyCollection = s => s === "craftsperson" ? "General craftsperson" :
-  collectionParts(s).map(prettyPart).join(" · ");
-const esc = value => String(value ?? "").replace(/[&<>"']/g, ch =>
-  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+const RECORD_BY_KEY = new Map(DATA.map(record => [record.key, record]));
+const GENERAL = DATA.filter(record => record.kind === "general");
+const esc = value => String(value ?? "").replace(/[&<>"']/g, character =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[character]));
 const fold = value => String(value ?? "").toLocaleLowerCase();
+const prettyPart = part => part === "uv" ? "uv" : part === "cpp" ? "C++" :
+  part === "csharp" ? "C#" : part === "typescript" ? "TypeScript" :
+  part === "cli" ? "CLI" : part[0].toUpperCase() + part.slice(1);
+const prettyCollection = collection => collection === "craftsperson" ? "General craftsperson" :
+  collection.split("/").filter(part => part && part !== "craftsperson")
+    .flatMap(part => part.split("-")).map(prettyPart).join(" · ");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const LANGS = [["clojure","Clojure"],["cpp","C++"],["csharp","C#"],["elixir","Elixir"],
-  ["go","Go"],["java","Java"],["kotlin","Kotlin"],["python","Python"],["ruby","Ruby"],
-  ["rust","Rust"],["swift","Swift"],["typescript","TypeScript"]];
-const LANG_LABEL = Object.fromEntries(LANGS);
-const collectionsFor = lang => COLLECTIONS.filter(c => collectionParts(c).includes(lang));
-const languageOf = collection =>
-  (LANGS.find(([key]) => collectionParts(collection).includes(key)) ?? [null])[0];
-let targetLang = new URLSearchParams(location.search).get("lang");
-if (!LANG_LABEL[targetLang]) { try { targetLang = localStorage.getItem("atlas-lang"); } catch {} }
-if (!LANG_LABEL[targetLang]) targetLang = "python";
-
-document.getElementById("metrics").innerHTML = [
-  [DATA.length, "records"],
-  [GENERAL.length, "general"],
-  [DATA.length - GENERAL.length, "specialized"],
-  [CATEGORIES.length, "categories"]
-].map(([n,l]) => `<div class="metric"><b>${n}</b><small>${l}</small></div>`).join("");
-
-function fillCollectionSelect(select, allLabel) {
-  select.innerHTML = `<option value="">${allLabel}</option>` +
-    COLLECTIONS.map(c => `<option value="${esc(c)}">${esc(prettyCollection(c))}</option>`).join("");
-}
-fillCollectionSelect(document.getElementById("graphCollection"), "General intents only");
-const catalogLanguageSelect = document.getElementById("catalogLanguage");
-catalogLanguageSelect.innerHTML =
-  LANGS.map(([key, label]) => `<option value="${key}">${label}</option>`).join("");
-catalogLanguageSelect.value = targetLang;
-function refreshCatalogCollections() {
-  const select = document.getElementById("catalogCollection");
-  const previous = select.value;
-  const subset = collectionsFor(targetLang);
-  select.innerHTML = `<option value="">Every collection</option>` +
-    `<option value="craftsperson">General craftsperson</option>` +
-    subset.map(c => `<option value="${esc(c)}">${esc(prettyCollection(c))}</option>`).join("");
-  select.value = previous === "craftsperson" || subset.includes(previous) ? previous : "";
-}
-refreshCatalogCollections();
-document.getElementById("catalogCategory").innerHTML =
-  `<option value="">Every category</option>` +
-  CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
-
-/* Graph ------------------------------------------------------------------ */
 const graphStage = document.getElementById("graphStage");
 const graphSvg = d3.select("#graph");
 const tip = document.getElementById("graphTip");
-let graphNodes = [], graphEdges = [], selected = null;
-let graphWidth = 0, graphHeight = 0, simulation = null;
-let viewport = null, edgeSelection = null, nodeSelection = null;
-let graphScope = "", graphQuery = "";
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const navContent = document.getElementById("navContent");
+const navSearch = document.getElementById("navSearch");
+const navigatorScroll = document.getElementById("navigatorScroll");
+const workspace = document.getElementById("workspace");
+const splitter = document.getElementById("splitter");
+
+let graphNodes = [];
+let graphEdges = [];
+let graphWidth = 0;
+let graphHeight = 0;
+let simulation = null;
+let viewport = null;
+let edgeSelection = null;
+let nodeSelection = null;
+let selectedKey = null;
+let selectedType = null;
+let frameAfterSimulation = false;
+
+const incomingByKey = new Map(DATA.map(record => [record.key, []]));
+for (const source of DATA) {
+  for (const relation of source.relations) {
+    if (incomingByKey.has(relation.target)) {
+      incomingByKey.get(relation.target).push({type:relation.type, record:source});
+    }
+  }
+}
+
+function categoryKey(category) { return `category/${category}`; }
+function categoryFromKey(key) { return key.startsWith("category/") ? key.slice(9) : null; }
+function recordRelations(record) {
+  const outgoing = record.relations.map(relation => ({
+    direction:"outgoing", type:relation.type, record:RECORD_BY_KEY.get(relation.target)
+  }));
+  const incoming = (incomingByKey.get(record.key) || []).map(relation => ({
+    direction:"incoming", type:relation.type, record:relation.record
+  }));
+  const seen = new Set();
+  return [...outgoing, ...incoming].filter(relation => relation.record).filter(relation => {
+    const signature = `${relation.direction}:${relation.type}:${relation.record.key}`;
+    if (seen.has(signature)) return false;
+    seen.add(signature);
+    return true;
+  });
+}
+function relatedRecordKeys(record) {
+  return new Set(recordRelations(record).map(relation => relation.record.key));
+}
+function desiredRecords() {
+  const keys = new Set(GENERAL.map(record => record.key));
+  if (selectedType === "record" && RECORD_BY_KEY.has(selectedKey)) {
+    const record = RECORD_BY_KEY.get(selectedKey);
+    keys.add(record.key);
+    relatedRecordKeys(record).forEach(key => keys.add(key));
+  }
+  return DATA.filter(record => keys.has(record.key));
+}
+
 const zoomBehavior = d3.zoom()
-  .scaleExtent([.28, 4])
+  .scaleExtent([.22, 5])
   .on("zoom", event => viewport?.attr("transform", event.transform));
 graphSvg.call(zoomBehavior).on("dblclick.zoom", null);
 
 function resizeGraph() {
-  const rect = graphStage.getBoundingClientRect();
-  graphWidth = Math.max(320, rect.width);
-  graphHeight = Math.max(420, rect.height);
+  const rectangle = graphStage.getBoundingClientRect();
+  graphWidth = Math.max(260, rectangle.width);
+  graphHeight = Math.max(360, rectangle.height);
   graphSvg.attr("viewBox", `0 0 ${graphWidth} ${graphHeight}`);
-  const categories = graphNodes.filter(node => node.kind === "category");
-  categories.forEach((node, index) => {
-    const angle = -Math.PI / 2 + index * Math.PI * 2 / Math.max(categories.length, 1);
-    node.fx = graphWidth / 2 + Math.cos(angle) * graphWidth * .38;
-    node.fy = graphHeight / 2 + Math.sin(angle) * graphHeight * .39;
-  });
+  positionCategoryAnchors();
   if (simulation) {
     simulation.force("center", d3.forceCenter(graphWidth / 2, graphHeight / 2));
-    simulation.alpha(.18).restart();
+    simulation.alpha(.14).restart();
   }
+  requestAnimationFrame(() => selectedKey ? frameSelection(false) : fitGraph(false));
 }
 new ResizeObserver(resizeGraph).observe(graphStage);
 
-function visibleRecords() {
-  let records = graphScope
-    ? DATA.filter(d => d.kind === "general" || d.collection === graphScope)
-    : GENERAL;
-  if (!graphQuery) return records;
-  const hits = new Set(records.filter(d =>
-    fold([d.title,d.category,d.tags.join(" "),d.strategy,d.collection].join(" "))
-      .includes(graphQuery)).map(d => d.key));
-  for (const d of records) {
-    if (d.relations.some(r => hits.has(r.target))) hits.add(d.key);
-    if (d.relations.some(r => RECORD_BY_KEY.get(r.target)?.relations.some(back => hits.has(back.target)))) {
-      hits.add(d.key);
-    }
-  }
-  return records.filter(d => hits.has(d.key));
+function positionCategoryAnchors() {
+  const categories = graphNodes.filter(node => node.kind === "category");
+  const radiusX = Math.max(170, graphWidth * .36);
+  const radiusY = Math.max(210, graphHeight * .37);
+  categories.forEach((node, index) => {
+    const angle = -Math.PI / 2 + index * Math.PI * 2 / Math.max(categories.length, 1);
+    node.fx = graphWidth / 2 + Math.cos(angle) * radiusX;
+    node.fy = graphHeight / 2 + Math.sin(angle) * radiusY;
+  });
 }
 
-function composeGraph() {
+function composeGraph({frameSelection = false} = {}) {
   simulation?.stop();
-  const records = visibleRecords();
-  const activeCategories = CATEGORIES.filter(c => records.some(d => d.category === c));
+  const previous = new Map(graphNodes.map(node => [node.key, node]));
+  const records = desiredRecords();
   const nodes = [];
   const nodeMap = new Map();
-  activeCategories.forEach((category, index) => {
-    const angle = -Math.PI / 2 + index * Math.PI * 2 / activeCategories.length;
-    const node = { key:"category/" + category, title:category, category, kind:"category",
-      x:graphWidth/2 + Math.cos(angle)*graphWidth*.38,
-      y:graphHeight/2 + Math.sin(angle)*graphHeight*.39,
-      fx:graphWidth/2 + Math.cos(angle)*graphWidth*.38,
-      fy:graphHeight/2 + Math.sin(angle)*graphHeight*.39,
-      width:92, height:30, radius:52 };
-    nodes.push(node); nodeMap.set(node.key,node);
+  CATEGORIES.forEach((category, index) => {
+    const old = previous.get(categoryKey(category));
+    const angle = -Math.PI / 2 + index * Math.PI * 2 / CATEGORIES.length;
+    const node = {
+      key:categoryKey(category), title:category, category, kind:"category",
+      x:old?.x ?? graphWidth / 2 + Math.cos(angle) * graphWidth * .36,
+      y:old?.y ?? graphHeight / 2 + Math.sin(angle) * graphHeight * .37,
+      width:112, height:36, radius:66
+    };
+    nodes.push(node);
+    nodeMap.set(node.key, node);
   });
-  records.forEach((record,index) => {
-    const categoryIndex = activeCategories.indexOf(record.category);
-    const angle = -Math.PI/2 + categoryIndex*Math.PI*2/Math.max(activeCategories.length,1);
-    const spread = ((index * 47) % 31 - 15) * .018;
-    const radius = record.kind === "general" ?
-      Math.min(graphWidth,graphHeight)*.27 : Math.min(graphWidth,graphHeight)*.13;
+  records.forEach((record, index) => {
+    const old = previous.get(record.key);
+    const categoryIndex = CATEGORIES.indexOf(record.category);
+    const angle = -Math.PI / 2 + categoryIndex * Math.PI * 2 / CATEGORIES.length;
+    const spread = ((index * 47) % 37 - 18) * .017;
     const general = record.kind === "general";
-    const node = { ...record,
-      x:graphWidth/2 + Math.cos(angle+spread)*radius,
-      y:graphHeight/2 + Math.sin(angle+spread)*radius,
-      width:general ? 150 : 126, height:general ? 52 : 38,
-      radius:general ? 84 : 70 };
-    nodes.push(node); nodeMap.set(node.key,node);
+    const radius = Math.min(graphWidth, graphHeight) * (general ? .26 : .17);
+    const node = {
+      ...record,
+      x:old?.x ?? graphWidth / 2 + Math.cos(angle + spread) * radius,
+      y:old?.y ?? graphHeight / 2 + Math.sin(angle + spread) * radius,
+      width:general ? 162 : 136,
+      height:general ? 56 : 40,
+      radius:general ? 91 : 76
+    };
+    nodes.push(node);
+    nodeMap.set(node.key, node);
   });
   const edges = [];
   records.forEach(record => {
     const source = nodeMap.get(record.key);
-    const cat = nodeMap.get("category/" + record.category);
-    if (source && cat && record.kind === "general") {
-      edges.push({source,target:cat,type:"category"});
+    const category = nodeMap.get(categoryKey(record.category));
+    if (source && category && record.kind === "general") {
+      edges.push({source, target:category, type:"category"});
     }
-    record.relations.forEach(rel => {
-      const target = nodeMap.get(rel.target);
-      if (source && target) edges.push({source,target,type:rel.type});
+    record.relations.forEach(relation => {
+      const target = nodeMap.get(relation.target);
+      if (source && target) edges.push({source, target, type:relation.type});
     });
   });
-  graphNodes = nodes; graphEdges = edges;
-  selected = selected && nodeMap.get(selected.key) || null;
-  document.getElementById("graphEmpty").style.display = records.length ? "none" : "grid";
+  graphNodes = nodes;
+  graphEdges = edges;
+  frameAfterSimulation = frameSelection;
+  positionCategoryAnchors();
   renderGraph();
 }
 
-function splitLabel(label, maxCharacters, maxLines=2) {
-  const words=label.split(/\s+/);
-  const lines=[];
-  let line="";
+function splitLabel(label, maxCharacters, maxLines = 2) {
+  const words = label.split(/\s+/);
+  const lines = [];
+  let line = "";
   for (const word of words) {
-    const candidate=line ? `${line} ${word}` : word;
-    if (candidate.length<=maxCharacters || !line) line=candidate;
-    else { lines.push(line); line=word; }
+    const candidate = line ? `${line} ${word}` : word;
+    if (candidate.length <= maxCharacters || !line) line = candidate;
+    else { lines.push(line); line = word; }
   }
   if (line) lines.push(line);
-  if (lines.length>maxLines) {
-    lines.length=maxLines;
-    lines[maxLines-1]=lines[maxLines-1].replace(/[.,;:]?$/, "…");
+  if (lines.length > maxLines) {
+    lines.length = maxLines;
+    lines[maxLines - 1] = lines[maxLines - 1].replace(/[.,;:]?$/, "…");
   }
   return lines;
 }
 
 function edgePath(edge) {
-  const sx=edge.source.x, sy=edge.source.y, tx=edge.target.x, ty=edge.target.y;
-  if (edge.type!=="related-to") return `M${sx},${sy}L${tx},${ty}`;
-  const dx=tx-sx, dy=ty-sy;
-  const curve=Math.min(34,Math.hypot(dx,dy)*.16);
-  const mx=(sx+tx)/2-dy/(Math.hypot(dx,dy)||1)*curve;
-  const my=(sy+ty)/2+dx/(Math.hypot(dx,dy)||1)*curve;
+  const sx = edge.source.x;
+  const sy = edge.source.y;
+  const tx = edge.target.x;
+  const ty = edge.target.y;
+  if (edge.type !== "related-to") return `M${sx},${sy}L${tx},${ty}`;
+  const dx = tx - sx;
+  const dy = ty - sy;
+  const curve = Math.min(38, Math.hypot(dx, dy) * .16);
+  const mx = (sx + tx) / 2 - dy / (Math.hypot(dx, dy) || 1) * curve;
+  const my = (sy + ty) / 2 + dx / (Math.hypot(dx, dy) || 1) * curve;
   return `M${sx},${sy}Q${mx},${my} ${tx},${ty}`;
 }
 
 function renderGraph() {
   graphSvg.selectAll("*").remove();
-  graphSvg.call(zoomBehavior.transform,d3.zoomIdentity);
-  viewport=graphSvg.append("g").attr("class","graph-viewport");
-  edgeSelection=viewport.append("g").attr("class","edge-layer")
+  viewport = graphSvg.append("g").attr("class", "graph-viewport");
+  edgeSelection = viewport.append("g").attr("class", "edge-layer")
     .selectAll("path").data(graphEdges).join("path")
-    .attr("class",edge=>`graph-edge ${edge.type}`);
-  nodeSelection=viewport.append("g").attr("class","node-layer")
-    .selectAll("g").data(graphNodes,key=>key.key).join("g")
-    .attr("class",node=>`graph-node ${node.kind}`)
-    .attr("tabindex",node=>node.kind==="category"?null:0)
-    .attr("role",node=>node.kind==="category"?"img":"button")
-    .attr("aria-label",node=>node.kind==="category"?
-      `${node.title} category`:`${node.title}, ${node.kind} intent`)
-    .style("--node-color",node=>CATEGORY_COLOR[node.category]||"#777");
+    .attr("class", edge => `graph-edge ${edge.type}`);
+  nodeSelection = viewport.append("g").attr("class", "node-layer")
+    .selectAll("g").data(graphNodes, node => node.key).join("g")
+    .attr("class", node => `graph-node ${node.kind}`)
+    .attr("tabindex", 0)
+    .attr("role", "button")
+    .attr("aria-label", node => node.kind === "category" ?
+      `${node.title} category` : `${node.title}, ${node.kind} intent`)
+    .style("--node-color", node => CATEGORY_COLOR[node.category] || "#777");
 
-  nodeSelection.append("rect").attr("class","node-surface")
-    .attr("x",node=>-node.width/2).attr("y",node=>-node.height/2)
-    .attr("width",node=>node.width).attr("height",node=>node.height)
-    .attr("rx",node=>node.kind==="category"?3:node.kind==="general"?7:12);
+  nodeSelection.append("rect").attr("class", "node-surface")
+    .attr("x", node => -node.width / 2).attr("y", node => -node.height / 2)
+    .attr("width", node => node.width).attr("height", node => node.height)
+    .attr("rx", node => node.kind === "category" ? 4 : node.kind === "general" ? 7 : 13);
 
   nodeSelection.each(function(node) {
-    const group=d3.select(this);
-    if (node.kind==="general") {
-      group.append("text").attr("class","node-kind").attr("y",-13)
-        .text(node.category);
+    const group = d3.select(this);
+    if (node.kind === "general") {
+      group.append("text").attr("class", "node-kind").attr("y", -14).text(node.category);
     }
-    const lines=splitLabel(node.title,node.kind==="general"?23:node.kind==="category"?16:20,2);
-    const text=group.append("text").attr("class","node-title")
-      .attr("y",node.kind==="general"?1:-(lines.length-1)*6);
-    lines.forEach((line,index)=>text.append("tspan")
-      .attr("x",0).attr("dy",index?12:0).text(line));
+    const lines = splitLabel(node.title, node.kind === "general" ? 24 : node.kind === "category" ? 18 : 20, 2);
+    const text = group.append("text").attr("class", "node-title")
+      .attr("y", node.kind === "general" ? 2 : -(lines.length - 1) * 6);
+    lines.forEach((line, index) => text.append("tspan").attr("x", 0)
+      .attr("dy", index ? 12 : 0).text(line));
     group.append("title").text(`${node.title} · ${node.kind} · ${node.category}`);
   });
 
   nodeSelection
-    .on("mouseenter",(event,node)=> {
-      highlightGraphNode(node);
-      const [x,y]=d3.pointer(event,graphStage);
-      tip.style.display="block";
-      tip.style.left=Math.min(x+12,graphWidth-292)+"px";
-      tip.style.top=Math.min(y+12,graphHeight-82)+"px";
-      tip.innerHTML=`<small>${esc(node.kind)} · ${esc(node.category)}</small>${esc(node.title)}`;
+    .on("mouseenter", (event, node) => {
+      highlightNode(node.key);
+      const [x, y] = d3.pointer(event, graphStage);
+      tip.style.display = "block";
+      tip.style.left = Math.min(x + 12, graphWidth - 292) + "px";
+      tip.style.top = Math.min(y + 12, graphHeight - 82) + "px";
+      tip.innerHTML = `<small>${esc(node.kind)} · ${esc(node.category)}</small>${esc(node.title)}`;
     })
-    .on("mousemove",event=> {
-      const [x,y]=d3.pointer(event,graphStage);
-      tip.style.left=Math.min(x+12,graphWidth-292)+"px";
-      tip.style.top=Math.min(y+12,graphHeight-82)+"px";
+    .on("mousemove", event => {
+      const [x, y] = d3.pointer(event, graphStage);
+      tip.style.left = Math.min(x + 12, graphWidth - 292) + "px";
+      tip.style.top = Math.min(y + 12, graphHeight - 82) + "px";
     })
-    .on("mouseleave",()=> {
-      tip.style.display="none";
-      selected ? highlightGraphNode(selected) : clearGraphFocus();
+    .on("mouseleave", () => {
+      tip.style.display = "none";
+      selectedKey ? highlightNode(selectedKey) : clearGraphFocus();
     })
-    .on("click",(event,node)=> {
+    .on("click", (event, node) => {
       event.stopPropagation();
-      if (!event.defaultPrevented && node.kind!=="category") selectRecord(node);
+      if (!event.defaultPrevented) navigateTo(node.key, {source:"canvas"});
     })
-    .on("keydown",(event,node)=> {
-      if (node.kind!=="category" && (event.key==="Enter"||event.key===" ")) {
-        event.preventDefault(); selectRecord(node);
+    .on("keydown", (event, node) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        navigateTo(node.key, {source:"canvas"});
       }
     })
     .call(d3.drag()
-      .on("start",(event,node)=> {
+      .on("start", (event, node) => {
         if (!event.active) simulation.alphaTarget(.18).restart();
-        node.fx=node.x; node.fy=node.y;
+        node.fx = node.x;
+        node.fy = node.y;
       })
-      .on("drag",(event,node)=> { node.fx=event.x; node.fy=event.y; })
-      .on("end",(event,node)=> {
+      .on("drag", (event, node) => { node.fx = event.x; node.fy = event.y; })
+      .on("end", (event, node) => {
         if (!event.active) simulation.alphaTarget(0);
-        if (node.kind!=="category") { node.fx=null; node.fy=null; }
+        if (node.kind !== "category") { node.fx = null; node.fy = null; }
       }));
 
-  graphSvg.on("click",()=> {
-    selected=null; clearGraphFocus();
-    document.getElementById("graphDetail").innerHTML=`<div class="empty-mark">∴</div>
-      <div class="label">How to read this field</div><h3>Select an intent</h3>
-      <p>Large labelled cards are generalized intents. Compact pills are ecosystem-specific practices. Solid landmarks are categories.</p>`;
-  });
-
-  simulation=d3.forceSimulation(graphNodes)
-    .force("link",d3.forceLink(graphEdges).id(node=>node.key)
-      .distance(edge=>edge.type==="category"?165:edge.type==="specializes"?112:142)
-      .strength(edge=>edge.type==="specializes"?.88:edge.type==="category"?.38:.28))
-    .force("charge",d3.forceManyBody().strength(node=>
-      node.kind==="category"?-700:node.kind==="general"?-390:-155))
-    .force("collision",d3.forceCollide().radius(node=>node.radius).iterations(2))
-    .force("center",d3.forceCenter(graphWidth/2,graphHeight/2))
-    .force("x",d3.forceX(graphWidth/2).strength(.012))
-    .force("y",d3.forceY(graphHeight/2).strength(.012))
+  graphSvg.on("click", () => showOverview());
+  simulation = d3.forceSimulation(graphNodes)
+    .force("link", d3.forceLink(graphEdges).id(node => node.key)
+      .distance(edge => edge.type === "category" ? 172 : edge.type === "specializes" ? 116 : 148)
+      .strength(edge => edge.type === "specializes" ? .9 : edge.type === "category" ? .42 : .3))
+    .force("charge", d3.forceManyBody().strength(node =>
+      node.kind === "category" ? -760 : node.kind === "general" ? -420 : -175))
+    .force("collision", d3.forceCollide().radius(node => node.radius).iterations(2))
+    .force("center", d3.forceCenter(graphWidth / 2, graphHeight / 2))
+    .force("x", d3.forceX(graphWidth / 2).strength(.01))
+    .force("y", d3.forceY(graphHeight / 2).strength(.01))
     .alphaDecay(.035)
-    .on("tick",()=> {
-      edgeSelection.attr("d",edgePath);
-      nodeSelection.attr("transform",node=>`translate(${node.x},${node.y})`);
+    .on("tick", () => {
+      edgeSelection.attr("d", edgePath);
+      nodeSelection.attr("transform", node => `translate(${node.x},${node.y})`);
     })
-    .on("end",()=>fitGraph(false));
+    .on("end", () => {
+      if (frameAfterSimulation && selectedKey) frameSelection(true);
+      else if (!selectedKey) fitGraph(false);
+      frameAfterSimulation = false;
+    });
 
   if (reduceMotion) {
     simulation.stop();
-    for (let index=0;index<180;index++) simulation.tick();
-    edgeSelection.attr("d",edgePath);
-    nodeSelection.attr("transform",node=>`translate(${node.x},${node.y})`);
-    fitGraph(false);
+    for (let index = 0; index < 180; index++) simulation.tick();
+    edgeSelection.attr("d", edgePath);
+    nodeSelection.attr("transform", node => `translate(${node.x},${node.y})`);
+    selectedKey ? frameSelection(false) : fitGraph(false);
   }
-  if (selected) highlightGraphNode(selected);
+  selectedKey ? highlightNode(selectedKey) : clearGraphFocus();
+  document.getElementById("canvasStatus").textContent =
+    `${graphNodes.length} nodes · ${graphEdges.length} relationships`;
 }
 
-function clearGraphFocus() {
-  viewport?.classed("has-focus",false);
-  nodeSelection?.classed("connected",true).classed("hot",false).classed("selected",false);
-  edgeSelection?.classed("hot",false);
-}
-
-function highlightGraphNode(node) {
-  const connected=new Set([node.key]);
+function connectionKeys(key) {
+  const connected = new Set([key]);
+  const category = categoryFromKey(key);
+  if (category) {
+    graphNodes.filter(node => node.kind === "general" && node.category === category)
+      .forEach(node => connected.add(node.key));
+  }
   for (const edge of graphEdges) {
-    const source=edge.source.key??edge.source;
-    const target=edge.target.key??edge.target;
-    if (source===node.key) connected.add(target);
-    if (target===node.key) connected.add(source);
+    const source = edge.source.key ?? edge.source;
+    const target = edge.target.key ?? edge.target;
+    if (source === key) connected.add(target);
+    if (target === key) connected.add(source);
   }
-  viewport.classed("has-focus",true);
+  return connected;
+}
+function clearGraphFocus() {
+  viewport?.classed("has-focus", false);
+  nodeSelection?.classed("connected", true).classed("hot", false).classed("selected", false);
+  edgeSelection?.classed("hot", false);
+}
+function highlightNode(key) {
+  if (!viewport) return;
+  const connected = connectionKeys(key);
+  viewport.classed("has-focus", true);
   nodeSelection
-    .classed("connected",candidate=>connected.has(candidate.key))
-    .classed("hot",candidate=>candidate.key===node.key)
-    .classed("selected",candidate=>selected?.key===candidate.key);
-  edgeSelection.classed("hot",edge=>
-    (edge.source.key??edge.source)===node.key||(edge.target.key??edge.target)===node.key);
+    .classed("connected", node => connected.has(node.key))
+    .classed("hot", node => node.key === key)
+    .classed("selected", node => selectedKey === node.key);
+  edgeSelection.classed("hot", edge => {
+    const source = edge.source.key ?? edge.source;
+    const target = edge.target.key ?? edge.target;
+    return source === key || target === key;
+  });
 }
 
-function fitGraph(animate=true) {
-  if (!viewport?.node()||!graphNodes.length) return;
-  const bounds=viewport.node().getBBox();
-  if (!bounds.width||!bounds.height) return;
-  const scale=Math.max(.28,Math.min(2.2,.86/Math.max(bounds.width/graphWidth,bounds.height/graphHeight)));
-  const transform=d3.zoomIdentity
-    .translate(graphWidth/2,graphHeight/2)
-    .scale(scale)
-    .translate(-(bounds.x+bounds.width/2),-(bounds.y+bounds.height/2));
-  const target=animate&&!reduceMotion?graphSvg.transition().duration(420):graphSvg;
-  target.call(zoomBehavior.transform,transform);
+function frameNodes(nodes, animate = true) {
+  const positioned = nodes.filter(node => Number.isFinite(node.x) && Number.isFinite(node.y));
+  if (!positioned.length) return;
+  const padding = 88;
+  const minX = d3.min(positioned, node => node.x - node.width / 2) - padding;
+  const maxX = d3.max(positioned, node => node.x + node.width / 2) + padding;
+  const minY = d3.min(positioned, node => node.y - node.height / 2) - padding;
+  const maxY = d3.max(positioned, node => node.y + node.height / 2) + padding;
+  const width = Math.max(1, maxX - minX);
+  const height = Math.max(1, maxY - minY);
+  const scale = Math.max(.32, Math.min(2.7, .9 / Math.max(width / graphWidth, height / graphHeight)));
+  const transform = d3.zoomIdentity.translate(graphWidth / 2, graphHeight / 2).scale(scale)
+    .translate(-(minX + maxX) / 2, -(minY + maxY) / 2);
+  const target = animate && !reduceMotion ? graphSvg.transition().duration(460) : graphSvg;
+  target.call(zoomBehavior.transform, transform);
+}
+function fitGraph(animate = true) { frameNodes(graphNodes, animate); }
+function frameSelection(animate = true) {
+  if (!selectedKey) return fitGraph(animate);
+  const keys = connectionKeys(selectedKey);
+  frameNodes(graphNodes.filter(node => keys.has(node.key)), animate);
 }
 
-function focusGraphNode(node) {
-  if (!node||node.x==null||node.y==null) return;
-  const current=d3.zoomTransform(graphSvg.node());
-  const scale=Math.max(1.15,current.k);
-  const transform=d3.zoomIdentity
-    .translate(graphWidth/2,graphHeight/2).scale(scale).translate(-node.x,-node.y);
-  const target=reduceMotion?graphSvg:graphSvg.transition().duration(380);
-  target.call(zoomBehavior.transform,transform);
+function hierarchyFor(record) {
+  const ancestors = [];
+  const visited = new Set([record.key]);
+  let cursor = record;
+  while (cursor) {
+    const relation = cursor.relations.find(item => item.type === "specializes");
+    const parent = relation ? RECORD_BY_KEY.get(relation.target) : null;
+    if (!parent || visited.has(parent.key)) break;
+    visited.add(parent.key);
+    ancestors.unshift(parent);
+    cursor = parent;
+  }
+  const rootCategory = ancestors[0]?.category || record.category;
+  return [{kind:"category", key:categoryKey(rootCategory), title:rootCategory, category:rootCategory},
+    ...ancestors, record];
+}
+function relationLabel(relation) {
+  if (relation.direction === "outgoing") return relation.type;
+  if (relation.type === "specializes") return "specialized by";
+  return relation.type === "related-to" ? "related from" : `${relation.type} from`;
+}
+function relationGroups(record) {
+  const groups = new Map();
+  for (const relation of recordRelations(record)) {
+    const label = relationLabel(relation);
+    if (!groups.has(label)) groups.set(label, []);
+    groups.get(label).push(relation.record);
+  }
+  return groups;
+}
+function recordSearchText(record) {
+  return fold([record.title, record.category, record.collection, record.tags.join(" "),
+    record.capability, record.threat, record.expectation, record.strategy, record.tradeoff].join(" "));
 }
 
-function relationButtons(record) {
-  const outgoing=record.relations.map(r => ({...r, record:RECORD_BY_KEY.get(r.target)}));
-  const incoming=DATA.flatMap(d => d.relations.filter(r => r.target===record.key)
-    .map(r => ({type:r.type==="specializes"?"specialized by":"related from",record:d})));
-  return [...outgoing,...incoming].filter(x=>x.record).slice(0,18).map(x =>
-    `<button class="relation-link" data-key="${esc(x.record.key)}"><span>${esc(x.type)}</span>${esc(x.record.title)}</button>`).join("");
+function navLink(record, meta = "") {
+  return `<button class="nav-link record ${esc(record.kind)} c-${esc(record.category)}"
+    type="button" data-nav-key="${esc(record.key)}"><span class="nav-marker"></span>
+    <span class="nav-link-title">${esc(record.title)}</span>
+    <span class="nav-link-meta">${esc(meta || record.kind)}</span></button>`;
 }
-function selectRecord(record) {
-  selected=record;
-  highlightGraphNode(record);
-  const detail=document.getElementById("graphDetail");
-  detail.innerHTML=`<div class="label">${esc(record.category)} · ${esc(prettyCollection(record.collection))}</div>
-    <h3>${esc(record.title)}</h3><p>${esc(record.capability)}</p>
-    <div class="chips">${record.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>
-    <div class="detail-relations">${relationButtons(record)||'<p>No declared record relationships.</p>'}</div>
-    <button class="jump" type="button" data-jump="${esc(record.key)}">Open full record</button>`;
-  detail.querySelectorAll("[data-key]").forEach(button => button.addEventListener("click", () => {
-    const target=RECORD_BY_KEY.get(button.dataset.key);
-    if (!target) return;
-    if (target.kind==="specialization" && graphScope!==target.collection) {
-      graphScope=target.collection;
-      document.getElementById("graphCollection").value=graphScope;
-      composeGraph();
-    }
-    const visible=graphNodes.find(n=>n.key===target.key);
-    if (visible) { selectRecord(visible); focusGraphNode(visible); }
-  }));
-  detail.querySelector("[data-jump]").addEventListener("click", () => openCatalogRecord(record.key));
+function renderOverviewPanel() {
+  const counts = new Map(CATEGORIES.map(category =>
+    [category, GENERAL.filter(record => record.category === category).length]));
+  navContent.innerHTML = `<p class="nav-intro">Start with a category, then move through
+    generalized intents and their ecosystem-specific practices. The map follows every choice.</p>
+    <div class="nav-section-title"><span>Top-level categories</span><span>${CATEGORIES.length}</span></div>
+    <div class="nav-list">${CATEGORIES.map(category =>
+      `<button class="nav-link c-${category}" type="button" data-nav-key="${categoryKey(category)}">
+        <span class="nav-marker"></span><span class="nav-link-title">${category}</span>
+        <span class="nav-link-meta">${counts.get(category)} intent${counts.get(category) === 1 ? "" : "s"}</span></button>`).join("")}</div>`;
+  document.getElementById("navCount").textContent = `${DATA.length} records`;
+  bindNavigatorLinks();
 }
-document.getElementById("graphCollection").addEventListener("change", event => {
-  graphScope=event.target.value; composeGraph();
-});
-document.getElementById("graphSearch").addEventListener("input", event => {
-  graphQuery=fold(event.target.value.trim()); composeGraph();
-});
-document.getElementById("resetGraph").addEventListener("click", () => {
-  selected=null; composeGraph();
-});
-document.getElementById("zoomIn").addEventListener("click",()=> {
-  const target=reduceMotion?graphSvg:graphSvg.transition().duration(220);
-  target.call(zoomBehavior.scaleBy,1.35);
-});
-document.getElementById("zoomOut").addEventListener("click",()=> {
-  const target=reduceMotion?graphSvg:graphSvg.transition().duration(220);
-  target.call(zoomBehavior.scaleBy,1/1.35);
-});
-document.getElementById("fitGraph").addEventListener("click",()=>fitGraph(true));
-
-/* Catalogue -------------------------------------------------------------- */
-const catalog=document.getElementById("catalog");
-const catalogSearch=document.getElementById("catalogSearch");
-const catalogCollection=document.getElementById("catalogCollection");
-const catalogCategory=document.getElementById("catalogCategory");
-let pageSize=72;
-
-function searchable(record) {
-  return fold([record.title,record.category,record.collection,record.tags.join(" "),
-    record.capability,record.threat,record.strategy,record.tradeoff].join(" "));
+function renderSearchPanel(query) {
+  const terms = query.split(/\s+/).filter(Boolean);
+  const matches = DATA.filter(record => {
+    const searchable = recordSearchText(record);
+    return terms.every(term => searchable.includes(term));
+  })
+    .sort((left, right) => (left.kind === "general" ? -1 : 1) - (right.kind === "general" ? -1 : 1)
+      || left.title.localeCompare(right.title)).slice(0, 100);
+  navContent.innerHTML = `<button class="home-link" type="button" data-home>← Categories</button>
+    <div class="nav-section-title"><span>Search results</span><span>${matches.length}${matches.length === 100 ? "+" : ""}</span></div>
+    ${matches.length ? `<div class="nav-list">${matches.map(record =>
+      navLink(record, prettyCollection(record.collection))).join("")}</div>` :
+      `<div class="empty-state">No intents match that search.</div>`}`;
+  document.getElementById("navCount").textContent = `${matches.length} matches`;
+  bindNavigatorLinks();
 }
-function filteredCatalog() {
-  const query=fold(catalogSearch.value.trim());
-  const langCollections=collectionsFor(targetLang);
-  return DATA.filter(d => (d.kind==="general" || langCollections.includes(d.collection)) &&
-    (!catalogCollection.value || d.collection===catalogCollection.value) &&
-    (!catalogCategory.value || d.category===catalogCategory.value) &&
-    (!query || searchable(d).includes(query)))
-    .sort((a,b) => CATEGORIES.indexOf(a.category)-CATEGORIES.indexOf(b.category) ||
-      (a.kind==="general"?-1:1)-(b.kind==="general"?-1:1) || a.title.localeCompare(b.title));
+function categoryDetail(category) {
+  const children = GENERAL.filter(record => record.category === category)
+    .sort((left, right) => left.title.localeCompare(right.title));
+  return `<div class="detail-card c-${category}" data-current>
+    <div class="detail-head"><div class="eyebrow">Top-level category</div>
+      <h3>${esc(category)}</h3><p>${children.length} generalized intents provide entry points into this domain.</p></div>
+    <div class="detail-section"><div class="nav-section-title"><span>General intents</span><span>${children.length}</span></div>
+      <div class="nav-list">${children.map(record => navLink(record)).join("")}</div></div></div>`;
 }
-function exampleMarkup(record) {
-  if (!Object.keys(record.examples||{}).length) return "";
-  const example=(record.examples||{})[targetLang];
-  if (!example || !(example.good && example.bad))
-    return `<div class="field wide"><b>Examples</b><p>No ${esc(LANG_LABEL[targetLang])} example yet.</p></div>`;
-  return `<div class="examples">
-    <div class="example"><b class="label">earns the intent</b><pre><code class="language-${esc(targetLang)}">${esc(example.good)}</code></pre></div>
-    <div class="example"><b class="label">violates the intent</b><pre><code class="language-${esc(targetLang)}">${esc(example.bad)}</code></pre></div>
+function exampleDetails(record) {
+  const examples = Object.entries(record.examples || {}).filter(([, example]) => example.good || example.bad);
+  if (!examples.length) return "";
+  return `<details class="more-detail"><summary>Examples · ${examples.length} languages</summary>
+    <div class="more-detail-body">${examples.map(([language, example]) =>
+      `<div class="example"><b>${esc(prettyPart(language))} · earns the intent</b>
+        <pre><code class="language-${esc(language)}">${esc(example.good || "—")}</code></pre></div>
+       <div class="example"><b>${esc(prettyPart(language))} · violates the intent</b>
+        <pre><code class="language-${esc(language)}">${esc(example.bad || "—")}</code></pre></div>`).join("")}</div></details>`;
+}
+function recordDetail(record) {
+  const groups = relationGroups(record);
+  const relationMarkup = groups.size ? [...groups].map(([label, records]) =>
+    `<div><div class="nav-section-title"><span>${esc(label)}</span><span>${records.length}</span></div>
+      ${records.sort((left, right) => left.title.localeCompare(right.title)).map(target =>
+        `<button class="relation-link" type="button" data-nav-key="${esc(target.key)}">
+          <strong>${esc(target.title)}</strong><span class="relation-type">${esc(target.kind)}</span></button>`).join("")}</div>`).join("") :
+    `<p class="nav-intro">No declared record relationships.</p>`;
+  const evidence = record.evidence.length ? `<ul class="evidence-list">${record.evidence.map(item =>
+    `<li>${esc(item.description)}${item.required ? " (required)" : ""}</li>`).join("")}</ul>` : "—";
+  return `<div class="detail-card c-${esc(record.category)}" data-current>
+    <div class="detail-head"><div class="eyebrow">${esc(record.kind)} intent · ${esc(prettyCollection(record.collection))}</div>
+      <h3>${esc(record.title)}</h3><p>${esc(record.capability)}</p>
+      <div class="chips">${record.tags.map(tag => `<span class="chip">${esc(tag)}</span>`).join("")}</div>
+      <div class="record-key">${esc(record.key)}</div></div>
+    <div class="detail-section"><div class="relation-groups">${relationMarkup}</div></div>
+    <details class="more-detail" open><summary>Intent claim</summary><div class="more-detail-body">
+      <div class="field"><span class="field-label">Guards against</span><p>${esc(record.threat)}</p></div>
+      <div class="field"><span class="field-label">Practice</span><p>${esc(record.strategy)}</p></div>
+      <div class="field"><span class="field-label">Expected pressure</span><p>${esc(record.expectation)}</p></div>
+      <div class="field"><span class="field-label">Admitted cost</span><p>${esc(record.tradeoff)}</p></div>
+    </div></details>
+    <details class="more-detail"><summary>Evidence · ${record.evidence.length}</summary>
+      <div class="more-detail-body">${evidence}</div></details>
+    ${exampleDetails(record)}
   </div>`;
 }
-function cardMarkup(record) {
-  const rels=record.relations.map(r => {
-    const target=RECORD_BY_KEY.get(r.target);
-    return target ? `<button type="button" data-rel="${esc(target.key)}">${esc(r.type)}: ${esc(target.title)}</button>` : "";
-  }).join("");
-  return `<details class="card c-${esc(record.category)}" id="record-${encodeURIComponent(record.key)}">
-    <summary><div class="record-key">${esc(record.key)} · ${esc(record.kind)}</div>
-      <h4>${esc(record.title)}</h4><div class="chips">${record.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>
-    </summary>
-    <div class="card-body">
-      <div class="field"><b>Enables</b><p>${esc(record.capability)}</p></div>
-      <div class="field"><b>Guards against</b><p>${esc(record.threat)}</p></div>
-      <div class="field"><b>Practice</b><p>${esc(record.strategy)}</p></div>
-      <div class="field"><b>Expected pressure</b><p>${esc(record.expectation)}</p></div>
-      <div class="field wide"><b>Evidence</b><p>${record.evidence.map(e=>esc(e.description)).join("<br>")}</p></div>
-      ${exampleMarkup(record)}
-      <div class="field"><b>Admitted cost</b><p>${esc(record.tradeoff)}</p></div>
-      <div class="field"><b>Relations</b><div class="relation-list">${rels||"—"}</div></div>
-    </div></details>`;
-}
-function renderCatalog() {
-  const records=filteredCatalog();
-  const visible=records.slice(0,pageSize);
-  document.getElementById("catalogCount").textContent=`${visible.length} of ${records.length}`;
-  const groups=new Map();
-  for (const record of visible) {
-    if (!groups.has(record.category)) groups.set(record.category,[]);
-    groups.get(record.category).push(record);
-  }
-  catalog.innerHTML=visible.length ? [...groups].map(([category,items]) =>
-    `<section class="category-block c-${category}"><div class="category-title"><h3>${category}</h3><span class="count">${items.length}</span></div>
-    <div class="cards">${items.map(cardMarkup).join("")}</div></section>`).join("") :
-    `<div class="no-results">No intent records match those filters.</div>`;
-  document.getElementById("loadMore").hidden=visible.length>=records.length;
-  catalog.querySelectorAll("[data-rel]").forEach(button => button.addEventListener("click", event => {
-    event.preventDefault(); openCatalogRecord(button.dataset.rel);
-  }));
-  if (window.hljs) catalog.querySelectorAll('pre code[class^="language-"]')
+function renderSelectionPanel() {
+  const category = selectedType === "category" ? categoryFromKey(selectedKey) : null;
+  const record = selectedType === "record" ? RECORD_BY_KEY.get(selectedKey) : null;
+  if (!category && !record) return renderOverviewPanel();
+  const hierarchy = record ? hierarchyFor(record) : [];
+  const ancestors = record ? hierarchy.slice(0, -1) : [];
+  navContent.innerHTML = `<button class="home-link" type="button" data-home>← All categories</button>
+    ${ancestors.length ? `<div class="nav-section-title"><span>Hierarchy</span><span>${ancestors.length + 1} levels</span></div>
+      <div class="trail">${ancestors.map(item =>
+        `<button class="trail-card c-${esc(item.category)}" type="button" data-nav-key="${esc(item.key)}">
+          <small>${item.kind === "category" ? "category" : item.kind}</small><strong>${esc(item.title)}</strong></button>`).join("")}</div>` : ""}
+    ${category ? categoryDetail(category) : recordDetail(record)}`;
+  document.getElementById("navCount").textContent = record ? record.kind : "category";
+  bindNavigatorLinks();
+  if (window.hljs) navContent.querySelectorAll('pre code[class^="language-"]')
     .forEach(block => hljs.highlightElement(block));
+  navigatorScroll.scrollTop = 0;
 }
-function resetCatalogPage() { pageSize=72; renderCatalog(); }
-[catalogSearch,catalogCollection,catalogCategory].forEach(control =>
-  control.addEventListener(control===catalogSearch?"input":"change",resetCatalogPage));
-function setTargetLang(lang) {
-  if (!LANG_LABEL[lang] || lang===targetLang) return;
-  targetLang=lang;
-  catalogLanguageSelect.value=lang;
-  try { localStorage.setItem("atlas-lang", lang); } catch {}
-  const url=new URL(location); url.searchParams.set("lang", lang);
-  history.replaceState(null,"",url);
-  refreshCatalogCollections();
-  resetCatalogPage();
+function bindNavigatorLinks() {
+  navContent.querySelectorAll("[data-nav-key]").forEach(button =>
+    button.addEventListener("click", () => navigateTo(button.dataset.navKey, {source:"panel"})));
+  navContent.querySelector("[data-home]")?.addEventListener("click", () => {
+    navSearch.value = "";
+    showOverview();
+  });
 }
-catalogLanguageSelect.addEventListener("change",()=>setTargetLang(catalogLanguageSelect.value));
-document.getElementById("loadMore").addEventListener("click", () => { pageSize+=72; renderCatalog(); });
 
-function openCatalogRecord(key) {
-  const record=RECORD_BY_KEY.get(key); if (!record) return;
-  // a relation may cross into another language's collection — follow it
-  if (record.kind==="specialization") {
-    const lang=languageOf(record.collection);
-    if (lang) setTargetLang(lang);
+function navigateTo(key, {source = "panel", updateHistory = true} = {}) {
+  const category = categoryFromKey(key);
+  const record = RECORD_BY_KEY.get(key);
+  if (!category && !record) return;
+  const previousDesired = new Set(desiredRecords().map(item => item.key));
+  selectedKey = key;
+  selectedType = category ? "category" : "record";
+  const nextDesired = new Set(desiredRecords().map(item => item.key));
+  const graphNeedsRecompose = previousDesired.size !== nextDesired.size ||
+    [...nextDesired].some(item => !previousDesired.has(item));
+  if (graphNeedsRecompose) composeGraph({frameSelection:true});
+  else {
+    highlightNode(key);
+    frameSelection(true);
   }
-  catalogSearch.value="";
-  refreshCatalogCollections();
-  catalogCollection.value=record.collection;
-  catalogCategory.value=record.category;
-  pageSize=Math.max(72, DATA.filter(d=>d.collection===record.collection&&d.category===record.category).length);
-  renderCatalog();
-  const card=document.getElementById("record-"+encodeURIComponent(key));
-  if (card) { card.open=true; history.replaceState(null,"","#"+encodeURIComponent(key));
-    card.scrollIntoView({behavior:reduceMotion?"auto":"smooth",block:"center"}); }
+  navSearch.value = "";
+  renderSelectionPanel();
+  if (updateHistory) history.replaceState(null, "", `#${encodeURIComponent(key)}`);
+}
+function showOverview({updateHistory = true} = {}) {
+  const needsRecompose = graphNodes.some(node => node.kind === "specialization");
+  selectedKey = null;
+  selectedType = null;
+  if (needsRecompose) composeGraph();
+  else { clearGraphFocus(); fitGraph(true); }
+  renderOverviewPanel();
+  navigatorScroll.scrollTop = 0;
+  if (updateHistory) history.replaceState(null, "", location.pathname + location.search);
 }
 
-renderCatalog();
-requestAnimationFrame(() => { resizeGraph(); composeGraph(); });
-if (location.hash) {
-  const key=decodeURIComponent(location.hash.slice(1));
-  if (RECORD_BY_KEY.has(key)) requestAnimationFrame(() => openCatalogRecord(key));
+navSearch.addEventListener("input", () => {
+  const query = fold(navSearch.value.trim());
+  if (query) renderSearchPanel(query);
+  else selectedKey ? renderSelectionPanel() : renderOverviewPanel();
+});
+document.getElementById("zoomIn").addEventListener("click", () => {
+  const target = reduceMotion ? graphSvg : graphSvg.transition().duration(220);
+  target.call(zoomBehavior.scaleBy, 1.35);
+});
+document.getElementById("zoomOut").addEventListener("click", () => {
+  const target = reduceMotion ? graphSvg : graphSvg.transition().duration(220);
+  target.call(zoomBehavior.scaleBy, 1 / 1.35);
+});
+document.getElementById("fitGraph").addEventListener("click", () =>
+  selectedKey ? frameSelection(true) : fitGraph(true));
+document.getElementById("showOverview").addEventListener("click", () => showOverview());
+
+function panelBounds() {
+  return {min:300, max:Math.min(720, Math.max(300, window.innerWidth * .58))};
 }
+function setPanelWidth(width) {
+  const bounds = panelBounds();
+  const next = Math.round(Math.max(bounds.min, Math.min(bounds.max, width)));
+  document.documentElement.style.setProperty("--panel-width", `${next}px`);
+  splitter.setAttribute("aria-valuemin", bounds.min);
+  splitter.setAttribute("aria-valuemax", Math.round(bounds.max));
+  splitter.setAttribute("aria-valuenow", next);
+  return next;
+}
+let storedPanelWidth = 390;
+try { storedPanelWidth = Number(localStorage.getItem("intent-atlas-panel-width")) || storedPanelWidth; } catch {}
+setPanelWidth(storedPanelWidth);
+splitter.addEventListener("pointerdown", event => {
+  event.preventDefault();
+  splitter.setPointerCapture(event.pointerId);
+  splitter.classList.add("is-dragging");
+  document.body.style.cursor = "col-resize";
+});
+splitter.addEventListener("pointermove", event => {
+  if (!splitter.hasPointerCapture(event.pointerId)) return;
+  setPanelWidth(window.innerWidth - event.clientX);
+});
+function finishResize(event) {
+  if (!splitter.hasPointerCapture(event.pointerId)) return;
+  splitter.releasePointerCapture(event.pointerId);
+  splitter.classList.remove("is-dragging");
+  document.body.style.cursor = "";
+  const width = Number(splitter.getAttribute("aria-valuenow"));
+  try { localStorage.setItem("intent-atlas-panel-width", width); } catch {}
+}
+splitter.addEventListener("pointerup", finishResize);
+splitter.addEventListener("pointercancel", finishResize);
+splitter.addEventListener("keydown", event => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const bounds = panelBounds();
+  const current = Number(splitter.getAttribute("aria-valuenow"));
+  const next = event.key === "Home" ? bounds.min : event.key === "End" ? bounds.max :
+    current + (event.key === "ArrowLeft" ? 24 : -24);
+  const width = setPanelWidth(next);
+  try { localStorage.setItem("intent-atlas-panel-width", width); } catch {}
+});
+window.addEventListener("resize", () => setPanelWidth(Number(splitter.getAttribute("aria-valuenow"))));
+
+requestAnimationFrame(() => {
+  resizeGraph();
+  composeGraph();
+  const hashKey = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+  if (hashKey && (RECORD_BY_KEY.has(hashKey) || categoryFromKey(hashKey))) {
+    requestAnimationFrame(() => navigateTo(hashKey, {updateHistory:false}));
+  } else renderOverviewPanel();
+});
 </script>
 </body>
 </html>

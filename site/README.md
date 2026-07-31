@@ -27,13 +27,15 @@ touches `intents/**` or `site/**`.
   into the page at build time so the site stays a single self-contained
   file. Also includes D3 7.9.0 (ISC) for force simulation, SVG selection,
   dragging, and zooming.
-- `template.html` — the atlas page: an interactive force-directed relationship
+- `template.html` — the atlas page: a full-screen force-directed relationship
   field rendered as labelled SVG elements with pan, zoom, drag, focus, and
-  progressive ecosystem disclosure, backed by a searchable,
-  filterable, incrementally rendered catalogue of every record. Fully
-  self-contained (inline CSS/JS, no external requests), responsive, and
-  available in light and dark themes. The `/*__DATA__*/` and `__BUILT__`
-  markers are replaced at build time.
+  progressive ecosystem disclosure. A resizable, independently scrolling
+  navigator stays synchronized with the graph: categories lead to generalized
+  intents, specialization parents form a visible hierarchy, relationship links
+  continue the traversal, and the selected record exposes the complete claim,
+  evidence, and examples. Fully self-contained (inline CSS/JS, no external
+  requests), responsive, and available in light and dark themes. The
+  `/*__DATA__*/` and `__BUILT__` markers are replaced at build time.
 - Output lands in `_site/` (gitignored).
 
 Build locally:
