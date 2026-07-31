@@ -572,7 +572,6 @@ let edgeSelection = null;
 let nodeSelection = null;
 let selectedKey = null;
 let selectedType = null;
-let frameAfterSimulation = false;
 
 const incomingByKey = new Map(DATA.map(record => [record.key, []]));
 for (const source of DATA) {
@@ -643,7 +642,7 @@ function positionCategoryAnchors() {
   });
 }
 
-function composeGraph({frameSelection = false} = {}) {
+function composeGraph({frame = "none", animate = true} = {}) {
   simulation?.stop();
   const previous = new Map(graphNodes.map(node => [node.key, node]));
   const records = desiredRecords();
@@ -693,9 +692,10 @@ function composeGraph({frameSelection = false} = {}) {
   });
   graphNodes = nodes;
   graphEdges = edges;
-  frameAfterSimulation = frameSelection;
   positionCategoryAnchors();
   renderGraph();
+  if (frame === "selection" && selectedKey) frameSelection(animate);
+  if (frame === "all") fitGraph(animate);
 }
 
 function splitLabel(label, maxCharacters, maxLines = 2) {
@@ -817,11 +817,6 @@ function renderGraph() {
     .on("tick", () => {
       edgeSelection.attr("d", edgePath);
       nodeSelection.attr("transform", node => `translate(${node.x},${node.y})`);
-    })
-    .on("end", () => {
-      if (frameAfterSimulation && selectedKey) frameSelection(true);
-      else if (!selectedKey) fitGraph(false);
-      frameAfterSimulation = false;
     });
 
   if (reduceMotion) {
@@ -1047,7 +1042,7 @@ function navigateTo(key, {source = "panel", updateHistory = true} = {}) {
   const nextDesired = new Set(desiredRecords().map(item => item.key));
   const graphNeedsRecompose = previousDesired.size !== nextDesired.size ||
     [...nextDesired].some(item => !previousDesired.has(item));
-  if (graphNeedsRecompose) composeGraph({frameSelection:true});
+  if (graphNeedsRecompose) composeGraph({frame:"selection"});
   else {
     highlightNode(key);
     frameSelection(true);
@@ -1060,7 +1055,7 @@ function showOverview({updateHistory = true} = {}) {
   const needsRecompose = graphNodes.some(node => node.kind === "specialization");
   selectedKey = null;
   selectedType = null;
-  if (needsRecompose) composeGraph();
+  if (needsRecompose) composeGraph({frame:"all"});
   else { clearGraphFocus(); fitGraph(true); }
   renderOverviewPanel();
   navigatorScroll.scrollTop = 0;
@@ -1133,7 +1128,7 @@ window.addEventListener("resize", () => setPanelWidth(Number(splitter.getAttribu
 
 requestAnimationFrame(() => {
   resizeGraph();
-  composeGraph();
+  composeGraph({frame:"all", animate:false});
   const hashKey = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
   if (hashKey && (RECORD_BY_KEY.has(hashKey) || categoryFromKey(hashKey))) {
     requestAnimationFrame(() => navigateTo(hashKey, {updateHistory:false}));
