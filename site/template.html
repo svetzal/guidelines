@@ -76,7 +76,7 @@
   }
   button:hover { color: var(--accent); border-color: var(--accent); }
   .label, .eyebrow, .record-key, .chip, .relation-type, .canvas-status,
-  .canvas-hint, .nav-count, .field-label, .graph-controls {
+  .canvas-hint, .nav-count, .field-label, .graph-controls, .language-filter label {
     font-family: var(--mono);
     letter-spacing: .085em;
     text-transform: uppercase;
@@ -118,6 +118,32 @@
     margin-top: var(--space-2);
     color: var(--faint);
     font-size: 8px;
+  }
+  .language-filter {
+    position: absolute;
+    z-index: 5;
+    top: var(--space-5);
+    right: var(--space-5);
+    display: grid;
+    gap: var(--space-1);
+    width: 180px;
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--panel) 88%, transparent);
+    border: 1px solid var(--rule-strong);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgb(35 39 37 / 8%);
+  }
+  .language-filter label { color: var(--faint); font-size: 8px; }
+  .language-filter select {
+    width: 100%;
+    min-height: 30px;
+    padding: 2px 0;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule-strong);
+    border-radius: 0;
+    font: 600 13px var(--ui);
   }
   .graph-stage { position: absolute; inset: 0; overflow: hidden; }
   .graph-svg {
@@ -442,6 +468,7 @@
   .example b { display: block; padding: 5px 8px; border-bottom: 1px solid var(--rule); font: 8px var(--mono); text-transform: uppercase; }
   .example pre { margin: 0; padding: 10px; max-height: 260px; overflow: auto; font: 10px/1.5 var(--mono); }
   .example pre code.hljs { padding: 0; background: transparent; }
+  .example-empty { margin: 0; color: var(--muted); font-size: 13px; }
   .empty-state { padding: var(--space-6) var(--space-3); color: var(--muted); text-align: center; font-style: italic; }
   .hljs { color: var(--ink); background: transparent; }
   .hljs-comment, .hljs-quote { color: var(--faint); font-style: italic; }
@@ -479,6 +506,7 @@
     :root { --panel-width: min(42vw, 360px); }
     .workspace { grid-template-columns: minmax(0, 1fr) 8px minmax(290px, var(--panel-width)); }
     .map-title { top: var(--space-4); left: var(--space-4); }
+    .language-filter { top: 76px; right: var(--space-4); width: 154px; }
     .canvas-hint, .canvas-status { display: none; }
     .graph-controls { left: var(--space-4); bottom: var(--space-4); }
     .navigator-head { padding: var(--space-4); }
@@ -495,6 +523,10 @@
     <div class="map-title">
       <h1 id="mapTitle">Intent <span>Atlas</span></h1>
       <div class="canvas-hint">drag to pan · wheel to zoom · select to follow</div>
+    </div>
+    <div class="language-filter">
+      <label for="exampleLanguage">Example language</label>
+      <select id="exampleLanguage"></select>
     </div>
     <div class="graph-stage" id="graphStage">
       <svg class="graph-svg" id="graph" role="img" aria-label="Interactive graph of intent relationships"></svg>
@@ -551,6 +583,15 @@ const prettyPart = part => part === "uv" ? "uv" : part === "cpp" ? "C++" :
 const prettyCollection = collection => collection === "craftsperson" ? "General craftsperson" :
   collection.split("/").filter(part => part && part !== "craftsperson")
     .flatMap(part => part.split("-")).map(prettyPart).join(" · ");
+const EXAMPLE_LANGUAGE_ORDER = ["clojure","cpp","csharp","elixir","go","java","kotlin",
+  "python","ruby","rust","swift","typescript"];
+const EXAMPLE_LANGUAGES = [...new Set(DATA.flatMap(record => Object.keys(record.examples || {})))]
+  .sort((left, right) => {
+    const leftIndex = EXAMPLE_LANGUAGE_ORDER.indexOf(left);
+    const rightIndex = EXAMPLE_LANGUAGE_ORDER.indexOf(right);
+    return (leftIndex < 0 ? 999 : leftIndex) - (rightIndex < 0 ? 999 : rightIndex)
+      || left.localeCompare(right);
+  });
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const graphStage = document.getElementById("graphStage");
@@ -561,6 +602,18 @@ const navSearch = document.getElementById("navSearch");
 const navigatorScroll = document.getElementById("navigatorScroll");
 const workspace = document.getElementById("workspace");
 const splitter = document.getElementById("splitter");
+const exampleLanguageSelect = document.getElementById("exampleLanguage");
+
+let exampleLanguage = new URLSearchParams(location.search).get("lang");
+if (!EXAMPLE_LANGUAGES.includes(exampleLanguage)) {
+  try { exampleLanguage = localStorage.getItem("intent-atlas-example-language"); } catch {}
+}
+if (!EXAMPLE_LANGUAGES.includes(exampleLanguage)) {
+  exampleLanguage = EXAMPLE_LANGUAGES.includes("python") ? "python" : EXAMPLE_LANGUAGES[0];
+}
+exampleLanguageSelect.innerHTML = EXAMPLE_LANGUAGES.map(language =>
+  `<option value="${esc(language)}">${esc(prettyPart(language))}</option>`).join("");
+exampleLanguageSelect.value = exampleLanguage;
 
 let graphNodes = [];
 let graphEdges = [];
@@ -969,14 +1022,18 @@ function categoryDetail(category) {
       <div class="nav-list">${children.map(record => navLink(record)).join("")}</div></div></div>`;
 }
 function exampleDetails(record) {
-  const examples = Object.entries(record.examples || {}).filter(([, example]) => example.good || example.bad);
-  if (!examples.length) return "";
-  return `<details class="more-detail"><summary>Examples · ${examples.length} languages</summary>
-    <div class="more-detail-body">${examples.map(([language, example]) =>
-      `<div class="example"><b>${esc(prettyPart(language))} · earns the intent</b>
-        <pre><code class="language-${esc(language)}">${esc(example.good || "—")}</code></pre></div>
-       <div class="example"><b>${esc(prettyPart(language))} · violates the intent</b>
-        <pre><code class="language-${esc(language)}">${esc(example.bad || "—")}</code></pre></div>`).join("")}</div></details>`;
+  const examples = record.examples || {};
+  if (!Object.keys(examples).length) return "";
+  const example = examples[exampleLanguage];
+  const languageLabel = prettyPart(exampleLanguage);
+  const body = example && (example.good || example.bad) ?
+    `<div class="example"><b>${esc(languageLabel)} · earns the intent</b>
+      <pre><code class="language-${esc(exampleLanguage)}">${esc(example.good || "—")}</code></pre></div>
+     <div class="example"><b>${esc(languageLabel)} · violates the intent</b>
+      <pre><code class="language-${esc(exampleLanguage)}">${esc(example.bad || "—")}</code></pre></div>` :
+    `<p class="example-empty">No ${esc(languageLabel)} example is defined for this intent.</p>`;
+  return `<details class="more-detail"><summary>Examples · ${esc(languageLabel)}</summary>
+    <div class="more-detail-body">${body}</div></details>`;
 }
 function recordDetail(record) {
   const groups = relationGroups(record);
@@ -1005,7 +1062,7 @@ function recordDetail(record) {
     ${exampleDetails(record)}
   </div>`;
 }
-function renderSelectionPanel() {
+function renderSelectionPanel({resetScroll = true} = {}) {
   const category = selectedType === "category" ? categoryFromKey(selectedKey) : null;
   const record = selectedType === "record" ? RECORD_BY_KEY.get(selectedKey) : null;
   if (!category && !record) return renderOverviewPanel();
@@ -1021,7 +1078,7 @@ function renderSelectionPanel() {
   bindNavigatorLinks();
   if (window.hljs) navContent.querySelectorAll('pre code[class^="language-"]')
     .forEach(block => hljs.highlightElement(block));
-  navigatorScroll.scrollTop = 0;
+  if (resetScroll) navigatorScroll.scrollTop = 0;
 }
 function bindNavigatorLinks() {
   navContent.querySelectorAll("[data-nav-key]").forEach(button =>
@@ -1066,6 +1123,18 @@ navSearch.addEventListener("input", () => {
   const query = fold(navSearch.value.trim());
   if (query) renderSearchPanel(query);
   else selectedKey ? renderSelectionPanel() : renderOverviewPanel();
+});
+exampleLanguageSelect.addEventListener("change", () => {
+  exampleLanguage = exampleLanguageSelect.value;
+  try { localStorage.setItem("intent-atlas-example-language", exampleLanguage); } catch {}
+  const url = new URL(location.href);
+  url.searchParams.set("lang", exampleLanguage);
+  history.replaceState(null, "", url);
+  if (selectedType === "record") {
+    const scrollTop = navigatorScroll.scrollTop;
+    renderSelectionPanel({resetScroll:false});
+    navigatorScroll.scrollTop = scrollTop;
+  }
 });
 document.getElementById("zoomIn").addEventListener("click", () => {
   const target = reduceMotion ? graphSvg : graphSvg.transition().duration(220);

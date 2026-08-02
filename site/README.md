@@ -33,9 +33,10 @@ touches `intents/**` or `site/**`.
   navigator stays synchronized with the graph: categories lead to generalized
   intents, specialization parents form a visible hierarchy, relationship links
   continue the traversal, and the selected record exposes the complete claim,
-  evidence, and examples. Fully self-contained (inline CSS/JS, no external
-  requests), responsive, and available in light and dark themes. The
-  `/*__DATA__*/` and `__BUILT__` markers are replaced at build time.
+  evidence, and examples. An overlaid language selector filters record examples
+  and persists through the `lang` query parameter. Fully self-contained (inline
+  CSS/JS, no external requests), responsive, and available in light and dark
+  themes. The `/*__DATA__*/` and `__BUILT__` markers are replaced at build time.
 - Output lands in `_site/` (gitignored).
 
 Build locally:
