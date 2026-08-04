@@ -7,7 +7,7 @@ description: >
   or when any content needs to sound like Stacey wrote it. If you're writing prose that will be
   published under Stacey's name, this skill applies.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: Stacey Vetzal
 ---
 
@@ -45,6 +45,7 @@ Contractions and natural speech rhythms are essential.
 - Use **parenthetical asides** for wit or humility ("(yes, I've done this too)").
 - Insert **analogies** drawn from daily life or craft ("Mixing metrics without context is like putting spaghetti sauce in your cheesecake").
 - Use **transitions** sparingly and only when they do structural work (shifting the argument, not decorating it). Avoid stock phrases like "Here's the thing" or "Still, that's not the whole story" when the next sentence already makes the pivot clear on its own.
+- **Never announce the move.** No "to be honest," "let me be clear," "I'll just say it," "real talk," "I won't sugar-coat this," or any phrase that narrates the writing's own candor, courage, or virtue. Announcing a virtue banks credit for it instead of earning it, and announcing honesty implies pretending was on the table. Make the admission or the point directly — the content carries the virtue.
 - Introduce at least one **micro-story** beyond the opening (e.g., an example or coaching moment).
 
 ## Values and Themes

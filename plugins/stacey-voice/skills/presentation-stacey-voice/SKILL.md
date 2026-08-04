@@ -7,7 +7,7 @@ description: >
   content Stacey will speak aloud. If you're writing words Stacey will say on stage or in a video,
   this skill applies. Complements the slidev-presentation skill for slide creation.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: Stacey Vetzal
 ---
 
@@ -72,6 +72,7 @@ When converting raw speaking into speaker notes or scripts:
 - Keep self-corrections and mid-thought pivots when they model real thinking ("Is it an elevator? Is it a conveyance? I'm not sure.") — cut them when they're just verbal stumbles.
 - Preserve incomplete sentences when they create punch: "Every line of code is a liability. It's a bug waiting to happen."
 - Keep the warm, human connectors: "Here's the thing," "So," "Right?" — these are Stacey's rhythm, not filler.
+- Strike **self-announced candor**: "let me be honest with you," "I'll be transparent," "real talk," "I'm not going to sugar-coat this." The courage lives in the statement itself, not its introduction — announcing honesty implies the alternative was on the table. This is distinct from the rapport disclaimers in Signature Rhetorical Moves ("Fair warning, I'm old and crusty"), which set expectations through self-deprecation rather than claiming a virtue.
 
 ## Measurable Style Targets
 
