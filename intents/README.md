@@ -8,6 +8,14 @@ hierarchy denotes the realization hierarchy: for example,
 C++/Qt, while `craftsperson/python/uv/` specializes Python guidance for uv-based
 projects.
 
+Implementation models:
+
+- [Dynamic harness notes](HARNESS.md) cover sensing, selecting, injecting, and
+  retracting intents during an agent session.
+- [Generic harness notes](GENERIC.md) cover compiling cross-cutting slices into
+  baseline prompts and situational skills for Claude Code, Codex, OpenCode, and
+  similar platforms.
+
 ## Classification
 
 Every record participates in the intent graph through three complementary
