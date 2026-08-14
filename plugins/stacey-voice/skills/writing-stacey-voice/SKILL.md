@@ -7,7 +7,7 @@ description: >
   or when any content needs to sound like Stacey wrote it. If you're writing prose that will be
   published under Stacey's name, this skill applies.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: Stacey Vetzal
 ---
 
@@ -38,6 +38,7 @@ Contractions and natural speech rhythms are essential.
 3. **Rhythm:** Vary sentence length — alternate crisp, punchy lines (under 10 words) with longer, flowing reflections (20-30 words).
 4. **Lists:** When enumerating principles, steps, or observations, use short bullet or numbered lists for clarity.
 5. **Emphasis:** Use one-sentence paragraphs sparingly to create punch and space for reflection.
+6. **Prose belongs in tables, not code blocks:** when example data carries sentence-length values — a record's fields, a config's rationale, a schema's descriptions — render it as a two-column table so the prose wraps and can be read. A code block forces long sentences onto single non-wrapping lines and buries the part worth reading. Keep code blocks for code.
 
 ## Stylistic Markers
 
@@ -47,6 +48,52 @@ Contractions and natural speech rhythms are essential.
 - Use **transitions** sparingly and only when they do structural work (shifting the argument, not decorating it). Avoid stock phrases like "Here's the thing" or "Still, that's not the whole story" when the next sentence already makes the pivot clear on its own.
 - **Never announce the move.** No "to be honest," "let me be clear," "I'll just say it," "real talk," "I won't sugar-coat this," or any phrase that narrates the writing's own candor, courage, or virtue. Announcing a virtue banks credit for it instead of earning it, and announcing honesty implies pretending was on the table. Make the admission or the point directly — the content carries the virtue.
 - Introduce at least one **micro-story** beyond the opening (e.g., an example or coaching moment).
+
+## Authorial Stance — She Directs Her Work
+
+Stacey does not stumble into her own projects. Drafts drift toward casting her as a lucky
+observer of them — discovering what she designed, preferring what she's already doing,
+beginning what she's done for years. Each drift is small and reads as modesty. Together they
+strip out her agency and make a considered body of work look like a run of good fortune.
+
+Three failure modes, all correcting the same way:
+
+**1. Deliberate design written as happy accident.** When a design pays off, that is a bet
+settling, not a surprise. She builds structure on purpose and usually knows what she is
+building it for. The honest register is *affirmation after doubt*: she made a considered bet,
+carried real uncertainty about whether it would repay its cost, and this is the moment it
+crystallized. Never write her as discovering a property she engineered on purpose. When you
+can't tell whether something was designed for or emerged, ask — don't assume emergence
+because it makes the better narrative beat.
+
+**2. Subjunctive where indicative belongs.** "What I'd rather do next time" describes a
+preference she holds. "What I'm doing next" describes work already in motion. When she has
+built the thing and is using it, write it in the indicative.
+
+**3. Novelty in the wrong place.** She has usually been at a problem for years; what's new is
+one specific piece of it. Find that piece and say so, crediting the history rather than
+erasing it. "I've been trying to do X for years — what changed is Y", not "I started doing X."
+
+### Stance tells — sweep for these before shipping
+
+- "I didn't expect", "I hadn't planned", "surprised me", "to my surprise"
+- "a side effect I didn't design for", "fell out of", "stumbled into", "happy accident"
+- "X was not on the list", "for reasons that had nothing to do with Y" — when it was, and they did
+- "it turned out that…" describing something she intended
+- "I'd rather", "I want to", "I don't want to" standing in for what she is actually doing
+- "I finally started", "I've begun" for work with a long history
+
+| Diminished | Accurate |
+| --- | --- |
+| "Here's where it turned into something I hadn't planned." | "Here's where a bet I'd been carrying since June finally settled." |
+| "A side effect I didn't design for." | "This was also meant to happen, and it does." |
+| "Measurability was not on the list." | "I wanted principles specific enough that you could tell whether one had been followed." |
+| "What I'd Rather Do Next Time" | "What I'm Doing Next" |
+| "I finally started testing my agent guidance." | "I've been trying to test my agent guidance for years. What changed is the modelling." |
+
+The doubt is not what to remove. Naming what a bet cost while it was still unproven — the
+months of filling in a field on faith, the hypothesis held with nothing to check it against —
+is exactly what makes the payoff land. Cut the surprise; keep the uncertainty.
 
 ## Values and Themes
 
