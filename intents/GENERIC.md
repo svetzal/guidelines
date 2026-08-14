@@ -10,6 +10,12 @@ cross-cutting slice through the intent graph. Intent records remain the source
 of truth. Generated prompts and skills are delivery artifacts optimized for a
 particular situation, context budget, and platform capability.
 
+Materialization has two audiences that must not be confused. The build
+mechanism needs selection rules, graph traversal records, source revisions, and
+validation results. The working agent needs only guidance that can improve its
+decisions. Build metadata belongs in an assembly record outside the agent's
+context, not in the delivered prompt or skill.
+
 This model complements the dynamic harness described in
 [Harness implementation notes](HARNESS.md). A dynamic harness selects and
 retracts intents continuously. A generic harness compiles likely-relevant
@@ -34,6 +40,10 @@ used together.
 | Situational skill | Narrow domain or workflow guidance | While triggered |
 | Skill reference | Examples, rationale, command matrices | On demand |
 | Bundled script | Checks and repeatable transformations | During execution |
+
+The materializer may produce an additional assembly record for operators and
+build tooling. It is not a delivery surface and should never be loaded merely
+because the agent uses the generated prompt or skill.
 
 The baseline should make the agent reliably competent before any skill is
 loaded. Skills should improve decisions in narrower situations rather than
@@ -131,6 +141,12 @@ Examples belong primarily in skill references. They deepen interpretation and
 show how several elemental intents work together without making the universal
 baseline larger.
 
+References are not overflow storage for everything omitted from `SKILL.md`.
+Include a reference only when the agent may benefit from choosing to read it
+during the task. Assembly provenance, rejected candidates, graph diagnostics,
+and validation reports belong to the materializer, not beside the skill as
+agent-readable resources.
+
 ## Hybrid composition
 
 The strongest generic configuration is often:
@@ -197,7 +213,8 @@ examples = "references"
 ```
 
 This is a design sketch rather than a committed repository schema. Its purpose
-is to make selection reproducible and reviewable.
+is to make selection reproducible and reviewable. It is input to the
+materializer, not content to copy into the generated skill.
 
 ## Slice compilation
 
@@ -222,7 +239,8 @@ it with language, ecosystem, activity, tool, or artifact context.
   durable invariant.
 - Follow `related-to` conservatively and with a shallow depth limit.
 - Exclude siblings whose eligibility context is absent.
-- Record every traversal so the generated artifact is explainable.
+- Record every traversal in the materializer's assembly report so generation
+  is explainable without burdening the working agent.
 
 ### 4. Resolve overlap and precedence
 
@@ -248,9 +266,13 @@ For a skill:
 - write a strong trigger description;
 - organize the body around the agent's workflow;
 - provide applicability checks and stopping conditions;
-- move conditional details and examples into references;
+- move only useful conditional details and examples into references;
 - bundle deterministic procedures as scripts when that saves repeated
   reasoning.
+
+Apply an agent-value test to every emitted token: would having this information
+available change how the agent recognizes, performs, or verifies the task? If
+not, keep it in the build system or omit it.
 
 ### 6. Fit the budget by value
 
@@ -263,21 +285,29 @@ by the cost of omission and compress it structurally:
 4. Condense rationale while preserving the decision it supports.
 5. Fail generation if the remaining safety and completion contract cannot fit.
 
-### 7. Attach provenance
+### 7. Write an assembly record
 
-Every generated artifact should identify:
+The materializer should retain build-time information separately from the
+agent-facing artifact. An assembly record can contain:
 
 - the materialization profile;
-- the source intent record keys;
-- the graph and selection rules used;
-- the intent-library revision;
-- whether the artifact is generated and should not be edited directly.
+- source intent record keys and library revision;
+- graph traversal and precedence decisions;
+- excluded candidates and contradiction resolutions;
+- output checksums and platform adapter version;
+- validation results and warnings.
 
-Provenance permits regeneration, review, and staleness detection. It also keeps
-the intent records authoritative when the same slice is emitted for several
-platforms.
+This record permits regeneration, review, staleness detection, and debugging.
+It might be a lockfile, build manifest, or report stored with other generator
+state. It should not be installed as a skill reference or injected into the
+agent's prompt merely because the generator needs it.
 
-### 8. Validate the artifact
+The agent-facing output should contain provenance only when provenance itself
+helps perform the task, such as an authoritative source the agent may need to
+consult. A generated-file marker can live in packaging metadata or another
+mechanism that does not consume working context.
+
+### 8. Validate before delivery
 
 Validation should check:
 
@@ -289,6 +319,9 @@ Validation should check:
 - platform metadata is valid;
 - instructions contain no unresolved contradictions;
 - links and bundled resources resolve.
+
+Validation results belong in the assembly record or build output. Passing
+validation should not add a validation narrative to the delivered guidance.
 
 ## Platform adapters
 
@@ -303,7 +336,7 @@ tool permissions, and naming conventions.
 | Resource loading | Progressive-disclosure plan | Supported reference layout |
 | Tool needs | Capability requirements | Tool names and permission syntax |
 | Preloaded baseline | Baseline content | Repository or agent instructions |
-| Provenance | Intent keys and revision | Comments, metadata, or manifests |
+| Build traceability | Assembly record | Generator-side manifest format |
 
 Claude Code, Codex, and OpenCode should therefore receive semantically
 equivalent artifacts without forcing the canonical intents to contain
@@ -372,7 +405,8 @@ most expensive delivery tier.
 
 Hand-editing generated skills causes the same guidance to diverge across
 platforms. Improve the source intents, materialization profile, or adapter and
-regenerate.
+regenerate. Enforce this through the build workflow and assembly record rather
+than spending agent-visible tokens explaining the generator.
 
 ### Trigger-only correctness
 
