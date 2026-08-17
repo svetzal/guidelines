@@ -7,7 +7,7 @@ description: >
   or when any content needs to sound like Stacey wrote it. If you're writing prose that will be
   published under Stacey's name, this skill applies.
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: Stacey Vetzal
 ---
 

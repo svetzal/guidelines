@@ -2,7 +2,7 @@
 name: blog-image-generator
 description: Generate cyberpunk-styled images for blog posts including banners (16:9), callouts (1:1), and diagrams (9:16). Use this skill when creating new blog posts, when asked to generate images, or when updating visuals for existing posts. Creates consistent character-based imagery following the blog's visual identity.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: Stacey Vetzal
 ---
 
@@ -290,7 +290,16 @@ node .claude/skills/blog-image-generator/scripts/generate-image.mjs \
   --no-character
 ```
 
-Requires `OPENAI_API_KEY` environment variable.
+Requires `OPENAI_API_KEY`, which lives in `~/.secrets.sh`. Agent shells do not load it,
+so source it in the same command:
+
+```bash
+source ~/.secrets.sh && node ~/.claude/skills/blog-image-generator/scripts/generate-image.mjs \
+  posts/YYYY/images/scene-name.json \
+  posts/YYYY/images/scene-name.png
+```
+
+Do not go looking for the key elsewhere, and do not report it missing until you have sourced the file.
 
 **Default behavior by image type:**
 | Image Type | Default Mode | API Used |
@@ -485,7 +494,8 @@ posts/2025/images/
 
 ## Troubleshooting
 
-- **API errors**: Ensure `OPENAI_API_KEY` is set and valid
+- **`OPENAI_API_KEY environment variable not set`**: you did not source `~/.secrets.sh`. Re-run as `source ~/.secrets.sh && node ...` — the key is there, agent shells just don't load it
+- **API errors**: Confirm the key is valid *after* sourcing `~/.secrets.sh`
 - **Missing dependencies**: Run `npm install` in the scripts directory
 - **Character reference not found**: Ensure `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` exist, or use `--no-character`
 - **Wrong character appearance**: Verify the avatar reference is being used (check for "Using character reference" in output)

@@ -14,7 +14,9 @@ Stacey has been coding since age ten. She attended McMaster University for Compu
 
 **Teaching and speaking** — Speaker at Toronto Agile Community, Gatineau-Ottawa Agile Tour, Agile Coach Camp Canada (organizer), Play 4 Agile, XP Toronto. Panelist alongside Ron Jeffries, Antony Marcano, Cat Swetel. Founded Durham Code Retreat. Chapter Lead for Ladies Learning Code Durham. Guest lecturer at UOIT in Social Justice & Diversity and Engineering. At RBC, developed training materials on agentic development practices.
 
-**CodingCulture.io** — An 8-week coaching program she built around Kent Beck's Four Rules of Simple Design, covering testing in legacy codebases, design through testing, coupling, cohesion, and refactoring.
+**Coding Culture** (2015–2021, retired) — A coaching practice she founded and led under Mojility, including an 8-week program built around Kent Beck's Four Rules of Simple Design, covering testing in legacy codebases, design through testing, coupling, cohesion, and refactoring.
+
+**Never refer to Coding Culture by its former domain name.** The domain lapsed and is no longer Stacey's, so naming it points readers at something she does not control. Refer to it only as a past, retired business initiative under Mojility.
 
 ## Personal History
 

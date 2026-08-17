@@ -2,7 +2,7 @@
 name: presentation-image-generator
 description: Generate images for Slidev presentations including covers (16:9), section breaks (16:9), concepts (1:1), backgrounds (16:9), and accents (1:1). Abstract-first approach — character is OFF by default. Supports multiple visual styles via scene variants. Use when creating presentation imagery, generating slide visuals, or adding custom graphics to a talk.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: Stacey Vetzal
 ---
 
@@ -183,7 +183,9 @@ node .claude/skills/presentation-image-generator/scripts/generate-image.mjs \
   --with-character
 ```
 
-Requires `OPENAI_API_KEY` environment variable.
+Requires `OPENAI_API_KEY`, which lives in `~/.secrets.sh`. Agent shells do not load it, so
+prefix the generation command with `source ~/.secrets.sh &&`. Do not go looking for the key
+elsewhere, and do not report it missing until you have sourced the file.
 
 **Default behavior:** All image roles generate without character reference (abstract mode). Character is enabled by:
 1. Using `--with-character` flag
@@ -292,7 +294,8 @@ For a cohesive deck, follow these guidelines:
 
 ## Troubleshooting
 
-- **API errors**: Ensure `OPENAI_API_KEY` is set and valid
+- **`OPENAI_API_KEY environment variable not set`**: you did not source `~/.secrets.sh`. Re-run as `source ~/.secrets.sh && node ...`
+- **API errors**: Confirm the key is valid *after* sourcing `~/.secrets.sh`
 - **Missing dependencies**: Run `npm install` in the scripts directory
 - **Character reference not found**: Ensure `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` exist, or use `--no-character`
 - **Wrong size**: Check `ImageRole` and `Layout.AspectRatio` — the aspect ratio override takes precedence
