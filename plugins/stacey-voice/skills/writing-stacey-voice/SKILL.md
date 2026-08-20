@@ -7,7 +7,7 @@ description: >
   or when any content needs to sound like Stacey wrote it. If you're writing prose that will be
   published under Stacey's name, this skill applies.
 metadata:
-  version: "1.2.1"
+  version: "1.3.0"
   author: Stacey Vetzal
 ---
 
@@ -121,6 +121,52 @@ End with the argument itself, not with a decorative emotional tag. The last para
 **Avoid:** "That's the opportunity I keep coming back to." / "And maybe that's what matters most." / "I think there's something beautiful in that."
 
 **Instead:** Let the closing paragraph do real intellectual work. State the final claim, connect it back to the opening if it earns the callback, and end.
+
+## Unslop — Sweeping Out AI Tells
+
+Adapted from [unslop](https://github.com/poteto/noodle/blob/main/.agents/skills/unslop/SKILL.md). After drafting, sweep the text for the patterns below, rewrite while preserving meaning, then self-audit: "What makes this obviously AI-generated?" Fix the remaining tells.
+
+Removing patterns is half the job. Sterile, voiceless writing is just as obvious. Beyond the rhythm and first-person guidance already in this skill:
+
+- **Have opinions.** React to facts instead of neutrally listing pros and cons.
+- **Acknowledge complexity.** "Impressive but also kind of unsettling" beats "impressive."
+- **Let some mess in.** Perfect structure feels algorithmic.
+- **Be specific.** Not "this is concerning" but "there's something unsettling about agents churning away at 3am."
+
+### Content tells
+
+- **Significance inflation** — "pivotal moment", "testament to", "evolving landscape", "setting the stage for", "indelible mark", "deeply rooted". Cut puffery, state what happened.
+- **Notability name-dropping** — listing sources or outlets without context. Pick one, say what was said.
+- **Superficial -ing phrases** — "highlighting...", "ensuring...", "reflecting...", "showcasing...", "fostering...". Delete or expand with real substance.
+- **Promotional language** — "nestled", "vibrant", "breathtaking", "groundbreaking", "renowned", "stunning", "must-visit". Use neutral descriptions.
+- **Vague attributions** — "Experts believe", "Industry reports suggest", "Some critics argue". Name the source or delete.
+- **Formulaic challenges** — "Despite challenges... continues to thrive." Replace with specific facts.
+
+### Language tells
+
+- **AI vocabulary** — additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape (abstract), pivotal, showcase, tapestry (abstract), testament, underscore, vibrant. Replace with plain words.
+- **Copula avoidance** — "serves as", "stands as", "boasts", "features". Just say "is" or "has".
+- **Negative parallelisms** — "It's not just X, it's Y." State the point directly.
+- **Rule of three** — forcing ideas into groups of three. Use the natural number.
+- **Synonym cycling** — protagonist/main character/central figure/hero in one paragraph. Pick one, repeat it.
+- **False ranges** — "from X to Y" where X and Y aren't on a meaningful scale. List the topics directly.
+
+### Style tells
+
+- **Em dash rationing** — em dashes are part of Stacey's rhythm for asides and pivots, but density is the tell. When one isn't doing an aside's work, use a period, comma, or parentheses instead. Two in one paragraph is a signal to reread.
+- **Colon overuse** — colons are fine before a list or example, not as mid-sentence connectors. Rewrite so the point stands on its own.
+- **Boldface overuse** — don't bold every proper noun or acronym.
+- **Inline-header lists** — "**Performance:** Performance improved..." Convert to prose.
+- **Title case headings** — use sentence case.
+- **Decorative emojis** — remove from headings and bullets.
+- **Curly quotes** — replace with straight quotes.
+
+### Filler tells
+
+- **Filler phrases** — "In order to" → "To". "Due to the fact that" → "Because". "It is important to note that" → delete.
+- **Excessive hedging** — "could potentially possibly be argued that it might" → "may".
+- **Generic conclusions** — "The future looks bright." See the Closing section: end with the argument, not a bow.
+- **Chatbot artifacts** — "I hope this helps!", "Let me know if...", "While specific details are limited...". These never belong in a post.
 
 ## Post-Draft Reflection
 

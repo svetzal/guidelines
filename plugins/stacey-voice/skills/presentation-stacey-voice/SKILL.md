@@ -7,7 +7,7 @@ description: >
   content Stacey will speak aloud. If you're writing words Stacey will say on stage or in a video,
   this skill applies. Complements the slidev-presentation skill for slide creation.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: Stacey Vetzal
 ---
 
@@ -73,6 +73,31 @@ When converting raw speaking into speaker notes or scripts:
 - Preserve incomplete sentences when they create punch: "Every line of code is a liability. It's a bug waiting to happen."
 - Keep the warm, human connectors: "Here's the thing," "So," "Right?" — these are Stacey's rhythm, not filler.
 - Strike **self-announced candor**: "let me be honest with you," "I'll be transparent," "real talk," "I'm not going to sugar-coat this." The courage lives in the statement itself, not its introduction — announcing honesty implies the alternative was on the table. This is distinct from the rapport disclaimers in Signature Rhetorical Moves ("Fair warning, I'm old and crusty"), which set expectations through self-deprecation rather than claiming a virtue.
+
+## Unslop — Sweeping Out AI Tells
+
+Adapted from [unslop](https://github.com/poteto/noodle/blob/main/.agents/skills/unslop/SKILL.md) for spoken content. After drafting speaker notes or slides, sweep for the patterns below, then self-audit: "Would this sound obviously AI-generated read aloud?" A talk survives on soul; sterile, voiceless delivery is as much a tell as any stock phrase.
+
+### Spoken tells (speaker notes, scripts)
+
+- **Significance inflation** — "pivotal moment", "testament to", "evolving landscape", "setting the stage". Nobody talks like this on stage. Say what happened.
+- **AI vocabulary** — delve, crucial, fostering, garner, intricate, landscape (abstract), showcase, tapestry, underscore, vibrant. Stacey uses plain words: dig into, important, build, get.
+- **Negative parallelisms** — "It's not just X, it's Y" is both an AI tell and a stage cliché. State the point directly; if it deserves drama, use a planted pause instead.
+- **Rule of three** — forced triads sound like a keynote template. Use the natural number of items; Stacey's rhythm comes from questions and pauses, not triplets.
+- **Vague attributions** — "experts say", "studies show". Stacey names her sources ("I totally wholeheartedly stole that from Michael Bolton and James Bach"). Vague authority is the opposite of her generous-attribution move.
+- **Mechanical hedging** — "could potentially possibly". Distinct from her genuine humble uncertainty ("How do you know the right level of abstraction? I never do."), which is a real position, held openly. Keep the honest doubt, cut the reflexive qualifier stacks.
+- **Filler phrases** — "In order to" → "To". "Due to the fact that" → "Because". Spoken filler she'd never use survives badly in notes.
+- **Generic conclusions** — "The future looks bright." Stacey closes with community and paths to keep learning, not a fortune cookie.
+- **Chatbot artifacts** — "I hope this helps!", "Great question!". Never in notes, never as a scripted audience response.
+
+### Slide-text tells
+
+- **Boldface overuse** — don't bold every proper noun or acronym; with max 3 bullets per slide, nothing needs shouting.
+- **Decorative emojis** — remove from headings and bullets.
+- **Title case headings** — use sentence case.
+- **Inline-header bullets** — "**Performance:** Performance improved..." Slides carry one idea per line; the depth lives in the speaker notes.
+- **Em dash density** — an em dash on a slide is occasionally fine for an aside; several across a deck reads as generated. Prefer shorter lines.
+- **Curly quotes** — replace with straight quotes.
 
 ## Measurable Style Targets
 
