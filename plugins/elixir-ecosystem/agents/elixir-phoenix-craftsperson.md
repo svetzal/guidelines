@@ -38,7 +38,7 @@ description: |
 
   **Also includes:** All pure Elixir patterns (OTP, testing, Credo, security audits)
 metadata:
-  version: "1.2.2"
+  version: "1.3.0"
   author: Stacey Vetzal
 ---
 
@@ -140,6 +140,14 @@ Before considering any code complete, you **MUST** complete all steps:
    - Ensure all examples match current implementation
    - Update API documentation with `@doc` and `@moduledoc`
    - Verify guides compile: `mix docs`
+
+8. **No Polling** — `grep -rn "send_after" lib/**/live/` must return nothing
+   that re-arms itself to re-read data
+   - Every repeating timer in a LiveView is a defect until proven otherwise;
+     see "Events, Never Polling"
+   - One-shot expiries and debounces are fine — a timer that reschedules itself
+     to check for changes is not
+   - Relative-time ticks are the most common offender and belong on the client
 
 ## Code Structure & Patterns
 
@@ -576,6 +584,93 @@ socket = allow_upload(socket, :avatar,
 - Default `:browser` scope is already aliased with `AppWeb`
 - In router: `live "/weather", WeatherLive`
 - **Avoid LiveComponents** unless strong, specific need
+
+### Events, Never Polling (Non-Negotiable)
+
+**A LiveView never refreshes itself on a timer.** Push is the entire reason this
+technology exists; a `Process.send_after(self(), :refresh, 2_000)` loop throws
+that away and reimplements the AJAX polling LiveView was built to replace.
+
+If data on screen can change, something already knows when it changed. Find that
+signal and subscribe to it:
+
+| Source of change | Signal to subscribe to |
+| ---------------- | ---------------------- |
+| Another process / another user | `Phoenix.PubSub` topic, broadcast at the write |
+| Ecto write elsewhere in the app | Broadcast from the context function that writes |
+| A file on disk | `FileSystem` watcher process that broadcasts on change |
+| An external daemon | Its stream/subscription API, fanned out over PubSub |
+| A long-running job | The job broadcasts its own progress |
+
+**"There is no push API for it" is usually wrong.** A service with both a
+streaming subscription and a request/response status call is the common case,
+and it does not justify a timer: **the event tells you *when*, the query tells
+you *what*.** Subscribe to the stream, and re-query on arrival.
+
+```elixir
+# WRONG — re-queries on a schedule whether or not anything happened
+def handle_info(:refresh, socket) do
+  Process.send_after(self(), :refresh, 2_000)
+  {:noreply, assign(socket, :status, Daemon.status())}
+end
+
+# RIGHT — the event says something changed; the query says what it is now
+def handle_info({:daemon_event, _event}, socket) do
+  {:noreply, assign(socket, :status, Daemon.status())}
+end
+```
+
+**Elapsed and relative time belong on the client.** A server tick that exists
+only to move "3 minutes ago" to "4 minutes ago" is a full re-render for
+something the browser already knows. Render the timestamp into the markup and
+let a hook format it:
+
+```heex
+<time id={"t-#{@id}"} phx-hook="RelativeTime" phx-update="ignore" datetime={DateTime.to_iso8601(@at)}>
+  {Calendar.strftime(@at, "%H:%M")}
+</time>
+```
+
+**Timers that are legitimate** — all one-shot or reactive, none of them asking
+"has anything changed?":
+
+- Reconnect backoff after a dropped connection
+- Debouncing a burst of real events into one render
+- A one-shot expiry or timeout (`send_after(self(), :expire, @ttl)`)
+- Genuinely scheduled domain work (a nightly job), which belongs in a supervised
+  process, not a LiveView
+
+**Polling has a cost beyond waste.** A LiveView that re-renders on a schedule
+overwrites browser-owned DOM state on every tick: a `<details>` the reader
+opened, a partially scrolled container, an uncontrolled input. Symptoms look
+like UI bugs ("it folds itself back up after a second") and get misdiagnosed as
+CSS or morphdom problems. The cause is the timer.
+
+**Before copying a timer you found elsewhere in the codebase, read what it
+polls.** A reconnect backoff and a UI refresh loop look identical at the call
+site and are not the same thing.
+
+### State the Browser Owns Is Lost on Re-render
+
+LiveView's DOM patch carries whatever the server last rendered. Any state held
+only in the DOM is overwritten the next time that region re-renders.
+
+This bites hardest on `<details open>`, but applies to any element the browser
+mutates on its own: an uncontrolled input, a `<dialog>`, scroll position, a
+media element's play state.
+
+Two correct approaches, in order of preference:
+
+1. **Hold the state in the LiveView.** Render a real disclosure button with
+   `aria-expanded`/`aria-controls`, keep an `open?` map in assigns, toggle it
+   with `phx-click`. Accessible, testable with `render_click/1`, and survives
+   any re-render.
+2. **Tell LiveView not to touch it** — `phx-update="ignore"` with a stable `id`,
+   when the DOM inside genuinely is the client's to own. Remember the content
+   then stops updating too.
+
+Never render a dynamic `open={...}` on a `<details>` in a view that re-renders:
+it forces the server's opinion over the reader's on every patch.
 
 ### Two-Phase Rendering
 
