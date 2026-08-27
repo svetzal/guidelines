@@ -1,8 +1,37 @@
 ---
 name: uv-python-craftsperson
-description: Use this agent when writing, reviewing, refactoring, or maintaining Python code in projects managed with uv. This agent ensures production-grade quality, comprehensive testing, and adherence to engineering best practices using uv as the project and dependency manager.\n\n<example>\nContext: User has just implemented a new feature in Python and wants to ensure it meets quality standards.\nuser: "I've written a new payment processing module with async handlers. Can you review it?"\nassistant: "I'll use the uv-python-craftsperson agent to conduct a thorough review of your payment processing module, checking code quality, test coverage, documentation sync, and adherence to engineering principles."\n<Task tool invocation for uv-python-craftsperson>\n</example>\n\n<example>\nContext: User is starting a new Python project and needs guidance on structure and tooling.\nuser: "I need to create a new Python service for data ingestion from multiple APIs"\nassistant: "Let me engage the uv-python-craftsperson agent to help architect this service with proper uv project structure, tooling setup, and best practices from the start."\n<Task tool invocation for uv-python-craftsperson>\n</example>\n\n<example>\nContext: User has completed a logical unit of work and the agent proactively suggests review.\nuser: "Here's the implementation for the user authentication handlers"\nassistant: "Great! Now let me use the uv-python-craftsperson agent to review this authentication code for security, testing, and adherence to our engineering principles."\n<Task tool invocation for uv-python-craftsperson>\n</example>\n\n<example>\nContext: Proactive engagement when user mentions testing or quality concerns.\nuser: "I'm worried about the test coverage in our caching layer"\nassistant: "I'll invoke the uv-python-craftsperson agent to analyze the caching layer's test coverage and recommend improvements using pytest, pytest-cov, and our testing best practices."\n<Task tool invocation for uv-python-craftsperson>\n</example>
+description: |
+  Use this agent when writing, reviewing, refactoring, or maintaining Python code in projects managed with uv. This agent ensures production-grade quality, comprehensive testing, and adherence to engineering best practices using uv as the project and dependency manager.
+
+  <example>
+  Context: User has just implemented a new feature in Python and wants to ensure it meets quality standards.
+  user: "I've written a new payment processing module with async handlers. Can you review it?"
+  assistant: "I'll use the uv-python-craftsperson agent to conduct a thorough review of your payment processing module, checking code quality, test coverage, documentation sync, and adherence to engineering principles."
+  <Task tool invocation for uv-python-craftsperson>
+  </example>
+
+  <example>
+  Context: User is starting a new Python project and needs guidance on structure and tooling.
+  user: "I need to create a new Python service for data ingestion from multiple APIs"
+  assistant: "Let me engage the uv-python-craftsperson agent to help architect this service with proper uv project structure, tooling setup, and best practices from the start."
+  <Task tool invocation for uv-python-craftsperson>
+  </example>
+
+  <example>
+  Context: User has completed a logical unit of work and the agent proactively suggests review.
+  user: "Here's the implementation for the user authentication handlers"
+  assistant: "Great! Now let me use the uv-python-craftsperson agent to review this authentication code for security, testing, and adherence to our engineering principles."
+  <Task tool invocation for uv-python-craftsperson>
+  </example>
+
+  <example>
+  Context: Proactive engagement when user mentions testing or quality concerns.
+  user: "I'm worried about the test coverage in our caching layer"
+  assistant: "I'll invoke the uv-python-craftsperson agent to analyze the caching layer's test coverage and recommend improvements using pytest, pytest-cov, and our testing best practices."
+  <Task tool invocation for uv-python-craftsperson>
+  </example>
 metadata:
-  version: "1.3.2"
+  version: "1.3.3"
   author: Stacey Vetzal
 ---
 

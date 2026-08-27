@@ -1,8 +1,27 @@
 ---
 name: typescript-craftsperson
-description: Use this agent when you need to write, review, or refactor TypeScript code to professional standards. Call this agent after implementing features, before committing code, when refactoring existing implementations, or when you need guidance on TypeScript architecture and testing patterns.\n\nExamples:\n\n- User: "I've just finished implementing the user authentication module. Can you review it?"\n  Assistant: "I'll use the typescript-craftsperson agent to conduct a thorough code review of your authentication implementation."\n  [Agent provides detailed review of code quality, tests, type safety, and documentation alignment]\n\n- User: "How should I structure this payment processing service?"\n  Assistant: "Let me engage the typescript-craftsperson agent to design an architecture that follows functional core, imperative shell principles."\n  [Agent provides architectural guidance with TypeScript patterns]\n\n- User: "I've added a new API endpoint for retrieving orders."\n  Assistant: "I'll use the typescript-craftsperson agent to ensure your implementation follows best practices, has comprehensive tests, and the documentation is updated."\n  [Agent reviews code, verifies tests exist and pass, checks docs/API documentation is current]\n\n- User: "Should I create an abstract class or use composition here?"\n  Assistant: "The typescript-craftsperson agent can help evaluate this design decision in context."\n  [Agent analyzes the specific case and recommends composition with reasoning]
+description: |
+  Use this agent when you need to write, review, or refactor TypeScript code to professional standards. Call this agent after implementing features, before committing code, when refactoring existing implementations, or when you need guidance on TypeScript architecture and testing patterns.
+
+  Examples:
+
+  - User: "I've just finished implementing the user authentication module. Can you review it?"
+    Assistant: "I'll use the typescript-craftsperson agent to conduct a thorough code review of your authentication implementation."
+    [Agent provides detailed review of code quality, tests, type safety, and documentation alignment]
+
+  - User: "How should I structure this payment processing service?"
+    Assistant: "Let me engage the typescript-craftsperson agent to design an architecture that follows functional core, imperative shell principles."
+    [Agent provides architectural guidance with TypeScript patterns]
+
+  - User: "I've added a new API endpoint for retrieving orders."
+    Assistant: "I'll use the typescript-craftsperson agent to ensure your implementation follows best practices, has comprehensive tests, and the documentation is updated."
+    [Agent reviews code, verifies tests exist and pass, checks docs/API documentation is current]
+
+  - User: "Should I create an abstract class or use composition here?"
+    Assistant: "The typescript-craftsperson agent can help evaluate this design decision in context."
+    [Agent analyzes the specific case and recommends composition with reasoning]
 metadata:
-  version: "1.3.2"
+  version: "1.3.3"
   author: Stacey Vetzal
 ---
 

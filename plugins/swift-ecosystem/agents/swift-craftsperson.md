@@ -1,8 +1,57 @@
 ---
 name: swift-craftsperson
-description: Use this agent when working with Swift code in any context—whether building iOS/macOS/watchOS/tvOS apps, server-side Swift projects, or Swift libraries. Invoke this agent for:\n\n- **Implementation work** - New features, refactoring, bug fixes in Swift codebases\n- **Quality assurance** - Code review, testing (Swift Testing or XCTest), SwiftLint/SwiftFormat compliance, dependency security audits\n- **Architecture decisions** - Choosing between value/reference types, protocol-oriented design, composition strategies, async/await patterns\n- **Documentation sync** - Ensuring DocC catalogs and markdown docs reflect current implementation\n- **Testing strategy** - Writing behaviour-focused tests, creating test doubles, async test patterns\n- **Build and dependency management** - Working with SwiftPM, Package.swift, modularization, dependency updates\n- **Final review** - Before committing, ensuring all quality gates pass (tests, linting, formatting, security)\n\n**Examples of when to use:**\n\n<example>\nContext: User is building a new feature for their iOS app and has just written the business logic.\nuser: "I've implemented the order processing logic in OrderProcessor.swift. Here's the code..."\nassistant: "Let me use the swift-craftsperson agent to review this implementation for Swift idioms, test coverage, and adherence to functional core principles."\n<commentary>\nSince the user has completed implementation work in Swift, delegate to swift-craftsperson to ensure the code follows value type patterns, is properly tested with Swift Testing, and separates pure logic from I/O.\n</commentary>\n</example>\n\n<example>\nContext: User wants to add a new dependency to their Swift package.\nuser: "I need to add Alamofire for networking in my SwiftPM package"\nassistant: "I'm going to use the swift-craftsperson agent to help you add this dependency correctly and review security implications."\n<commentary>\nSwiftPM dependency management requires expertise in Package.swift structure and understanding security implications. The swift-craftsperson will ensure the dependency is added correctly, suggest protocol-based abstractions for the networking layer, and run appropriate security checks.\n</commentary>\n</example>\n\n<example>\nContext: Agent should proactively review Swift code quality during development.\nuser: "Please implement a function to validate email addresses"\nassistant: "Here's an email validation function using Swift's regex capabilities..."\n<function implementation omitted>\nassistant: "Now let me use the swift-craftsperson agent to review this implementation for Swift best practices and add comprehensive tests."\n<commentary>\nEven though the user didn't explicitly request review, the swift-craftsperson should proactively ensure the code follows Simple Design Heuristics, has Swift Testing coverage, and uses idiomatic Swift patterns.\n</commentary>\n</example>\n\n<example>\nContext: User is refactoring existing code to improve testability.\nuser: "This view model has too many dependencies and is hard to test"\nassistant: "Let me use the swift-craftsperson agent to refactor this following functional core/imperative shell principles."\n<commentary>\nRefactoring for testability requires deep understanding of Swift composition patterns, protocol-oriented design, and separation of pure logic from side effects. The swift-craftsperson will guide this architectural improvement.\n</commentary>\n</example>
+description: |
+  Use this agent when working with Swift code in any context—whether building iOS/macOS/watchOS/tvOS apps, server-side Swift projects, or Swift libraries. Invoke this agent for:
+
+  - **Implementation work** - New features, refactoring, bug fixes in Swift codebases
+  - **Quality assurance** - Code review, testing (Swift Testing or XCTest), SwiftLint/SwiftFormat compliance, dependency security audits
+  - **Architecture decisions** - Choosing between value/reference types, protocol-oriented design, composition strategies, async/await patterns
+  - **Documentation sync** - Ensuring DocC catalogs and markdown docs reflect current implementation
+  - **Testing strategy** - Writing behaviour-focused tests, creating test doubles, async test patterns
+  - **Build and dependency management** - Working with SwiftPM, Package.swift, modularization, dependency updates
+  - **Final review** - Before committing, ensuring all quality gates pass (tests, linting, formatting, security)
+
+  **Examples of when to use:**
+
+  <example>
+  Context: User is building a new feature for their iOS app and has just written the business logic.
+  user: "I've implemented the order processing logic in OrderProcessor.swift. Here's the code..."
+  assistant: "Let me use the swift-craftsperson agent to review this implementation for Swift idioms, test coverage, and adherence to functional core principles."
+  <commentary>
+  Since the user has completed implementation work in Swift, delegate to swift-craftsperson to ensure the code follows value type patterns, is properly tested with Swift Testing, and separates pure logic from I/O.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants to add a new dependency to their Swift package.
+  user: "I need to add Alamofire for networking in my SwiftPM package"
+  assistant: "I'm going to use the swift-craftsperson agent to help you add this dependency correctly and review security implications."
+  <commentary>
+  SwiftPM dependency management requires expertise in Package.swift structure and understanding security implications. The swift-craftsperson will ensure the dependency is added correctly, suggest protocol-based abstractions for the networking layer, and run appropriate security checks.
+  </commentary>
+  </example>
+
+  <example>
+  Context: Agent should proactively review Swift code quality during development.
+  user: "Please implement a function to validate email addresses"
+  assistant: "Here's an email validation function using Swift's regex capabilities..."
+  <function implementation omitted>
+  assistant: "Now let me use the swift-craftsperson agent to review this implementation for Swift best practices and add comprehensive tests."
+  <commentary>
+  Even though the user didn't explicitly request review, the swift-craftsperson should proactively ensure the code follows Simple Design Heuristics, has Swift Testing coverage, and uses idiomatic Swift patterns.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is refactoring existing code to improve testability.
+  user: "This view model has too many dependencies and is hard to test"
+  assistant: "Let me use the swift-craftsperson agent to refactor this following functional core/imperative shell principles."
+  <commentary>
+  Refactoring for testability requires deep understanding of Swift composition patterns, protocol-oriented design, and separation of pure logic from side effects. The swift-craftsperson will guide this architectural improvement.
+  </commentary>
+  </example>
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 

@@ -1,8 +1,69 @@
 ---
 name: kotlin-craftsperson
-description: Use this agent when working with Kotlin code in server-side (Ktor, Spring Boot) or desktop (Compose Desktop, JavaFX) applications. This includes:\n\n- Implementing new features using modern Kotlin idioms (data classes, sealed classes, extension functions, coroutines, Flow)\n- Refactoring existing Kotlin code to be more idiomatic and maintainable\n- Setting up or maintaining Gradle Kotlin DSL build configurations\n- Creating comprehensive test suites with JUnit 5, MockK, Kotest, or Ktor Test\n- Performing code quality reviews focusing on Kotlin best practices\n- Running quality gates (Ktlint, Detekt, JaCoCo, OWASP Dependency-Check)\n- Generating or updating Dokka documentation\n- Implementing structured concurrency patterns with coroutines\n- Designing domain models with sealed hierarchies and data classes\n\n**Examples of when to invoke this agent:**\n\n<example>\nContext: User has just written a new Kotlin service class for handling payment processing.\n\nuser: "I've implemented the PaymentProcessor class with coroutines for async payment handling"\n\nassistant: "Let me review the implementation for quality and best practices using the kotlin-craftsperson agent"\n\n<commentary>\nSince new Kotlin code has been written, use the kotlin-craftsperson agent to review for idiomatic Kotlin usage, proper coroutine handling, test coverage, and quality gate compliance.\n</commentary>\n</example>\n\n<example>\nContext: User is starting work on a new Ktor endpoint.\n\nuser: "I need to create a REST endpoint for user authentication in our Ktor app"\n\nassistant: "I'll use the kotlin-craftsperson agent to implement this endpoint following Kotlin and Ktor best practices"\n\n<commentary>\nSince this involves Kotlin server-side development with Ktor, delegate to kotlin-craftsperson to ensure proper use of Ktor idioms, coroutines, and comprehensive testing.\n</commentary>\n</example>\n\n<example>\nContext: User mentions Gradle build configuration issues.\n\nuser: "Our build.gradle.kts is getting messy with all these dependencies"\n\nassistant: "I'm going to use the kotlin-craftsperson agent to refactor the Gradle configuration using version catalogs and proper dependency management"\n\n<commentary>\nSince this involves Gradle Kotlin DSL and build configuration, use kotlin-craftsperson who specializes in modular Gradle setups with version catalogs.\n</commentary>\n</example>\n\n<example>\nContext: The agent should proactively offer quality checks after code changes.\n\nuser: "Thanks, that looks good"\n\nassistant: "Before we consider this complete, I'm going to use the kotlin-craftsperson agent to run full quality gates: Ktlint, Detekt, tests, JaCoCo coverage, and OWASP dependency checks"\n\n<commentary>\nProactively ensure quality standards by running all required checks before considering work complete, matching the mandatory quality gate philosophy from CLAUDE.md.\n</commentary>\n</example>
+description: |
+  Use this agent when working with Kotlin code in server-side (Ktor, Spring Boot) or desktop (Compose Desktop, JavaFX) applications. This includes:
+
+  - Implementing new features using modern Kotlin idioms (data classes, sealed classes, extension functions, coroutines, Flow)
+  - Refactoring existing Kotlin code to be more idiomatic and maintainable
+  - Setting up or maintaining Gradle Kotlin DSL build configurations
+  - Creating comprehensive test suites with JUnit 5, MockK, Kotest, or Ktor Test
+  - Performing code quality reviews focusing on Kotlin best practices
+  - Running quality gates (Ktlint, Detekt, JaCoCo, OWASP Dependency-Check)
+  - Generating or updating Dokka documentation
+  - Implementing structured concurrency patterns with coroutines
+  - Designing domain models with sealed hierarchies and data classes
+
+  **Examples of when to invoke this agent:**
+
+  <example>
+  Context: User has just written a new Kotlin service class for handling payment processing.
+
+  user: "I've implemented the PaymentProcessor class with coroutines for async payment handling"
+
+  assistant: "Let me review the implementation for quality and best practices using the kotlin-craftsperson agent"
+
+  <commentary>
+  Since new Kotlin code has been written, use the kotlin-craftsperson agent to review for idiomatic Kotlin usage, proper coroutine handling, test coverage, and quality gate compliance.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is starting work on a new Ktor endpoint.
+
+  user: "I need to create a REST endpoint for user authentication in our Ktor app"
+
+  assistant: "I'll use the kotlin-craftsperson agent to implement this endpoint following Kotlin and Ktor best practices"
+
+  <commentary>
+  Since this involves Kotlin server-side development with Ktor, delegate to kotlin-craftsperson to ensure proper use of Ktor idioms, coroutines, and comprehensive testing.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User mentions Gradle build configuration issues.
+
+  user: "Our build.gradle.kts is getting messy with all these dependencies"
+
+  assistant: "I'm going to use the kotlin-craftsperson agent to refactor the Gradle configuration using version catalogs and proper dependency management"
+
+  <commentary>
+  Since this involves Gradle Kotlin DSL and build configuration, use kotlin-craftsperson who specializes in modular Gradle setups with version catalogs.
+  </commentary>
+  </example>
+
+  <example>
+  Context: The agent should proactively offer quality checks after code changes.
+
+  user: "Thanks, that looks good"
+
+  assistant: "Before we consider this complete, I'm going to use the kotlin-craftsperson agent to run full quality gates: Ktlint, Detekt, tests, JaCoCo coverage, and OWASP dependency checks"
+
+  <commentary>
+  Proactively ensure quality standards by running all required checks before considering work complete, matching the mandatory quality gate philosophy from CLAUDE.md.
+  </commentary>
+  </example>
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 

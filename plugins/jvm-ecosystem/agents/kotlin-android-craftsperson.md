@@ -1,8 +1,54 @@
 ---
 name: kotlin-android-craftsperson
-description: Use this agent when working with Kotlin Android codebases that follow modern Android development practices. This includes:\n\n- Implementing features using Jetpack Compose, coroutines, Flow, Hilt, Retrofit, Room\n- Reviewing Android code for architecture quality, testing completeness, and idiomatic patterns\n- Setting up or maintaining Gradle Kotlin DSL build configurations\n- Ensuring proper module boundaries and dependency management\n- Running quality gates (Ktlint, Detekt, JaCoCo, OWASP checks)\n- Writing or reviewing unit tests with JUnit 5, MockK, Turbine\n- Creating UI tests with Compose UI Test or Espresso\n- Generating or updating Dokka documentation\n\n<example>\nContext: User has just implemented a new feature module with ViewModel and Repository.\nuser: "I've created a UserProfileFeature module with MVVM architecture. Here's the ViewModel and Repository implementation."\nassistant: "Let me use the kotlin-android-craftsperson agent to review this code for architectural patterns, test coverage, and Android best practices."\n<commentary>\nSince the user has written Android code, delegate to kotlin-android-craftsperson to ensure it follows unidirectional data flow, proper coroutine usage, Hilt injection patterns, and has comprehensive tests.\n</commentary>\n</example>\n\n<example>\nContext: User is starting work on a new Android feature.\nuser: "I need to implement a chat feature that connects to a REST API and displays messages in real-time."\nassistant: "I'll use the kotlin-android-craftsperson agent to architect this feature with proper module separation, Retrofit for networking, Flow for real-time updates, and Compose UI."\n<commentary>\nThis is a greenfield Android feature requiring architectural decisions about modules, data flow, networking, and UI - perfect for the kotlin-android-craftsperson.\n</commentary>\n</example>\n\n<example>\nContext: Agent proactively runs quality checks after code changes.\nuser: "Thanks, the implementation looks good!"\nassistant: "Before we wrap up, let me use the kotlin-android-craftsperson agent to run the full quality gate: ./gradlew ktlintCheck detekt test jacocoTestReport dependencyCheckAnalyze"\n<commentary>\nProactively ensure all quality gates pass before considering work complete. This is mandatory per the quality standards.\n</commentary>\n</example>\n\n<example>\nContext: User asks for dependency updates.\nuser: "Can you update the Retrofit and Compose dependencies?"\nassistant: "I'll use the kotlin-android-craftsperson agent to update the version catalog and ensure compatibility across modules."\n<commentary>\nDependency management in libs.versions.toml and verifying module compatibility requires the kotlin-android-craftsperson's expertise.\n</commentary>\n</example>
+description: |
+  Use this agent when working with Kotlin Android codebases that follow modern Android development practices. This includes:
+
+  - Implementing features using Jetpack Compose, coroutines, Flow, Hilt, Retrofit, Room
+  - Reviewing Android code for architecture quality, testing completeness, and idiomatic patterns
+  - Setting up or maintaining Gradle Kotlin DSL build configurations
+  - Ensuring proper module boundaries and dependency management
+  - Running quality gates (Ktlint, Detekt, JaCoCo, OWASP checks)
+  - Writing or reviewing unit tests with JUnit 5, MockK, Turbine
+  - Creating UI tests with Compose UI Test or Espresso
+  - Generating or updating Dokka documentation
+
+  <example>
+  Context: User has just implemented a new feature module with ViewModel and Repository.
+  user: "I've created a UserProfileFeature module with MVVM architecture. Here's the ViewModel and Repository implementation."
+  assistant: "Let me use the kotlin-android-craftsperson agent to review this code for architectural patterns, test coverage, and Android best practices."
+  <commentary>
+  Since the user has written Android code, delegate to kotlin-android-craftsperson to ensure it follows unidirectional data flow, proper coroutine usage, Hilt injection patterns, and has comprehensive tests.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is starting work on a new Android feature.
+  user: "I need to implement a chat feature that connects to a REST API and displays messages in real-time."
+  assistant: "I'll use the kotlin-android-craftsperson agent to architect this feature with proper module separation, Retrofit for networking, Flow for real-time updates, and Compose UI."
+  <commentary>
+  This is a greenfield Android feature requiring architectural decisions about modules, data flow, networking, and UI - perfect for the kotlin-android-craftsperson.
+  </commentary>
+  </example>
+
+  <example>
+  Context: Agent proactively runs quality checks after code changes.
+  user: "Thanks, the implementation looks good!"
+  assistant: "Before we wrap up, let me use the kotlin-android-craftsperson agent to run the full quality gate: ./gradlew ktlintCheck detekt test jacocoTestReport dependencyCheckAnalyze"
+  <commentary>
+  Proactively ensure all quality gates pass before considering work complete. This is mandatory per the quality standards.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User asks for dependency updates.
+  user: "Can you update the Retrofit and Compose dependencies?"
+  assistant: "I'll use the kotlin-android-craftsperson agent to update the version catalog and ensure compatibility across modules."
+  <commentary>
+  Dependency management in libs.versions.toml and verifying module compatibility requires the kotlin-android-craftsperson's expertise.
+  </commentary>
+  </example>
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 

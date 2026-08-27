@@ -1,8 +1,47 @@
 ---
 name: ruby-craftsperson
-description: Use this agent when working with Ruby code in any context—whether pure Ruby, Rails applications, CLI tools, or gems. Invoke this agent for:\n\n- **Implementation work**: New features, refactoring, bug fixes, or architectural improvements\n- **Quality assurance**: Code review, ensuring RuboCop compliance, running RSpec/Capybara tests, coverage analysis with SimpleCov\n- **Security audits**: Running bundler-audit and Brakeman (for Rails apps) to identify vulnerabilities\n- **Documentation sync**: Ensuring YARD documentation in `docs/` accurately reflects current implementation\n- **Best practices enforcement**: Applying idiomatic Ruby patterns, Simple Design Heuristics, and functional core/imperative shell architecture\n- **Test-driven development**: Writing specs that reveal intent and test behavior, not implementation\n- **Final review**: Before any commit, ensuring all quality gates pass (tests green, linting clean, security clear, docs current)\n\nExamples:\n\n<example>\nContext: User has just written a new service object for processing payments in a Rails application.\nuser: "I've created a PaymentProcessor service. Here's the code: [code snippet]"\nassistant: "Let me use the ruby-craftsperson agent to review this service for code quality, test coverage, RuboCop compliance, and ensure it follows our functional core/imperative shell principles."\n<Task tool invocation to ruby-craftsperson>\n</example>\n\n<example>\nContext: User is about to commit changes to a Ruby gem.\nuser: "I think I'm ready to commit these changes to the User model."\nassistant: "Before committing, I'll invoke the ruby-craftsperson agent to run the full quality gate check: RSpec tests, RuboCop linting, SimpleCov coverage, bundler-audit security scan, and verify YARD docs are synchronized."\n<Task tool invocation to ruby-craftsperson>\n</example>\n\n<example>\nContext: User wants to add a new feature to extract user data.\nuser: "I need to add a feature that exports user data to CSV format."\nassistant: "I'll use the ruby-craftsperson agent to implement this feature following TDD principles, ensuring we write the spec first, then implement using idiomatic Ruby with proper separation of concerns."\n<Task tool invocation to ruby-craftsperson>\n</example>\n\n<example>\nContext: Agent proactively notices code that could be improved after user makes a change.\nuser: "I've updated the authentication logic in the sessions controller."\nassistant: "I notice you've made changes to authentication. Let me invoke the ruby-craftsperson agent to review for security best practices, ensure Brakeman is happy, and verify the integration tests cover the authentication flow properly."\n<Task tool invocation to ruby-craftsperson>\n</example>
+description: |
+  Use this agent when working with Ruby code in any context—whether pure Ruby, Rails applications, CLI tools, or gems. Invoke this agent for:
+
+  - **Implementation work**: New features, refactoring, bug fixes, or architectural improvements
+  - **Quality assurance**: Code review, ensuring RuboCop compliance, running RSpec/Capybara tests, coverage analysis with SimpleCov
+  - **Security audits**: Running bundler-audit and Brakeman (for Rails apps) to identify vulnerabilities
+  - **Documentation sync**: Ensuring YARD documentation in `docs/` accurately reflects current implementation
+  - **Best practices enforcement**: Applying idiomatic Ruby patterns, Simple Design Heuristics, and functional core/imperative shell architecture
+  - **Test-driven development**: Writing specs that reveal intent and test behavior, not implementation
+  - **Final review**: Before any commit, ensuring all quality gates pass (tests green, linting clean, security clear, docs current)
+
+  Examples:
+
+  <example>
+  Context: User has just written a new service object for processing payments in a Rails application.
+  user: "I've created a PaymentProcessor service. Here's the code: [code snippet]"
+  assistant: "Let me use the ruby-craftsperson agent to review this service for code quality, test coverage, RuboCop compliance, and ensure it follows our functional core/imperative shell principles."
+  <Task tool invocation to ruby-craftsperson>
+  </example>
+
+  <example>
+  Context: User is about to commit changes to a Ruby gem.
+  user: "I think I'm ready to commit these changes to the User model."
+  assistant: "Before committing, I'll invoke the ruby-craftsperson agent to run the full quality gate check: RSpec tests, RuboCop linting, SimpleCov coverage, bundler-audit security scan, and verify YARD docs are synchronized."
+  <Task tool invocation to ruby-craftsperson>
+  </example>
+
+  <example>
+  Context: User wants to add a new feature to extract user data.
+  user: "I need to add a feature that exports user data to CSV format."
+  assistant: "I'll use the ruby-craftsperson agent to implement this feature following TDD principles, ensuring we write the spec first, then implement using idiomatic Ruby with proper separation of concerns."
+  <Task tool invocation to ruby-craftsperson>
+  </example>
+
+  <example>
+  Context: Agent proactively notices code that could be improved after user makes a change.
+  user: "I've updated the authentication logic in the sessions controller."
+  assistant: "I notice you've made changes to authentication. Let me invoke the ruby-craftsperson agent to review for security best practices, ensure Brakeman is happy, and verify the integration tests cover the authentication flow properly."
+  <Task tool invocation to ruby-craftsperson>
+  </example>
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 

@@ -1,8 +1,45 @@
 ---
 name: cpp-qt-craftsperson
-description: Use this agent when working with C++/Qt codebases to ensure code quality, memory safety, and adherence to modern best practices. This includes writing new C++ or Qt code, reviewing recently written C++/Qt code, implementing features with proper RAII and resource management, setting up CMake build configurations, writing tests with Qt Test or Google Test, debugging memory issues, or ensuring compliance with static analysis tools. The agent should be invoked proactively after completing logical chunks of C++/Qt implementation.\n\nExamples:\n\n<example>\nContext: User asks to implement a new Qt widget class.\nuser: "Create a custom progress indicator widget that shows a spinning animation"\nassistant: "I'll implement this custom widget for you."\n<implementation of SpinningProgressWidget class>\nassistant: "Now let me use the cpp-qt-craftsperson agent to review this implementation for memory safety, Qt patterns, and modern C++ compliance."\n<Task tool invocation with cpp-qt-craftsperson agent>\n</example>\n\n<example>\nContext: User has just written a multithreaded data processing class.\nuser: "I finished implementing the DataProcessor class with background threading"\nassistant: "Let me invoke the cpp-qt-craftsperson agent to review your threading implementation for Qt worker patterns, thread safety, and potential race conditions."\n<Task tool invocation with cpp-qt-craftsperson agent>\n</example>\n\n<example>\nContext: User wants to add a new feature to an existing Qt application.\nuser: "Add a caching layer for the database queries in our Qt app"\nassistant: "I'll implement the caching layer with proper resource management."\n<implementation of cache class>\nassistant: "I'll now use the cpp-qt-craftsperson agent to verify memory safety, run static analysis checks, and ensure the implementation follows RAII principles."\n<Task tool invocation with cpp-qt-craftsperson agent>\n</example>\n\n<example>\nContext: User is setting up a new CMake project structure.\nuser: "Help me set up CMake for my new Qt6 application with tests"\nassistant: "I'll create the CMake configuration for you."\n<CMakeLists.txt creation>\nassistant: "Let me have the cpp-qt-craftsperson agent review this CMake setup for modern target-based patterns and proper Qt6 integration."\n<Task tool invocation with cpp-qt-craftsperson agent>\n</example>
+description: |
+  Use this agent when working with C++/Qt codebases to ensure code quality, memory safety, and adherence to modern best practices. This includes writing new C++ or Qt code, reviewing recently written C++/Qt code, implementing features with proper RAII and resource management, setting up CMake build configurations, writing tests with Qt Test or Google Test, debugging memory issues, or ensuring compliance with static analysis tools. The agent should be invoked proactively after completing logical chunks of C++/Qt implementation.
+
+  Examples:
+
+  <example>
+  Context: User asks to implement a new Qt widget class.
+  user: "Create a custom progress indicator widget that shows a spinning animation"
+  assistant: "I'll implement this custom widget for you."
+  <implementation of SpinningProgressWidget class>
+  assistant: "Now let me use the cpp-qt-craftsperson agent to review this implementation for memory safety, Qt patterns, and modern C++ compliance."
+  <Task tool invocation with cpp-qt-craftsperson agent>
+  </example>
+
+  <example>
+  Context: User has just written a multithreaded data processing class.
+  user: "I finished implementing the DataProcessor class with background threading"
+  assistant: "Let me invoke the cpp-qt-craftsperson agent to review your threading implementation for Qt worker patterns, thread safety, and potential race conditions."
+  <Task tool invocation with cpp-qt-craftsperson agent>
+  </example>
+
+  <example>
+  Context: User wants to add a new feature to an existing Qt application.
+  user: "Add a caching layer for the database queries in our Qt app"
+  assistant: "I'll implement the caching layer with proper resource management."
+  <implementation of cache class>
+  assistant: "I'll now use the cpp-qt-craftsperson agent to verify memory safety, run static analysis checks, and ensure the implementation follows RAII principles."
+  <Task tool invocation with cpp-qt-craftsperson agent>
+  </example>
+
+  <example>
+  Context: User is setting up a new CMake project structure.
+  user: "Help me set up CMake for my new Qt6 application with tests"
+  assistant: "I'll create the CMake configuration for you."
+  <CMakeLists.txt creation>
+  assistant: "Let me have the cpp-qt-craftsperson agent review this CMake setup for modern target-based patterns and proper Qt6 integration."
+  <Task tool invocation with cpp-qt-craftsperson agent>
+  </example>
 metadata:
-  version: "1.0.2"
+  version: "1.0.3"
   author: Stacey Vetzal
 ---
 

@@ -1,8 +1,37 @@
 ---
 name: clojure-craftsperson
-description: Use this agent when working with Clojure code, including implementation, refactoring, testing, code review, quality assurance, and documentation. This agent should be proactively engaged for:\n\n<example>\nContext: User has just written a new function for processing user data in a Clojure namespace.\nuser: "I've added a function to transform user records. Here's the code: (defn transform-user [user] (assoc user :processed true :timestamp (System/currentTimeMillis)))"\nassistant: "Let me use the clojure-craftsperson agent to review this code for immutability, purity, and idiomatic Clojure practices."\n<commentary>The code mixes pure data transformation with impure timestamp generation. The agent will suggest separating concerns and ensuring the function is pure by accepting timestamp as a parameter.</commentary>\n</example>\n\n<example>\nContext: User is starting a new Clojure service and needs guidance on project structure.\nuser: "I'm creating a new API service in Clojure. Should I use Leiningen or deps.edn?"\nassistant: "I'll use the clojure-craftsperson agent to provide guidance on project setup with deps.edn and idiomatic structure."\n<commentary>The agent will recommend deps.edn with named aliases, suggest namespace organization following functional core/imperative shell, and provide examples of well-structured projects.</commentary>\n</example>\n\n<example>\nContext: User has completed a logical chunk of Clojure code and it should be reviewed proactively.\nuser: "Here's the complete namespace for handling user authentication."\nassistant: "Now let me use the clojure-craftsperson agent to perform a comprehensive code review covering idiomatic patterns, test coverage, linting, and security."\n<commentary>After code is written, proactively engage the agent to run clj-kondo, check for pure function usage, verify test coverage with clojure.test, and ensure security best practices.</commentary>\n</example>\n\n<example>\nContext: Existing Leiningen project needs dependency updates.\nuser: "Can you update the dependencies in this project?"\nassistant: "I'm going to use the clojure-craftsperson agent to audit dependencies and suggest updates while respecting the existing Leiningen structure."\n<commentary>The agent will use lein-nvd for vulnerability scanning, suggest version updates, and potentially recommend gradual migration paths to deps.edn if appropriate.</commentary>\n</example>
+description: |
+  Use this agent when working with Clojure code, including implementation, refactoring, testing, code review, quality assurance, and documentation. This agent should be proactively engaged for:
+
+  <example>
+  Context: User has just written a new function for processing user data in a Clojure namespace.
+  user: "I've added a function to transform user records. Here's the code: (defn transform-user [user] (assoc user :processed true :timestamp (System/currentTimeMillis)))"
+  assistant: "Let me use the clojure-craftsperson agent to review this code for immutability, purity, and idiomatic Clojure practices."
+  <commentary>The code mixes pure data transformation with impure timestamp generation. The agent will suggest separating concerns and ensuring the function is pure by accepting timestamp as a parameter.</commentary>
+  </example>
+
+  <example>
+  Context: User is starting a new Clojure service and needs guidance on project structure.
+  user: "I'm creating a new API service in Clojure. Should I use Leiningen or deps.edn?"
+  assistant: "I'll use the clojure-craftsperson agent to provide guidance on project setup with deps.edn and idiomatic structure."
+  <commentary>The agent will recommend deps.edn with named aliases, suggest namespace organization following functional core/imperative shell, and provide examples of well-structured projects.</commentary>
+  </example>
+
+  <example>
+  Context: User has completed a logical chunk of Clojure code and it should be reviewed proactively.
+  user: "Here's the complete namespace for handling user authentication."
+  assistant: "Now let me use the clojure-craftsperson agent to perform a comprehensive code review covering idiomatic patterns, test coverage, linting, and security."
+  <commentary>After code is written, proactively engage the agent to run clj-kondo, check for pure function usage, verify test coverage with clojure.test, and ensure security best practices.</commentary>
+  </example>
+
+  <example>
+  Context: Existing Leiningen project needs dependency updates.
+  user: "Can you update the dependencies in this project?"
+  assistant: "I'm going to use the clojure-craftsperson agent to audit dependencies and suggest updates while respecting the existing Leiningen structure."
+  <commentary>The agent will use lein-nvd for vulnerability scanning, suggest version updates, and potentially recommend gradual migration paths to deps.edn if appropriate.</commentary>
+  </example>
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 

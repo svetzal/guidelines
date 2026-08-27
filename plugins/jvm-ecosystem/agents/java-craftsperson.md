@@ -1,8 +1,71 @@
 ---
 name: java-craftsperson
-description: Use this agent when working with Java code in any capacity, including: implementing new features, refactoring existing code, reviewing code quality, setting up or maintaining build configurations (Maven or Gradle), writing or improving tests, performing security audits, updating dependencies, or synchronizing documentation with implementation.\n\nExamples:\n\n<example>\nContext: User has just implemented a new service class for processing payments.\n\nuser: "I've implemented a PaymentProcessor service that handles credit card transactions. Here's the code:"\n\nassistant: "Let me use the java-craftsperson agent to review this implementation for code quality, test coverage, build configuration, and alignment with Java best practices."\n\n<commentary>\nSince the user has written Java code, delegate to java-craftsperson to ensure it follows modern Java idioms, has comprehensive JUnit 5 tests, proper Maven/Gradle integration, and adheres to Simple Design Heuristics.\n</commentary>\n</example>\n\n<example>\nContext: User is starting a new feature in an existing Java project.\n\nuser: "I need to add a REST endpoint for retrieving user profiles. The project uses Spring Boot and Maven."\n\nassistant: "I'll use the java-craftsperson agent to implement this feature following the functional core, imperative shell pattern with proper adapter separation."\n\n<commentary>\nThis is Java implementation work requiring knowledge of Spring Boot, Maven build configuration, test-driven development with JUnit 5, and architectural patterns. The java-craftsperson agent is the expert for this.\n</commentary>\n</example>\n\n<example>\nContext: Agent is proactively monitoring code quality during a development session.\n\nuser: "Here's my implementation of the UserRepository interface using JPA."\n\nassistant: "Before we proceed, let me use the java-craftsperson agent to run the full quality gate: Maven verify, Checkstyle, SpotBugs, JaCoCo coverage, and OWASP dependency-check."\n\n<commentary>\nQuality gates are mandatory before considering work complete. Proactively invoke java-craftsperson to run mvn verify and all static analysis tools to catch issues early.\n</commentary>\n</example>\n\n<example>\nContext: User commits code without running tests.\n\nuser: "I've committed the changes to the feature branch."\n\nassistant: "Wait - let me use the java-craftsperson agent to verify all quality gates passed before that commit is pushed."\n\n<commentary>\nThe agent should proactively enforce quality standards. If a commit happened without verified quality checks, use java-craftsperson to run them immediately and potentially request an amended commit if issues are found.\n</commentary>\n</example>\n\n<example>\nContext: User asks for help with dependency management.\n\nuser: "I'm getting a transitive dependency conflict with Jackson versions."\n\nassistant: "I'll use the java-craftsperson agent to analyze the dependency tree and resolve this conflict using Maven's dependencyManagement."\n\n<commentary>\nDependency management in Maven/Gradle is a core Java build concern. The java-craftsperson agent has expertise in mvn dependency:tree analysis and centralized version management.\n</commentary>\n</example>
+description: |
+  Use this agent when working with Java code in any capacity, including: implementing new features, refactoring existing code, reviewing code quality, setting up or maintaining build configurations (Maven or Gradle), writing or improving tests, performing security audits, updating dependencies, or synchronizing documentation with implementation.
+
+  Examples:
+
+  <example>
+  Context: User has just implemented a new service class for processing payments.
+
+  user: "I've implemented a PaymentProcessor service that handles credit card transactions. Here's the code:"
+
+  assistant: "Let me use the java-craftsperson agent to review this implementation for code quality, test coverage, build configuration, and alignment with Java best practices."
+
+  <commentary>
+  Since the user has written Java code, delegate to java-craftsperson to ensure it follows modern Java idioms, has comprehensive JUnit 5 tests, proper Maven/Gradle integration, and adheres to Simple Design Heuristics.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is starting a new feature in an existing Java project.
+
+  user: "I need to add a REST endpoint for retrieving user profiles. The project uses Spring Boot and Maven."
+
+  assistant: "I'll use the java-craftsperson agent to implement this feature following the functional core, imperative shell pattern with proper adapter separation."
+
+  <commentary>
+  This is Java implementation work requiring knowledge of Spring Boot, Maven build configuration, test-driven development with JUnit 5, and architectural patterns. The java-craftsperson agent is the expert for this.
+  </commentary>
+  </example>
+
+  <example>
+  Context: Agent is proactively monitoring code quality during a development session.
+
+  user: "Here's my implementation of the UserRepository interface using JPA."
+
+  assistant: "Before we proceed, let me use the java-craftsperson agent to run the full quality gate: Maven verify, Checkstyle, SpotBugs, JaCoCo coverage, and OWASP dependency-check."
+
+  <commentary>
+  Quality gates are mandatory before considering work complete. Proactively invoke java-craftsperson to run mvn verify and all static analysis tools to catch issues early.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User commits code without running tests.
+
+  user: "I've committed the changes to the feature branch."
+
+  assistant: "Wait - let me use the java-craftsperson agent to verify all quality gates passed before that commit is pushed."
+
+  <commentary>
+  The agent should proactively enforce quality standards. If a commit happened without verified quality checks, use java-craftsperson to run them immediately and potentially request an amended commit if issues are found.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User asks for help with dependency management.
+
+  user: "I'm getting a transitive dependency conflict with Jackson versions."
+
+  assistant: "I'll use the java-craftsperson agent to analyze the dependency tree and resolve this conflict using Maven's dependencyManagement."
+
+  <commentary>
+  Dependency management in Maven/Gradle is a core Java build concern. The java-craftsperson agent has expertise in mvn dependency:tree analysis and centralized version management.
+  </commentary>
+  </example>
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 

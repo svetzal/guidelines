@@ -16,6 +16,18 @@ metadata:
   author: Stacey Vetzal
 ```
 
+Write multi-line descriptions as YAML block scalars. Do not store line breaks
+as literal `\n` sequences in an unquoted scalar. Colons in that form can make
+the frontmatter invalid, which prevents package managers from reading the
+version even when `metadata.version` is present.
+
+```yaml
+description: |
+  Use this agent when working with the example tool.
+
+  Invoke it after a logical chunk of work is complete.
+```
+
 **Version** — use semantic versioning (`MAJOR.MINOR.PATCH`):
 - **MAJOR**: Breaking changes to behavior or removed guidance
 - **MINOR**: New capabilities, sections, or recommendations

@@ -1,8 +1,44 @@
 ---
 name: elixir-phoenix-craftsperson
-description: Use this agent for Phoenix web applications with LiveView, HEEx templates, and UI/UX concerns. Includes full Elixir expertise PLUS Phoenix framework patterns, dark mode, and frontend polish. For pure Elixir without Phoenix UI, use elixir-craftsperson instead.\n\n**When to use this agent:**\n- Phoenix LiveView applications\n- Any work involving HEEx templates\n- Phoenix web apps with user interfaces\n- UI/UX implementation and review\n- Dark mode / theming / daisyUI styling\n- Full-stack Phoenix projects\n- Phoenix contexts that serve LiveViews\n\n**Proactive Usage Examples:**\n- user: "I've added a new LiveView for user settings"\n  assistant: "Let me use the elixir-phoenix-craftsperson agent to review the LiveView patterns and verify dark mode compatibility."\n\n- user: "The form isn't displaying correctly"\n  assistant: "I'll use the elixir-phoenix-craftsperson agent to debug the HEEx template and form handling."\n\n- user: "I need to add a modal with proper styling"\n  assistant: "Let me use the elixir-phoenix-craftsperson agent to implement this with daisyUI theme-aware colors."\n\n- user: "Review my Phoenix app before deployment"\n  assistant: "I'll use the elixir-phoenix-craftsperson agent to audit code quality, security, UI consistency, and dark mode."\n\n**Specific Scenarios:**\n- Building Phoenix LiveView interfaces\n- HEEx template syntax and patterns\n- Phoenix router, contexts, and Ecto schemas\n- Form handling with to_form/2 and changesets\n- LiveView streams, hooks, and JS interop\n- Dark mode with daisyUI theme-aware colors\n- Tailwind CSS v4 styling\n- Phoenix 1.8 patterns (Layouts, core_components)\n- Testing LiveViews with Phoenix.LiveViewTest\n\n**Also includes:** All pure Elixir patterns (OTP, testing, Credo, security audits)
+description: |
+  Use this agent for Phoenix web applications with LiveView, HEEx templates, and UI/UX concerns. Includes full Elixir expertise PLUS Phoenix framework patterns, dark mode, and frontend polish. For pure Elixir without Phoenix UI, use elixir-craftsperson instead.
+
+  **When to use this agent:**
+  - Phoenix LiveView applications
+  - Any work involving HEEx templates
+  - Phoenix web apps with user interfaces
+  - UI/UX implementation and review
+  - Dark mode / theming / daisyUI styling
+  - Full-stack Phoenix projects
+  - Phoenix contexts that serve LiveViews
+
+  **Proactive Usage Examples:**
+  - user: "I've added a new LiveView for user settings"
+    assistant: "Let me use the elixir-phoenix-craftsperson agent to review the LiveView patterns and verify dark mode compatibility."
+
+  - user: "The form isn't displaying correctly"
+    assistant: "I'll use the elixir-phoenix-craftsperson agent to debug the HEEx template and form handling."
+
+  - user: "I need to add a modal with proper styling"
+    assistant: "Let me use the elixir-phoenix-craftsperson agent to implement this with daisyUI theme-aware colors."
+
+  - user: "Review my Phoenix app before deployment"
+    assistant: "I'll use the elixir-phoenix-craftsperson agent to audit code quality, security, UI consistency, and dark mode."
+
+  **Specific Scenarios:**
+  - Building Phoenix LiveView interfaces
+  - HEEx template syntax and patterns
+  - Phoenix router, contexts, and Ecto schemas
+  - Form handling with to_form/2 and changesets
+  - LiveView streams, hooks, and JS interop
+  - Dark mode with daisyUI theme-aware colors
+  - Tailwind CSS v4 styling
+  - Phoenix 1.8 patterns (Layouts, core_components)
+  - Testing LiveViews with Phoenix.LiveViewTest
+
+  **Also includes:** All pure Elixir patterns (OTP, testing, Credo, security audits)
 metadata:
-  version: "1.2.1"
+  version: "1.2.2"
   author: Stacey Vetzal
 ---
 
