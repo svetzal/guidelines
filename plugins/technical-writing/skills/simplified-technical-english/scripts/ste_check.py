@@ -193,6 +193,41 @@ def check_sentence(sent, findings, path, lineno):
                              f"\"{shown}\" — prefer: {WORD_CHOICE[base]}"))
 
 
+def check_heading(text, findings, path, lineno):
+    """Headings are not sentences, but the noun-cluster and word-choice rules
+    still apply — a title is the first thing a scanning reader parses."""
+    toks = words(clean(text))
+    lowered = [t.lower() for t in toks]
+    skip_first = bool(lowered) and lowered[0] in IMPERATIVE_OPENERS
+
+    run = 0
+    start = 0
+    for i, tok in enumerate(lowered):
+        if i == 0 and skip_first:
+            continue
+        if tok in FUNCTION_WORDS or not tok.isalpha():
+            run = 0
+        else:
+            if run == 0:
+                start = i
+            run += 1
+            if run == 4:
+                cluster = " ".join(toks[start:start + 4])
+                findings.append((path, lineno, "noun-cluster",
+                                 f"possible 4+ word cluster in heading: \"{cluster}\" "
+                                 "(heuristic — read before acting)"))
+                run = 0
+
+    seen = set()
+    for tok in lowered:
+        base = tok if tok in WORD_CHOICE else base_form(tok)
+        if base in WORD_CHOICE and base not in seen:
+            seen.add(base)
+            shown = base if base == tok else f"{tok} ({base})"
+            findings.append((path, lineno, "word-choice",
+                             f"\"{shown}\" in heading — prefer: {WORD_CHOICE[base]}"))
+
+
 def check_file(path):
     findings = []
     in_fence = False
@@ -203,7 +238,10 @@ def check_file(path):
         if FENCE.match(raw):
             in_fence = not in_fence
             continue
-        if in_fence or HEADING.match(raw) or TABLE_ROW.match(raw):
+        if not in_fence and HEADING.match(raw):
+            check_heading(raw.lstrip(" #"), findings, str(path), lineno)
+            continue
+        if in_fence or TABLE_ROW.match(raw):
             continue
 
         line = clean(raw)

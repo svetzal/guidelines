@@ -13,7 +13,7 @@ description: >
   the user never names the standard.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: Stacey Vetzal
 ---
 
@@ -56,7 +56,9 @@ problems, and the checker script finds the mechanical remainder.
 6. Keep the articles. "Remove the cover", not telegraphic "remove cover".
 7. Maximum three words in a noun cluster. Break longer stacks with
    prepositions: "the tooling repo for the smoke tests", not "the smoke test
-   tooling repo".
+   tooling repo". Titles and headings obey this rule too — they are the first
+   thing a scanning reader parses, and "Database backup verification
+   procedure" is a cluster like any other.
 8. Maximum six sentences per paragraph, one topic per paragraph. Use a vertical
    list when a sentence enumerates more than three items.
 9. Warnings and cautions come before the step they modify, as short standalone
@@ -116,6 +118,14 @@ rest are mechanical and can be trusted.
 
 The checker cannot see the judgement rules. One instruction per sentence, one
 word per concept, and warning placement still need you to read the text.
+Check the title and the headings in that pass too — the checker examines them
+for clusters and word choice, but a heading that misdescribes its section is
+yours to catch.
+
+When you report violations to someone (a review rather than a rewrite), keep
+each violation a separate finding with its location and its fix. One finding
+that lumps three problems together is three corrections the reader has to
+untangle before they can make any of them.
 
 ## Rewriting non-STE text
 
