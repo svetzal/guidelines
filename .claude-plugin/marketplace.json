@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.2.0"
+    "version": "2.3.0"
   },
   "plugins": [
     {
@@ -92,6 +92,12 @@
       "description": "Stacey Vetzal's writing and presentation voice guides",
       "source": "./plugins/stacey-voice",
       "category": "personal"
+    },
+    {
+      "name": "technical-writing",
+      "description": "Technical writing standards — ASD-STE100 Simplified Technical English for procedures and documentation",
+      "source": "./plugins/technical-writing",
+      "category": "functional"
     }
   ]
 }

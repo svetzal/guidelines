@@ -1,0 +1,11 @@
+{
+  "name": "technical-writing",
+  "version": "1.0.0",
+  "description": "Technical writing standards — ASD-STE100 Simplified Technical English for procedures and documentation",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": ["writing", "documentation", "simplified-technical-english", "ste", "controlled-language"]
+}
