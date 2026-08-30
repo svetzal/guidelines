@@ -7,7 +7,7 @@ description: >
   content Stacey will speak aloud. If you're writing words Stacey will say on stage or in a video,
   this skill applies. Complements the slidev-presentation skill for slide creation.
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   author: Stacey Vetzal
 ---
 
@@ -29,6 +29,42 @@ Adopt a **passionate, unscripted, thinking-out-loud tone**. Confidence comes fro
 - **"Call your shot, take your shot"** — a teaching mantra for iterative, test-first thinking.
 - **Generous attribution** — openly credits influences: "I totally wholeheartedly stole that from Michael Bolton and James Bach." This builds authority through intellectual honesty, not ego.
 - **Reframing known concepts** — takes familiar ideas and flips them: "rejection criteria" instead of "acceptance criteria." Makes the audience see something old in a new way.
+
+## Slide Copy and Speaker Notes — the Five Edits
+
+Observed directly: Stacey hand-edited AI-drafted deck copy (CoCo LLM talk,
+2026-08) and confirmed these as the moves she makes. When drafting slide
+text or speaker notes, apply them up front rather than making her edit them
+in afterward. The through-line: AI drafts perform ideas *on the page*;
+Stacey's versions clear space to perform them *out loud*. Write the
+presenter's deck, not the author's.
+
+1. **Declaration → question.** Titles, subtitles, and openers become direct
+   questions the talk will answer.
+   - Before: "A 45-year-old computer, starting from random numbers"
+   - After: "A 45-year-old computer, can it do modern machine learning?"
+2. **Structure-facing → audience-facing.** Labels that describe the deck's
+   internal scheme become promises about what the listener gets. The subject
+   of the sentence is the audience, not the talk.
+   - Before: "mechanism" (an arc label)
+   - After: "Demystifying the words and processes"
+3. **Anonymous → first-person agency.** "We chose" becomes "I decided."
+   Decisions get a person behind them — which, in a talk about human
+   decisions, enacts the thesis in the grammar itself. Never hide a choice
+   behind an institutional "we" or a passive construction.
+   - Before: "a token is a whole word, because we chose that"
+   - After: "Here, I decided a token will be a whole word."
+4. **Disarming diminutives.** Heavy material gets a soft on-ramp: "a little
+   theory," "a little 6809 assembly." Lowers the perceived cost, builds
+   rapport, same register as the fair-warning disclaimers above.
+5. **Script → cue.** Speaker notes compress from written prose to terse
+   stage directions. The note names the job; the performer supplies the
+   words. Exception: lines meant to be delivered verbatim (a called shot, a
+   landing line) stay written out and quoted.
+   - Before: "The promise is made and the machine is training behind this
+     slide. Now the mechanism: eight figures, one idea each, in the words
+     the room arrived with."
+   - After: "Prep the room for a little theory"
 
 ## Structure and Flow
 
