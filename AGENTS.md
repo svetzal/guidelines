@@ -83,3 +83,27 @@ that only works in a single ecosystem.
 - Skills live in `skills/` as directories containing a `SKILL.md`
 - The skill `name` frontmatter field must match its parent directory name
 - See [agents/README.md](agents/README.md) and [skills/README.md](skills/README.md) for format details
+
+## Validators
+
+Intent records under `intents/` may carry `static-check` evidence entries that
+name an executable validator. The validators live in `checks/` beside the
+records they serve: `checks/<language>/<slug>.py` is the entry point, the checks
+themselves are in `checks/lib/adherence/`, and `checks/README.md` documents the
+layout and the helper-binary convention. The invocation protocol and verdict
+contract are owned by the verifier, `cmv`, and specified in `CMV.md` of the
+context-mixer repository (https://github.com/svetzal/context-mixer2); this
+repository implements that protocol, it does not define it.
+
+Every validator ships with a fixture it is expected to pass and one it is
+expected to not pass, under `checks/fixtures/<language>/`, and the calibration
+gate runs all of them the way the verifier would, twice, requiring identical
+output:
+
+```bash
+python3 checks/calibrate.py
+```
+
+A validator change — a new check, a corrected one, a changed helper — is not
+done until calibration is green. Add the fixture that demonstrates the
+correction in the same commit.

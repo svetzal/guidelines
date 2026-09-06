@@ -1,0 +1,20 @@
+[package]
+name = "rustfacts"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Emit a language-neutral fact document for a Rust source tree, read by the Rust validators under checks/rust/."
+
+# A standalone workspace root on purpose. This is validator tooling that ships
+# inside a knowledge base of TOML records and Markdown, not a member of any
+# product workspace; the empty table keeps cargo from searching upward for one.
+# Validators never build it in place — see lib/adherence/rustfacts.py for the
+# content-addressed cache it is built into.
+[workspace]
+
+[dependencies]
+proc-macro2 = { version = "1", features = ["span-locations"] }
+quote = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+syn = { version = "2", features = ["full", "visit", "parsing", "printing", "extra-traits"] }

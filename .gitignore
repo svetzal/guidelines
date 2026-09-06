@@ -1,1 +1,4 @@
 _site/
+checks/rustfacts/target/
+checks/fixtures/**/target/
+__pycache__/

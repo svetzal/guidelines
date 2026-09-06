@@ -48,6 +48,17 @@ Categories organize the catalogue and provide large-scale landmarks in the
 graph. Tags connect intents laterally. Neither replaces an explicit
 relationship when one intent is a recognizable specialization of another.
 
+## Static-check evidence
+
+An `evidence` entry of type `static-check` names an executable validator that
+decides, from a project's source alone, whether the code holds the intent. It
+carries `language` (the source language it reads) and `run` (a path relative to
+the repository root, under `checks/`) alongside the `description` and `required`
+every evidence entry has. The description is what an agent sees in compiled
+guidance, so it states the observable expectation the check enforces. The
+validators, their protocol, and the calibration fixtures that prove each one can
+both pass and fail are documented in [checks/README.md](../checks/README.md).
+
 ## Enrichment
 
 Run the deterministic enrichment tool after adding or renaming ecosystem

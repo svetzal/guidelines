@@ -1,0 +1,88 @@
+{
+  "check_config": {
+    "business_rule_minimum_matches": 2,
+    "business_rule_pattern": "\\b10_?000\\b|\\b500\\b|\\b20\\b",
+    "package": "ratecard"
+  },
+  "validators": {
+    "centralize-curated-lint-policy": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "compile-public-documentation": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "isolate-functional-core-from-effects": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "prefer-fakes-at-boundaries": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": false
+      }
+    },
+    "put-gateways-at-effect-boundaries": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "use-purpose-specific-test-layers": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "use-results-for-recoverable-library-errors": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "use-structured-tracing": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ Guardrails for AI-assisted software development — a collection of agents, skil
 - **`agents/`** — Opinionated "craftsperson" agents for 16 language/framework stacks. Each agent enforces quality gates, TDD workflow, and language-idiomatic patterns. See [agents/README.md](agents/README.md).
 - **`skills/`** — Reusable skills following the [Agent Skills specification](https://agentskills.io/specification). See [skills/README.md](skills/README.md).
 - **`conventions/`** — Application-level design conventions (CLI UX, and more to come) gathered as plain documentation before graduating into skills. See [conventions/README.md](conventions/README.md).
+- **`checks/`** — Codified validators for intent records: the executables behind `static-check` evidence entries, which a verifier runs against a project's source to decide whether it holds the intent, plus the calibration fixtures that prove each one can pass and fail. See [checks/README.md](checks/README.md).
 - **`AGENTS.md`** — Baseline standards (versioning, frontmatter, file conventions) shared by all agents and skills in this repo.
 
 ## Why This Exists
