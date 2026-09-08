@@ -1,0 +1,104 @@
+# Ecosystem sensors for this intent atlas.
+#
+# Each table declares one ecosystem the atlas supports and how the tooling
+# recognizes it at a project's root. Names are the atlas's own vocabulary:
+# every one must be a directory the realization hierarchy under intents/ uses
+# (`python` for intents/craftsperson/python/, `uv` for the nested
+# intents/craftsperson/python/uv/), and a nested ecosystem must `implies` its
+# parent. The tooling (cmf, cmv) only evaluates this file — it validates it
+# against the records at scan time and never edits it.
+#
+# An ecosystem is detected when any signature holds. Predicate kinds:
+#   { file = "<root-relative path>" }             the path exists (file or directory)
+#   { file = "<path>", contains = "<literal>" }   the file exists and holds the literal
+#   { glob = "<pattern>" }                        a root-level entry (file or directory) matches
+# Every predicate reads only the project root.
+
+[clojure]
+signatures = [
+  { file = "deps.edn" },
+  { file = "project.clj" },
+  { file = "shadow-cljs.edn" },
+]
+
+[cpp-qt]
+signatures = [
+  { file = "CMakeLists.txt", contains = "Qt" },
+  { glob = "*.pro" },
+]
+
+[csharp]
+signatures = [
+  { glob = "*.sln" },
+  { glob = "*.csproj" },
+  { file = "global.json" },
+]
+
+[elixir]
+signatures = [{ file = "mix.exs" }]
+
+[phoenix]
+implies = ["elixir"]
+signatures = [{ file = "mix.exs", contains = ":phoenix" }]
+
+[go]
+signatures = [{ file = "go.mod" }]
+
+[java]
+signatures = [
+  { file = "pom.xml" },
+  { file = "build.gradle" },
+]
+
+[kotlin]
+signatures = [
+  { file = "build.gradle.kts" },
+  { file = "settings.gradle.kts" },
+]
+
+# Root-only: an Android project that declares the plugin solely in an app
+# module's build.gradle.kts (and not at the root) is detected as kotlin only.
+[android]
+implies = ["kotlin"]
+signatures = [{ file = "build.gradle.kts", contains = "com.android" }]
+
+[python]
+signatures = [
+  { file = "pyproject.toml" },
+  { file = "setup.py" },
+  { file = "setup.cfg" },
+  { glob = "requirements*.txt" },
+]
+
+[uv]
+implies = ["python"]
+signatures = [
+  { file = "uv.lock" },
+  { file = "pyproject.toml", contains = "[tool.uv]" },
+]
+
+[ruby]
+signatures = [
+  { file = "Gemfile" },
+  { glob = "*.gemspec" },
+]
+
+[rust]
+signatures = [{ file = "Cargo.toml" }]
+
+[swift]
+signatures = [
+  { file = "Package.swift" },
+  { glob = "*.xcodeproj" },
+]
+
+[typescript]
+signatures = [{ file = "tsconfig.json" }]
+
+[bun-cli]
+implies = ["typescript"]
+signatures = [
+  { file = "bun.lock" },
+  { file = "bun.lockb" },
+  { file = "bunfig.toml" },
+]
