@@ -1,0 +1,108 @@
+{
+  "check_config": {
+    "blocking_symbols": [
+      "time.sleep",
+      "requests.get",
+      "requests.post",
+      "requests.put",
+      "requests.delete",
+      "requests.request",
+      "urllib.request.urlopen",
+      "socket.create_connection",
+      "subprocess.run",
+      "subprocess.check_output"
+    ],
+    "bounded_operations": [
+      "client.get",
+      "client.request",
+      "session.get",
+      "httpx.get"
+    ],
+    "package": "probefan",
+    "resource_symbols": [
+      "httpx.AsyncClient",
+      "aiohttp.ClientSession"
+    ]
+  },
+  "validators": {
+    "deterministic-resource-cleanup": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "graceful-async-timeouts-and-cancellation": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "interface-checked-mocks": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": false
+      }
+    },
+    "isolated-async-tests": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "no-shared-mutable-defaults": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "nonblocking-async-io": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "parametrized-behavior-cases": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "structured-concurrent-lifetimes": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    }
+  }
+}

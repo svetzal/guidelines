@@ -1,0 +1,89 @@
+{
+  "check_config": {
+    "business_rule_minimum_matches": 2,
+    "business_rule_pattern": "0\\.025|0\\.015|0\\.008|\\b2\\.5\\b|\\b1\\.5\\b|\\b0\\.8\\b",
+    "package": "fxsettle"
+  },
+  "validators": {
+    "colocated-module-specifications": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "functional-core-imperative-shell": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "gateway-only-mocking": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "immutable-domain-models": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "native-modern-type-syntax": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "native-pytest-assertions": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "readable-bdd-specifications": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    },
+    "specific-domain-errors": {
+      "pass": {
+        "applicable": true,
+        "followed": true
+      },
+      "fail": {
+        "applicable": true,
+        "followed": false
+      }
+    }
+  }
+}

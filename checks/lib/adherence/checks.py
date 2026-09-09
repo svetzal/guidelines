@@ -166,6 +166,7 @@ def check_colocated_specs(workspace, config):
             "spec_discovery_configured": configured,
         },
         evidence,
+        [location(name) for name in colocated + stray + in_test_directory],
     )
 
 
@@ -173,13 +174,16 @@ def check_bdd_specifications(workspace, config):
     settings = tool_config(workspace.root, "pytest.ini_options")
     describe_classes = []
     should_methods = []
+    locations = []
     for module in workspace.tests:
         for node in module.classes():
             if node.name.startswith("Describe"):
                 describe_classes.append(f"{module.relative}::{node.name}")
+                locations.append(location(module.relative, node.lineno))
         for node in module.functions():
             if node.name.startswith("should_"):
                 should_methods.append(f"{module.relative}::{node.name}")
+                locations.append(location(module.relative, node.lineno))
 
     class_patterns = as_patterns(settings.get("python_classes"))
     function_patterns = as_patterns(settings.get("python_functions"))
@@ -205,6 +209,7 @@ def check_bdd_specifications(workspace, config):
             "naming_discovery_configured": configured,
         },
         evidence,
+        locations,
     )
 
 
@@ -212,9 +217,11 @@ def check_native_assertions(workspace, config):
     unittest_users = []
     self_assertions = []
     bare_assertions = 0
+    locations = []
     for module in workspace.tests:
         if "unittest" in module.imported_roots():
             unittest_users.append(module.relative)
+            locations.append(location(module.relative))
         for node in ast.walk(module.tree):
             if isinstance(node, ast.Assert):
                 bare_assertions += 1
@@ -225,6 +232,7 @@ def check_native_assertions(workspace, config):
                 and node.attr.startswith("assert")
             ):
                 self_assertions.append(f"{module.relative}::{node.attr}")
+                locations.append(location(module.relative, node.lineno))
 
     evidence = []
     if unittest_users:
@@ -242,6 +250,7 @@ def check_native_assertions(workspace, config):
             "testcase_assertions": self_assertions,
         },
         evidence,
+        locations,
     )
 
 
@@ -251,6 +260,7 @@ def check_modern_type_syntax(workspace, config):
     annotated = 0
     builtin_generics = 0
     union_operators = 0
+    locations = []
 
     for module in workspace.modules:
         for node in ast.walk(module.tree):
@@ -259,10 +269,12 @@ def check_modern_type_syntax(workspace, config):
                     alias.name == "annotations" for alias in node.names
                 ):
                     future_annotations.append(module.relative)
+                    locations.append(location(module.relative, node.lineno))
                 if node.module == "typing":
                     for alias in node.names:
                         if alias.name in LEGACY_TYPING_NAMES:
                             legacy_names.append(f"{module.relative}::typing.{alias.name}")
+                            locations.append(location(module.relative, node.lineno))
             if (
                 isinstance(node, ast.Attribute)
                 and isinstance(node.value, ast.Name)
@@ -270,6 +282,7 @@ def check_modern_type_syntax(workspace, config):
                 and node.attr in LEGACY_TYPING_NAMES
             ):
                 legacy_names.append(f"{module.relative}::typing.{node.attr}")
+                locations.append(location(module.relative, node.lineno))
 
         for annotation in _annotations_of(module.tree):
             annotated += 1
@@ -302,6 +315,7 @@ def check_modern_type_syntax(workspace, config):
             "declared_requires_python": declared_requires_python(workspace.root),
         },
         evidence,
+        locations,
     )
 
 
@@ -322,6 +336,7 @@ def _annotations_of(tree):
 
 def check_immutable_models(workspace, config):
     models = []
+    locations = []
     for module in workspace.production:
         for node in module.classes():
             shape = class_shape(node)
@@ -352,6 +367,7 @@ def check_immutable_models(workspace, config):
                         "mechanism": mechanism,
                     }
                 )
+                locations.append(location(module.relative, node.lineno))
 
     mutable = [model["name"] for model in models if not model["frozen"]]
 
@@ -365,6 +381,7 @@ def check_immutable_models(workspace, config):
         models and not mutable,
         {"models": models, "mutable_models": mutable},
         evidence,
+        locations,
     )
 
 
@@ -404,6 +421,7 @@ def check_functional_core(workspace, config):
             "modules_mixing_rules_and_io": mixed,
         },
         evidence,
+        [location(name) for name in mixed],
     )
 
 
@@ -412,6 +430,7 @@ def check_gateway_mocking(workspace, config):
     minimum = config.get("business_rule_minimum_matches", 2)
 
     patched = []
+    patch_sites = []
     for module in workspace.tests:
         for node in module.calls():
             target = _substitution_target(node)
@@ -425,10 +444,16 @@ def check_gateway_mocking(workspace, config):
                 )
                 if text:
                     patched.append({"module": module.relative, "call": target, "target": text})
+                    patch_sites.append(location(module.relative, node.lineno))
 
     third_party = [
         item
         for item in patched
+        if item["target"].split(".")[0].strip("'\"") in THIRD_PARTY_PATCH_ROOTS
+    ]
+    locations = [
+        site
+        for item, site in zip(patched, patch_sites, strict=True)
         if item["target"].split(".")[0].strip("'\"") in THIRD_PARTY_PATCH_ROOTS
     ]
 
@@ -440,12 +465,14 @@ def check_gateway_mocking(workspace, config):
             shape = class_shape(node)
             if GATEWAY_NAME.search(node.name) or {"Protocol", "ABC"} & shape["bases"]:
                 gateways.append(f"{module.relative}::{node.name}")
+                locations.append(location(module.relative, node.lineno))
     for module in workspace.production:
         if not module.imported_roots() & IO_MODULE_ROOTS:
             continue
         carries_rules = len(set(rule_pattern.findall(module.source))) >= minimum
         if GATEWAY_MODULE.search(module.path.stem) or not carries_rules:
             gateways.append(module.relative)
+            locations.append(location(module.relative))
 
     fakes = []
     for module in workspace.tests:
@@ -481,6 +508,7 @@ def check_gateway_mocking(workspace, config):
             "substitution_style": style,
         },
         evidence,
+        locations,
     )
 
 
@@ -506,6 +534,7 @@ def check_domain_errors(workspace, config):
     broad_except = []
     generic_raise = []
     documented = []
+    locations = []
 
     for module in workspace.production:
         for node in module.classes():
@@ -514,6 +543,7 @@ def check_domain_errors(workspace, config):
                 name.endswith("Error") for name in bases
             ):
                 custom.append(f"{module.relative}::{node.name}")
+                locations.append(location(module.relative, node.lineno))
         for node in ast.walk(module.tree):
             if isinstance(node, ast.ExceptHandler):
                 if node.type is None:
@@ -534,6 +564,7 @@ def check_domain_errors(workspace, config):
                 continue
             if class_shape(node)["bases"] & known:
                 custom.append(f"{module.relative}::{node.name}")
+                locations.append(location(module.relative, node.lineno))
 
     evidence = []
     if not custom:
@@ -555,6 +586,7 @@ def check_domain_errors(workspace, config):
             "functions_documenting_raises": documented,
         },
         evidence,
+        locations + [location_from_label(label) for label in bare_except + generic_raise],
     )
 
 
@@ -611,6 +643,7 @@ def check_nonblocking_async_io(workspace, config):
             "blocking_calls_delegated_to_executor": delegated,
         },
         evidence,
+        [location_from_label(item["where"]) for item in offenders + delegated],
     )
 
 
@@ -654,6 +687,7 @@ def check_structured_concurrency(workspace, config):
             "tasks_outside_a_group": loose,
         },
         evidence,
+        [location_from_label(item["where"]) for item in scopes + aggregations + loose],
     )
 
 
@@ -721,6 +755,10 @@ def check_async_timeouts(workspace, config):
             "cancellation_swallowed": swallowed,
         },
         evidence,
+        [
+            location_from_label(item["where"])
+            for item in scopes + waits + client_timeouts + unbounded + swallowed
+        ],
     )
 
 
@@ -768,6 +806,7 @@ def check_resource_cleanup(workspace, config):
             "manual_closes_outside_try": manual_closes,
         },
         evidence,
+        [location_from_label(item["where"]) for item in managed + unmanaged + manual_closes],
     )
 
 
@@ -827,6 +866,7 @@ def check_mutable_defaults(workspace, config):
             "none_sentinels": sentinels,
         },
         evidence,
+        [location_from_label(item["where"]) for item in offenders],
     )
 
 
@@ -836,10 +876,12 @@ def check_isolated_async_tests(workspace, config):
 
     async_tests = []
     markers = []
+    locations = []
     for module in workspace.tests:
         for node in module.functions():
             if isinstance(node, ast.AsyncFunctionDef):
                 async_tests.append(f"{module.relative}::{node.name}")
+                locations.append(location(module.relative, node.lineno))
             for decorator in decorator_names(node):
                 if "asyncio" in decorator or "anyio" in decorator:
                     markers.append(f"{module.relative}::{node.name}")
@@ -871,12 +913,14 @@ def check_isolated_async_tests(workspace, config):
             "warnings_as_errors": warnings_as_errors,
         },
         evidence,
+        locations,
     )
 
 
 def check_parametrized_cases(workspace, config):
     parametrized = []
     test_functions = []
+    locations = []
     for module in workspace.tests:
         for node in module.functions():
             if node.name.startswith(("should_", "test_")):
@@ -884,6 +928,7 @@ def check_parametrized_cases(workspace, config):
             for decorator in decorator_names(node):
                 if "parametrize" in decorator:
                     parametrized.append(f"{module.relative}::{node.name}")
+                    locations.append(location(module.relative, node.lineno))
                     break
 
     evidence = []
@@ -897,6 +942,7 @@ def check_parametrized_cases(workspace, config):
             "test_functions": test_functions,
         },
         evidence,
+        locations,
     )
 
 
@@ -905,6 +951,7 @@ def check_interface_checked_mocks(workspace, config):
     specced = []
     async_doubles = []
     fakes = []
+    fake_locations = []
     for module in workspace.tests:
         for node in module.calls():
             name = call_name(node)
@@ -922,6 +969,11 @@ def check_interface_checked_mocks(workspace, config):
         for node in module.classes():
             if FAKE_NAME.match(node.name):
                 fakes.append(f"{module.relative}::{node.name}")
+                fake_locations.append(location(module.relative, node.lineno))
+
+    locations = [
+        location_from_label(item["where"]) for item in specced + unspecced + async_doubles
+    ] + fake_locations
 
     signals = {
         "specced_mocks": specced,
@@ -937,13 +989,14 @@ def check_interface_checked_mocks(workspace, config):
         return not_applicable(
             signals,
             ["no test doubles of any kind; nothing to check an interface against"],
+            locations,
         )
 
     evidence = []
     if unspecced:
         evidence.append(f"{len(unspecced)} Mock construction(s) with no interface spec")
 
-    return result(not unspecced, signals, evidence)
+    return result(not unspecced, signals, evidence, locations)
 
 
 CHECKS = {

@@ -26,11 +26,15 @@ checks/
     rustfacts.py         locating (and on a miss, building) the Rust fact
                          extractor
   rust/<slug>.py         one executable entry point per Rust validator
+  python/<slug>.py       one executable entry point per Python validator
   rustfacts/             the syn-based fact extractor, a standalone crate
   fixtures/<language>/<set>/
     expected.json        per-validator expected verdicts and the config the
                          validators receive
     <arm>/               a workspace fixture, e.g. pass/ and fail/
+  fixtures/rust/rate-card/           the three current sets: one Rust,
+  fixtures/python/fx-settlement/     two Python, each a reference solution
+  fixtures/python/probe-fanout/      (pass/) and an untouched skeleton (fail/)
 ```
 
 Each entry point is a few lines: it puts `lib/` on `sys.path` and calls
@@ -160,10 +164,22 @@ stdout, prints a table, and exits nonzero on any mismatch. It also fails a
 validator that has no fixtures or whose fixtures never expect both a pass and a
 non-pass. A validator change is not done until calibration is green.
 
-The first Rust fixtures, `fixtures/rust/rate-card/`, are the reference solution
-(`pass/`, 8 of 8 followed) and the untouched skeleton (`fail/`, 0 of 7 followed,
-`prefer-fakes-at-boundaries` not applicable) of the context-mixer benchmark's
-rate-card exercise.
+The three current fixture sets are the reference solution (`pass/`) and the
+untouched skeleton (`fail/`) of a context-mixer benchmark exercise, one set per
+exercise:
+
+- `fixtures/rust/rate-card/` — 8 Rust validators; `pass/` 8 of 8 followed,
+  `fail/` 0 of 7 followed with `prefer-fakes-at-boundaries` not applicable.
+- `fixtures/python/fx-settlement/` — 8 Python validators (structure, naming,
+  typing); `pass/` 8 of 8 followed, `fail/` 0 of 8 followed.
+- `fixtures/python/probe-fanout/` — 8 Python validators (concurrency and
+  resource lifetime); `pass/` 8 of 8 followed, `fail/` 0 of 7 followed with
+  `interface-checked-mocks` not applicable, since a skeleton with no tests has
+  no doubles to spec.
+
+A skeleton arm that a conditional validator reads as not applicable is a
+legitimate non-pass: the fixture records `{"applicable": false}` and the gate
+still requires that validator to pass somewhere.
 
 ## Adding a validator
 
