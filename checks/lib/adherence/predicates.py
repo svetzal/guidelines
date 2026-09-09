@@ -601,14 +601,18 @@ def baseline_public_items(config):
     scored intent should be about what the agent produced.
     """
     root = config.get("baseline_root")
-    binary = config.get("rustfacts_binary")
-    if not root or not binary:
+    if not root:
         return set()
     root = pathlib.Path(root)
     if not root.is_dir():
         return set()
+    # The extractor is located the same way the validator's own run locates
+    # it (env, config, then the content-addressed cache) — a baseline must
+    # never be silently skipped because a harness stopped passing a binary.
+    from . import rustfacts
+
     try:
-        modules = collect_rust(root, binary)
+        modules = collect_rust(root, rustfacts.locate(config))
     except (RuntimeError, OSError):
         return set()
     return {
