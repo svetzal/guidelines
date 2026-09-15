@@ -1,423 +1,370 @@
 #!/usr/bin/env node
 
-/**
- * Blog Image Generator
- *
- * Generates images for blog posts using OpenAI's image API.
- * Can use the character avatar as a reference to maintain visual consistency.
- * Supports multiple image types: banner (16:9), callout (1:1), diagram (9:16).
- * Takes a scene JSON specification and produces a consistent cyberpunk-styled image.
- *
- * Usage: node generate-image.mjs <scene-json-path> <output-png-path> [options]
- *
- * Options:
- *   --with-character    Use character avatar reference (default for banner)
- *   --no-character      Skip character avatar reference (default for diagram)
- *
- * Environment: Requires OPENAI_API_KEY to be set
- */
+import { existsSync } from "node:fs";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
 
-import OpenAI, { toFile } from "openai";
-import { readFile, writeFile } from "fs/promises";
-import { createReadStream, existsSync } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+const DEFAULT_MODEL = "gpt-image-2.5-sunburst";
+const DEFAULT_API_BASE_URL = "https://api.openai.com/v1";
+const CHARACTER_REF_FILES = ["avatar.jpg", "stacey.jpg", "stacey2.jpg"];
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Character reference images for consistency - relative to repo root
-const CHARACTER_REF_PATHS = [
-  "assets/avatar.jpg",
-  "assets/stacey.jpg",
-  "assets/stacey2.jpg",
-];
-
-// Parse command line arguments
-const args = process.argv.slice(2);
-
-// Extract flags
-const withCharacter = args.includes("--with-character");
-const noCharacter = args.includes("--no-character");
-const positionalArgs = args.filter((arg) => !arg.startsWith("--"));
-
-if (positionalArgs.length < 2) {
-  console.error(
-    "Usage: node generate-image.mjs <scene-json-path> <output-png-path> [options]",
-  );
-  console.error("");
-  console.error("Options:");
-  console.error(
-    "  --with-character    Use character avatar reference (default for banner)",
-  );
-  console.error(
-    "  --no-character      Skip character avatar reference (default for diagram)",
-  );
-  console.error("");
-  console.error("Examples:");
-  console.error(
-    "  node generate-image.mjs posts/2025/images/my-banner.json posts/2025/images/my-banner.png",
-  );
-  console.error(
-    "  node generate-image.mjs posts/2025/images/diagram.json posts/2025/images/diagram.png --no-character",
-  );
-  console.error("");
-  console.error(
-    "The scene JSON should specify ImageType as 'banner', 'callout', or 'diagram'.",
-  );
-  console.error("Each type has a corresponding aspect ratio:");
-  console.error("  - banner:  16:9 (1536x1024) - Hero image at top of article");
-  console.error("  - callout: 1:1  (1024x1024) - Inline illustration");
-  console.error("  - diagram: 9:16 (1024x1536) - Tall infographic");
-  process.exit(1);
-}
-
-if (withCharacter && noCharacter) {
-  console.error(
-    "Error: Cannot specify both --with-character and --no-character",
-  );
-  process.exit(1);
-}
-
-const [scenePath, outputPath] = positionalArgs;
-
-// Validate input file exists
-if (!existsSync(scenePath)) {
-  console.error(`Error: Scene JSON not found: ${scenePath}`);
-  process.exit(1);
-}
-
-// Check for API key
-if (!process.env.OPENAI_API_KEY) {
-  console.error("Error: OPENAI_API_KEY environment variable not set");
-  process.exit(1);
-}
-
-/**
- * Image type configurations
- */
 const IMAGE_TYPES = {
   banner: {
-    aspectRatio: "16:9",
     size: "1536x1024",
     description: "Hero banner at top of article",
+    characterByDefault: true,
   },
   callout: {
-    aspectRatio: "1:1",
     size: "1024x1024",
     description: "Inline illustration within article",
+    characterByDefault: false,
   },
   diagram: {
-    aspectRatio: "9:16",
     size: "1024x1536",
     description: "Tall infographic or process diagram",
+    characterByDefault: false,
   },
 };
 
-/**
- * Build a prompt from the scene specification
- * Passes the JSON structure directly as the prompt, with optional character reference instruction
- * @param {Object} spec - The scene specification
- * @param {boolean} useCharacter - Whether character reference image is being used
- * @param {Array} propRefs - Array of prop reference objects with propName and path
- */
-function buildPrompt(spec, useCharacter = true, propRefs = []) {
-  let instructions = "";
+function printUsage() {
+  console.log(`
+Usage: node generate-image.mjs <scene-json-path> <output-png-path> [options]
 
-  // Character reference instruction (only for image edit mode)
-  if (useCharacter) {
-    instructions += "Use the provided reference images for the character. Maintain the character's appearance, face, and build exactly as shown in the character reference images.\n\n";
-  }
+Options:
+  --model <model>       OpenAI image model (default: ${DEFAULT_MODEL})
+  --assets-dir <path>   Directory containing character reference images
+  --with-character      Use character references (default for banners)
+  --no-character        Skip character references
+  --show-prompt         Print the complete generated prompt
+  --force               Overwrite an existing output file
+  -h, --help            Show this help
 
-  // Prop reference instructions
-  if (propRefs.length > 0) {
-    instructions += "PROP REFERENCE IMAGES: The following props have reference images provided. Render these props accurately based on their reference images:\n";
-    propRefs.forEach(ref => {
-      instructions += `  - ${ref.propName}: Use the provided reference image to render this prop accurately\n`;
-    });
-    instructions += "\n";
-  }
-
-  // Pass the JSON structure directly as the prompt
-  const jsonPrompt = JSON.stringify(spec, null, 2);
-
-  return instructions + jsonPrompt;
+Environment:
+  OPENAI_API_KEY        Required API key
+  OPENAI_IMAGE_MODEL    Session-wide model override
+  OPENAI_BASE_URL       API base URL (default: ${DEFAULT_API_BASE_URL})
+`);
 }
 
-/**
- * Get image size from image type
- */
-function getImageSize(spec) {
-  const imageType = spec.ImageType || "banner";
-  const typeConfig = IMAGE_TYPES[imageType];
-
-  if (!typeConfig) {
-    console.warn(`Unknown image type '${imageType}', defaulting to banner`);
-    return IMAGE_TYPES.banner.size;
-  }
-
-  return typeConfig.size;
+function fail(message) {
+  console.error(`Error: ${message}`);
+  process.exit(1);
 }
 
-/**
- * Find all character reference files, checking multiple possible locations
- * Returns array of resolved paths that exist
- */
-function findCharacterRefPaths() {
-  const foundPaths = [];
-  const repoRoot = path.resolve(__dirname, "../../../../");
-
-  for (const refPath of CHARACTER_REF_PATHS) {
-    // Try relative to current working directory first
-    if (existsSync(refPath)) {
-      foundPaths.push(refPath);
-      continue;
-    }
-
-    // Try relative to script location (go up to repo root)
-    const repoRefPath = path.join(repoRoot, refPath);
-    if (existsSync(repoRefPath)) {
-      foundPaths.push(repoRefPath);
-    }
-  }
-
-  return foundPaths;
-}
-
-/**
- * Find all prop reference images from the scene specification
- * Searches in Props arrays within Scene.Environment or Situation.Props
- * Returns array of { propName, path } objects for found images
- */
-function findPropRefPaths(spec, sceneJsonDir) {
-  const propRefs = [];
-  const repoRoot = path.resolve(__dirname, "../../../../");
-
-  // Helper to check a single prop for ReferenceImage
-  const checkProp = (prop) => {
-    if (!prop.ReferenceImage) return;
-
-    const refPath = prop.ReferenceImage;
-    let resolvedPath = null;
-
-    // Try relative to scene JSON directory first
-    const relativeToScene = path.join(sceneJsonDir, refPath);
-    if (existsSync(relativeToScene)) {
-      resolvedPath = relativeToScene;
-    }
-    // Try relative to current working directory
-    else if (existsSync(refPath)) {
-      resolvedPath = refPath;
-    }
-    // Try relative to repo root
-    else {
-      const repoRefPath = path.join(repoRoot, refPath);
-      if (existsSync(repoRefPath)) {
-        resolvedPath = repoRefPath;
-      }
-    }
-
-    if (resolvedPath) {
-      propRefs.push({
-        propName: prop.Item || prop.Name || 'unknown prop',
-        path: resolvedPath
-      });
-    } else {
-      console.warn(`Warning: Prop reference image not found: ${refPath}`);
-    }
+function parseArgs(args) {
+  const options = {
+    assetsDir: null,
+    force: false,
+    model: process.env.OPENAI_IMAGE_MODEL || DEFAULT_MODEL,
+    noCharacter: false,
+    positional: [],
+    showPrompt: false,
+    withCharacter: false,
   };
 
-  // Check Scene.Environment.Props (array format used in current banner)
-  if (spec.Scene?.Environment?.Props) {
-    const props = spec.Scene.Environment.Props;
-    if (Array.isArray(props)) {
-      props.forEach(checkProp);
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+
+    if (arg === "-h" || arg === "--help") {
+      printUsage();
+      process.exit(0);
+    }
+
+    if (arg === "--with-character") {
+      options.withCharacter = true;
+    } else if (arg === "--no-character") {
+      options.noCharacter = true;
+    } else if (arg === "--show-prompt") {
+      options.showPrompt = true;
+    } else if (arg === "--force") {
+      options.force = true;
+    } else if (arg === "--model" || arg === "--assets-dir") {
+      const value = args[index + 1];
+      if (!value || value.startsWith("--")) fail(`${arg} requires a value`);
+      if (arg === "--model") options.model = value;
+      if (arg === "--assets-dir") options.assetsDir = value;
+      index += 1;
+    } else if (arg.startsWith("--model=")) {
+      options.model = arg.slice("--model=".length);
+    } else if (arg.startsWith("--assets-dir=")) {
+      options.assetsDir = arg.slice("--assets-dir=".length);
+    } else if (arg.startsWith("--")) {
+      fail(`unknown option: ${arg}`);
+    } else {
+      options.positional.push(arg);
     }
   }
 
-  // Check Situation.Props (object with Character, Article, Environment arrays)
-  if (spec.Situation?.Props) {
-    const situationProps = spec.Situation.Props;
-    ['Character', 'Article', 'Environment'].forEach(category => {
-      if (Array.isArray(situationProps[category])) {
-        situationProps[category].forEach(checkProp);
-      }
-    });
+  if (!options.model) fail("--model requires a value");
+  if (options.assetsDir === "") fail("--assets-dir requires a value");
+  if (options.withCharacter && options.noCharacter) {
+    fail("cannot specify both --with-character and --no-character");
+  }
+  if (options.positional.length !== 2) {
+    printUsage();
+    fail("expected a scene JSON path and output PNG path");
   }
 
-  return propRefs;
+  const [scenePath, outputPath] = options.positional;
+  return { ...options, scenePath, outputPath };
 }
 
-/**
- * Determine whether to use character reference based on flags and image type
- */
-function shouldUseCharacter(imageType) {
-  // Explicit flags take precedence
-  if (withCharacter) return true;
-  if (noCharacter) return false;
+function ancestorDirectories(startPath) {
+  const directories = [];
+  let current = path.resolve(startPath);
 
-  // Default behavior based on image type
-  // - banner: typically features the character prominently
-  // - callout: depends on content (user should specify)
-  // - diagram: typically abstract, no character needed
-  switch (imageType) {
-    case "banner":
-      return true;
-    case "callout":
-      return false; // User can override with --with-character
-    case "diagram":
-      return false;
-    default:
-      return false;
+  while (true) {
+    directories.push(current);
+    const parent = path.dirname(current);
+    if (parent === current) return directories;
+    current = parent;
   }
+}
+
+function unique(paths) {
+  return [...new Set(paths.map((candidate) => path.resolve(candidate)))];
+}
+
+function firstExisting(paths) {
+  return unique(paths).find((candidate) => existsSync(candidate));
+}
+
+function findCharacterRefPaths(sceneDirectory, explicitAssetsDir) {
+  const assetDirectories = explicitAssetsDir
+    ? [path.resolve(explicitAssetsDir)]
+    : unique([
+        path.join(process.cwd(), "assets"),
+        ...ancestorDirectories(sceneDirectory).map((directory) =>
+          path.join(directory, "assets"),
+        ),
+      ]);
+
+  return CHARACTER_REF_FILES.flatMap((filename) => {
+    const found = firstExisting(
+      assetDirectories.map((directory) => path.join(directory, filename)),
+    );
+    return found ? [found] : [];
+  });
+}
+
+function collectProps(spec) {
+  const props = [];
+
+  if (Array.isArray(spec.Scene?.Environment?.Props)) {
+    props.push(...spec.Scene.Environment.Props);
+  }
+
+  for (const category of ["Character", "Article", "Environment"]) {
+    const categoryProps = spec.Situation?.Props?.[category];
+    if (Array.isArray(categoryProps)) props.push(...categoryProps);
+  }
+
+  return props;
+}
+
+function findPropRefPaths(spec, sceneDirectory) {
+  const ancestors = ancestorDirectories(sceneDirectory);
+
+  return collectProps(spec).flatMap((prop) => {
+    if (!prop.ReferenceImage) return [];
+
+    const found = firstExisting([
+      path.join(sceneDirectory, prop.ReferenceImage),
+      path.resolve(process.cwd(), prop.ReferenceImage),
+      ...ancestors.map((directory) =>
+        path.join(directory, prop.ReferenceImage),
+      ),
+    ]);
+
+    if (!found) {
+      console.warn(`Warning: prop reference not found: ${prop.ReferenceImage}`);
+      return [];
+    }
+
+    return [{ propName: prop.Item || prop.Name || "unknown prop", path: found }];
+  });
+}
+
+function buildPrompt(spec, useCharacter, propRefs) {
+  const instructions = [];
+
+  if (useCharacter) {
+    instructions.push(
+      "Use the provided reference images for the character. Maintain the character's appearance, face, and build exactly as shown in the character reference images.",
+    );
+  }
+
+  if (propRefs.length > 0) {
+    instructions.push(
+      "PROP REFERENCE IMAGES:\n" +
+        propRefs
+          .map(
+            ({ propName }) =>
+              `- ${propName}: render this prop accurately from its reference image`,
+          )
+          .join("\n"),
+    );
+  }
+
+  instructions.push(JSON.stringify(spec, null, 2));
+  return instructions.join("\n\n");
+}
+
+function mimeTypeFor(filePath) {
+  return path.extname(filePath).toLowerCase() === ".png"
+    ? "image/png"
+    : "image/jpeg";
+}
+
+async function requestOpenAI(endpoint, apiKey, body, headers = {}) {
+  const baseUrl = (process.env.OPENAI_BASE_URL || DEFAULT_API_BASE_URL).replace(
+    /\/+$/,
+    "",
+  );
+  const response = await fetch(`${baseUrl}/${endpoint}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, ...headers },
+    body,
+  });
+  const responseText = await response.text();
+
+  let payload;
+  try {
+    payload = JSON.parse(responseText);
+  } catch {
+    payload = null;
+  }
+
+  if (!response.ok) {
+    const detail = payload?.error?.message || responseText || response.statusText;
+    throw new Error(`OpenAI API returned ${response.status}: ${detail}`);
+  }
+
+  if (!payload) throw new Error("OpenAI API returned a non-JSON response");
+  return payload;
+}
+
+async function editImage(apiKey, model, prompt, size, referencePaths) {
+  const form = new FormData();
+  form.append("model", model);
+  form.append("prompt", prompt);
+  form.append("n", "1");
+  form.append("size", size);
+
+  for (const referencePath of referencePaths) {
+    const image = await readFile(referencePath);
+    form.append(
+      "image[]",
+      new Blob([image], { type: mimeTypeFor(referencePath) }),
+      path.basename(referencePath),
+    );
+  }
+
+  return requestOpenAI("images/edits", apiKey, form);
+}
+
+async function generateImage(apiKey, model, prompt, size) {
+  return requestOpenAI(
+    "images/generations",
+    apiKey,
+    JSON.stringify({ model, prompt, n: 1, size }),
+    { "Content-Type": "application/json" },
+  );
+}
+
+async function saveImage(response, outputPath) {
+  const imageData = response.data?.[0];
+  if (!imageData) throw new Error("OpenAI API response contained no image");
+
+  let imageBuffer;
+  if (imageData.b64_json) {
+    imageBuffer = Buffer.from(imageData.b64_json, "base64");
+  } else if (imageData.url) {
+    const imageResponse = await fetch(imageData.url);
+    if (!imageResponse.ok) {
+      throw new Error(`image download returned ${imageResponse.status}`);
+    }
+    imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
+  } else {
+    throw new Error("OpenAI API response had no image data or URL");
+  }
+
+  await mkdir(path.dirname(path.resolve(outputPath)), { recursive: true });
+  await writeFile(outputPath, imageBuffer);
 }
 
 async function main() {
-  console.log(`Reading scene specification from: ${scenePath}`);
+  const options = parseArgs(process.argv.slice(2));
+  const { scenePath, outputPath } = options;
 
-  // Read and parse the scene JSON
-  const sceneJson = await readFile(scenePath, "utf-8");
-  const spec = JSON.parse(sceneJson);
+  if (!existsSync(scenePath)) fail(`scene JSON not found: ${scenePath}`);
+  if (existsSync(outputPath) && !options.force) {
+    fail(`output already exists: ${outputPath} (use --force to overwrite)`);
+  }
 
-  // Determine image type
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) fail("OPENAI_API_KEY is not set");
+
+  const spec = JSON.parse(await readFile(scenePath, "utf8"));
   const imageType = spec.ImageType || "banner";
   const typeConfig = IMAGE_TYPES[imageType];
-
   if (!typeConfig) {
-    console.error(`Unknown image type: ${imageType}`);
-    console.error(`Valid types: ${Object.keys(IMAGE_TYPES).join(", ")}`);
-    process.exit(1);
-  }
-
-  console.log(`Image type: ${imageType} (${typeConfig.description})`);
-
-  // Determine if we should use character reference
-  const useCharacter = shouldUseCharacter(imageType);
-  let characterRefPaths = [];
-
-  if (useCharacter) {
-    // Find and validate character reference files
-    characterRefPaths = findCharacterRefPaths();
-    if (characterRefPaths.length === 0) {
-      console.error(`Error: No character reference images found`);
-      console.error(
-        "Expected files in assets/: avatar.jpg, stacey.jpg, stacey2.jpg",
-      );
-      console.error(
-        "Or use --no-character to generate without character reference.",
-      );
-      process.exit(1);
-    }
-    console.log(
-      `Using ${characterRefPaths.length} character reference images:`,
+    fail(
+      `unknown image type '${imageType}'; use ${Object.keys(IMAGE_TYPES).join(", ")}`,
     );
-    characterRefPaths.forEach((p) => console.log(`  - ${p}`));
-  } else {
-    console.log("Generating without character reference");
   }
 
-  // Find prop reference images
-  const sceneJsonDir = path.dirname(path.resolve(scenePath));
-  const propRefs = findPropRefPaths(spec, sceneJsonDir);
-  if (propRefs.length > 0) {
-    console.log(`Using ${propRefs.length} prop reference images:`);
-    propRefs.forEach((ref) => console.log(`  - ${ref.propName}: ${ref.path}`));
+  const useCharacter = options.withCharacter
+    ? true
+    : options.noCharacter
+      ? false
+      : typeConfig.characterByDefault;
+  const sceneDirectory = path.dirname(path.resolve(scenePath));
+  const characterRefs = useCharacter
+    ? findCharacterRefPaths(sceneDirectory, options.assetsDir)
+    : [];
+
+  if (useCharacter && characterRefs.length === 0) {
+    fail(
+      "no character references found; run from the content repository, use --assets-dir, or use --no-character",
+    );
+  }
+  if (useCharacter && characterRefs.length < CHARACTER_REF_FILES.length) {
+    console.warn(
+      `Warning: found ${characterRefs.length} of ${CHARACTER_REF_FILES.length} character references`,
+    );
   }
 
-  // Determine if we need to use the edit API (have any reference images)
-  const hasReferenceImages = useCharacter || propRefs.length > 0;
-
-  // Build the prompt (pass useCharacter to adjust prompt accordingly)
+  const propRefs = findPropRefPaths(spec, sceneDirectory);
+  const referencePaths = [
+    ...characterRefs,
+    ...propRefs.map(({ path: propPath }) => propPath),
+  ];
   const prompt = buildPrompt(spec, useCharacter, propRefs);
-  console.log("\n--- Generated Prompt ---");
-  console.log(prompt);
-  console.log("--- End Prompt ---\n");
 
-  // Determine image size
-  const size = getImageSize(spec);
-  console.log(`Image size: ${size}`);
-
-  // Initialize OpenAI client
-  const client = new OpenAI();
-
-  let response;
-
-  try {
-    if (hasReferenceImages) {
-      console.log("Loading reference images...");
-
-      // Collect all reference image paths
-      const allRefPaths = [
-        ...characterRefPaths,
-        ...propRefs.map(ref => ref.path)
-      ];
-
-      // Load all reference images for the edit API
-      const refFiles = await Promise.all(
-        allRefPaths.map(async (refPath) => {
-          const filename = path.basename(refPath);
-          const ext = path.extname(refPath).toLowerCase();
-          const mimeType = ext === '.png' ? 'image/png' : 'image/jpeg';
-          return toFile(createReadStream(refPath), filename, {
-            type: mimeType,
-          });
-        }),
-      );
-
-      console.log(`Loaded ${refFiles.length} reference images (${characterRefPaths.length} character, ${propRefs.length} prop)`);
-      console.log("Generating image via OpenAI Image Edit API...");
-
-      response = await client.images.edit({
-        model: "gpt-image-1.5",
-        image: refFiles,
-        prompt: prompt,
-        n: 1,
-        size: size,
-      });
-    } else {
-      console.log("Generating image via OpenAI Image Generate API...");
-
-      response = await client.images.generate({
-        model: "gpt-image-1.5",
-        prompt: prompt,
-        n: 1,
-        size: size,
-      });
-    }
-
-    console.log("API Response received");
-
-    // Handle response
-    const imageData = response.data[0];
-
-    if (imageData.b64_json) {
-      // Handle base64 response
-      console.log("Received base64 image data");
-      const imageBuffer = Buffer.from(imageData.b64_json, "base64");
-      await writeFile(outputPath, imageBuffer);
-    } else if (imageData.url) {
-      // Handle URL response
-      console.log(`Fetching image from URL...`);
-      const imageResponse = await fetch(imageData.url);
-      const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
-      await writeFile(outputPath, imageBuffer);
-    } else {
-      console.error(
-        "Unexpected response format:",
-        JSON.stringify(imageData, null, 2),
-      );
-      process.exit(1);
-    }
-
-    console.log(`Image saved to: ${outputPath}`);
-    console.log("Done!");
-  } catch (error) {
-    console.error("Error generating image:", error.message);
-    if (error.response) {
-      console.error("API response:", error.response.data);
-    }
-    process.exit(1);
+  console.log(`Scene: ${scenePath}`);
+  console.log(`Type: ${imageType} — ${typeConfig.description}`);
+  console.log(`Model: ${options.model}`);
+  console.log(`Size: ${typeConfig.size}`);
+  console.log(`References: ${referencePaths.length}`);
+  if (options.showPrompt) {
+    console.log(`\n--- Prompt ---\n${prompt}\n--- End prompt ---\n`);
   }
+
+  const response = referencePaths.length
+    ? await editImage(
+        apiKey,
+        options.model,
+        prompt,
+        typeConfig.size,
+        referencePaths,
+      )
+    : await generateImage(apiKey, options.model, prompt, typeConfig.size);
+
+  await saveImage(response, outputPath);
+  console.log(`Saved: ${outputPath}`);
 }
 
-main();
+main().catch((error) =>
+  fail(error instanceof Error ? error.message : String(error)),
+);

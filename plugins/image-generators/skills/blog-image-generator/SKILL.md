@@ -2,7 +2,7 @@
 name: blog-image-generator
 description: Generate cyberpunk-styled images for blog posts including banners (16:9), callouts (1:1), and diagrams (9:16). Use this skill when creating new blog posts, when asked to generate images, or when updating visuals for existing posts. Creates consistent character-based imagery following the blog's visual identity.
 metadata:
-  version: "1.0.1"
+  version: "2.0.0"
   author: Stacey Vetzal
 ---
 
@@ -21,7 +21,7 @@ This skill generates images for blog posts using a consistent cyberpunk visual s
 ## Image Types
 
 | Type | Aspect Ratio | Size | Purpose | Character Reference |
-|------|--------------|------|---------|---------------------|
+| ------ | -------------- | ------ | --------- | --------------------- |
 | `banner` | 16:9 | 1536x1024 | Hero image at top of article | Yes (default) |
 | `callout` | 1:1 | 1024x1024 | Inline illustration emphasizing a specific point | No (optional) |
 | `diagram` | 9:16 | 1024x1536 | Tall infographic explaining a process or system | No (default) |
@@ -31,6 +31,7 @@ This skill generates images for blog posts using a consistent cyberpunk visual s
 The script uses multiple reference images to maintain character consistency across all generated images. This ensures the protagonist looks the same in every banner.
 
 **Reference images** (in `assets/`):
+
 - `avatar.jpg` — Original avatar image
 - `stacey.jpg` — Primary character reference
 - `stacey2.jpg` — Additional angle/pose reference
@@ -38,13 +39,19 @@ The script uses multiple reference images to maintain character consistency acro
 All three images are passed together to the OpenAI image edit API, giving the model multiple views of the character for better consistency.
 
 **How it works:**
+
 - For `banner` images: Uses all character references by default (via OpenAI's image edit API)
 - For `callout` images: No character reference by default (use `--with-character` for character-focused callouts)
 - For `diagram` images: No character reference by default (abstract/infographic style)
 
 **Override flags:**
+
 - `--with-character` — Force use of character references (e.g., for character-focused callouts)
 - `--no-character` — Skip character references (e.g., for abstract banners without the character)
+- `--model <model>` — Override the default `gpt-image-2.5-sunburst` model for one run
+- `--assets-dir <path>` — Explicitly locate the character reference directory when repository discovery is not sufficient
+- `--show-prompt` — Print the complete generated prompt for debugging
+- `--force` — Explicitly allow replacement of an existing output file
 
 ## The Visual System
 
@@ -57,14 +64,17 @@ Banners and character-focused callouts use the cyberpunk / tech-noir style.
 **The Character:** A middle-aged, silver-haired woman with blue-grey eyes — an experienced coder and systems thinker. She has a sturdy Eastern European build with broad shoulders. She typically wears a dark blazer over tech-casual attire, sleeves pushed up.
 
 **Base wardrobe** (always present):
+
 - Dark professional blazer bridging corporate and technical worlds
 
 **Situational wardrobe** (context-dependent):
+
 - Leather coat with high collar (outdoor/street scenes)
 - Professional glasses with modern frames (close-up work)
 - Futuristic sunglasses (outdoor urban, adds mystery)
 
 **Style:**
+
 - **Genre**: Cyberpunk / Tech Noir
 - **Rendering**: High-detail digital painting, photorealistic, concept art quality
 - **Lighting**: Dramatic, high-contrast, cinematic (neon signs, screen glow, rim lighting)
@@ -76,6 +86,7 @@ Banners and character-focused callouts use the cyberpunk / tech-noir style.
 Diagrams and prop/concept-focused callouts (anything without the character) use the clean editorial style. This is the default for any illustrative graphic. See `scene-variants/editorial.json` for the full spec; the seven-agents-hopper-phases workflow image is the canonical example.
 
 **Style:**
+
 - **Genre**: Clean editorial infographic — magazine or technical-blog feel
 - **Rendering**: Flat vector-style illustration, thin 1–2px outlines, subtle soft drop-shadows. No cyberpunk, no photorealism, no painterly textures.
 - **Background**: Pure white (#ffffff) — no gradient, no texture, no border
@@ -85,7 +96,7 @@ Diagrams and prop/concept-focused callouts (anything without the character) use 
 - **Mood**: Calm, clean, editorial. Restrained black-text-on-white with amber as the one focal accent.
 
 | Image Type | Default Style | Character Default |
-|------------|---------------|---------------------|
+| ------------ | --------------- | --------------------- |
 | `banner` | Cyberpunk | Yes |
 | `callout` | Editorial (with character: cyberpunk) | No |
 | `diagram` | Editorial | No |
@@ -107,17 +118,20 @@ Read the article content and identify:
 Props are categorized by their source:
 
 **Character Props** — Items belonging to the character:
+
 - Wardrobe items from the base design (blazer, glasses, etc.)
 - Personal items (coffee mug, mechanical keyboard)
 - These provide consistency across images
 
 **Article Props** — Objects derived from article content:
+
 - Symbolic representations of concepts (tangled cables = complexity)
 - Specific items mentioned in the text (red stapler from Office Space)
 - Visual metaphors (approval gates, holographic whiteboards)
 - These make each image unique to its article
 
 **Environment Props** — Part of the setting:
+
 - Furniture, architecture, background elements
 - These establish context and mood
 
@@ -126,21 +140,25 @@ Props are categorized by their source:
 Create a scene that visually complements the article:
 
 **For optimistic articles:**
+
 - Warmer lighting with amber and gold accents
 - Collaborative scenes, open spaces
 - Character expression: slight smile, engaged, forward-leaning
 
 **For analytical articles:**
+
 - Cool blue-dominant lighting, screen glow emphasis
 - Clean, organized environment
 - Character expression: focused concentration, slight squint
 
 **For frustrated articles:**
+
 - Harsh contrasts, red/amber warning tones
 - Cluttered or chaotic elements
 - Character expression: tension in jaw, exasperated gaze
 
 **For contemplative articles:**
+
 - Soft, diffused single-source lighting
 - Quiet, still environment
 - Character expression: distant gaze, thoughtful half-smile
@@ -150,6 +168,7 @@ Create a scene that visually complements the article:
 Create a JSON file in `posts/YYYY/images/` with the same base name as the target image.
 
 Example: For an article at `posts/2025/2025-12-29-my-article.md`:
+
 - Banner image: `posts/2025/images/my-banner.json` → `my-banner.png`
 - Callout image: `posts/2025/images/my-callout-1.json` → `my-callout-1.png`
 
@@ -264,37 +283,41 @@ Example: For an article at `posts/2025/2025-12-29-my-article.md`:
 
 ### Step 5: Generate the Image
 
-Run the generation script from the repository root:
+Run the generation script from the content repository root. Resolve the script from the currently loaded skill directory; do not assume a platform-specific installation path such as `.claude` or `.agents`.
 
 ```bash
-# First time setup
-cd .claude/skills/blog-image-generator/scripts
-npm install
-cd ../../../..
+generator=/absolute/path/to/blog-image-generator/scripts/generate-image.mjs
 
 # Generate banner (uses character reference by default)
-node .claude/skills/blog-image-generator/scripts/generate-image.mjs \
+node "$generator" \
   posts/YYYY/images/scene-name.json \
   posts/YYYY/images/scene-name.png
 
 # Generate callout with character (override default)
-node .claude/skills/blog-image-generator/scripts/generate-image.mjs \
+node "$generator" \
   posts/YYYY/images/callout.json \
   posts/YYYY/images/callout.png \
   --with-character
 
 # Generate diagram or prop-focused callout (no character)
-node .claude/skills/blog-image-generator/scripts/generate-image.mjs \
+node "$generator" \
   posts/YYYY/images/diagram.json \
   posts/YYYY/images/diagram.png \
   --no-character
+
+# Compare another model without changing the default
+node "$generator" \
+  posts/YYYY/images/scene-name.json \
+  posts/YYYY/images/scene-name-gpt-image-2.png \
+  --model gpt-image-2
 ```
 
-Requires `OPENAI_API_KEY`, which lives in `~/.secrets.sh`. Agent shells do not load it,
-so source it in the same command:
+The generator uses Node's built-in HTTP and multipart support and has no package installation step. It finds `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` by walking upward from the scene JSON. Use `--assets-dir` only when those assets live elsewhere.
+
+`OPENAI_API_KEY` lives in `~/.secrets.sh`. Agent shells do not load it, so source it before invoking the generator:
 
 ```bash
-source ~/.secrets.sh && node ~/.claude/skills/blog-image-generator/scripts/generate-image.mjs \
+source ~/.secrets.sh && node "$generator" \
   posts/YYYY/images/scene-name.json \
   posts/YYYY/images/scene-name.png
 ```
@@ -302,8 +325,9 @@ source ~/.secrets.sh && node ~/.claude/skills/blog-image-generator/scripts/gener
 Do not go looking for the key elsewhere, and do not report it missing until you have sourced the file.
 
 **Default behavior by image type:**
+
 | Image Type | Default Mode | API Used |
-|------------|--------------|----------|
+| ------------ | -------------- | ---------- |
 | `banner` | With character | Image Edit API |
 | `callout` | No character | Image Generate API |
 | `diagram` | No character | Image Generate API |
@@ -482,7 +506,7 @@ Inline illustration of an object or concept without the character. Default for c
 
 After generation, each image should have a paired JSON file:
 
-```
+```text
 posts/2025/images/
 ├── article-banner.png        # Generated banner
 ├── article-banner.json       # Banner specification
@@ -496,7 +520,8 @@ posts/2025/images/
 
 - **`OPENAI_API_KEY environment variable not set`**: you did not source `~/.secrets.sh`. Re-run as `source ~/.secrets.sh && node ...` — the key is there, agent shells just don't load it
 - **API errors**: Confirm the key is valid *after* sourcing `~/.secrets.sh`
-- **Missing dependencies**: Run `npm install` in the scripts directory
+- **Unsupported Node.js runtime**: Use Node.js 18 or newer; the generator intentionally has no npm dependencies
+- **Output already exists**: Choose a new filename or pass `--force` only when replacement is intended
 - **Character reference not found**: Ensure `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` exist, or use `--no-character`
 - **Wrong character appearance**: Verify the avatar reference is being used (check for "Using character reference" in output)
 - **Mood mismatch**: Check LightingFocus and CharacterPose.Expression fields
