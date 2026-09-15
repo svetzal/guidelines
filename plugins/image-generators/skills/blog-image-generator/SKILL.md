@@ -2,7 +2,7 @@
 name: blog-image-generator
 description: Generate cyberpunk-styled images for blog posts including banners (16:9), callouts (1:1), and diagrams (9:16). Use this skill when creating new blog posts, when asked to generate images, or when updating visuals for existing posts. Creates consistent character-based imagery following the blog's visual identity.
 metadata:
-  version: "2.0.0"
+  version: "3.0.0"
   author: Stacey Vetzal
 ---
 
@@ -30,13 +30,9 @@ This skill generates images for blog posts using a consistent cyberpunk visual s
 
 The script uses multiple reference images to maintain character consistency across all generated images. This ensures the protagonist looks the same in every banner.
 
-**Reference images** (in `assets/`):
+**Reference images** are files in `assets/` named `reference-N.jpg`, where `N` is one or more digits. The generator uses every matching file from the nearest qualifying `assets/` directory and passes them to the API in numeric order.
 
-- `avatar.jpg` — Original avatar image
-- `stacey.jpg` — Primary character reference
-- `stacey2.jpg` — Additional angle/pose reference
-
-All three images are passed together to the OpenAI image edit API, giving the model multiple views of the character for better consistency.
+All discovered images are passed together to the OpenAI image edit API, giving the model multiple views of the character for better consistency.
 
 **How it works:**
 
@@ -312,7 +308,7 @@ node "$generator" \
   --model gpt-image-2
 ```
 
-The generator uses Node's built-in HTTP and multipart support and has no package installation step. It finds `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` by walking upward from the scene JSON. Use `--assets-dir` only when those assets live elsewhere.
+The generator uses Node's built-in HTTP and multipart support and has no package installation step. It walks upward from the scene JSON and selects the nearest `assets/` directory containing files that match `reference-(\d+).jpg`. Use `--assets-dir` only when those assets live elsewhere.
 
 `OPENAI_API_KEY` lives in `~/.secrets.sh`. Agent shells do not load it, so source it before invoking the generator:
 
@@ -354,7 +350,7 @@ The skill includes baseline specifications in `baselines/`:
 - `callout.json` — Baseline for callout images (1:1)
 - `diagram.json` — Baseline for diagram images (9:16)
 
-The character reference images are in `assets/` in the repository root: `avatar.jpg`, `stacey.jpg`, and `stacey2.jpg`.
+Character reference images belong in `assets/` and use numeric names such as `reference-1.jpg`, `reference-2.jpg`, and `reference-3.jpg`.
 
 Copy the Character, Style, and PromptKeywords from the appropriate baseline when creating new scenes.
 
@@ -522,7 +518,7 @@ posts/2025/images/
 - **API errors**: Confirm the key is valid *after* sourcing `~/.secrets.sh`
 - **Unsupported Node.js runtime**: Use Node.js 18 or newer; the generator intentionally has no npm dependencies
 - **Output already exists**: Choose a new filename or pass `--force` only when replacement is intended
-- **Character reference not found**: Ensure `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` exist, or use `--no-character`
+- **Character reference not found**: Ensure the nearest `assets/` directory contains at least one file matching `reference-(\d+).jpg`, pass `--assets-dir`, or use `--no-character`
 - **Wrong character appearance**: Verify the avatar reference is being used (check for "Using character reference" in output)
 - **Mood mismatch**: Check LightingFocus and CharacterPose.Expression fields
 - **Props not appearing**: Ensure Application field describes clear placement

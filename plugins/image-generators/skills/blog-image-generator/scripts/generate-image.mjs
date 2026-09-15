@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 import { existsSync } from "node:fs";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const DEFAULT_MODEL = "gpt-image-2.5-sunburst";
 const DEFAULT_API_BASE_URL = "https://api.openai.com/v1";
-const CHARACTER_REF_FILES = ["avatar.jpg", "stacey.jpg", "stacey2.jpg"];
+const CHARACTER_REF_PATTERN = /^reference-(\d+)\.jpg$/;
 
 const IMAGE_TYPES = {
   banner: {
@@ -129,7 +129,43 @@ function firstExisting(paths) {
   return unique(paths).find((candidate) => existsSync(candidate));
 }
 
-function findCharacterRefPaths(sceneDirectory, explicitAssetsDir) {
+async function referencesIn(assetDirectory) {
+  let entries;
+  try {
+    entries = await readdir(assetDirectory, { withFileTypes: true });
+  } catch (error) {
+    if (error?.code === "ENOENT" || error?.code === "ENOTDIR") return [];
+    throw error;
+  }
+
+  const references = entries
+    .filter((entry) => entry.isFile())
+    .flatMap((entry) => {
+      const match = CHARACTER_REF_PATTERN.exec(entry.name);
+      return match
+        ? [{ index: Number.parseInt(match[1], 10), name: entry.name }]
+        : [];
+    })
+    .sort((left, right) =>
+      left.index === right.index
+        ? left.name.localeCompare(right.name)
+        : left.index - right.index,
+    );
+
+  const duplicate = references.find(
+    (reference, index) =>
+      index > 0 && reference.index === references[index - 1].index,
+  );
+  if (duplicate) {
+    throw new Error(
+      `duplicate character reference number ${duplicate.index} in ${assetDirectory}`,
+    );
+  }
+
+  return references.map(({ name }) => path.join(assetDirectory, name));
+}
+
+async function findCharacterRefPaths(sceneDirectory, explicitAssetsDir) {
   const assetDirectories = explicitAssetsDir
     ? [path.resolve(explicitAssetsDir)]
     : unique([
@@ -139,12 +175,12 @@ function findCharacterRefPaths(sceneDirectory, explicitAssetsDir) {
         ),
       ]);
 
-  return CHARACTER_REF_FILES.flatMap((filename) => {
-    const found = firstExisting(
-      assetDirectories.map((directory) => path.join(directory, filename)),
-    );
-    return found ? [found] : [];
-  });
+  for (const assetDirectory of assetDirectories) {
+    const references = await referencesIn(assetDirectory);
+    if (references.length > 0) return references;
+  }
+
+  return [];
 }
 
 function collectProps(spec) {
@@ -321,7 +357,7 @@ async function main() {
       : typeConfig.characterByDefault;
   const sceneDirectory = path.dirname(path.resolve(scenePath));
   const characterRefs = useCharacter
-    ? findCharacterRefPaths(sceneDirectory, options.assetsDir)
+    ? await findCharacterRefPaths(sceneDirectory, options.assetsDir)
     : [];
 
   if (useCharacter && characterRefs.length === 0) {
@@ -329,12 +365,6 @@ async function main() {
       "no character references found; run from the content repository, use --assets-dir, or use --no-character",
     );
   }
-  if (useCharacter && characterRefs.length < CHARACTER_REF_FILES.length) {
-    console.warn(
-      `Warning: found ${characterRefs.length} of ${CHARACTER_REF_FILES.length} character references`,
-    );
-  }
-
   const propRefs = findPropRefPaths(spec, sceneDirectory);
   const referencePaths = [
     ...characterRefs,
