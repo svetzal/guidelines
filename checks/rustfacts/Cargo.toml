@@ -18,3 +18,9 @@ quote = "1"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 syn = { version = "2", features = ["full", "visit", "parsing", "printing", "extra-traits"] }
+
+# Dependencies build without debug info; our own crates keep it. Backtraces
+# and debuggers still work in our code, but dependency frames lose line
+# numbers. This cuts target/debug by about 40% on macOS.
+[profile.dev.package."*"]
+debug = false
