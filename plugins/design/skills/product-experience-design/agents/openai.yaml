@@ -1,0 +1,6 @@
+interface:
+  display_name: "Product Experience Design"
+  short_description: "Connect product intent, domain meaning and UI design"
+  default_prompt: "Use $product-experience-design to improve this product's UI through its actual journeys, domain contracts and reusable compositions."
+policy:
+  allow_implicit_invocation: true

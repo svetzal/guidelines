@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.3.0"
+    "version": "2.4.0"
   },
   "plugins": [
     {
@@ -77,13 +77,13 @@
     },
     {
       "name": "image-generators",
-      "description": "Image generation and processing — cyberpunk blog/presentation imagery plus bitmap-to-vector conversion",
+      "description": "Image generation and processing \u2014 cyberpunk blog/presentation imagery plus bitmap-to-vector conversion",
       "source": "./plugins/image-generators",
       "category": "functional"
     },
     {
       "name": "design",
-      "description": "Human-centered design guidance — visual/UI design and command-line (CLI) UX",
+      "description": "Human-centered design guidance \u2014 visual design, CLI UX, and product intent, domain and component composition",
       "source": "./plugins/design",
       "category": "functional"
     },
@@ -95,7 +95,7 @@
     },
     {
       "name": "technical-writing",
-      "description": "Technical writing standards — ASD-STE100 Simplified Technical English for procedures and documentation",
+      "description": "Technical writing standards \u2014 ASD-STE100 Simplified Technical English for procedures and documentation",
       "source": "./plugins/technical-writing",
       "category": "functional"
     }
