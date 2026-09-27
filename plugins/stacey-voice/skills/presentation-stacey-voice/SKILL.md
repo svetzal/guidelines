@@ -5,9 +5,9 @@ description: >
   slide content, presentation scripts, or talk outlines for Stacey Vetzal. Also use when converting
   blog posts to presentations, creating conference talks, preparing lightning talks, or writing any
   content Stacey will speak aloud. If you're writing words Stacey will say on stage or in a video,
-  this skill applies. Complements the slidev-presentation skill for slide creation.
+  this skill applies. Complements the slidev skill for slide creation.
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
   author: Stacey Vetzal
 ---
 

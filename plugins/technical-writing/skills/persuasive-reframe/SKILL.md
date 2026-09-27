@@ -10,7 +10,7 @@ description: >
   back foot. If a draft makes a sweeping claim about what the reader (or everyone) is doing
   wrong, this skill applies even if nobody asked for it by name.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   author: Stacey Vetzal
 ---
 

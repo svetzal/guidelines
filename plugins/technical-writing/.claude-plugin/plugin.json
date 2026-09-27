@@ -1,11 +1,11 @@
 {
   "name": "technical-writing",
-  "version": "1.1.0",
-  "description": "Technical writing standards — ASD-STE100 Simplified Technical English for procedures and documentation",
+  "version": "1.2.0",
+  "description": "Writing standards — ASD-STE100 Simplified Technical English for procedures and documentation, and persuasive reframing for outward-facing prose",
   "author": {
     "name": "Stacey Vetzal",
     "email": "stacey@vetzal.com"
   },
   "license": "MIT",
-  "keywords": ["writing", "documentation", "simplified-technical-english", "ste", "controlled-language"]
+  "keywords": ["writing", "documentation", "simplified-technical-english", "ste", "controlled-language", "persuasion", "reframing"]
 }

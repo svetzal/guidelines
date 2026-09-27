@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.6.0"
+    "version": "2.7.0"
   },
   "plugins": [
     {
@@ -95,7 +95,7 @@
     },
     {
       "name": "technical-writing",
-      "description": "Technical writing standards \u2014 ASD-STE100 Simplified Technical English for procedures and documentation",
+      "description": "Writing standards \u2014 ASD-STE100 Simplified Technical English for procedures and documentation, and persuasive reframing for outward-facing prose",
       "source": "./plugins/technical-writing",
       "category": "functional"
     }
