@@ -1,12 +1,13 @@
 # Borrowing the customer catalogue
 
-The source library is the stock customer system's executable catalogue, currently
-in `system-template` beside Bedrock and Roost in the umbrella workspace. Its role
-is reusable capability and presentation, not a runtime dependency of management.
+The source library is the stock customer system's executable catalogue in the
+independent `Mojility/bedrock-system-template` repository. Locate its checkout
+without assuming a parent workspace or a fixed sibling path. Its role is reusable
+capability and presentation, not a runtime dependency of management.
 
 Inspect these source paths when the checkout is available:
 
-| Source relative to system-template | Use |
+| Source relative to the starter | Use |
 | --- | --- |
 | `CATALOGUE.md` | Behaviour and accessibility contracts |
 | `lib/shop_web/components/workbench.ex` | Reusable presentation controls and patterns |

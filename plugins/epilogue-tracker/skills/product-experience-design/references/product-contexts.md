@@ -6,7 +6,7 @@ status. Each repository and skill installation must remain usable independently.
 
 ## Bedrock
 
-Read `CHARTER.md`, `docs/business-brief.md`,
+Read `CHARTER.md`, `docs/README.md`,
 `docs/customer-business-intent.md` and
 `docs/design-system/agent-guide.md` for work affecting the modelling language.
 The application is under `apps/bedrock`. Existing presentation lives in
