@@ -1,6 +1,6 @@
 {
   "name": "typescript-ecosystem",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript craftsperson agents for Node.js and Bun",
   "author": {
     "name": "Stacey Vetzal",
