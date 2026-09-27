@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.7.0"
+    "version": "2.8.0"
   },
   "plugins": [
     {
@@ -83,8 +83,14 @@
     },
     {
       "name": "design",
-      "description": "Human-centered design guidance \u2014 visual design, CLI UX, and product intent, domain and component composition",
+      "description": "Human-centered design guidance \u2014 visual/UI design and command-line (CLI) UX",
       "source": "./plugins/design",
+      "category": "functional"
+    },
+    {
+      "name": "epilogue-tracker",
+      "description": "Product work grounded in Epilogue Tracker models \u2014 product experience design for Bedrock and Roost",
+      "source": "./plugins/epilogue-tracker",
       "category": "functional"
     },
     {

@@ -25,9 +25,11 @@ consistent.
 
 ## UI and UX guidance
 
-The [design plugin](plugins/design/) contains visual design theory, CLI UX and
-[Product Experience
-Design](plugins/design/skills/product-experience-design/SKILL.md).
+The [design plugin](plugins/design/) contains visual design theory and CLI UX.
+
+The [epilogue-tracker plugin](plugins/epilogue-tracker/) contains [Product
+Experience
+Design](plugins/epilogue-tracker/skills/product-experience-design/SKILL.md).
 Product Experience Design connects Bedrock and Roost’s actual Epilogue Tracker
 models to domain meaning and reusable component compositions, while preserving
 each product’s visual identity. This repository owns its canonical source.

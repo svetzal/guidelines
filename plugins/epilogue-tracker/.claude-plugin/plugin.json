@@ -1,0 +1,18 @@
+{
+  "name": "epilogue-tracker",
+  "version": "1.0.0",
+  "description": "Product work grounded in Epilogue Tracker models — product experience design for Bedrock and Roost",
+  "author": {
+    "name": "Stacey Vetzal",
+    "email": "stacey@vetzal.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "epilogue-tracker",
+    "screenplay-pattern",
+    "product-design",
+    "ux",
+    "bedrock",
+    "roost"
+  ]
+}

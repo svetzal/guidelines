@@ -1,7 +1,7 @@
 {
   "name": "design",
-  "version": "1.2.0",
-  "description": "Human-centered design guidance \u2014 visual design, CLI UX, and product intent, domain and component composition",
+  "version": "2.0.0",
+  "description": "Human-centered design guidance \u2014 visual/UI design and command-line (CLI) UX",
   "author": {
     "name": "Stacey Vetzal",
     "email": "stacey@vetzal.com"

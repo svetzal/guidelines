@@ -7,7 +7,7 @@ description: >-
   design-system adoption, and component or workspace changes in these two
   products. Preserve each product's visual identity and operational boundaries.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: Stacey Vetzal
 ---
 
