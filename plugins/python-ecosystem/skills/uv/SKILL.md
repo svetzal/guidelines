@@ -8,7 +8,7 @@ description: >
   uv-managed project. Provides project setup, dependency management, running tools,
   and quality gate commands specific to uv workflows.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: Stacey Vetzal
 ---
 
@@ -112,7 +112,23 @@ docs = ["mkdocs>=1.5"]
 
 [tool.uv]
 default-groups = ["dev", "lint"]
+
+[tool.pytest.ini_options]
+python_files = ["*_spec.py"]
+python_classes = ["Describe*"]
+python_functions = ["should_*"]
+
+[tool.ruff.lint]
+extend-select = ["C90"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 ```
+
+The pytest settings are required for the co-located `*_spec.py` layout shown
+under Project Structure — pytest's defaults only collect `test_*.py` and
+`*_test.py`, so without them `uv run pytest` silently finds no tests. Ruff does
+not check McCabe complexity (`C901`) unless it is selected.
 
 ### Lockfile
 
@@ -194,11 +210,18 @@ Before considering any code complete, **MUST** complete all steps:
 2. **Linting with ZERO warnings**
    - `uv run ruff check src` — zero warnings (**MANDATORY**)
    - `uv run ruff format src` — consistent formatting
-   - McCabe complexity <= 10
+   - McCabe complexity <= 10 (enforced by the `C90` selection above)
 
 3. **Security Audit**
-   - `uvx pip-audit` — check for known vulnerabilities (**MANDATORY**)
+   - `uv export --format requirements-txt --no-emit-project | uvx pip-audit -r /dev/stdin --disable-pip`
+     — check the locked dependencies for known vulnerabilities (**MANDATORY**)
    - `uv pip list --outdated` — check for outdated dependencies
+
+   Never run bare `uvx pip-audit`: it audits the throwaway environment `uvx`
+   creates for pip-audit itself, not the project, and always reports clean.
+   Exporting `uv.lock` audits exactly what the project resolves to, including
+   dev groups; add `--no-dev` to the export to audit production dependencies
+   only.
 
 4. **Documentation Sync**
    - `uv run mkdocs build` — verify docs build

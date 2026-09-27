@@ -6,12 +6,12 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.4.0"
+    "version": "2.5.0"
   },
   "plugins": [
     {
       "name": "python-ecosystem",
-      "description": "Python craftsperson agent with uv and pip toolchain skills",
+      "description": "Python craftsperson agents with a uv toolchain skill",
       "source": "./plugins/python-ecosystem",
       "category": "ecosystem"
     },

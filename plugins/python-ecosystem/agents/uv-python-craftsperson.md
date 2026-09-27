@@ -31,7 +31,7 @@ description: |
   <Task tool invocation for uv-python-craftsperson>
   </example>
 metadata:
-  version: "1.3.3"
+  version: "1.3.4"
   author: Stacey Vetzal
 ---
 
@@ -295,7 +295,8 @@ Before considering any code complete, you **MUST** complete all steps:
    - Keep McCabe complexity ≤ 10 for all functions — break complex functions into smaller, well-named private methods
 
 3. **Security Audit** — Check for vulnerabilities
-   - **MANDATORY: Run `uvx pip-audit` to check dependencies for known vulnerabilities**
+   - **MANDATORY: Run `uv export --format requirements-txt --no-emit-project | uvx pip-audit -r /dev/stdin --disable-pip` to check the locked dependencies for known vulnerabilities**
+   - Never run bare `uvx pip-audit` — it audits pip-audit's own throwaway environment, not the project, and always reports clean
    - Run `uv pip list --outdated` to check for outdated dependencies
    - Address any high or medium severity findings immediately
    - Document any acknowledged low-severity findings

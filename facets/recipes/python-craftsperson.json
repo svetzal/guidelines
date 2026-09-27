@@ -1,6 +1,6 @@
 {
   "name": "python-craftsperson",
-  "description": "Python projects — language expertise and engineering principles. Toolchain guidance (uv, pip) loaded at runtime via skills.",
+  "description": "Python projects — language expertise and engineering principles. uv toolchain guidance loaded at runtime via the uv skill; pip-managed projects fall back to the agent's own pip guidance.",
   "produces": "agents/python-craftsperson.md",
   "facets": [
     "principles/engineering",
@@ -12,7 +12,6 @@
     "testing/pytest-bdd"
   ],
   "runtime_skills": [
-    "uv — when uv.lock or .python-version present",
-    "pip — when no uv.lock present"
+    "uv — when uv.lock or .python-version present"
   ]
 }

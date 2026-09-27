@@ -1,7 +1,7 @@
 {
   "name": "python-ecosystem",
-  "version": "1.0.0",
-  "description": "Python craftsperson agent with uv and pip toolchain skills",
+  "version": "2.0.0",
+  "description": "Python craftsperson agents with a uv toolchain skill",
   "author": {
     "name": "Stacey Vetzal",
     "email": "stacey@vetzal.com"

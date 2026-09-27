@@ -12,11 +12,11 @@ Engineering intent splits into two layers with different lifecycles:
 - Testing patterns (BDD-style, table-driven, etc.)
 
 **Skills (loaded at runtime based on project context):**
-- Toolchain guidance (uv, pip, bun, npm, cargo, mix)
+- Toolchain guidance (uv, bun, npm, cargo, mix)
 - Quality gate commands (tool-specific invocations)
 - Framework patterns (Phoenix LiveView, React, etc.)
 
-This separation means a single `python-craftsperson` agent works with *either* uv or pip — Claude detects `uv.lock` and loads the `uv` skill, or falls back to the `pip` skill. No more separate `uv-python-craftsperson` agent.
+This separation means a single `python-craftsperson` agent works with *either* uv or pip — Claude detects `uv.lock` and loads the `uv` skill, or falls back to the agent's own pip guidance. No more separate `uv-python-craftsperson` agent.
 
 ## Why Facets?
 
@@ -47,7 +47,6 @@ guidelines/
       python-craftsperson.json
   skills/                 # Runtime-loaded toolchain and framework guidance
     uv/SKILL.md           # uv project management + quality gates
-    pip/SKILL.md          # pip dependency management + quality gates
     (future: bun/, npm/, cargo/, mix/, phoenix-liveview/, react/, ...)
 ```
 
@@ -58,7 +57,7 @@ guidelines/
 name: python
 facet: language
 scope: "Python idioms, type hints, async patterns, Pydantic2"
-does-not-cover: "Package management (see uv/pip skills), quality gate commands"
+does-not-cover: "Package management (see the uv skill), quality gate commands"
 metadata:
   version: "1.0.0"
   author: Stacey Vetzal
@@ -83,8 +82,7 @@ A recipe declares which facets compose into an agent:
     "testing/pytest-bdd"
   ],
   "runtime_skills": [
-    "uv — when uv.lock or .python-version present",
-    "pip — when no uv.lock present"
+    "uv — when uv.lock or .python-version present"
   ]
 }
 ```
@@ -98,14 +96,14 @@ The `runtime_skills` field documents which skills complement this agent. Skills 
 | Engineering principles | Agent (facet) | Universal, always active |
 | Language idioms | Agent (facet) | Defines the craftsperson's expertise |
 | Testing patterns | Agent (facet) | Tightly coupled to language |
-| Toolchain (uv, pip, bun) | Skill | Runtime-contextual, project-dependent |
+| Toolchain (uv, bun) | Skill | Runtime-contextual, project-dependent |
 | Quality gate commands | Skill | Depend on toolchain choice |
 | Framework patterns | Skill | Optional, project-dependent |
 | Documentation tools | Skill | Depend on project setup |
 
 ## Migration Status
 
-**Phase 1 (current):** Universal principles and Python facets extracted. Toolchain guidance (uv, pip) packaged as skills. The monolithic agents in `agents/` remain canonical.
+**Phase 1 (current):** Universal principles and Python facets extracted. Toolchain guidance for uv packaged as a skill (a separate pip skill was retired; pip is the agent's fallback). The monolithic agents in `agents/` remain canonical.
 
 **Phase 2 (next):** Extract language facets for remaining languages. Create toolchain skills for remaining ecosystems (bun, npm, cargo, mix).
 
