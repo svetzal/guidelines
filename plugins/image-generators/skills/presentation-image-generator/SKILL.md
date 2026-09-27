@@ -2,7 +2,7 @@
 name: presentation-image-generator
 description: Generate images for Slidev presentations including covers (16:9), section breaks (16:9), concepts (1:1), backgrounds (16:9), and accents (1:1). Abstract-first approach — character is OFF by default. Supports multiple visual styles via scene variants. Use when creating presentation imagery, generating slide visuals, or adding custom graphics to a talk.
 metadata:
-  version: "1.0.1"
+  version: "2.0.0"
   author: Stacey Vetzal
 ---
 
@@ -163,25 +163,41 @@ Create a JSON file in the presentation's `public/images/` directory. Only `Image
 
 ### Step 4: Generate the Image
 
-Run the generation script from the repository root:
+Run the generation script from the presentation repository root. Resolve the script from the currently loaded skill directory; do not assume a platform-specific installation path such as `.claude` or `.agents`.
 
 ```bash
-# First time setup
-cd .claude/skills/presentation-image-generator/scripts
-npm install
-cd ../../../..
+generator=/absolute/path/to/presentation-image-generator/scripts/generate-image.mjs
 
 # Generate (no character by default)
-node .claude/skills/presentation-image-generator/scripts/generate-image.mjs \
+node "$generator" \
   presentations/my-talk/public/images/cover.json \
   presentations/my-talk/public/images/cover.png
 
 # Generate with character reference (for personal storytelling slides)
-node .claude/skills/presentation-image-generator/scripts/generate-image.mjs \
+node "$generator" \
   presentations/my-talk/public/images/speaker.json \
   presentations/my-talk/public/images/speaker.png \
   --with-character
+
+# Compare another model without changing the default
+node "$generator" \
+  presentations/my-talk/public/images/cover.json \
+  presentations/my-talk/public/images/cover-gpt-image-2.png \
+  --model gpt-image-2
 ```
+
+The generator uses Node's built-in HTTP and multipart support and has no package installation step.
+
+**Options:**
+
+- `--with-character` — Use character references for this image
+- `--no-character` — Skip character references even when the spec has a `Character` block
+- `--model <model>` — Override the default `gpt-image-2.5-sunburst` model for one run (`OPENAI_IMAGE_MODEL` overrides it for a session)
+- `--assets-dir <path>` — Explicitly locate the character reference directory when discovery is not sufficient
+- `--show-prompt` — Print the complete generated prompt for debugging
+- `--force` — Explicitly allow replacement of an existing output file
+
+**Character references** are files named `reference-N.jpg`, where `N` is one or more digits. The generator walks upward from the scene JSON and uses every matching file from the nearest `assets/` directory, in numeric order. Use `--assets-dir` when those assets live elsewhere, for example in the blog repository.
 
 Requires `OPENAI_API_KEY`, which lives in `~/.secrets.sh`. Agent shells do not load it, so
 prefix the generation command with `source ~/.secrets.sh &&`. Do not go looking for the key
@@ -294,11 +310,11 @@ For a cohesive deck, follow these guidelines:
 
 ## Troubleshooting
 
-- **`OPENAI_API_KEY environment variable not set`**: you did not source `~/.secrets.sh`. Re-run as `source ~/.secrets.sh && node ...`
+- **`OPENAI_API_KEY is not set`**: you did not source `~/.secrets.sh`. Re-run as `source ~/.secrets.sh && node ...`
 - **API errors**: Confirm the key is valid *after* sourcing `~/.secrets.sh`
-- **Missing dependencies**: Run `npm install` in the scripts directory
-- **Character reference not found**: Ensure `assets/avatar.jpg`, `assets/stacey.jpg`, and `assets/stacey2.jpg` exist, or use `--no-character`
-- **Wrong size**: Check `ImageRole` and `Layout.AspectRatio` — the aspect ratio override takes precedence
+- **Character reference not found**: Ensure the nearest `assets/` directory contains at least one file matching `reference-(\d+).jpg`, pass `--assets-dir`, or use `--no-character`
+- **Wrong size**: Check `ImageRole` and `Layout.AspectRatio` — the aspect ratio override (`16:9`, `1:1` or `9:16`) takes precedence
+- **Output already exists**: The generator will not overwrite an image; pass `--force` when replacing it is intended
 - **Image too busy for background**: Use the `background` role baseline — it has very low contrast defaults
 - **Text unreadable over image**: Increase `NegativeSpace` to `generous` and set `TextSafeZone` appropriately
 - **Images don't match across deck**: Use the same scene variant for all images and thread `VisualContinuity` notes

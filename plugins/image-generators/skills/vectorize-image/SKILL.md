@@ -2,7 +2,7 @@
 name: vectorize-image
 description: Convert a bitmap/raster image (PNG, JPEG, GIF, BMP, TIFF, WebP) into a clean vector file (SVG, PDF, EPS, DXF, or PNG) using the vectorizer.ai API. Use this skill whenever the user wants to vectorize an image, trace a logo, turn a PNG/JPG into an SVG, get a scalable version of a raster graphic, clean up a pixelated logo, prep artwork for print or large-format display, or asks to "convert this to SVG/vector". Trigger even if they don't say "vectorize" — e.g. "make this logo scalable", "I need an SVG of this icon", "trace this bitmap", or "turn this screenshot of a logo into something crisp". Spends vectorizer.ai credits (1 per production render), so it also covers free test renders and cost-aware previews.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: Stacey Vetzal
 compatibility: Requires python3, network access, and VECTORIZER_API_ID / VECTORIZER_API_SECRET environment variables (a vectorizer.ai API subscription is needed for paid production/preview renders; test mode is free).
 ---
@@ -35,9 +35,14 @@ The default produces a clean, deliverable SVG and **spends 1 credit** — that's
 almost always what's wanted, so just do it:
 
 ```bash
-python3 .claude/skills/vectorize-image/scripts/vectorize.py \
-  /path/to/logo.png -o /path/to/logo.svg
+vectorize=/absolute/path/to/vectorize-image/scripts/vectorize.py
+
+python3 "$vectorize" /path/to/logo.png -o /path/to/logo.svg
 ```
+
+Resolve `vectorize` from the currently loaded skill directory; do not assume a
+platform-specific installation path such as `.claude` or `.agents`. The later
+examples reuse it.
 
 The script prints the output path, bytes written, and `credits charged` so the
 cost is always visible after the fact.
@@ -78,8 +83,7 @@ CAD/cutting.
 
 ```bash
 # Same trace, delivered as PDF
-python3 .claude/skills/vectorize-image/scripts/vectorize.py \
-  poster.jpg -o poster.pdf --format pdf
+python3 "$vectorize" poster.jpg -o poster.pdf --format pdf
 ```
 
 ## Tuning the trace
@@ -89,16 +93,13 @@ any API parameter through with `-P name=value` (repeatable). The common ones:
 
 ```bash
 # Flat logo with a limited palette — cap colours to keep it crisp
-python3 .claude/skills/vectorize-image/scripts/vectorize.py \
-  logo.png -o logo.svg -P processing.max_colors=8
+python3 "$vectorize" logo.png -o logo.svg -P processing.max_colors=8
 
 # Outline / line-art style instead of filled shapes
-python3 .claude/skills/vectorize-image/scripts/vectorize.py \
-  sketch.png -o sketch.svg -P output.draw_style=stroke_edges
+python3 "$vectorize" sketch.png -o sketch.svg -P output.draw_style=stroke_edges
 
 # Drop tiny speckles (raise the minimum shape area)
-python3 .claude/skills/vectorize-image/scripts/vectorize.py \
-  scan.png -o scan.svg -P processing.shapes.min_area_px=4
+python3 "$vectorize" scan.png -o scan.svg -P processing.shapes.min_area_px=4
 ```
 
 The full parameter catalogue — colour palettes, curve fitting, sizing/DPI,
