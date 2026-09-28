@@ -38,7 +38,7 @@ description: |
 
   **Also includes:** All pure Elixir patterns (OTP, testing, Credo, security audits)
 metadata:
-  version: "1.4.0"
+  version: "1.4.1"
   author: Stacey Vetzal
 ---
 
@@ -1055,6 +1055,32 @@ end
 - **Must import vendor deps into `app.js` and `app.css`**
 - **Never write inline `<script>custom js</script>` in templates**
 
+### Static Assets and Digests (Build Output, Never Committed)
+
+`mix assets.deploy` builds the CSS and JS bundles, then `mix phx.digest` writes a
+content-hashed copy of every file under `priv/static` (`app-<hash>.css`,
+`favicon-<hash>.ico`), a gzipped `.gz` beside each copy, and `cache_manifest.json`.
+With `cache_static_manifest` set, `~p` and `static_path/2` link to the hashed names,
+which are served with a long cache lifetime. A changed file gets a new hash, so the
+browser fetches it again. That is the cache busting.
+
+- **Everything the digest writes is build output. Do not commit it.** It is
+  recalculated on every build, and `cache_manifest.json` records build times.
+- The generated `.gitignore` covers `/priv/static/assets/` and
+  `/priv/static/cache_manifest.json`, but not digested copies of files that live
+  directly in `priv/static`. Add Phoenix's digest naming (32 `?` match the hash):
+  ```gitignore
+  /priv/static/**/*-????????????????????????????????.*
+  /priv/static/**/*.gz
+  ```
+  Keep committing the source files themselves (`favicon.ico`, `robots.txt`,
+  images). Do not hand-author files named like digest output under `priv/static`.
+- Tailwind v4 emits only the classes it finds in the `@source` paths at build
+  time. After you add or change classes in templates or components, rebuild
+  (`mix assets.deploy`, or the dev watcher) before you judge a page. A stale
+  bundle makes a correct layout look broken.
+- Clean local digests with `mix phx.digest.clean --all`.
+
 ---
 
 ## Phoenix 1.7 vs 1.8 Compatibility
@@ -1089,34 +1115,6 @@ Use Phoenix's built-in CSRF and browser security headers:
 - Prefer explicit database constraints in changesets (unique/foreign key constraints)
 - Use `Repo.transaction/1` for multi-step operations that must succeed or fail atomically
 - Do **not** rely on purely application-level uniqueness checks — make constraints authoritative in the DB
-
----
-
-## Static Assets and Digests (Build Output, Never Committed)
-
-`mix assets.deploy` builds the CSS and JS bundles, then `mix phx.digest` writes a
-content-hashed copy of every file under `priv/static` (`app-<hash>.css`,
-`favicon-<hash>.ico`), a gzipped `.gz` beside each copy, and `cache_manifest.json`.
-With `cache_static_manifest` set, `~p` and `static_path/2` link to the hashed names,
-which are served with a long cache lifetime. A changed file gets a new hash, so the
-browser fetches it again. That is the cache busting.
-
-- **Everything the digest writes is build output. Do not commit it.** It is
-  recalculated on every build, and `cache_manifest.json` records build times.
-- The generated `.gitignore` covers `/priv/static/assets/` and
-  `/priv/static/cache_manifest.json`, but not digested copies of files that live
-  directly in `priv/static`. Add Phoenix's digest naming (32 `?` match the hash):
-  ```gitignore
-  /priv/static/**/*-????????????????????????????????.*
-  /priv/static/**/*.gz
-  ```
-  Keep committing the source files themselves (`favicon.ico`, `robots.txt`,
-  images). Do not hand-author files named like digest output under `priv/static`.
-- Tailwind v4 emits only the classes it finds in the `@source` paths at build
-  time. After you add or change classes in templates or components, rebuild
-  (`mix assets.deploy`, or the dev watcher) before you judge a page. A stale
-  bundle makes a correct layout look broken.
-- Clean local digests with `mix phx.digest.clean --all`.
 
 ---
 
