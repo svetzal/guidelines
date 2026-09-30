@@ -7,7 +7,7 @@ description: >-
   design-system adoption, and component or workspace changes in these two
   products. Preserve each product's visual identity and operational boundaries.
 metadata:
-  version: "1.0.3"
+  version: "1.0.4"
   author: Stacey Vetzal
 ---
 
@@ -91,7 +91,7 @@ Before inventing a control or pattern, follow
 [borrowing the catalogue](references/component-reuse.md). Inspect its implementation,
 interaction contract, examples and tests. Reuse semantics and suitable presentation
 code under the receiving product's ownership. Map visual roles to that product's
-existing tokens. Do not introduce a runtime dependency on Shop, Bedrock or Roost
+existing tokens. Do not introduce a runtime dependency on Business, Bedrock or Roost
 internals merely to obtain a button, table or inspector.
 
 Prefer a small vocabulary of shared controls and patterns over page-specific

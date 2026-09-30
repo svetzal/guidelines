@@ -12,8 +12,8 @@ Inspect these source paths when the checkout is available:
 | `CATALOGUE.md` | Behaviour and accessibility contracts |
 | `lib/shop_web/components/workbench.ex` | Reusable presentation controls and patterns |
 | `lib/shop_web/components/core_components.ex` | Native form and control conventions |
-| `lib/shop/catalogue/components.ex` | Component dependencies and usage |
-| `lib/shop/catalogue/domain.ex`, `model.ex` | Domain bindings and conceptual relationships |
+| `lib/business/catalogue/components.ex` | Component dependencies and usage |
+| `lib/business/catalogue/domain.ex`, `model.ex` | Domain bindings and conceptual relationships |
 | `lib/shop_web/live/catalogue/` | Working examples and compositions |
 | `assets/css/workbench.css` | Semantic roles, density, focus and layout conventions |
 | `priv/catalogue/` | Versioned domain and composition declarations |
@@ -38,8 +38,8 @@ token. Preserve each product's brand and task layout. Check contrast after mappi
 the catalogue's colours are not a guarantee for a different palette.
 
 Keep business contexts, permissions, queries and fixtures out of presentation
-components. Porting a table does not port inventory semantics or Shop's data.
-Do not import Shop modules into either product, or Bedrock modules into Roost.
+components. Porting a table does not port inventory semantics or the customer system's data.
+Do not import Business (customer system) modules into either product, or Bedrock modules into Roost.
 Never edit Bedrock's vendored Roost copy.
 
 If repeated use justifies a shared dependency, propose a separately versioned,
