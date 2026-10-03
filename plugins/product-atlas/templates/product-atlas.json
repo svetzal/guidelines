@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "product": "Product name",
   "sources": [
     { "id": "application", "kind": "code", "path": "../application" }
@@ -7,7 +7,7 @@
   "paths": {
     "intent": "product/intent",
     "questions": "product/questions",
-    "generation": "product/generation",
-    "wiki": "product/wiki"
+    "history": "product/history",
+    "documentation": "product/documentation"
   }
 }

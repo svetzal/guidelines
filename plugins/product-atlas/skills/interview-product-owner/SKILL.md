@@ -1,38 +1,43 @@
 ---
 name: interview-product-owner
 description: >
-  Ask a product owner unresolved questions from a Product Atlas question registry
-  and record their answers as intent. Use for clarification interviews grounded
-  in an existing code or documentation corpus, not greenfield product discovery.
+  Ask unresolved Product Atlas questions, curate the answers into intent topics,
+  and delete answered question files. Use for product-owner interviews grounded
+  in existing code or documentation, with the goal of no unresolved questions.
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
   author: Stacey Vetzal
 ---
 
 # Interview the product owner
 
-Read [the workspace contract](../../references/workspace.md) and
-[the registry contract](../../references/registries.md).
+Read [the workspace rules](../../references/workspace.md) and
+[the intent and question rules](../../references/registries.md).
 
-Apply the source gate. Read open questions and their evidence. Check related
-answers before selecting a question. Prioritize decisions that affect users,
-block interpretation, or explain substantial divergence. Respect a requested
-product area and deferred questions' revisit conditions.
+Apply the source check. Read questions and their evidence. Check the related
+intent before asking, so the owner does not have to repeat a settled decision.
+Prioritize unclear purpose and differences that affect users. Respect the requested
+scope and deferred questions' revisit conditions.
 
-Ask one question at a time by default. Give a short explanation of the observed
-behavior, the recorded intent, and the uncertainty. Offer options only when they
-represent real alternatives. Allow another answer and "I don't know".
-Avoid leading questions and implementation jargon.
+Ask one question at a time by default. Explain the current behavior and why the
+answer matters. Offer options only when they represent real alternatives.
+Allow another answer and "I don't know". Avoid leading questions and code jargon.
 
-Record each answer immediately using the registry contract. Preserve its scope,
-attribution, and uncertainty. Confirm intent when an explicit owner answer is
-clear. Ask a narrow follow-up when it is not. Do not demand repeated approval
-for an answer the owner has already given.
+After each answer, curate the relevant intent topic. Save the attribution and
+change history, repair active references, and delete the answered question.
+Do not collect answers in question files or create a separate intent file for each.
+Ask a narrow follow-up when the answer is incomplete. Never interpret silence as
+agreement.
 
-Leave unanswered parts open. Defer a question when the owner cannot answer it;
-record who or what could resolve it. Never interpret silence as agreement.
-If no useful unanswered questions remain, say so instead of inventing an interview.
+Reconcile each answer with the affected code and source documentation. A policy
+answer may leave a different question about alignment or evidence. Keep that
+remaining question focused. Do not ask the settled policy question again.
 
-At the end, summarize decisions recorded, questions remaining, and whether the
-wiki needs regeneration. Do not regenerate or edit the wiki during the interview
-unless the user also requested generation. Generation uses the command's contract.
+Keep deferred and partly answered questions in the folder. If evidence is needed
+instead of another owner answer, say what would resolve the question. Do not keep
+interviewing the owner for facts that require inspecting implementation.
+
+End with the topics updated and questions remaining. An empty folder is the goal,
+but report alignment only after a current review of the stated scope. If generated
+documentation is stale, say it needs regeneration. Use the generation command's
+rules when the user also asks to regenerate it.

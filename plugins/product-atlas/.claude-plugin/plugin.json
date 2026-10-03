@@ -1,8 +1,8 @@
 {
   "name": "product-atlas",
-  "version": "1.0.0",
-  "description": "Explain an existing product through its implementation, recorded intent, and unresolved questions.",
+  "version": "2.0.0",
+  "description": "Generate product documentation, curate intent by topic, and resolve questions about implementation alignment.",
   "author": { "name": "Stacey Vetzal", "email": "stacey@vetzal.com" },
   "license": "MIT",
-  "keywords": ["product", "screenplay-pattern", "intent", "wiki", "discovery"]
+  "keywords": ["product", "screenplay-pattern", "intent", "documentation", "discovery"]
 }

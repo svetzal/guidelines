@@ -25,10 +25,11 @@ consistent.
 
 ## UI and UX guidance
 
-The [Product Atlas plugin](plugins/product-atlas/README.md) generates a stakeholder
-wiki from existing code or documentation. It compares implementation with product
-intent and keeps intent and questions in durable registries outside the wiki.
-Run `/product-atlas:generate-wiki` to configure sources and generate the wiki.
+The [Product Atlas plugin](plugins/product-atlas/README.md) generates documentation
+for stakeholders from existing code or documentation. It compares implementation
+with intent, curates intent by topic, and keeps unresolved questions separate.
+Run `/product-atlas:generate-documentation` to configure sources and generate
+the documentation.
 
 The [design plugin](plugins/design/) contains visual design theory and CLI UX.
 

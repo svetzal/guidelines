@@ -1,41 +1,46 @@
 ---
 name: reconcile-product-evidence
 description: >
-  Compare Product Atlas intent with code and documentation, maintain unresolved
-  questions without duplicates, and identify implementation drift. Use when
-  sources change or the user asks whether the system matches product intent.
+  Compare Product Atlas intent topics with code and source documentation.
+  Maintain questions for unclear purpose or differences, and delete questions
+  when evidence resolves them. Use after source changes or to check alignment.
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
   author: Stacey Vetzal
 ---
 
 # Reconcile product evidence
 
-Read [the workspace contract](../../references/workspace.md) and
-[the registry contract](../../references/registries.md).
+Read [the workspace rules](../../references/workspace.md) and
+[the intent and question rules](../../references/registries.md).
 
-Apply the source gate. Read affected source material and related intent. Consult
-generation records for previous revisions, but inspect current files before
-asserting current behavior. A missing source is unavailable evidence, not proof
-that a feature disappeared.
+Apply the source check. Read current sources and related intent topics. Consult
+history for earlier evidence, but do not treat it as proof of current behavior.
+Missing source material is an evidence gap, not proof that a feature disappeared.
 
 For each affected actor, goal, interaction, or journey:
 
-1. Describe the implementation evidence and its limits.
-2. Identify confirmed intent and distinguish inferred intent.
-3. Record agreement, contradiction, or an evidence gap with source references.
-4. Reuse an existing question for the same underlying decision.
-5. Create a question when a new conflict needs product clarification.
-6. Preserve answered questions when the mismatch is already understood.
+1. Identify the intent and its source or owner attribution.
+2. Compare it with current code and source documentation.
+3. Create or refine a question for each unresolved difference or unclear purpose.
+4. Search intent and history before asking a previously settled question.
+5. Curate new understanding into the appropriate intent topic.
+6. Save evidence and resolution history, then delete resolved question files.
 
-Update wording and evidence as understanding improves. Preserve IDs, answers,
-and revision history. Do not promote code-derived intent to confirmed status.
-Do not change recorded intent merely to match the implementation.
+When intent is clear but code differs, keep one alignment question for that gap.
+A promised fix is not evidence of alignment. When code changes resolve it, update
+the intent topic's evidence and remove the question. Do not silently change desired
+behavior to match the implementation.
 
-Write a dated reconciliation record under the configured generation directory.
-Include scope, inspected revisions, intent IDs, question IDs, and unresolved drift.
-Report partial coverage explicitly. Do not claim the whole product was checked
-after inspecting only one area.
+Refactor intent topics when needed. Group related statements, remove repetition,
+and update references when sections move. Keep confirmed intent distinct from
+inference and disputed claims.
 
-The generated drift report changes on the next wiki generation. Do not patch
-it here, change implementation, or dispatch coding work as part of reconciliation.
+Write a dated review under the configured `history/` directory. Include source
+revisions, reviewed scope, intent references, remaining questions, and conclusions.
+Every known gap must have an unresolved question. Missing or stale evidence must
+not produce an empty folder and a false claim of alignment.
+
+Report no open questions only after checking the current sources and scope.
+The next generation updates the stakeholder documentation. Do not patch generated
+pages, modify implementation, or dispatch coding work during reconciliation.

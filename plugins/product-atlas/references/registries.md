@@ -1,109 +1,132 @@
-# Registry contract
+# Intent and questions
 
-Registries contain Markdown records with YAML frontmatter. One record represents
-one intent or one question. Its filename is its stable ID plus `.md`.
-Use `INT-<uuid>` for intent and `Q-<uuid>` for questions. Display short titles
-to people; IDs are for references. Preserve IDs when titles or wording change.
+`intent/` explains what the product should do. `questions/` contains only
+unresolved questions. Move answers into intent, then delete the question files.
+Keep the record of changes in `history/`, outside both folders.
 
-Dates use ISO 8601. Evidence identifies a configured source ID, relative file
-path, locator, and inspected revision or date. Cite test names or line ranges
-when useful. Keep code evidence distinct from observations of a running system.
+The goal is an empty `questions/` folder after a current review. That means the
+reviewed implementation, source documentation, and intent agree, with no known
+uncertainty about their purpose. Never hide a known gap to reach that state.
 
-## Intent records
+## Curate intent by topic
 
-Required fields:
+Use readable topic filenames, such as `order-cancellation.md` or `account-access.md`.
+Group related expressions of intent into sections within each file. Do not
+create one file per answer, question, or individual statement.
+
+Each topic file has YAML frontmatter with `topic_id`, `title`, and `updated_at`.
+Use a UUID-based topic ID. In each section, explain:
+
+- What the product should do and who benefits.
+- Why it matters, when known.
+- The conditions and exceptions.
+- Whether the intent is confirmed, inferred, or disputed.
+- Who confirmed it and when, or which sources support the inference.
+
+For example, `order-cancellation.md` could contain sections for the cancellation
+cutoff, refunds, and exceptions. A later answer about refunds belongs in that
+file. Rewrite the relevant section into a coherent statement instead of appending
+a transcript or a separate answer record.
+
+Reference intent with a path and heading, such as
+`order-cancellation.md#cancellation-cutoff`. Paths are relative to `intent/`.
+When you move or rename a section, update active references. Record the old and
+new locations in history. Generated documentation picks up those changes on
+its next run.
+
+Regularly combine overlapping statements, remove repetition, and split topics
+that have become unrelated. Preserve meaning, conditions, evidence, and attribution.
+Keep superseded wording in history, not as conflicting current guidance in intent.
+Do not invent rationale or turn a qualified answer into an unconditional promise.
+
+An explicit product-owner answer can confirm intent without another approval.
+If authority or meaning is unclear, record that uncertainty and keep a focused
+question. Code can support an inference, but cannot by itself confirm desired policy.
+An approved source document can establish intent when its authority is clear.
+
+## Keep only unresolved questions
+
+Store one unresolved question per Markdown file, named `Q-<uuid>.md`.
+The filename identifies the question while it is open. Clarifying its wording
+keeps the same ID. Do not leave README files, placeholders, answered records,
+or superseded records in `questions/`. It must be possible for the folder to be
+empty.
+Create the folder after the source check if it is absent. Do not add a placeholder
+just to make Git retain an empty directory.
+
+Each question has YAML frontmatter with:
 
 | Field | Meaning |
 | --- | --- |
-| `id`, `title` | Stable identity and readable title |
-| `status` | `inferred`, `confirmed`, `disputed`, or `superseded` |
-| `entities` | Stable actor, goal, interaction, or journey IDs |
-| `scope` | Conditions, user group, product area, and exceptions |
-| `sources` | Evidence references. Never a generated wiki page |
-| `question_ids` | Questions that elicited or challenge this intent |
-| `created_at`, `updated_at` | Record dates |
-| `confirmed_by`, `confirmed_at` | Attribution, or null when unconfirmed |
-| `supersedes` | Previous intent IDs, or an empty list |
-
-The body contains the statement, rationale, evidence, and a revision history.
-Preserve the answer's conditions and uncertainty. Do not turn a wish into an
-unconditional commitment or invent a rationale the owner did not give.
-
-An explicit answer or correction from the product owner can confirm intent.
-Capture it without requiring a redundant approval. Ask a follow-up when the
-answer is ambiguous. Keep the raw answer or a faithful excerpt with attribution.
-Use the conversation date and available reference. Never invent a transcript URL.
-If identity or authority is unknown, record that and leave the statement inferred.
-
-Code-derived hypotheses remain `inferred`, even when implementation evidence is
-strong. Explicit approved requirements in documentation can support confirmed
-intent only when their authority and scope are evident. Otherwise, record them
-as documented claims. Confidence in implementation does not confer authority
-over intent. Conflicting authoritative statements remain disputed until resolved.
-
-Refine the same record for wording or supporting evidence. For a changed product
-decision, create a new intent record, link `supersedes`, and retain the old one.
-Mark the old intent superseded only when the replacement decision is explicit.
-Deleted code does not revoke intent.
-
-## Question records
-
-Required fields:
-
-| Field | Meaning |
-| --- | --- |
-| `id`, `title` | Stable identity and current question |
-| `status` | `open`, `answered`, `deferred`, or `superseded` |
-| `decision_key` | Stable semantic key for the underlying decision |
-| `entities`, `scope` | Affected entities and conditions |
-| `intent_ids`, `sources` | Related intent and current evidence |
+| `id`, `title` | Stable ID and the question in plain language |
+| `decision_key` | Semantic key for the decision or gap |
+| `kind` | `purpose`, `alignment`, or `evidence` |
+| `status` | `open` or `deferred` only |
+| `intent_refs` | Related topic sections, or an empty list |
+| `entities`, `scope` | Affected users, behavior, and conditions |
+| `sources` | Evidence for the question |
+| `answerable_by` | The person or evidence that can answer it |
 | `priority` | `high`, `medium`, or `low` |
-| `answerable_by` | Product owner or another named source of authority |
-| `created_at`, `updated_at` | Record dates |
-| `answer_intent_ids` | Intent produced by answers, or an empty list |
-| `superseded_by` | Replacement question ID, or null |
+| `created_at`, `updated_at` | ISO dates |
 
-The body explains the uncertainty, its impact, current evidence, the answer
-history, and wording changes. A deferred record also states the reason and the
-condition for revisiting it. Do not repeat a deferred question without new cause.
+The body explains why the question matters and what would resolve it. For a
+known implementation gap, state what evidence of correction is needed. A deferred
+question stays in the folder, with its reason and revisit condition.
 
-### Match before creating
+Before creating a question, search current questions, related intent, and relevant
+history. Match the underlying decision, user, and scope, not only its wording.
+Reuse a current question for the same unresolved issue. If intent already answers
+the policy question, do not ask it again. New evidence can justify a new question,
+but explain what changed.
 
-1. Identify the actor, goal, decision, and scope behind the finding.
-2. Search all question statuses and relevant intent records.
-3. Compare meaning, aliases, and scope, not just titles or literal keys.
-4. If the decision already exists, reuse its ID and add only new evidence.
-5. Clarify its wording if needed, preserving its answer and revision history.
-6. Create a new question only when a distinct unresolved decision remains.
+When combining duplicate questions, preserve their evidence in the surviving
+question. Record the merge in history and delete the duplicate. Do not replace
+one unresolved question with several rewordings of it.
 
-For example, "Can buyers cancel after dispatch?" and "When does cancellation
-close?" may concern the same decision. A separate policy for business accounts
-may need a different scoped question. A changed slug must not create a duplicate.
+## Turn an answer into intent
 
-A repeated code mismatch does not reopen an answered intent question. Keep the
-known intent and report continuing drift. Reopen the same question only when new
-evidence challenges its answer for the same scope. State why and preserve history.
-If the decision itself changes, create a linked successor question. When merging
-accidental duplicates, mark one superseded and retain its references and answers.
+1. Read the current question and related intent topics.
+2. Curate the answer into the appropriate topic sections.
+3. Preserve attribution, conditions, and the evidence used.
+4. Record the answer and changed intent locations in `history/changes/`.
+5. Check that the saved intent covers the answer before deleting anything.
+6. Replace active references to the answered question with intent or history references.
+7. Delete the answered question file.
+8. Reconcile the affected intent with current code and source documentation.
 
-## Evidence and divergence
+Do not delete a partly answered question. Narrow it to the remaining uncertainty.
+Never interpret silence as agreement. If writing intent or history fails, retain
+the question. Before deletion, check for concurrent edits to the question.
 
-Compare two dimensions separately:
+History records use dated UUID filenames. Record the question ID, its wording,
+the answer, attribution, changed intent sections, and evidence of any resolution.
+Use available conversation references without inventing transcript links. History
+preserves the explanation of changes. It is not another queue of questions.
 
-- Intent authority: attributed owner decisions and approved requirements, then
-  clearly marked hypotheses from the corpus.
-- Observed behavior: analytics, feedback, observed application behavior, code,
-  documentation, and marketing, with relevance, freshness, and limitations stated.
+## Resolve differences without losing settled intent
 
-Use the gist's evidence ordering as an interpretation aid, not an automatic vote.
-Analytics can show usage, but cannot decide desired policy. A test can express
-an expectation, but cannot prove that a deployed system behaves that way.
+Answering a policy question does not make contradicting code correct. Delete the
+answered policy question after saving the intent. Keep or create one distinct
+alignment question for the remaining difference. Link it to the settled intent.
+Do not reopen the policy question merely because the same code remains unchanged.
 
-For a new conflict, record both claims and ask what must be clarified. Never
-silently choose one or modify the implementation. If the owner has already
-settled that exact decision, link the answered question and keep reporting drift.
-No new question is needed until there is new uncertainty.
+For example, an owner confirms that paid orders can be cancelled before dispatch.
+Curate that answer into `order-cancellation.md` and delete its policy question.
+If code still rejects paid cancellations, ask what must change to support the
+confirmed cutoff. A plan to fix it does not establish that the change happened.
+Once that plan is recorded, narrow the question to the missing evidence of alignment.
+Do not keep asking for a policy decision that the owner already supplied.
 
-A question is answered when its decision is sufficiently clear and its intent
-records are linked. Drift is resolved only when current evidence shows alignment,
-or an explicit change to intent removes the disagreement.
+When current evidence answers the remaining alignment question, update the topic's
+evidence, record the resolution, and delete the question. Repeated reviews reuse
+the same unresolved question until then. These skills do not authorize source edits.
+
+Create evidence questions for missing source material, unreviewed relevant areas,
+and unclear purpose. A documentation-only review can run, but cannot establish
+implementation alignment without implementation evidence. Keep that limitation
+as a question, not only a footnote in generated output.
+
+After reconciliation, an empty folder means no known unresolved questions in the
+reviewed scope. Report that scope and the inspected revisions in history and the
+generated documentation. Do not claim alignment from an empty folder before review,
+after manual deletion, or when sources have changed since the last review.

@@ -1,7 +1,8 @@
-# Wiki generation contract
+# Documentation generation contract
 
 Use this contract only for the generation command. The workspace and registry
-contracts also apply. The wiki is a complete generated view of durable records
+contracts also apply. The documentation is a complete generated view of curated
+intent
 and inspected sources. It is never the authoritative store for intent or answers.
 
 ## Digest the corpus
@@ -29,7 +30,7 @@ as starting points, not automatic conclusions:
 
 If authorized runtime access is available, inspect navigation and full workflows.
 Record empty states, calls to action, and what each actor can see and do. Do not
-perform transactions or change live data merely to complete a wiki.
+perform transactions or change live data merely to complete the documentation.
 
 Compare supplementary evidence with code and documentation. Record customer
 terms alongside code terms when they differ. Explain the difference in ordinary
@@ -37,21 +38,25 @@ language. Internal team roles are actors only if the product serves those people
 
 ## Preserve durable understanding
 
-Load intent and questions before extraction. Record new inferred intent with
-source evidence. Do not present it as an owner decision. Reuse existing records
-for the same meaning. Apply the question matching procedure before every creation.
+Read intent topics and unresolved questions before extraction. Curate new
+inferences into related topic sections, with source evidence. Do not present
+them as owner decisions. Apply the question matching rules before creating questions.
 
-Record explicit conflicts without rewriting intent to match code. Create a
-clarification question for a new unresolved conflict. Link an existing answered
-question when the decision is already settled and only implementation differs.
+Record conflicts without rewriting intent to match code. Every unresolved
+difference or unclear purpose needs a question. If policy is settled, link its
+intent section and keep one alignment question for the remaining difference.
+When evidence resolves a question, curate the intent, save history, and delete
+the question file. Never preserve answered question files in the queue.
 
-Keep `generation/entities.json` outside the wiki. It maps stable entity IDs to
+Keep `history/entities.json` outside the documentation. It maps stable entity
+IDs to
 type, slug, aliases, related IDs, evidence, status, last verification, and any
 deprecation reason. It preserves identity across renamed pages and records
-removals that a later generation must explain. It is derived extraction history,
-not an alternative intent registry. Never use it alone as evidence of current behavior.
+removals that a later generation must explain. It records earlier extraction results.
+Current product intent belongs in the topic files. Never use it alone as
+evidence of current behavior.
 
-Keep dated run records in `generation/runs/`. Record inspected source revisions,
+Keep dated run records in `history/runs/`. Record inspected source revisions,
 uncommitted content where relevant, document hashes, coverage, and validation.
 Use a run UUID in filenames. Do not overwrite records from earlier runs.
 
@@ -62,7 +67,7 @@ affected corpus again. A previous generation date alone is not enough.
 
 Reusing unchanged evidence can reduce reading. Changes to shared rules, actor
 models, or relationships require checking affected entities beyond changed files.
-Regardless of incremental analysis, produce a complete new wiki each time.
+Regardless of incremental analysis, regenerate the complete documentation each time.
 
 Missing sources make affected claims stale or unverified. Confirmed removal of
 behavior deprecates its observed entity and records the supporting revision.
@@ -91,7 +96,7 @@ Each entity has YAML frontmatter with:
 - `id`, `type`, and `title`.
 - `confidence`: `high`, `medium`, `low`, or `inferred` for the supporting analysis.
 - `sources`: source IDs, paths, locators, and inspected revisions or dates.
-- `intent_ids` and `question_ids`.
+- `intent_refs` pointing to topic sections and `question_ids` for unresolved questions.
 - `last_verified`: actual verification date, or null if never verified.
 - `status`: `active`, `stale`, or `deprecated`.
 - `alignment`: `aligned`, `divergent`, `unknown`, or `not-assessed`.
@@ -105,7 +110,7 @@ not mean high confidence about user intent or deployed behavior.
 Generate this structure:
 
 ```text
-wiki/
+documentation/
   AGENTS.md
   index.md
   actors/
@@ -144,27 +149,34 @@ The drift report pairs each intended claim with the observed or documented
 claim, its evidence, and a relevant question or recorded decision. Distinguish
 unresolved intent from a known implementation gap. Include vocabulary differences.
 
-The questions page is a generated view of the registry. Include open questions,
-deferred questions with revisit conditions, and links to answered decisions that
-explain continuing drift. Render enough context for stakeholders to understand
-the question without reading raw registry metadata. Never store the only copy
-of an answer here.
+The questions page shows only unresolved questions, including deferred ones.
+Link settled decisions to intent sections. Show question IDs and enough context
+to understand them. Link entity pages to anchors in this generated questions
+page, not to question files that will disappear when answered.
+
+The index states whether questions remain and what scope the agent reviewed.
+An empty question folder can support an alignment conclusion only after a current
+review of implementation, source documentation, and intent. Do not report full
+alignment with missing implementation evidence or unreviewed relevant areas.
 
 ## Validate and replace
 
-Create the complete wiki in a fresh staging directory beside the output path.
+Create the complete documentation in a fresh staging directory beside the output
+path.
 Name it `.product-atlas-stage-<run-uuid>`. Name the temporary backup
 `.product-atlas-backup-<run-uuid>` so neither becomes evidence on a later scan.
-Never clear the current wiki at the start of a run. Check that the staging path
+Never clear the current documentation at the start of a run. Check that the
+staging path
 is outside every registry and outside source discovery for this run.
 
 Validate the staged output:
 
 - Every local link and fragment resolves in the final layout.
-- Every referenced intent, question, and entity ID exists.
+- Every intent reference resolves to a topic section. Every current question and
+  entity ID exists.
 - Entity links are reciprocal. Journey steps are ordered and valid.
 - Actors have goals, goals have interactions, and interactions belong to journeys,
-  or the page explains the evidence gap and links to its question.
+  or the page explains the evidence gap and links to its unresolved question.
 - Deprecated entities are not presented as active capabilities.
 - Staleness reflects relevant source changes, not unrelated commits.
 - Each substantive claim has evidence or a clearly attributed intent reference.
@@ -172,12 +184,14 @@ Validate the staged output:
 - Required pages and generated notices exist, with no scaffold placeholders.
 
 Review the index and representative journeys for readable stakeholder language.
-Record the checks and any remaining limitations in the run record. Missing
-evidence may be a stated limitation. Broken links and corrupt records must be fixed.
+Record the checks and remaining limitations in history. Every missing piece of
+evidence or known difference also needs an unresolved question. Fix broken links
+and corrupt records before publication. Never claim alignment only because the
+question folder happens to be empty.
 
 Before replacement, repeat path checks and compare input revisions with those
 used for generation. Stop or refresh analysis if inputs changed. Resolve links
-relative to the final wiki path, not its staging name. Link external registry
+relative to the final documentation path, not its staging name. Link external registry
 paths appropriately for the local Markdown reader. Never copy registries into output.
 
 If the output directory already has content, confirm it is a previous Product
@@ -185,18 +199,29 @@ Atlas output from its generated notice and a completed run record. If ownership
 is unknown, preserve it and request a different output path or an explicit migration.
 Never delete an arbitrary existing documentation directory.
 
-Replace only the configured wiki directory after validation. Use a same-filesystem
+Replace only the configured documentation directory after validation. Use a same-filesystem
 rename with a temporary backup and rollback on failure. Do not merge individual
 pages, since that would retain obsolete output. Preserve any Git metadata: if
-the wiki is itself a repository, stop and request a dedicated output subdirectory.
+the output directory is itself a repository, stop and request a dedicated output
+subdirectory.
 Remove the temporary backup only after checking the installed output. A failed
-run keeps the previous wiki available and records its failure outside the wiki.
+run keeps the previous documentation available and records its failure outside
+the documentation.
+
+A question about stale generated documentation closes only when replacement
+succeeds. During staging, prepare its resolution and the final question view.
+Keep the actual question file until the new output passes validation and installs.
+Then record the resolution in history and delete it. On failure, retain it.
+If final record updates fail, report the incomplete run and preserve the question.
 
 Mark the run completed only after replacement succeeds. Save the new entity
 inventory as part of that completed generation. Failed staging must not advance
 the last successful source revision. Registry updates made during analysis remain
-durable even when rendering fails. Mark the wiki as needing regeneration in the
+durable even when rendering fails. Mark the documentation as needing
+regeneration in the
 run record when its inputs are newer than the last successful output.
 
-Report the final entry point, coverage, meaningful drift, unanswered decisions,
-and any remaining verification limits.
+Report the documentation entry point, reviewed scope, and number of remaining
+questions. When the folder is empty, state which current sources agree and the
+revisions checked. If questions remain, explain what evidence or decisions will
+resolve them.

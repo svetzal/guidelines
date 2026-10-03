@@ -24,7 +24,7 @@ class PreflightTests(unittest.TestCase):
         self.code = self.source / "cancel.py"
         self.code.write_text("def can_cancel(order):\n    return not order.dispatched\n")
         self.config = {
-            "schema_version": 1,
+            "schema_version": 2,
             "product": "Orders",
             "sources": [{"id": "app", "kind": "code", "path": "application"}],
             "paths": {name: "product/" + name for name in MODULE.STORES},
@@ -37,8 +37,33 @@ class PreflightTests(unittest.TestCase):
     def test_relative_paths_use_settings_location_and_check_is_read_only(self):
         result = self.run_check()
         self.assertEqual(result["sources"][0]["files"], [str(self.code)])
-        self.assertEqual(result["paths"]["wiki"], str(self.root / "product/wiki"))
+        self.assertEqual(result["paths"]["documentation"], str(self.root / "product/documentation"))
         self.assertFalse((self.root / "product").exists())
+
+    def test_version_one_settings_decline_without_modifying_project_data(self):
+        self.config["schema_version"] = 1
+        self.config["paths"] = {
+            "intent": "product/intent", "questions": "product/questions",
+            "generation": "product/generation", "wiki": "product/wiki",
+        }
+        old_output = self.root / "product/wiki"
+        old_output.mkdir(parents=True)
+        page = old_output / "index.md"
+        page.write_text("Existing output")
+        with self.assertRaisesRegex(ValueError, "references/upgrade.md"):
+            self.run_check()
+        self.assertEqual(page.read_text(), "Existing output")
+        self.assertEqual(json.loads(self.settings.read_text()), self.config)
+
+    def test_shipped_template_uses_current_schema_and_directory_names(self):
+        template = SCRIPT.parents[1] / "templates" / "product-atlas.json"
+        self.config = json.loads(template.read_text())
+        self.config["sources"] = [{"id": "app", "kind": "code", "path": "application"}]
+        result = self.run_check()
+        self.assertEqual(result["paths"], {
+            name: str(self.root / "product" / name)
+            for name in ("intent", "questions", "history", "documentation")
+        })
 
     def test_documentation_alone_qualifies(self):
         self.config["sources"] = [{"id": "docs", "kind": "documentation", "path": "requirements.md"}]
@@ -81,21 +106,21 @@ class PreflightTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "No readable code or documentation"):
             self.run_check()
 
-    def test_wiki_cannot_contain_sources_or_settings(self):
+    def test_documentation_cannot_contain_sources_or_settings(self):
         for value in ("application", "."):
             with self.subTest(path=value):
-                self.config["paths"]["wiki"] = value
+                self.config["paths"]["documentation"] = value
                 with self.assertRaises(ValueError):
                     self.run_check()
 
     def test_nested_registries_are_rejected(self):
-        self.config["paths"]["questions"] = "product/wiki/questions"
+        self.config["paths"]["questions"] = "product/documentation/questions"
         with self.assertRaisesRegex(ValueError, "overlap"):
             self.run_check()
 
     def test_symlink_cannot_disguise_overlap(self):
-        (self.root / "product/wiki").mkdir(parents=True)
-        (self.root / "alias").symlink_to(self.root / "product/wiki", target_is_directory=True)
+        (self.root / "product/documentation").mkdir(parents=True)
+        (self.root / "alias").symlink_to(self.root / "product/documentation", target_is_directory=True)
         self.config["paths"]["intent"] = "alias"
         with self.assertRaisesRegex(ValueError, "overlap"):
             self.run_check()
@@ -116,20 +141,20 @@ class PreflightTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "does not exist"):
             self.run_check()
 
-    def test_existing_wiki_is_preserved_on_failure(self):
-        wiki = self.root / "product/wiki"
-        wiki.mkdir(parents=True)
-        page = wiki / "index.md"
-        page.write_text("Previous valid wiki\n")
+    def test_existing_documentation_is_preserved_on_failure(self):
+        documentation = self.root / "product/documentation"
+        documentation.mkdir(parents=True)
+        page = documentation / "index.md"
+        page.write_text("Previous valid documentation\n")
         self.code.unlink()
         with self.assertRaises(ValueError):
             self.run_check()
-        self.assertEqual(page.read_text(), "Previous valid wiki\n")
+        self.assertEqual(page.read_text(), "Previous valid documentation\n")
 
     def test_output_cannot_be_a_git_checkout(self):
-        wiki = self.root / "product/wiki"
-        wiki.mkdir(parents=True)
-        (wiki / ".git").write_text("gitdir: /placeholder\n")
+        documentation = self.root / "product/documentation"
+        documentation.mkdir(parents=True)
+        (documentation / ".git").write_text("gitdir: /placeholder\n")
         with self.assertRaisesRegex(ValueError, "Git checkout"):
             self.run_check()
 

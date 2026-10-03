@@ -10,7 +10,7 @@ import sys
 
 
 KINDS = {"code", "documentation", "analytics", "feedback", "runtime", "marketing"}
-STORES = {"intent", "questions", "generation", "wiki"}
+STORES = {"intent", "questions", "history", "documentation"}
 SKIP = {
     ".git", ".hg", ".svn", ".venv", "venv", "node_modules", "__pycache__",
     "archive", "vendor", "target", "build", "dist", ".next", ".cache",
@@ -82,13 +82,13 @@ def preflight(settings):
     settings = Path(settings).resolve()
     with settings.open(encoding="utf-8") as stream:
         config = json.load(stream)
-    if not isinstance(config, dict) or type(config.get("schema_version")) is not int or config["schema_version"] != 1:
-        raise ValueError("Expected a settings object with schema_version 1.")
+    if not isinstance(config, dict) or type(config.get("schema_version")) is not int or config["schema_version"] != 2:
+        raise ValueError("Expected settings version 2. For version 1 projects, follow references/upgrade.md before continuing.")
     if not isinstance(config.get("product"), str) or not config["product"].strip():
         raise ValueError("Set a nonempty product name.")
     paths = config.get("paths")
     if not isinstance(paths, dict) or set(paths) != STORES:
-        raise ValueError("paths must define exactly intent, questions, generation, and wiki.")
+        raise ValueError("paths must define exactly intent, questions, history, and documentation.")
     stores = {name: resolve_path(value, settings.parent) for name, value in paths.items()}
     for name, path in stores.items():
         if path.exists() and not path.is_dir():

@@ -6,12 +6,12 @@
   },
   "metadata": {
     "description": "Curated craftsperson agents and skills for software development",
-    "version": "2.9.0"
+    "version": "2.10.0"
   },
   "plugins": [
     {
       "name": "product-atlas",
-      "description": "Stakeholder product wikis with standalone intent and question registries",
+      "description": "Product documentation with curated intent and a queue of unresolved questions",
       "source": "./plugins/product-atlas",
       "category": "functional"
     },
