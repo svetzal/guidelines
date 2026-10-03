@@ -1,90 +1,90 @@
 # Product Atlas
 
-Product Atlas helps stakeholders understand an existing system. Its generated
-wiki explains what the implementation does, how that aligns with product
-intent, and where the evidence disagrees.
+Product Atlas creates a wiki that helps stakeholders understand a product.
+It explains what the system does, what the product owner intends, and where
+the two differ.
 
-It uses standalone file registries. It does not need Epilogue Tracker or a
-hosted service. A code or documentation corpus is required. An empty project,
-an intent registry, or an old generated wiki alone is not enough to run it.
+The repository must contain code, documentation, or both. Product Atlas reads
+this material to build the wiki. It cannot work with an empty repository.
 
-## Start a product atlas
+## Get started
 
 Install `product-atlas` from the `svetzal-guidelines` plugin marketplace.
-Install the complete plugin. Its skills share references and a preflight script.
-The plugin follows the repository's existing
-[Claude plugin layout](https://code.claude.com/docs/en/plugins-reference).
+The plugin needs Python 3.9 or later.
 
-1. Open a workspace for the product analysis.
+1. Open your product repository.
 2. Run `/product-atlas:generate-wiki`.
-3. Supply the code or documentation paths when asked.
+3. Provide the paths to code or documentation when asked.
 
-The command creates `.product-atlas.json` if no configuration exists. You can
-also copy [the template](templates/product-atlas.json) and edit it first.
-Paths resolve from the configuration file's directory. Absolute paths work too.
-Multiple repositories and documentation-only analysis are supported.
+The command saves your settings in `.product-atlas.json`. You can change these
+settings to read from several repositories or store the files elsewhere.
+Relative paths start from the directory that contains the settings file.
+
+The default layout is:
 
 ```text
 .product-atlas.json
 product/
-  intent/       Durable statements, rationale, and evidence
-  questions/    Durable questions, answers, and decision history
-  generation/   Source revisions, entity history, and run records
-  wiki/         Replaceable stakeholder documentation
+  intent/       What the product should do, and why
+  questions/    Questions, answers, and earlier decisions
+  generation/   Records of what the agent read and generated
+  wiki/         The generated wiki
 ```
 
-To select another configuration, pass its path:
+To prepare the settings yourself, copy [the template](templates/product-atlas.json).
+Edit its product name and paths. To use another settings file, pass its path:
 
 ```text
 /product-atlas:generate-wiki ./customer-product.json
 ```
 
-The only script dependency is Python 3.9 or later, using its standard library.
-The agent reads sources and writes the wiki. The script checks configuration,
-path boundaries, and candidate source files. A passing preflight does not prove
-that those files contain useful product evidence. The agent must read them.
+## Record intent and answer questions
 
-## Work with intent
+The plugin keeps two registries: one for product intent and one for questions.
+Both are collections of Markdown files that you can read and edit.
+
+Use these skills through ordinary conversation:
 
 | Request | Skill |
 | --- | --- |
-| "Record that customers must be able to cancel before dispatch." | `capture-product-intent` |
-| "Ask me the most useful unanswered product questions." | `interview-product-owner` |
-| "Check how this implementation aligns with our intent." | `reconcile-product-evidence` |
+| "Record this product decision." | `capture-product-intent` |
+| "Ask me the unanswered questions." | `interview-product-owner` |
+| "Does the code match our intent?" | `reconcile-product-evidence` |
 
-Skills record durable information and report when the wiki needs regeneration.
-They do not edit wiki pages. Answers can settle intent while an implementation
-gap remains open in the drift report.
+When the agent finds a conflict, it checks for an existing question before
+creating one. It can clarify a question without losing its answers or history.
+Your answer can settle what the product should do even when the code still
+needs to change. The wiki reports that remaining difference.
 
-Questions have stable IDs. Matching uses the underlying decision, actor, goal,
-and scope, rather than the wording alone. Clarifying a question preserves its
-history. Repeated evidence of the same gap does not create another question.
+## Read and update the wiki
 
-## Read the wiki
+Start at `product/wiki/index.md`. The wiki describes who uses the product,
+what they want to achieve, and how they use it. Links connect the actors,
+goals, interactions, and journeys.
 
-Start at `wiki/index.md`. Follow links through actors, goals, interactions, and
-journeys. Each page separates implementation evidence, recorded intent, inferred
-intent, alignment, and unanswered questions.
+Each page explains what the agent found and which sources support it.
+It distinguishes your stated intent from the agent's inferences.
+With documentation alone, it describes documented behavior and identifies
+what the agent could not check against the implementation.
 
-The index states what was inspected and what could not be verified. With only
-documentation, the wiki describes documented behavior and explicitly says that
-the current implementation has not been verified.
+Do not edit the generated wiki. Record corrections in the intent or question
+registry. Run `/product-atlas:generate-wiki` again to update the wiki.
 
-The generated `AGENTS.md` and page notices direct corrections to the registries.
-These are agent instructions, not a filesystem access control. Regeneration
-replaces the complete wiki, including stale files. Sources and registries are
-outside that replacement boundary. Failed generation preserves the previous wiki.
+Generation replaces the whole wiki. It keeps your registries and source files.
+If generation fails, it keeps the previous wiki too.
 
-## Maintenance
+## Maintain the plugin
 
-Run the checks from this repository's root:
+Run these checks from the guidelines repository root:
 
 ```sh
 python3 -m unittest discover -s plugins/product-atlas/tests -v
 claude plugin validate plugins/product-atlas
 ```
 
-The shared contracts are in [workspace.md](references/workspace.md),
-[registries.md](references/registries.md), and [wiki.md](references/wiki.md).
-The design adapts Stacey Vetzal's
+For the detailed rules, see [workspace settings](references/workspace.md),
+[registry records](references/registries.md), and
+[wiki generation](references/wiki.md).
+
+The design builds on Stacey Vetzal's
 [Screenplay Pattern extraction gist](https://gist.github.com/svetzal/716b963c631a3af1c0ebbe60b14cb32a/856646f41d5002dd52e0a6d582c716fdd3ac467f).
