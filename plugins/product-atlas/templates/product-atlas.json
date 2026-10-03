@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "product": "Product name",
+  "sources": [
+    { "id": "application", "kind": "code", "path": "../application" }
+  ],
+  "paths": {
+    "intent": "product/intent",
+    "questions": "product/questions",
+    "generation": "product/generation",
+    "wiki": "product/wiki"
+  }
+}

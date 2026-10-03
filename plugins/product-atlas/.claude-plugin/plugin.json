@@ -1,0 +1,8 @@
+{
+  "name": "product-atlas",
+  "version": "1.0.0",
+  "description": "Explain an existing product through its implementation, recorded intent, and unresolved questions.",
+  "author": { "name": "Stacey Vetzal", "email": "stacey@vetzal.com" },
+  "license": "MIT",
+  "keywords": ["product", "screenplay-pattern", "intent", "wiki", "discovery"]
+}
