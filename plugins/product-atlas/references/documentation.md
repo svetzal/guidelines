@@ -141,6 +141,11 @@ Each entity page explains:
 Use "unknown" when the evidence cannot establish alignment. Do not describe an
 intended interaction as available merely because it appears in an owner answer.
 
+Intent can lead implementation. Explain which intended behavior already exists
+and what the product still needs to do. Distinguish requested future changes from
+unexplained differences. Do not present planned behavior as currently available,
+or question settled intent simply because implementation is behind.
+
 Actors link to their goals. Goals link to their actor, interactions, and journeys.
 Interactions link to performing actors, supported goals, and journeys. Journeys
 link to their protagonist, goal, and each ordered step. Make these links reciprocal.

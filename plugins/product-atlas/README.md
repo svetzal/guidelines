@@ -54,6 +54,19 @@ exceptions.
 New answers refine those sections. The agent combines repeated ideas and
 reorganizes topics as understanding improves.
 
+Intent remains as a lasting statement of purpose after the code and documentation
+match it. The agent keeps it succinct and removes duplication without changing
+its meaning. Detailed discussions and earlier wording stay in `history/`.
+
+Confirmed intent guides changes to the product. If code or documentation conflicts
+with it, the agent asks about the desired behavior in plain language. The aim is
+to bring the product into line with intent.
+
+Intent can also describe what the product needs to do next. The implementation
+may be behind. The documentation shows current behavior, intended behavior, and
+what still needs to change. Clear, requested changes remain the direction for
+implementation until the product owner changes that intent.
+
 Use these skills through ordinary conversation:
 
 | Request | Skill |

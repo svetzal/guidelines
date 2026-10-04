@@ -5,7 +5,7 @@ description: >
   intent files, then delete answered questions. Use when the user clarifies
   product behavior in a repository with existing code or documentation.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   author: Stacey Vetzal
 ---
 
@@ -27,6 +27,14 @@ Do not create one intent file per answer. Group related expressions of intent
 under topic headings. Preserve meaning when combining, moving, or splitting sections.
 Keep earlier wording in history. Capture spontaneous intent without inventing a
 question to justify it.
+
+Keep intent as a lasting statement of purpose after implementation. Refactor it
+for brevity and remove duplication without changing meaning, conditions, or
+attribution. Put detailed discussions in history. Retiring a purpose needs an
+explicit product decision, not merely evidence that the code now meets it.
+
+Capture intended future behavior even when it has no implementation yet. Keep
+the owner's direction clear and separate from evidence of current behavior.
 
 A partial answer leaves a narrower question. A settled policy with contradicting
 code needs a distinct alignment question, not another copy of the policy question.

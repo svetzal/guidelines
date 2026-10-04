@@ -5,7 +5,7 @@ description: >
   Maintain questions for unclear purpose or differences, and delete questions
   when evidence resolves them. Use after source changes or to check alignment.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   author: Stacey Vetzal
 ---
 
@@ -32,9 +32,20 @@ A promised fix is not evidence of alignment. When code changes resolve it, updat
 the intent topic's evidence and remove the question. Do not silently change desired
 behavior to match the implementation.
 
+Confirmed intent guides the changes needed in code and documentation. Phrase
+remaining questions in terms of user behavior and outcomes. Keep implementation
+details in the evidence section. Once the owner requests alignment, track the
+remaining evidence without asking them to confirm the same intent again.
+
+Identify planned changes that implementation has not reached yet. Show what the
+code must do next. Do not treat a known planned gap as uncertainty about intent.
+
 Refactor intent topics when needed. Group related statements, remove repetition,
 and update references when sections move. Keep confirmed intent distinct from
 inference and disputed claims.
+
+Keep the succinct statement of purpose after alignment. Update its evidence,
+but do not remove or mark the intent completed because implementation now matches.
 
 Write a dated review under the configured `history/` directory. Include source
 revisions, reviewed scope, intent references, remaining questions, and conclusions.

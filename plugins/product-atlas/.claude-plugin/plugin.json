@@ -1,6 +1,6 @@
 {
   "name": "product-atlas",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Generate product documentation, curate intent by topic, and resolve questions about implementation alignment.",
   "author": { "name": "Stacey Vetzal", "email": "stacey@vetzal.com" },
   "license": "MIT",

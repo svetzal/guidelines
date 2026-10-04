@@ -4,6 +4,22 @@
 unresolved questions. Move answers into intent, then delete the question files.
 Keep the record of changes in `history/`, outside both folders.
 
+Intent is a lasting statement of purpose. Keep it after the implementation and
+documentation align. It continues to guide later changes. Remove or replace its
+meaning only when the product owner explicitly changes that purpose.
+
+Confirmed intent sets the direction for code and documentation. When they differ,
+identify the changes needed to follow that intent. Ask the owner any remaining
+product questions in plain language. Do not weaken intent to match existing code.
+Keep inferred or disputed intent clearly marked until the uncertainty is resolved.
+
+Intent can describe future behavior before code implements it. Preserve that
+direction and show what still needs to change. A planned gap is different from
+an unexplained conflict. Do not infer that intent is wrong because code is behind.
+Once the owner has requested the direction, do not ask whether they still want
+it on every review. Keep any remaining question focused on an unresolved product
+choice or the evidence needed to show alignment.
+
 The goal is an empty `questions/` folder after a current review. That means the
 reviewed implementation, source documentation, and intent agree, with no known
 uncertainty about their purpose. Never hide a known gap to reach that state.
@@ -36,6 +52,9 @@ its next run.
 
 Regularly combine overlapping statements, remove repetition, and split topics
 that have become unrelated. Preserve meaning, conditions, evidence, and attribution.
+Keep each expression of intent succinct. Merge duplicate files or sections while
+retaining their meaning and repairing references. Put detailed discussions and
+change narratives in history, with short evidence references in the topic file.
 Keep superseded wording in history, not as conflicting current guidance in intent.
 Do not invent rationale or turn a qualified answer into an unconditional promise.
 
@@ -72,6 +91,11 @@ Each question has YAML frontmatter with:
 The body explains why the question matters and what would resolve it. For a
 known implementation gap, state what evidence of correction is needed. A deferred
 question stays in the folder, with its reason and revisit condition.
+
+Write titles and owner-facing explanations in product language. Explain who is
+affected and what they can or cannot do. Keep code paths and technical evidence
+in a separate evidence section. Ask about changing product behavior and its
+documentation, not about functions, database fields, or other implementation details.
 
 Before creating a question, search current questions, related intent, and relevant
 history. Match the underlying decision, user, and scope, not only its wording.
@@ -112,14 +136,19 @@ Do not reopen the policy question merely because the same code remains unchanged
 
 For example, an owner confirms that paid orders can be cancelled before dispatch.
 Curate that answer into `order-cancellation.md` and delete its policy question.
-If code still rejects paid cancellations, ask what must change to support the
-confirmed cutoff. A plan to fix it does not establish that the change happened.
+If code still rejects paid cancellations, ask: "Should we update cancellations
+and the customer guide so buyers can cancel until dispatch?" Explain that this
+would bring them into line with the recorded intent. Once the owner requests
+that change, do not ask the same question again. A plan does not prove completion.
+Skip that question if the intent already records the request to make this change.
 Once that plan is recorded, narrow the question to the missing evidence of alignment.
 Do not keep asking for a policy decision that the owner already supplied.
 
 When current evidence answers the remaining alignment question, update the topic's
 evidence, record the resolution, and delete the question. Repeated reviews reuse
 the same unresolved question until then. These skills do not authorize source edits.
+Keep the intent topic after resolution. Update its evidence and remove duplicate
+wording as needed, but do not delete the purpose because the code now meets it.
 
 Create evidence questions for missing source material, unreviewed relevant areas,
 and unclear purpose. A documentation-only review can run, but cannot establish
