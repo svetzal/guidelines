@@ -56,7 +56,7 @@ observer of them — discovering what she designed, preferring what she's alread
 beginning what she's done for years. Each drift is small and reads as modesty. Together they
 strip out her agency and make a considered body of work look like a run of good fortune.
 
-Three failure modes, all correcting the same way:
+Four failure modes, all correcting the same way:
 
 **1. Deliberate design written as happy accident.** When a design pays off, that is a bet
 settling, not a surprise. She builds structure on purpose and usually knows what she is
@@ -74,6 +74,19 @@ built the thing and is using it, write it in the indicative.
 one specific piece of it. Find that piece and say so, crediting the history rather than
 erasing it. "I've been trying to do X for years — what changed is Y", not "I started doing X."
 
+**4. Held knowledge written as fresh discovery (the stumble).** "I thought I knew
+them." "I'm only now finding language for this." "Over the past year the second
+rule quietly ate the other three." Each one casts her as a novice to her own
+expertise so the post can stage a reveal. She has taught this material for
+decades and teaches it now. The before-and-after arc never happened; the model
+invented it because a learning curve reads as humility. What is new is usually
+one specific act on a specific day: the exercise she did this morning, the
+measurement she ran this week. Name that act precisely and credit the history
+behind it. "Today I did something I hadn't done explicitly before: rewrite all
+four rules with intent as the subject" is accurate. "I thought I knew them" is
+not. **If you cannot tell whether something was a discovery or long-held
+knowledge, ask her. Never pick discovery because it makes the better beat.**
+
 ### Stance tells — sweep for these before shipping
 
 - "I didn't expect", "I hadn't planned", "surprised me", "to my surprise"
@@ -82,6 +95,7 @@ erasing it. "I've been trying to do X for years — what changed is Y", not "I s
 - "it turned out that…" describing something she intended
 - "I'd rather", "I want to", "I don't want to" standing in for what she is actually doing
 - "I finally started", "I've begun" for work with a long history
+- "I thought I knew", "I realized", "only now", "it hit me", "dawned on me", "I hadn't noticed", "quietly ate / became / took over", "I'd been circling" — for things she has taught or practised for years
 
 | Diminished | Accurate |
 | --- | --- |
@@ -107,7 +121,7 @@ own writing is almost bare of it; a model reaching for her register produces it 
 reflex, because ornament is the cheapest way to sound conversational, punchy,
 first-person, and warm at the same time.
 
-Four kinds, each with its own section below:
+Five kinds. Four have their own section below; the stumble lives under Authorial Stance because it is a stance failure as much as a decoration:
 
 | Kind | What it does | Example |
 | --- | --- | --- |
@@ -115,8 +129,9 @@ Four kinds, each with its own section below:
 | The echo | Restates the previous sentence to fake a beat | "Nothing got dropped." |
 | The alliance | Reveals a cited authority was secretly on the post's side | "The four rules were quietly agreeing with him the whole time." |
 | The quip | Tacks a sardonic tail onto a finished sentence | "and we just paid to find out how much that's worth." |
+| The stumble | Has her discover what she already teaches | "I thought I knew them." (see Authorial Stance, failure mode 4) |
 
-The sentimental closing tag in the Closing section is a fifth, and the oldest.
+The sentimental closing tag in the Closing section is the oldest of them.
 
 **One test for all of them.** Strip the paragraph to its claims, its citations, and
 its concrete details. Read what is left. Ornament is whatever you removed. If the
