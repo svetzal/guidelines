@@ -7,7 +7,7 @@ description: >
   or when any content needs to sound like Stacey wrote it. If you're writing prose that will be
   published under Stacey's name, this skill applies.
 metadata:
-  version: "1.4.0"
+  version: "1.4.1"
   author: Stacey Vetzal
 ---
 
@@ -117,7 +117,7 @@ own writing is almost bare of it; a model reaching for her register produces it 
 reflex, because ornament is the cheapest way to sound conversational, punchy,
 first-person, and warm at the same time.
 
-Five kinds. Four have their own section below; the stumble lives under Authorial Stance because it is a stance failure as much as a decoration:
+Six kinds. Four have their own section below; the stumble lives under Authorial Stance because it is a stance failure as much as a decoration, and the riddle needs no section because the fix is always the same: say the thing's name. If the description carries a fact the name doesn't ("an agent, with nothing but what I wrote down"), keep the fact and still use the name:
 
 | Kind | What it does | Example |
 | --- | --- | --- |
@@ -126,6 +126,7 @@ Five kinds. Four have their own section below; the stumble lives under Authorial
 | The alliance | Reveals a cited authority was secretly on the post's side | "The four rules were quietly agreeing with him the whole time." |
 | The quip | Tacks a sardonic tail onto a finished sentence | "and we just paid to find out how much that's worth." |
 | The stumble | Has her discover what she already teaches | "I thought I knew them." (see Authorial Stance, failure mode 4) |
+| The riddle | Names a thing by a coy description instead of its name | "checked by something that has never met me" for "checked by an agent" |
 
 The sentimental closing tag in the Closing section is the oldest of them.
 
