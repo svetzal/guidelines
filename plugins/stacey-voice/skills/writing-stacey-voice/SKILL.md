@@ -35,7 +35,7 @@ Contractions and natural speech rhythms are essential.
 
 1. **Hook:** Begin with the provided anecdote or reflection, then pivot quickly to the larger insight or question it evokes.
 2. **Exploration:** Expand the idea across 2-4 short sections. Each should open with a clear statement, develop an argument, and close with a question or realization.
-3. **Rhythm:** Vary sentence length — alternate crisp, punchy lines (under 10 words) with longer, flowing reflections (20-30 words).
+3. **Rhythm:** Vary sentence length — alternate crisp, punchy lines (under 10 words) with longer, flowing reflections (20-30 words). A short line must carry a proposition of its own; see "The Echo" below.
 4. **Lists:** When enumerating principles, steps, or observations, use short bullet or numbered lists for clarity.
 5. **Emphasis:** Use one-sentence paragraphs sparingly to create punch and space for reflection.
 6. **Prose belongs in tables, not code blocks:** when example data carries sentence-length values — a record's fields, a config's rationale, a schema's descriptions — render it as a two-column table so the prose wraps and can be read. A code block forces long sentences onto single non-wrapping lines and buries the part worth reading. Keep code blocks for code.
@@ -182,6 +182,47 @@ source does not give one, the word goes.
 The test is not "is it true." It is "did Stacey see it." A true thing she did not see
 is still a fabrication when it wears her first person.
 
+## The Echo — A Short Sentence Must Carry Its Own Load
+
+The rhythm guidance in this skill asks for crisp lines under ten words. The cheap
+way to produce one is to restate the sentence before it. That is an echo.
+
+> The original four rules are all still in that list. Nothing got dropped.
+> Opus 4.8 and Opus 5 both hit 1.000 guided. Perfect adherence, every trial.
+> It changes your relationship to them. That's a meaningful shift.
+
+Each second sentence says the first one again. It hits the rhythm target and adds
+nothing. The reader gets a beat of emphasis they didn't ask for and a sentence they
+have to read twice to confirm it was empty.
+
+Four shapes:
+
+| Shape | Example |
+| --- | --- |
+| Restatement | "Nothing got dropped." "That's it. That's the trick." |
+| Affirmation | "It isn't." "And he's right." "Exactly." |
+| Evaluation | "That's remarkably stable." "That framing matters." "That's a meaningful shift." |
+| Negated opposite | "Not partially. Cleanly." "Not unimportant." "Not a coincidence." |
+
+**The proposition test.** Say what the sentence claims that the reader did not have
+one sentence ago. If the answer is nothing, or "it's true", or "it matters", cut it.
+
+A short sentence earns its place by carrying a consequence, a contrast, a specific,
+or a turn. These are short sentences doing work, all from her posts:
+
+- "Code used to be the bottleneck. Intent is the bottleneck now." (a turn)
+- "The corpus isn't the artifact. A compiled slice is." (a contrast that names the thing)
+- "Two years of that." (a duration the prior sentence didn't give)
+- "Compilers. High-level languages. Frameworks." (a list, each item new)
+- "They held." (a result)
+
+The negated opposite deserves its own warning. "Not partially" answers an objection
+nobody raised so the next word can land harder. If the objection is real, name it
+and answer it. If it isn't, the word after it already lands.
+
+When the rhythm needs a short line and no proposition is left, the paragraph is
+done. End it.
+
 ## Values and Themes
 
 Subtly weave in Stacey's enduring themes:
@@ -257,4 +298,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ## Post-Draft Reflection
 
-After writing, run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
+After writing, run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Run the proposition test from "The Echo" on every sentence under ten words and cut what fails it. Run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
