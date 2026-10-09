@@ -7,7 +7,7 @@ description: >
   content Stacey will speak aloud. If you're writing words Stacey will say on stage or in a video,
   this skill applies. Complements the slidev skill for slide creation.
 metadata:
-  version: "1.3.1"
+  version: "1.4.0"
   author: Stacey Vetzal
 ---
 
@@ -109,6 +109,34 @@ When converting raw speaking into speaker notes or scripts:
 - Preserve incomplete sentences when they create punch: "Every line of code is a liability. It's a bug waiting to happen."
 - Keep the warm, human connectors: "Here's the thing," "So," "Right?" — these are Stacey's rhythm, not filler.
 - Strike **self-announced candor**: "let me be honest with you," "I'll be transparent," "real talk," "I'm not going to sugar-coat this." The courage lives in the statement itself, not its introduction — announcing honesty implies the alternative was on the table. This is distinct from the rapport disclaimers in Signature Rhetorical Moves ("Fair warning, I'm old and crusty"), which set expectations through self-deprecation rather than claiming a virtue.
+
+## Ornament, Spoken
+
+The writing-stacey-voice skill names five kinds of ornament: sentences that
+decorate a claim instead of making one. Four of them survive the move to the
+stage and show up in speaker notes and slide copy. One does not, and the
+difference matters.
+
+| Kind | On stage | Example to cut |
+| --- | --- | --- |
+| The alliance | Never have a cited thinker turn out to have agreed with her all along. Credit them for what they said and move on. | "Beck was quietly saying this the whole time." |
+| The quip | No sardonic tail on a landing line. The pause after the line is the landing. | "...and we paid to find out how much that's worth." |
+| The echo | A slide line that restates the line above it. With three bullets per slide, every line carries its own idea or it goes. | "Nothing got dropped." under "All four rules are still there." |
+| Borrowed witness | A claim about what "everyone" or "teams I talk to" are doing, when the model found it in research. She names sources on stage; keep that, and only put her in the witness box for things she saw. | "I keep running into teams that..." |
+| The stumble | Her long-held expertise staged as a fresh realization. | "I thought I knew the four rules." |
+
+**The stumble versus thinking out loud.** Her presenter voice is exploratory on
+purpose: "Is it an elevator? Is it a conveyance? I'm not sure." That is
+uncertainty about the *problem in front of the room*, held openly, and it stays.
+The stumble is uncertainty about *her own expertise*, invented so the talk can
+have a reveal. "I never do know the right level of abstraction" is honest doubt.
+"I thought I knew the four rules" is a false arc. If you cannot tell whether a
+realization was real, ask her.
+
+**Narrated salience is the exception.** "Here's the thing" and "think about
+that a minute" are her spoken rhythm, kept under Cleaning Up Raw Speech above.
+On stage they buy a beat before the claim, and the beat is real. Do not scrub
+them from notes. Do scrub them from slide text, where there is no beat to buy.
 
 ## Unslop — Sweeping Out AI Tells
 

@@ -10,7 +10,7 @@ description: >
   back foot. If a draft makes a sweeping claim about what the reader (or everyone) is doing
   wrong, this skill applies even if nobody asked for it by name.
 metadata:
-  version: "0.1.1"
+  version: "0.2.0"
   author: Stacey Vetzal
 ---
 
@@ -78,7 +78,7 @@ readers don't engage), and respect (skilled people usually have reasons for what
 | "Your Agent Guidance Is an Untested Dependency" | "What Happened When I Started Testing My Agent Guidance" |
 | "Most teams are doing code review wrong" | "A code review habit that changed how my reviews land" |
 | "Stop writing brittle prompts" | "What made my prompts less brittle" |
-| "Nobody measures this, and it shows" | "I hadn't measured this either — here's what I found when I did" |
+| "Nobody measures this, and it shows" | "What I found when I measured it" |
 
 The recurring moves behind the table:
 
@@ -91,6 +91,14 @@ The recurring moves behind the table:
 - **Universal → scoped.** Shrink the claim to the territory you've actually walked.
 
 ## What this is not
+
+**Not false modesty.** Moving from verdict to experience does not mean staging a
+discovery the author never had. "I thought I knew this" and "I hadn't measured
+this either" are only honest when they are true. If the author has taught or
+practised the thing for years, say so and credit the history; what is new is
+usually one specific act, and that is the thing to report. A manufactured
+learning arc diminishes the writer to flatter the reader, and a skilled reader
+can tell.
 
 Don't hedge ideas into mush. Conviction about the *idea* stays — be vivid, concrete, and
 specific about what you found and why it matters. The reframe removes judgement of people, not
