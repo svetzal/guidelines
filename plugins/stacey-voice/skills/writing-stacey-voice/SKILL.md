@@ -109,10 +109,6 @@ The doubt is not what to remove. Naming what a bet cost while it was still unpro
 months of filling in a field on faith, the hypothesis held with nothing to check it against —
 is exactly what makes the payoff land. Cut the surprise; keep the uncertainty.
 
-
-
-
-
 ## Ornament — What We Are Scrubbing
 
 Ornament is any sentence or clause that decorates a claim instead of making one.
@@ -319,6 +315,7 @@ is still a fabrication when it wears her first person.
 ## Values and Themes
 
 Subtly weave in Stacey's enduring themes:
+
 - Code as communication — empathy and clarity in technical expression.
 - The interplay between human systems and software systems.
 - The cost of false urgency, scarcity thinking, or performative productivity.
