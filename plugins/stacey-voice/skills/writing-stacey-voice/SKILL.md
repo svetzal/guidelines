@@ -223,6 +223,51 @@ and answer it. If it isn't, the word after it already lands.
 When the rhythm needs a short line and no proposition is left, the paragraph is
 done. End it.
 
+## Ornament — The Alliance and the Quip
+
+A closing paragraph of six sentences, two of them factual, the rest decoration:
+
+> Dijkstra said tests can only show that something doesn't work, never that it does.
+> He was right, and the four rules were quietly agreeing with him the whole time.
+> The tests were never the intent. They were the first way we found to check it.
+> An agent writing its own tests isn't checking anything. It's agreeing with itself,
+> and we just paid to find out how much that's worth.
+
+The citation is good. "The first way we found to check it" and "agreeing with
+itself" are facts. Everything else is ornament, in two shapes.
+
+**The alliance.** "The four rules were quietly agreeing with him the whole time."
+The post's own idea and a cited authority are revealed to have been in agreement
+all along, staged as a twist. It personifies the framework, borrows the
+authority's weight for the writer's claim, and congratulates the post for its own
+insight. Cite a source for what the source said. Never have the source turn out to
+have been on the post's side. If the agreement is real, the reader can see it
+without being told it was secret.
+
+Tells: "quietly", "all along", "the whole time", "turns out X knew", "was saying
+this in 1970", "were agreeing with", "already knew", "he was right, and".
+
+**The quip.** "And we just paid to find out how much that's worth." A sardonic
+clause tacked onto a finished sentence so the paragraph ends on a snap. It has a
+vague referent (who is "we"?), a drama word ("just"), and no claim the sentence
+didn't already make. This is the sentimental closing tag from the Closing section
+below, wearing a smirk instead of a smile. The sardonic register does not make it
+earn its place.
+
+Tells: "and we just", "find out how much that's worth", "for once", "you didn't
+know you needed", "before they figure out", "and that's the whole game", "which is
+the point", "and that's fine" as a tail.
+
+**The test** for both: strip the paragraph to its claims and citations. Read what
+is left. If it ends cleanly, it was finished before the ornament arrived. The
+paragraph above becomes:
+
+> Dijkstra said testing can show the presence of bugs, never their absence. The
+> tests were never the intent. They were the first way we found to check it. An
+> agent writing its own tests isn't checking anything. It's agreeing with itself.
+
+Five sentences, every one of them a claim, and the ending is the last fact.
+
 ## Values and Themes
 
 Subtly weave in Stacey's enduring themes:
@@ -246,7 +291,7 @@ These targets come from analysis of Stacey's existing writing and help keep the 
 
 End with the argument itself, not with a decorative emotional tag. The last paragraph should land the final idea — a realization, a reframe, a provocation — and then stop. Do not append sentimental one-liners, "hopeful reframings," or hanging phrases that editorialize on the reader's emotional state. If the final idea is strong, it doesn't need a bow on it.
 
-**Avoid:** "That's the opportunity I keep coming back to." / "And maybe that's what matters most." / "I think there's something beautiful in that."
+**Avoid:** "That's the opportunity I keep coming back to." / "And maybe that's what matters most." / "I think there's something beautiful in that." / "And maybe, for once, we'll all come out ahead." / "That's the map you didn't know you needed." / "and we just paid to find out how much that's worth." The sardonic bow is the same failure as the sentimental one; see "Ornament" above.
 
 **Instead:** Let the closing paragraph do real intellectual work. State the final claim, connect it back to the opening if it earns the callback, and end.
 
@@ -298,4 +343,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ## Post-Draft Reflection
 
-After writing, run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Run the proposition test from "The Echo" on every sentence under ten words and cut what fails it. Run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
+After writing, run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Strip the closing paragraph to its claims and citations as "Ornament" describes, and keep only what survives. Run the proposition test from "The Echo" on every sentence under ten words and cut what fails it. Run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
