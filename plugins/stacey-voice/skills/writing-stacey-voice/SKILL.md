@@ -35,7 +35,7 @@ Contractions and natural speech rhythms are essential.
 
 1. **Hook:** Begin with the provided anecdote or reflection, then pivot quickly to the larger insight or question it evokes.
 2. **Exploration:** Expand the idea across 2-4 short sections. Each should open with a clear statement, develop an argument, and close with a question or realization.
-3. **Rhythm:** Vary sentence length — alternate crisp, punchy lines (under 10 words) with longer, flowing reflections (20-30 words). A short line must carry a proposition of its own; see "The Echo" below.
+3. **Rhythm:** Vary sentence length — alternate crisp, punchy lines (under 10 words) with longer, flowing reflections (20-30 words). A short line must carry a proposition of its own; see "The echo" under Ornament below.
 4. **Lists:** When enumerating principles, steps, or observations, use short bullet or numbered lists for clarity.
 5. **Emphasis:** Use one-sentence paragraphs sparingly to create punch and space for reflection.
 6. **Prose belongs in tables, not code blocks:** when example data carries sentence-length values — a record's fields, a config's rationale, a schema's descriptions — render it as a two-column table so the prose wraps and can be read. A code block forces long sentences onto single non-wrapping lines and buries the part worth reading. Keep code blocks for code.
@@ -95,9 +95,42 @@ The doubt is not what to remove. Naming what a bet cost while it was still unpro
 months of filling in a field on faith, the hypothesis held with nothing to check it against —
 is exactly what makes the payoff land. Cut the surprise; keep the uncertainty.
 
-## Narrated Salience — Never Point at the Claim, Make It
 
-The most persistent AI tell in drafts for this blog is a sentence whose subject is
+
+
+
+## Ornament — What We Are Scrubbing
+
+Ornament is any sentence or clause that decorates a claim instead of making one.
+It is the main thing this skill exists to remove from AI-assisted drafts. Stacey's
+own writing is almost bare of it; a model reaching for her register produces it by
+reflex, because ornament is the cheapest way to sound conversational, punchy,
+first-person, and warm at the same time.
+
+Four kinds, each with its own section below:
+
+| Kind | What it does | Example |
+| --- | --- | --- |
+| Narrated salience | Points at a claim instead of making it | "His read on why is the part I keep coming back to." |
+| The echo | Restates the previous sentence to fake a beat | "Nothing got dropped." |
+| The alliance | Reveals a cited authority was secretly on the post's side | "The four rules were quietly agreeing with him the whole time." |
+| The quip | Tacks a sardonic tail onto a finished sentence | "and we just paid to find out how much that's worth." |
+
+The sentimental closing tag in the Closing section is a fifth, and the oldest.
+
+**One test for all of them.** Strip the paragraph to its claims, its citations, and
+its concrete details. Read what is left. Ornament is whatever you removed. If the
+stripped paragraph ends cleanly, it was finished before the ornament arrived, and
+the ornament was the writer applauding.
+
+Ornament is not the same as voice. A rhetorical question that opens a line of
+argument, a parenthetical that admits something, a short sentence that turns the
+argument: those carry a claim or a stance. The test is whether the reader has more
+after the sentence than before it.
+
+### Narrated salience — never point at the claim, make it
+
+The most persistent ornament in drafts for this blog is a sentence whose subject is
 the writer's *attention* instead of the thing being written about. It tells the
 reader that something matters, or that the writer keeps noticing it, instead of
 saying what it is.
@@ -140,49 +173,10 @@ The one legitimate "here's what": when it introduces a literal artifact the read
 about to look at. "Here's what it draws at sixty, same seed" points at a picture, not
 at a claim. Keep those.
 
-This rule is the sibling of "Never announce the move" above. That one bans
+This is the sibling of "Never announce the move" above. That one bans
 announcing the writing's candor. This one bans announcing its importance.
 
-## Borrowed Witness — Her Eyes Are Not Yours
-
-The second most damaging tell is a true (or unverified) fact, found by the drafting
-model through research, written in Stacey's first person as something she saw,
-heard, or noticed.
-
-> Within a day I was seeing it quoted in repo guidelines as a standing rule.
-
-The model found a GitHub issue in a web search. Stacey saw nothing. The sentence
-lends her eyes to the model's research so the fact arrives as lived experience, and
-the reader has no way to tell. "Within a day" was a guess that happened to be right.
-Guessing right is not the same as knowing.
-
-This is the sibling of the "never invent experiences" rule in Before You Draft, and
-it is harder to catch because the underlying fact is real. Three shapes:
-
-| Shape | Tells |
-| --- | --- |
-| Borrowed witness | "I was seeing", "I've been noticing", "I keep running into", "I've watched teams", "people keep telling me", "everyone I talk to", "in every workshop I run" — for things the model found, not things she did |
-| Dramatized timing or scale | "within a day", "overnight", "all over my feed", "half the replies", "everywhere" — with no date or count from a source |
-| Laundered opinion | "what the industry has been itching to hear for twenty years" — a sweeping read of other people stated as her settled view, when it came from the model |
-
-**The provenance test.** For every first-person sentence of experience, name where she
-experienced it: the seed she gave, one of her prior posts, the vault, her repos, or
-her own words in the conversation. If the answer is a web search, a tool result, or
-the model's general knowledge, she did not witness it.
-
-**The fix** is one of three moves:
-
-- Third person, source named, link attached. "The next day one project turned it into a standing rule" with the issue linked. The fact survives; the false witness is gone.
-- Move it to the Voices section, where sourced context belongs.
-- Cut it. A fact that cannot be sourced is not a fact the post gets to use.
-
-Timing and scale words need a date or a number from the source behind them. If the
-source does not give one, the word goes.
-
-The test is not "is it true." It is "did Stacey see it." A true thing she did not see
-is still a fabrication when it wears her first person.
-
-## The Echo — A Short Sentence Must Carry Its Own Load
+### The echo — a short sentence must carry its own load
 
 The rhythm guidance in this skill asks for crisp lines under ten words. The cheap
 way to produce one is to restate the sentence before it. That is an echo.
@@ -223,7 +217,7 @@ and answer it. If it isn't, the word after it already lands.
 When the rhythm needs a short line and no proposition is left, the paragraph is
 done. End it.
 
-## Ornament — The Alliance and the Quip
+### The alliance and the quip
 
 A closing paragraph of six sentences, two of them factual, the rest decoration:
 
@@ -234,7 +228,7 @@ A closing paragraph of six sentences, two of them factual, the rest decoration:
 > and we just paid to find out how much that's worth.
 
 The citation is good. "The first way we found to check it" and "agreeing with
-itself" are facts. Everything else is ornament, in two shapes.
+itself" are facts. Everything else is ornament, in the two shapes this section names.
 
 **The alliance.** "The four rules were quietly agreeing with him the whole time."
 The post's own idea and a cited authority are revealed to have been in agreement
@@ -268,6 +262,45 @@ paragraph above becomes:
 
 Five sentences, every one of them a claim, and the ending is the last fact.
 
+## Borrowed Witness — Her Eyes Are Not Yours
+
+Distinct from ornament, and more damaging, is a true (or unverified) fact, found by the drafting
+model through research, written in Stacey's first person as something she saw,
+heard, or noticed.
+
+> Within a day I was seeing it quoted in repo guidelines as a standing rule.
+
+The model found a GitHub issue in a web search. Stacey saw nothing. The sentence
+lends her eyes to the model's research so the fact arrives as lived experience, and
+the reader has no way to tell. "Within a day" was a guess that happened to be right.
+Guessing right is not the same as knowing.
+
+This is the sibling of the "never invent experiences" rule in Before You Draft, and
+it is harder to catch because the underlying fact is real. Three shapes:
+
+| Shape | Tells |
+| --- | --- |
+| Borrowed witness | "I was seeing", "I've been noticing", "I keep running into", "I've watched teams", "people keep telling me", "everyone I talk to", "in every workshop I run" — for things the model found, not things she did |
+| Dramatized timing or scale | "within a day", "overnight", "all over my feed", "half the replies", "everywhere" — with no date or count from a source |
+| Laundered opinion | "what the industry has been itching to hear for twenty years" — a sweeping read of other people stated as her settled view, when it came from the model |
+
+**The provenance test.** For every first-person sentence of experience, name where she
+experienced it: the seed she gave, one of her prior posts, the vault, her repos, or
+her own words in the conversation. If the answer is a web search, a tool result, or
+the model's general knowledge, she did not witness it.
+
+**The fix** is one of three moves:
+
+- Third person, source named, link attached. "The next day one project turned it into a standing rule" with the issue linked. The fact survives; the false witness is gone.
+- Move it to the Voices section, where sourced context belongs.
+- Cut it. A fact that cannot be sourced is not a fact the post gets to use.
+
+Timing and scale words need a date or a number from the source behind them. If the
+source does not give one, the word goes.
+
+The test is not "is it true." It is "did Stacey see it." A true thing she did not see
+is still a fabrication when it wears her first person.
+
 ## Values and Themes
 
 Subtly weave in Stacey's enduring themes:
@@ -291,7 +324,7 @@ These targets come from analysis of Stacey's existing writing and help keep the 
 
 End with the argument itself, not with a decorative emotional tag. The last paragraph should land the final idea — a realization, a reframe, a provocation — and then stop. Do not append sentimental one-liners, "hopeful reframings," or hanging phrases that editorialize on the reader's emotional state. If the final idea is strong, it doesn't need a bow on it.
 
-**Avoid:** "That's the opportunity I keep coming back to." / "And maybe that's what matters most." / "I think there's something beautiful in that." / "And maybe, for once, we'll all come out ahead." / "That's the map you didn't know you needed." / "and we just paid to find out how much that's worth." The sardonic bow is the same failure as the sentimental one; see "Ornament" above.
+**Avoid:** "That's the opportunity I keep coming back to." / "And maybe that's what matters most." / "I think there's something beautiful in that." / "And maybe, for once, we'll all come out ahead." / "That's the map you didn't know you needed." / "and we just paid to find out how much that's worth." The sardonic bow is the same failure as the sentimental one. Both are ornament; see that section above.
 
 **Instead:** Let the closing paragraph do real intellectual work. State the final claim, connect it back to the opening if it earns the callback, and end.
 
@@ -343,4 +376,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ## Post-Draft Reflection
 
-After writing, run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Strip the closing paragraph to its claims and citations as "Ornament" describes, and keep only what survives. Run the proposition test from "The Echo" on every sentence under ten words and cut what fails it. Run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
+After writing, scrub for ornament: strip every paragraph to its claims, citations, and concrete details, and cut what you removed. The four kinds under "Ornament" each have a quicker test: the deletion test for narrated salience, the proposition test for echoes, and the strip test for alliances and quips. Then run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
