@@ -95,6 +95,54 @@ The doubt is not what to remove. Naming what a bet cost while it was still unpro
 months of filling in a field on faith, the hypothesis held with nothing to check it against —
 is exactly what makes the payoff land. Cut the surprise; keep the uncertainty.
 
+## Narrated Salience — Never Point at the Claim, Make It
+
+The most persistent AI tell in drafts for this blog is a sentence whose subject is
+the writer's *attention* instead of the thing being written about. It tells the
+reader that something matters, or that the writer keeps noticing it, instead of
+saying what it is.
+
+> His read on why is the part I keep coming back to.
+> Here's the thing about these windows: they close.
+> I want to be careful about what I'm claiming, because the useful part isn't the benchmark.
+> That's the lens that work gave me.
+
+Each of these is a stage direction. It promises a point, borrows weight from the
+author's reaction, and delays the claim by a sentence. It feels conversational and
+first-person, which is why it slips past the other rules in this skill: it satisfies
+the first-person target without the first person doing any work. Stacey's own
+writing from 2007 to 2023 does this about once every three posts. AI-assisted
+drafts do it two to five times per post.
+
+Three shapes, one failure:
+
+| Shape | Tells |
+| --- | --- |
+| Attention narration | "the part I keep coming back to", "stuck with me", "what strikes me is", "has been bothering me", "I keep thinking about", "that's the lens", "the question I keep asking" |
+| Curtain-raiser | "Here's the thing", "Here's where it gets", "Here's what I find interesting", "This is the part that", "the useful/important/real part isn't X, it's Y", "which brings me back to" |
+| Care-signalling | "I want to be careful here", "I want to be precise about that", "I'll be clear", "it's worth noting" |
+
+**The deletion test.** Remove the sentence, or the clause up to the colon. If the
+paragraph lost nothing but a drumroll, it was narrated salience. If the claim that
+followed is strong, it never needed the pointer. If it's weak, the pointer was
+covering for it, and the fix is to strengthen the claim, not restore the pointer.
+
+**The fix** is always one of two moves:
+
+- Replace the pointer with the claim. "His read on why is the part I keep coming back to. The tests were the agent's interpretation…" becomes "His explanation is the better half of the finding. The tests were the agent's interpretation…"
+- Replace the pointer with the concrete detail that *makes* the reader feel the salience. A specific number, a specific sentence from the source, a specific thing she did. Salience is shown by the detail, never asserted by the narrator.
+
+First person is for what Stacey did, built, saw, decided, or got wrong. It is not for
+what she notices about her own noticing. "I spent the spring building the records"
+is first person. "The part I keep coming back to" is a narrator.
+
+The one legitimate "here's what": when it introduces a literal artifact the reader is
+about to look at. "Here's what it draws at sixty, same seed" points at a picture, not
+at a claim. Keep those.
+
+This rule is the sibling of "Never announce the move" above. That one bans
+announcing the writing's candor. This one bans announcing its importance.
+
 ## Values and Themes
 
 Subtly weave in Stacey's enduring themes:
@@ -170,4 +218,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ## Post-Draft Reflection
 
-After writing, include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
+After writing, run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
