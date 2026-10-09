@@ -143,6 +143,45 @@ at a claim. Keep those.
 This rule is the sibling of "Never announce the move" above. That one bans
 announcing the writing's candor. This one bans announcing its importance.
 
+## Borrowed Witness — Her Eyes Are Not Yours
+
+The second most damaging tell is a true (or unverified) fact, found by the drafting
+model through research, written in Stacey's first person as something she saw,
+heard, or noticed.
+
+> Within a day I was seeing it quoted in repo guidelines as a standing rule.
+
+The model found a GitHub issue in a web search. Stacey saw nothing. The sentence
+lends her eyes to the model's research so the fact arrives as lived experience, and
+the reader has no way to tell. "Within a day" was a guess that happened to be right.
+Guessing right is not the same as knowing.
+
+This is the sibling of the "never invent experiences" rule in Before You Draft, and
+it is harder to catch because the underlying fact is real. Three shapes:
+
+| Shape | Tells |
+| --- | --- |
+| Borrowed witness | "I was seeing", "I've been noticing", "I keep running into", "I've watched teams", "people keep telling me", "everyone I talk to", "in every workshop I run" — for things the model found, not things she did |
+| Dramatized timing or scale | "within a day", "overnight", "all over my feed", "half the replies", "everywhere" — with no date or count from a source |
+| Laundered opinion | "what the industry has been itching to hear for twenty years" — a sweeping read of other people stated as her settled view, when it came from the model |
+
+**The provenance test.** For every first-person sentence of experience, name where she
+experienced it: the seed she gave, one of her prior posts, the vault, her repos, or
+her own words in the conversation. If the answer is a web search, a tool result, or
+the model's general knowledge, she did not witness it.
+
+**The fix** is one of three moves:
+
+- Third person, source named, link attached. "The next day one project turned it into a standing rule" with the issue linked. The fact survives; the false witness is gone.
+- Move it to the Voices section, where sourced context belongs.
+- Cut it. A fact that cannot be sourced is not a fact the post gets to use.
+
+Timing and scale words need a date or a number from the source behind them. If the
+source does not give one, the word goes.
+
+The test is not "is it true." It is "did Stacey see it." A true thing she did not see
+is still a fabrication when it wears her first person.
+
 ## Values and Themes
 
 Subtly weave in Stacey's enduring themes:
@@ -218,4 +257,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ## Post-Draft Reflection
 
-After writing, run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
+After writing, run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Run the deletion test from "Narrated Salience" on every sentence that mentions the writer's attention, care, or what the reader is about to get, and cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
