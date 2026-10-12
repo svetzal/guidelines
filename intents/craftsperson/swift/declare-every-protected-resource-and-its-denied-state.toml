@@ -1,0 +1,17 @@
+id = "guidelines.intent.declare-every-protected-resource-and-its-denied-state"
+title = "Declare every protected resource and handle its denied state"
+category = "design"
+tags = ["swift", "security", "testing", "error-handling", "domain-modeling", "type-safety"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-invalid-states-explicit" },
+]
+status = "hypothesized"
+confidence = 0.9
+capability = "The app asks for camera, microphone, network and file access with a clear reason, and stays usable and explanatory when the user says no."
+threat = "A missing usage description terminates the app at first access, and an unhandled denial shows an empty preview or a silent failure the user cannot fix."
+expectation = "Users deny, restrict or later revoke access, and the hardened runtime blocks device access the app has no entitlement for."
+strategy = "Declare a usage description in project.yml (info.properties or INFOPLIST_KEY_ settings) for each protected resource, add the matching hardened-runtime entitlement, check authorization status through a gateway, and show a denied state that names what is unavailable and opens the matching System Settings pane, with the state decision tested in the Kit."
+evidence = [{ type = "review", description = "Each protected framework API the app calls has a usage description in project.yml and, under the hardened runtime, the matching entitlement.", required = true }, { type = "test", description = "Kit tests cover the state shown for authorized, not-determined, denied and restricted access.", required = true }]
+tradeoff = "Each protected resource adds a gateway, an explicit UI state, and copy that must be kept accurate."
+scope = { project = "guidelines", paths = ["plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#app-projects-xcodegen", summary = "Requires usage descriptions and entitlements for protected resources and a clear denied-permission state.", confidence = 1.0 }, { type = "field_observation", ref = "Stacey Vetzal, 2026-10-12", summary = "notch-prompter declares camera, microphone and Documents usage descriptions in project.yml and camera and audio-input entitlements under the hardened runtime; parite-apple declares the local-network description through info.properties on macOS and INFOPLIST_KEY_ settings on iOS.", confidence = 1.0 }]

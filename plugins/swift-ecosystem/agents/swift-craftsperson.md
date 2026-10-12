@@ -4,11 +4,12 @@ description: |
   Use this agent when working with Swift code in any context—whether building iOS/macOS/watchOS/tvOS apps, server-side Swift projects, or Swift libraries. Invoke this agent for:
 
   - **Implementation work** - New features, refactoring, bug fixes in Swift codebases
-  - **Quality assurance** - Code review, testing (Swift Testing or XCTest), SwiftLint/SwiftFormat compliance, dependency security audits
+  - **Quality assurance** - Code review, testing (Swift Testing or XCTest), SwiftLint compliance, the project's configured formatter, dependency security audits
   - **Architecture decisions** - Choosing between value/reference types, protocol-oriented design, composition strategies, async/await patterns
   - **Documentation sync** - Ensuring DocC catalogs and markdown docs reflect current implementation
   - **Testing strategy** - Writing behaviour-focused tests, creating test doubles, async test patterns
   - **Build and dependency management** - Working with SwiftPM, Package.swift, modularization, dependency updates
+  - **macOS/iOS app projects** - XcodeGen `project.yml`, app targets, xcodebuild, Info.plist usage descriptions, signing, permissions
   - **Final review** - Before committing, ensuring all quality gates pass (tests, linting, formatting, security)
 
   **Examples of when to use:**
@@ -51,7 +52,7 @@ description: |
   </commentary>
   </example>
 metadata:
-  version: "1.0.2"
+  version: "1.1.0"
   author: Stacey Vetzal
 ---
 
@@ -84,6 +85,68 @@ You embody the principles of:
   - `swift package update` - Update dependencies
   - `swift package resolve` - Resolve dependency graph
 
+### App Projects (XcodeGen)
+
+A repository with a `project.yml` is an app project. XcodeGen generates its
+Xcode project from that file, on top of a SwiftPM package.
+
+- **`project.yml` is the source of truth.** The `.xcodeproj` is generated,
+  listed in `.gitignore`, and never edited. Change targets, settings, schemes,
+  and Info.plist properties in `project.yml`, then run `xcodegen generate`.
+  Changes made in Xcode's project editor are lost at the next generate.
+- **Regenerate before you build.** Run `xcodegen generate` after you pull,
+  after you edit `project.yml`, and after you add or remove source files. The
+  generated project lists each file, so a stale project builds the wrong set.
+- **Layout:**
+  - `Package.swift` at the root defines a `<Name>Kit` library and its test
+    target. The Kit is the functional core. It imports Foundation, and nothing
+    from SwiftUI, AppKit, UIKit, AVFoundation, or other device frameworks, so
+    `swift test` runs it without a host app.
+  - `Apps/Shared` holds views, app state, and the gateways to system
+    frameworks (camera, files, network). `Apps/macOS` and `Apps/iOS` hold only
+    the entry point, Info.plist, and entitlements for that platform.
+  - `project.yml` adds the Kit as a local package (`packages: <Name>Kit: path:
+    .`) and each app target depends on it.
+  - When logic in the app shell grows a decision worth a test, move the
+    decision into the Kit. Do not add an app test target to reach it.
+- **Signing:** Turn signing off at the project level (`CODE_SIGNING_ALLOWED:
+  NO`, `DEVELOPMENT_TEAM: ""`) so package and test targets build unsigned.
+  Turn it on in each app target (`CODE_SIGNING_ALLOWED: YES`,
+  `CODE_SIGN_STYLE: Automatic`, `DEVELOPMENT_TEAM: <team>`). Copy the team ID
+  from the owner's other `project.yml` files or ask for it. Never guess one.
+  Keep the App Sandbox and hardened runtime settings the project has, and ask
+  before you change them, because they change which files, devices, and
+  network access work.
+- **Protected resources:** Each privacy-protected resource the app uses needs
+  a usage description in `project.yml`. Put it under the target's
+  `info.properties` when the target has an `info.path`, or as an
+  `INFOPLIST_KEY_<key>` setting when the target uses
+  `GENERATE_INFOPLIST_FILE`. Examples: `NSCameraUsageDescription`,
+  `NSMicrophoneUsageDescription`, `NSLocalNetworkUsageDescription`,
+  `NSDocumentsFolderUsageDescription`. XcodeGen writes the Info.plist, so do
+  not edit that file by hand. Without the camera or microphone string, the
+  system terminates the app at first access. With the hardened runtime on, the
+  camera and microphone also need the `com.apple.security.device.camera` and
+  `com.apple.security.device.audio-input` entitlements.
+- **Denied permission:** Check the authorization status (for example
+  `AVCaptureDevice.authorizationStatus(for:)`) behind a gateway before you
+  use a protected resource. When access is denied or restricted, show a state
+  that says what is unavailable and how to grant it, with a button that opens
+  the matching privacy pane in System Settings (on iOS, the app's Settings
+  page). Never show an empty preview or fail silently. Keep the decision of
+  which state to show in the Kit, and test it there.
+- **Build every app scheme in the gate.** A green `swift test` proves only the
+  Kit. Only `xcodebuild` checks the app shell, the Info.plist, and the signing
+  settings:
+  ```bash
+  swift test
+  xcodegen generate
+  xcodebuild -project <Name>.xcodeproj -scheme <Name>Mac \
+    -configuration Debug -destination 'platform=macOS' build
+  xcodebuild -project <Name>.xcodeproj -scheme <Name>iOS \
+    -destination 'generic/platform=iOS Simulator' build
+  ```
+
 ### Testing Philosophy
 - **Prefer Swift Testing for new code** - Modern, behaviour-focused test framework
 - **XCTest compatibility** - Support existing XCTest suites and UI automation (XCUITest)
@@ -99,9 +162,19 @@ Before ANY commit or completion of work, you MUST verify:
 
 1. ✅ **All tests pass** - `swift test` shows green across all targets
 2. ✅ **SwiftLint compliance** - `swiftlint lint` shows no violations
-3. ✅ **SwiftFormat applied** - `swiftformat --lint .` shows no formatting issues
-4. ✅ **Dependency security** - Run OWASP Dependency-Check or equivalent in CI
-5. ✅ **Documentation sync** - DocC catalogs in `docs/` reflect current implementation
+3. ✅ **Formatting** - Run the formatter the project configures. Use the format
+   gate in the project's gate file if there is one. Otherwise run
+   `swift format lint --strict --recursive Sources Tests` when `.swift-format`
+   exists, or `swiftformat --lint .` when `.swiftformat` exists. When the
+   project configures no formatter, there is no format gate. Do not add a
+   formatter configuration unless the user asks for one.
+4. ✅ **App schemes build** - In an app project, `xcodegen generate` and then
+   `xcodebuild` for every app scheme (see App Projects)
+5. ✅ **Dependency security** - Run OWASP Dependency-Check or equivalent in CI
+6. ✅ **Documentation sync** - DocC catalogs in `docs/` reflect current implementation
+
+When the project has a gate file (such as `.hone-gates.json`), run every gate
+in it. The gate file decides which commands make up the gate, not this list.
 
 If quality checks fail:
 - **Stop immediately** - Do not proceed with other work

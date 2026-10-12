@@ -54,7 +54,7 @@ PARENT_RULES: list[tuple[str, str]] = [
     (r"\b(async|asynchronous|coroutine|goroutine|concurr|thread|task|supervis|genserver|actor|process resource|lifecycle|cancellation|signal delivery|subprocess lifetime)\b", "structure-concurrent-lifetimes"),
     (r"\b(error context|exception context|source chain|causal chain|aggregate errors)\b", "preserve-error-context"),
     (r"\b(recoverable (error|failure)|domain error|returned errors?|expected failures?|result type|exceptional failure|throws? for|bang function|catch.*exceptions?|filesystem failure|http failure|exit status)\b", "model-recoverable-errors-explicitly"),
-    (r"\b(invalid.*state|state validity|absence|absent values?|optional|variant|sealed|enum|data model|identifiers? at compile time|type.safe|unknown (values?|inputs?)|narrow unknown|explicit.*contract|contract.*explicit|value semantics)\b", "make-invalid-states-explicit"),
+    (r"\b(invalid.*state|denied state|protected resources?|state validity|absence|absent values?|optional|variant|sealed|enum|data model|identifiers? at compile time|type.safe|unknown (values?|inputs?)|narrow unknown|explicit.*contract|contract.*explicit|value semantics)\b", "make-invalid-states-explicit"),
     (r"\b(benchmark|profil|measure before|performance sensitive|optimization)\b", "optimize-from-measurement"),
     (r"\b(branch|commit|version control change|main.based|pull requests? focused|reviewable)\b", "write-descriptive-commit-messages"),
     (r"\b(small.*increment|single.reason increment|independently shippable|focused change|change review focused)\b", "deliver-small-independent-increments"),
@@ -107,6 +107,8 @@ TOOL_PATTERNS: list[tuple[str, str]] = [
     (r"\btypescript\b", "typescript"),
     (r"\bswiftlint\b", "swiftlint"),
     (r"\bswiftformat\b", "swiftformat"),
+    (r"\bxcodegen\b", "xcodegen"),
+    (r"\bxcodebuild\b", "xcodebuild"),
 ]
 
 TOPIC_PATTERNS: list[tuple[str, str]] = [

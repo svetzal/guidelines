@@ -1,0 +1,17 @@
+id = "guidelines.intent.keep-app-build-configuration-in-xcodegen-spec"
+title = "Define every app build target in the XcodeGen project.yml"
+category = "delivery"
+tags = ["swift", "xcodegen", "build-and-delivery", "builds", "configuration", "reproducibility"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
+status = "hypothesized"
+confidence = 0.95
+capability = "An app's targets, settings, schemes and Info.plist properties can be reviewed and reproduced from one versioned text file."
+threat = "Edits in Xcode's project editor or a committed .xcodeproj drift from project.yml, produce unreviewable diffs, and are lost at the next generate."
+expectation = "Apps are built by agents and by people on more than one machine, and the generated project lists each source file."
+strategy = "Treat project.yml as the source of truth, gitignore and never edit the generated .xcodeproj, and run xcodegen generate after pulling, after editing project.yml, and after adding or removing source files."
+evidence = [{ type = "review", description = "The .xcodeproj is listed in .gitignore and absent from the index, and every build-setting change in the diff is in project.yml.", required = true }, { type = "gate", description = "The project gate runs xcodegen generate before xcodebuild.", required = true }]
+tradeoff = "Settings XcodeGen cannot express need a workaround in project.yml or an xcconfig file instead of a quick edit in Xcode."
+scope = { project = "guidelines", paths = ["plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#app-projects-xcodegen", summary = "Makes project.yml the source of truth, forbids editing the generated project, and requires regeneration before builds.", confidence = 1.0 }, { type = "field_observation", ref = "Stacey Vetzal, 2026-10-12", summary = "trellis-apple, parite-apple and notch-prompter each gitignore the generated .xcodeproj; trellis-apple's AGENTS.md says never edit it and to run xcodegen generate after changing project.yml.", confidence = 1.0 }]

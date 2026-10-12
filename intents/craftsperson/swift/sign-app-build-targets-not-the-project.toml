@@ -1,0 +1,17 @@
+id = "guidelines.intent.sign-app-build-targets-not-the-project"
+title = "Enable signing on each app build target, not the whole project"
+category = "delivery"
+tags = ["swift", "testing", "dependencies", "build-and-delivery", "builds", "configuration"]
+relations = [
+  { type = "specializes", target = "craftsperson/make-build-configuration-explicit" },
+]
+status = "hypothesized"
+confidence = 0.9
+capability = "Package and test targets build unsigned anywhere, and app targets sign automatically with the owner's team."
+threat = "Project-wide signing makes package targets demand a team, and a guessed or missing team ID or a changed sandbox setting breaks the build or the app's access at run time."
+expectation = "App projects mix SwiftPM package targets with signed app targets and are built by agents that do not know the owner's team."
+strategy = "Set CODE_SIGNING_ALLOWED NO and an empty DEVELOPMENT_TEAM at the project level, set CODE_SIGNING_ALLOWED YES, CODE_SIGN_STYLE Automatic and the owner's DEVELOPMENT_TEAM on each app target, take the team ID from the owner's other projects or ask, and keep the existing App Sandbox and hardened-runtime choices unless the owner changes them."
+evidence = [{ type = "review", description = "project.yml disables signing in base settings, enables Automatic signing with a known team on each app target, and the diff changes no sandbox or hardened-runtime setting without the owner's request.", required = true }]
+tradeoff = "Each new app target must repeat the signing block, and an unknown team ID stops the work until the owner supplies it."
+scope = { project = "guidelines", paths = ["plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#app-projects-xcodegen", summary = "Disables signing at the project level, enables Automatic signing per app target, and forbids guessing the team ID.", confidence = 1.0 }, { type = "field_observation", ref = "Stacey Vetzal, 2026-10-12", summary = "trellis-apple, parite-apple and notch-prompter all disable signing in base settings and enable Automatic signing with the same team on each app target.", confidence = 1.0 }]

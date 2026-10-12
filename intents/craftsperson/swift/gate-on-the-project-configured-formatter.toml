@@ -1,0 +1,17 @@
+id = "guidelines.intent.gate-on-the-project-configured-formatter"
+title = "Gate changes on the formatter the project configures"
+category = "quality"
+tags = ["swift", "formatting", "static-analysis", "automation", "consistency"]
+relations = [
+  { type = "specializes", target = "craftsperson/require-canonical-formatting" },
+]
+status = "hypothesized"
+confidence = 0.9
+capability = "Swift source keeps the format its project chose, checked by the same command locally and in the project gate."
+threat = "An agent imposes a formatter the project never adopted, fails on a tool that is not installed, or skips the formatter the project does require."
+expectation = "Swift projects differ: some gate on Apple's swift-format, some on SwiftFormat, and some configure no formatter at all."
+strategy = "Run the format gate from the project's gate file; otherwise run swift format lint --strict when .swift-format exists or swiftformat --lint when .swiftformat exists; when neither exists, add no format gate and no formatter configuration unless asked."
+evidence = [{ type = "gate", description = "The formatter named by the project's gate file or configuration file reports no violations for the change, and no formatter configuration was added without the user asking.", required = true }]
+tradeoff = "A project without formatter configuration gets no automated format check until someone decides to add one."
+scope = { project = "guidelines", paths = ["plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#quality-gates-mandatory", summary = "Runs the project's configured formatter and adds no format gate when none is configured.", confidence = 1.0 }, { type = "field_observation", ref = "Stacey Vetzal, 2026-10-12", summary = "mojentic-sw gates on swift format lint --strict through .hone-gates.json although it also carries a .swiftformat file; Grape configures .swift-format; trellis-apple, parite-apple and notch-prompter configure no formatter; SwiftFormat is not installed on the development Mac while swift format ships with the toolchain.", confidence = 1.0 }]

@@ -1,0 +1,17 @@
+id = "guidelines.intent.keep-the-functional-core-in-a-platform-free-kit"
+title = "Keep the app's functional core in a platform-free Kit package"
+category = "architecture"
+tags = ["swift", "testing", "dependencies", "build-and-delivery", "functional-core", "side-effects"]
+relations = [
+  { type = "specializes", target = "craftsperson/isolate-functional-core-from-effects" },
+]
+status = "hypothesized"
+confidence = 0.95
+capability = "An app's domain rules build and test with swift test alone, without a host app, a simulator, or device permissions."
+threat = "Domain logic that imports SwiftUI, AppKit, UIKit or AVFoundation can only be tested through the app, so it goes untested or the tests are slow and flaky."
+expectation = "App projects grow logic in views and models, and device frameworks are hard to drive from tests."
+strategy = "Put domain logic in a <Name>Kit SwiftPM library that imports Foundation and no UI or device framework, put views, app state and system-framework gateways in Apps/Shared, keep Apps/<platform> to the entry point, Info.plist and entitlements, and move any decision worth a test from the shell into the Kit."
+evidence = [{ type = "static_check", description = "No file under the Kit's Sources imports SwiftUI, AppKit, UIKit or AVFoundation.", required = true }, { type = "gate", description = "swift test runs the Kit's tests without building an app target.", required = true }]
+tradeoff = "Values cross the Kit boundary through mapping code, and some small view logic stays untested in the shell."
+scope = { project = "guidelines", paths = ["plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#app-projects-xcodegen", summary = "Defines the Kit as a Foundation-only functional core and Apps/ as a thin shell holding views and gateways.", confidence = 1.0 }, { type = "field_observation", ref = "Stacey Vetzal, 2026-10-12", summary = "TrellisKit, PariteKit and NotchPrompterKit import only Foundation; notch-prompter keeps its file-system gateway in Apps/Shared/Gateways; trellis-apple's AGENTS.md forbids SwiftUI in the Kit.", confidence = 1.0 }]

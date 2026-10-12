@@ -1,0 +1,17 @@
+id = "guidelines.intent.build-every-app-scheme-in-the-quality-gate"
+title = "Build every app scheme as part of the quality gate"
+category = "quality"
+tags = ["swift", "testing", "build-and-delivery", "quality-gates", "project-conventions", "completion"]
+relations = [
+  { type = "specializes", target = "craftsperson/honor-the-project-quality-gate" },
+]
+status = "hypothesized"
+confidence = 0.95
+capability = "A change to an app project is known to compile and link for every platform it ships on before it is called done."
+threat = "swift test passes on the Kit while the app shell, Info.plist, entitlements or signing settings are broken for one or more schemes."
+expectation = "App projects have more than one scheme, and the shell code is not covered by swift test."
+strategy = "After swift test, run xcodegen generate and then xcodebuild build for every app scheme, with -destination 'platform=macOS' for macOS and 'generic/platform=iOS Simulator' for iOS."
+evidence = [{ type = "gate", description = "The project gate runs xcodebuild build for each app scheme defined in project.yml, and each one succeeds for the candidate change.", required = true }]
+tradeoff = "xcodebuild is much slower than swift test and needs Xcode and the platform SDKs on the machine that runs the gate."
+scope = { project = "guidelines", paths = ["plugins/swift-ecosystem/agents/swift-craftsperson.md"] }
+sources = [{ type = "document", ref = "plugins/swift-ecosystem/agents/swift-craftsperson.md#app-projects-xcodegen", summary = "Requires xcodebuild of every app scheme alongside swift test.", confidence = 1.0 }, { type = "field_observation", ref = "Stacey Vetzal, 2026-10-12", summary = "notch-prompter's .hone-gates.json builds NotchPrompterMac with xcodegen generate and xcodebuild; parite-apple's AGENTS.md requires both app schemes to build before committing; trellis-apple's AGENTS.md runs swift test, xcodegen generate and xcodebuild before committing.", confidence = 1.0 }]
