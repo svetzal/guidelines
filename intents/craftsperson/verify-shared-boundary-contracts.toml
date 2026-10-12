@@ -1,0 +1,20 @@
+id = "guidelines.intent.verify-shared-boundary-contracts"
+title = "Verify shared boundary contracts on both sides"
+category = "testing"
+tags = ["contracts", "compatibility", "boundaries", "cross-repository"]
+relations = [
+  { type = "related-to", target = "craftsperson/document-public-contracts" },
+]
+status = "hypothesized"
+confidence = 0.98
+capability = "Provider and consumer can change independently while preserving their declared compatibility."
+threat = "Independent mocks and local tests pass while the two sides assume different interface behavior."
+expectation = "Application boundaries will evolve through separate repositories and release versions."
+strategy = "Verify both sides against the same versioned executable contract set, covering consumer needs and supported versions in required gates."
+evidence = [
+  { type = "review", description = "Changed boundaries identify the contract version or hash, provider and consumer commits, and passing verification results for both sides.", required = true },
+  { type = "review", description = "Contracts cover relevant errors, optional fields and supported versions; test doubles derive from the verified contracts.", required = true },
+]
+tradeoff = "Contract maintenance takes work and establishes compatibility only for the declared cases; integration checks still test wiring and user journeys."
+scope = { project = "guidelines", paths = ["plugins/clojure-ecosystem/agents/clojure-craftsperson.md", "plugins/cpp-qt-ecosystem/agents/cpp-qt-craftsperson.md", "plugins/dotnet-ecosystem/agents/csharp-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-craftsperson.md", "plugins/elixir-ecosystem/agents/elixir-phoenix-craftsperson.md", "plugins/go-ecosystem/agents/go-craftsperson.md", "plugins/jvm-ecosystem/agents/java-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-android-craftsperson.md", "plugins/jvm-ecosystem/agents/kotlin-craftsperson.md", "plugins/python-ecosystem/agents/python-craftsperson.md", "plugins/python-ecosystem/agents/uv-python-craftsperson.md", "plugins/ruby-ecosystem/agents/ruby-craftsperson.md", "plugins/rust-ecosystem/agents/rust-craftsperson.md", "plugins/swift-ecosystem/agents/swift-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-bun-cli-craftsperson.md", "plugins/typescript-ecosystem/agents/typescript-craftsperson.md"] }
+sources = [{ type = "document", ref = "conventions/contract-testing.md", summary = "Shared contract verification rule, repeated in each portable craftsperson agent.", confidence = 1.0 }]

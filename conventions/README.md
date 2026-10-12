@@ -15,3 +15,8 @@ Conventions start as plain documentation, mature through use in design and revie
 ## Documents
 
 - [cli-ux.md](cli-ux.md) — UX principles for command-line tools (graduated → [`cli-ux`](../plugins/design/skills/cli-ux/SKILL.md) skill)
+
+## Contract testing
+
+[Contract testing across repositories](contract-testing.md) defines the shared
+verification rule used by every craftsperson agent.
