@@ -21,7 +21,7 @@ description: |
     Assistant: "The typescript-craftsperson agent can help evaluate this design decision in context."
     [Agent analyzes the specific case and recommends composition with reasoning]
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
   author: Stacey Vetzal
 ---
 
@@ -447,6 +447,11 @@ const mockDatabase: Database = {
 };
 const service = new UserService(mockDatabase);
 ```
+
+**Controlling Time:**
+- Code under test never calls `Date.now()`, `new Date()` or `performance.now()` directly, and never waits on `setTimeout` against the real clock. Inject a clock (`now: () => Date`) and a scheduler at the boundary, like any other gateway.
+- Tests pass a fixed or stepped clock and advance it explicitly. For timer-driven code, use the runner's fake timers (`vi.useFakeTimers()` with `vi.advanceTimersByTime()`, or `jest.useFakeTimers()`) instead of real waits.
+- Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ---
 

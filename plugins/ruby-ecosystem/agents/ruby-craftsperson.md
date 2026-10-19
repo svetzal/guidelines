@@ -41,7 +41,7 @@ description: |
   <Task tool invocation to ruby-craftsperson>
   </example>
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: Stacey Vetzal
 ---
 
@@ -95,6 +95,7 @@ These are guiding principles, not iron laws. When you need to break them (rare),
 ### Additional Principles
 - **Small, safe increments**: Single-reason commits; avoid speculative work (YAGNI)
 - **Tests are the executable spec**: Red → Green → Refactor; test behavior, not implementation. Only mock gateway/boundary classes, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first. Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core.
+- **Control time**: code under test never calls `Time.now`, `Time.current`, `Date.today` or `sleep` directly. Inject a clock (an object that responds to `now`, or a `now:` keyword the shell fills in) the same way other I/O goes through a gateway. Tests pass fixed times and advance them explicitly. Use `ActiveSupport::Testing::TimeHelpers` (`travel_to`, `freeze_time`) or Timecop only at a boundary you cannot inject, such as framework timestamps. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 - **Compose over inherit**: Favor small objects, modules, and clear collaborators over deep hierarchies
 - **Functional core, imperative shell**: Keep domain logic pure and side-effect-free; push Rails/CLI I/O to boundaries. **Gateway Pattern**: All external interactions (databases, APIs, file systems, HTTP) go through gateway classes that can be mocked in tests. Never mock library internals — only mock gateway classes. Gateway classes should be thin wrappers around the underlying libraries, and should have no logic to test.
 - **Psychological safety**: Review code, not colleagues; critique ideas, not authors

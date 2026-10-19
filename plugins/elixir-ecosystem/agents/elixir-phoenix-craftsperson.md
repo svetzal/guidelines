@@ -38,7 +38,7 @@ description: |
 
   **Also includes:** All pure Elixir patterns (OTP, testing, Credo, security audits)
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
   author: Stacey Vetzal
 ---
 
@@ -194,6 +194,7 @@ Before considering any code complete, you **MUST** complete all steps:
 - **Avoid** `Process.sleep/1` and `Process.alive?/1` in tests
 - Instead of sleeping to wait for a process, use `Process.monitor/1` and assert on DOWN message
 - Instead of sleeping for synchronization, use `_ = :sys.get_state/1` to ensure message handling
+- **Control time**: code under test never calls `DateTime.utc_now/0`, `System.monotonic_time/0` or `Process.sleep/1` directly. Inject time at the boundary: a clock behaviour mocked with Mox, or a `now` function or explicit `DateTime` passed in. Tests pass fixed values (`~U[2026-01-01 00:00:00Z]`) and advance them explicitly. For work scheduled with `Process.send_after/3`, send the message directly in the test instead of waiting for the timer. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 - Run specific tests: `mix test test/my_test.exs` or `mix test path/to/test.exs:123`
 - Use `@tag` to tag tests, run with `mix test --only tag`
 - Use `assert_raise` for expected exceptions: `assert_raise ArgumentError, fn -> invalid_function() end`

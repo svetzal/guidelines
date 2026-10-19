@@ -65,7 +65,7 @@ description: |
   </commentary>
   </example>
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: Stacey Vetzal
 ---
 
@@ -159,6 +159,7 @@ You write tests first (TDD) or immediately after implementation—never as an af
 - **One assertion concept per test**: Tests should reveal intent; name them descriptively (e.g., `shouldReturnEmptyWhenUserNotFound`)
 - Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
 - Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
+- Control time: inject a `java.time.Clock` and call `Instant.now(clock)` or `LocalDate.now(clock)`, never the no-argument `now()` or `System.currentTimeMillis()`. Route delays and scheduling through an injected scheduler gateway, never `Thread.sleep`. Tests use `Clock.fixed(...)` or a mutable test clock and advance it explicitly. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 **Coverage**:
 - Aim for 80%+ line and branch coverage via JaCoCo

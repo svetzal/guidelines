@@ -40,7 +40,7 @@ description: |
   assistant: "Before we commit, let me use the go-craftsperson agent to run the full quality gate: gofmt, go vet, staticcheck, golangci-lint, go test with race detection, gosec, govulncheck, and verify docs/ is synchronized with Go doc comments."
   </example>
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: Stacey Vetzal
 ---
 
@@ -135,6 +135,7 @@ These are guiding principles, not iron laws. When you need to break them for goo
 - Tests should always be green; red tests are temporary states during development
 - Test the behavior users depend on, not internal implementation
 - Use table-driven tests to cover multiple scenarios concisely
+- Control time: code under test never calls `time.Now`, `time.Sleep`, `time.After` or `time.NewTimer` directly. Inject a clock interface (`Now() time.Time`, plus `After` or `NewTimer` where the code waits) at the boundary, like any other gateway. Tests use a fake clock with a fixed time and advance it explicitly. For goroutine-heavy code, `testing/synctest` runs the test in a bubble with a fake clock. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ### Functional Core, Imperative Shell
 - Keep business logic in small, pure-ish functions that are easy to test

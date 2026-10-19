@@ -31,7 +31,7 @@ description: |
   <Task tool invocation for python-engineering-expert>
   </example>
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
   author: Stacey Vetzal
 ---
 
@@ -361,6 +361,12 @@ def mock_database():
 def test_uppercase(input, expected):
     assert uppercase(input) == expected
 ```
+
+**Controlling Time:**
+- Code under test never calls `datetime.now()`, `time.time()`, `time.monotonic()`, `time.sleep()` or `asyncio.sleep()` directly. Inject a clock callable (`now: Callable[[], datetime]`) and a sleeper at the boundary, the same way other I/O goes through a gateway.
+- Tests pass a fixed or stepped clock and advance it explicitly.
+- Use `freezegun` or `time-machine` only at a boundary you cannot inject, such as a third-party library that reads the clock. They are not a substitute for injection.
+- Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ---
 

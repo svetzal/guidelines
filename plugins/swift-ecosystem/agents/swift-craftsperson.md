@@ -52,7 +52,7 @@ description: |
   </commentary>
   </example>
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   author: Stacey Vetzal
 ---
 
@@ -176,6 +176,7 @@ Xcode project from that file, on top of a SwiftPM package.
 - **Red-Green-Refactor** - Always write failing test first, make it pass, then refactor
 - Only mock gateway/boundary protocols, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
 - Do not test gateway (I/O isolating) structs unless they have custom logic, and if they do favour moving that logic into the core
+- **Control time** - Code under test never reads `Date()`, `Date.now` or `ContinuousClock.now` directly, and never calls `Task.sleep` or `Thread.sleep` against the real clock. Inject a `Clock` (`any Clock<Duration>`) and a `now: () -> Date` provider at the boundary, and sleep through the injected clock. Tests use swift-clocks' `TestClock` and call `advance(by:)` explicitly, or `ImmediateClock` when the delay itself does not matter. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ### Quality Gates (MANDATORY)
 

@@ -31,7 +31,7 @@ description: |
   <commentary>The agent will use lein-nvd for vulnerability scanning, suggest version updates, and potentially recommend gradual migration paths to deps.edn if appropriate.</commentary>
   </example>
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: Stacey Vetzal
 ---
 
@@ -157,6 +157,7 @@ When reviewing Clojure code, systematically check:
 - Tests cover all public functions?
 - Edge cases and error conditions tested?
 - Property-based tests for complex logic?
+- Time passed in, with no direct clock reads or sleeps in tested code?
 - Tests are readable and well-named?
 
 ### 6. Performance Considerations
@@ -286,6 +287,9 @@ When suggesting improvements:
     (let [result (sut/add-timestamp user ts)]
       (every? #(contains? result %) (keys user)))))
 ```
+
+### Controlling Time
+Code under test never calls `(System/currentTimeMillis)`, `(java.time.Instant/now)` or `(Thread/sleep)` directly. Pass time in: a timestamp argument for pure functions, or a clock fn such as `(fn [] (java.time.Instant/now))` injected at the shell, the same way other I/O goes through a gateway. Tests pass a fixed value, or a clock fn that steps on each call, and advance it explicitly. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ## Documentation Standards
 

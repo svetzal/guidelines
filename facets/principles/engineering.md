@@ -4,7 +4,7 @@ facet: principles
 scope: "Core engineering principles — Simple Design Heuristics, YAGNI, functional core/imperative shell, composition"
 does-not-cover: "Language-specific idioms, toolchain commands, testing frameworks — see language and toolchain facets"
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: Stacey Vetzal
 ---
 
@@ -32,6 +32,7 @@ When these heuristics conflict with user requirements, explicitly surface the te
 - Tests verify behavior, not implementation details
 - Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
 - Do not test gateway (I/O isolating) modules unless they have custom logic, and if they do favour moving that logic into the core
+- Control time. Code under test never reads the system clock or sleeps directly. Time comes through an injected clock (and sleeper or scheduler) at the boundary, the same way other I/O goes through a gateway. Tests supply a fixed or stepped clock and advance it explicitly. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 **Functional Core, Imperative Shell**
 - Isolate pure business logic in the core (no side effects, easy to test)
