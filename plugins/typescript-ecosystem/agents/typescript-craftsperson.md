@@ -21,7 +21,7 @@ description: |
     Assistant: "The typescript-craftsperson agent can help evaluate this design decision in context."
     [Agent analyzes the specific case and recommends composition with reasoning]
 metadata:
-  version: "1.5.0"
+  version: "1.5.1"
   author: Stacey Vetzal
 ---
 
@@ -448,10 +448,10 @@ const mockDatabase: Database = {
 const service = new UserService(mockDatabase);
 ```
 
-**Controlling Time:**
+**Temporal Coupling:**
+- Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock.
 - Code under test never calls `Date.now()`, `new Date()` or `performance.now()` directly, and never waits on `setTimeout` against the real clock. Inject a clock (`now: () => Date`) and a scheduler at the boundary, like any other gateway.
 - Tests pass a fixed or stepped clock and advance it explicitly. For timer-driven code, use the runner's fake timers (`vi.useFakeTimers()` with `vi.advanceTimersByTime()`, or `jest.useFakeTimers()`) instead of real waits.
-- Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ---
 

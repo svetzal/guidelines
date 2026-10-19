@@ -31,7 +31,7 @@ description: |
   <commentary>The agent will use lein-nvd for vulnerability scanning, suggest version updates, and potentially recommend gradual migration paths to deps.edn if appropriate.</commentary>
   </example>
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: Stacey Vetzal
 ---
 
@@ -157,7 +157,7 @@ When reviewing Clojure code, systematically check:
 - Tests cover all public functions?
 - Edge cases and error conditions tested?
 - Property-based tests for complex logic?
-- Time passed in, with no direct clock reads or sleeps in tested code?
+- Tests free of temporal coupling (time passed in, no clock reads or sleeps)?
 - Tests are readable and well-named?
 
 ### 6. Performance Considerations
@@ -288,8 +288,8 @@ When suggesting improvements:
       (every? #(contains? result %) (keys user)))))
 ```
 
-### Controlling Time
-Code under test never calls `(System/currentTimeMillis)`, `(java.time.Instant/now)` or `(Thread/sleep)` directly. Pass time in: a timestamp argument for pure functions, or a clock fn such as `(fn [] (java.time.Instant/now))` injected at the shell, the same way other I/O goes through a gateway. Tests pass a fixed value, or a clock fn that steps on each call, and advance it explicitly. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
+### Temporal Coupling
+Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock. Code under test never calls `(System/currentTimeMillis)`, `(java.time.Instant/now)` or `(Thread/sleep)` directly. Pass time in: a timestamp argument for pure functions, or a clock fn such as `(fn [] (java.time.Instant/now))` injected at the shell, the same way other I/O goes through a gateway. Tests pass a fixed value, or a clock fn that steps on each call, and advance it explicitly.
 
 ## Documentation Standards
 

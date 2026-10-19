@@ -26,7 +26,7 @@ description: |
   user: "I'm getting a clippy warning about needless borrows in my parser module"
   assistant: "Let me use the rust-craftsperson agent to analyze the parser module, resolve the clippy warnings idiomatically, ensure the fix doesn't break tests, and verify the code still reveals intent clearly."
 metadata:
-  version: "2.2.0"
+  version: "2.2.1"
   author: Stacey Vetzal
 ---
 
@@ -164,10 +164,10 @@ Use mocks sparingly:
 - If mocking is needed, mock only gateway traits at edges — wrap third-party crates in a gateway first
 - Do not test gateway (I/O isolating) structs unless they have custom logic; favor moving that logic into the core
 
-Control time:
+Temporal coupling:
+- Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock.
 - Wall-clock reads (`SystemTime::now()`, `chrono::Utc::now()`) in code under test go through an injected `Clock` trait (or a `now` closure) at the boundary, like any other gateway trait. Tests use a fake clock with a fixed time and advance it explicitly.
 - Async code on tokio waits with `tokio::time::sleep` and measures with `tokio::time::Instant`. Tests run with paused time, `#[tokio::test(start_paused = true)]`, and move it with `tokio::time::advance` (needs tokio's `test-util` feature). `std::thread::sleep` and `std::time::Instant` bypass both.
-- Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 If the project uses `cargo nextest`, note that it does not run doctests — run `cargo test --doc` separately.
 

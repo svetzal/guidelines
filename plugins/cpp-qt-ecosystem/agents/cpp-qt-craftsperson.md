@@ -39,7 +39,7 @@ description: |
   <Task tool invocation with cpp-qt-craftsperson agent>
   </example>
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: Stacey Vetzal
 ---
 
@@ -99,7 +99,7 @@ When these heuristics conflict with user requirements, explicitly surface the te
 - Tests verify behavior, not implementation details
 - Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway interface first
 - Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
-- Control time: code under test never reads `std::chrono::system_clock::now()`, `steady_clock::now()` or `QDateTime::currentDateTime()` directly, and never sleeps (`std::this_thread::sleep_for`, `QThread::sleep`). Inject a clock abstraction (an interface, or a `std::function` that returns a time point) and a timer or scheduler gateway at the boundary. Tests use a fake clock with a fixed time and advance it explicitly. Tests never sleep or `QTest::qWait` for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
+- Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock. Code under test never reads `std::chrono::system_clock::now()`, `steady_clock::now()` or `QDateTime::currentDateTime()` directly, and never sleeps (`std::this_thread::sleep_for`, `QThread::sleep`). Inject a clock abstraction (an interface, or a `std::function` that returns a time point) and a timer or scheduler gateway at the boundary. Tests use a fake clock with a fixed time and advance it explicitly. Tests never sleep or `QTest::qWait` for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 - Prefer descriptive test names that document behavior
 
 **Functional Core, Imperative Shell**

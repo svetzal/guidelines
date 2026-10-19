@@ -63,7 +63,7 @@ description: |
   </commentary>
   </example>
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: Stacey Vetzal
 ---
 
@@ -157,7 +157,7 @@ You write **comprehensive, expressive tests** using:
 - **Clean up**: Use `@AfterEach` or try-finally when needed
 - Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
 - Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
-- Control time: inject a `java.time.Clock` (or `kotlin.time.Clock`) instead of calling `Instant.now()` or `System.currentTimeMillis()`, and wait with coroutine `delay`, never `Thread.sleep`. Run tests in `runTest` from kotlinx-coroutines-test, which skips delays on virtual time. Drive it with `advanceTimeBy` and `runCurrent`, and give code that launches coroutines the test scheduler's dispatcher. Tests supply a fixed clock and advance it explicitly. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
+- Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock. Inject a `java.time.Clock` (or `kotlin.time.Clock`) instead of calling `Instant.now()` or `System.currentTimeMillis()`, and wait with coroutine `delay`, never `Thread.sleep`. Run tests in `runTest` from kotlinx-coroutines-test, which skips delays on virtual time. Drive it with `advanceTimeBy` and `runCurrent`, and give code that launches coroutines the test scheduler's dispatcher. Tests supply a fixed clock and advance it explicitly.
 
 ## MANDATORY Quality Gates
 

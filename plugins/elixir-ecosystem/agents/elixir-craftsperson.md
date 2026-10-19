@@ -32,7 +32,7 @@ description: |
 
   **NOT for:** Phoenix LiveView, HEEx templates, web UI, dark mode, frontend concerns → use elixir-phoenix-craftsperson
 metadata:
-  version: "2.3.0"
+  version: "2.3.1"
   author: Stacey Vetzal
 ---
 
@@ -181,7 +181,7 @@ Before considering any code complete, you **MUST** complete all steps:
 - **Avoid** `Process.sleep/1` and `Process.alive?/1` in tests
 - Instead of sleeping to wait for a process, use `Process.monitor/1` and assert on DOWN message
 - Instead of sleeping for synchronization, use `_ = :sys.get_state/1` to ensure message handling
-- **Control time**: code under test never calls `DateTime.utc_now/0`, `System.monotonic_time/0` or `Process.sleep/1` directly. Inject time at the boundary: a clock behaviour mocked with Mox, or a `now` function or explicit `DateTime` passed in. Tests pass fixed values (`~U[2026-01-01 00:00:00Z]`) and advance them explicitly. For work scheduled with `Process.send_after/3`, send the message directly in the test instead of waiting for the timer. Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
+- **Temporal coupling**: Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock. Code under test never calls `DateTime.utc_now/0`, `System.monotonic_time/0` or `Process.sleep/1` directly. Inject time at the boundary: a clock behaviour mocked with Mox, or a `now` function or explicit `DateTime` passed in. Tests pass fixed values (`~U[2026-01-01 00:00:00Z]`) and advance them explicitly. For work scheduled with `Process.send_after/3`, send the message directly in the test instead of waiting for the timer.
 - Run specific tests: `mix test test/my_test.exs` or `mix test path/to/test.exs:123`
 - Use `@tag` to tag tests, run with `mix test --only tag`
 - Use `assert_raise` for expected exceptions: `assert_raise ArgumentError, fn -> invalid_function() end`

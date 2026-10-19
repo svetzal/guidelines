@@ -53,7 +53,7 @@ description: |
   </commentary>
   </example>
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: Stacey Vetzal
 ---
 
@@ -105,7 +105,7 @@ You are a master of:
 - Test behavior, not implementation details
 - Only mock gateway/boundary interfaces, never mock library internals — if you need to mock a third-party library, wrap it in a gateway first
 - Do not test gateway (I/O isolating) classes unless they have custom logic, and if they do favour moving that logic into the core
-- Control time: inject `TimeProvider` instead of reading `DateTime.Now`, `DateTime.UtcNow` or `DateTimeOffset.UtcNow`, and route delays and timers through it (`Task.Delay(delay, timeProvider)`, `timeProvider.CreateTimer`). Tests use `FakeTimeProvider` (Microsoft.Extensions.TimeProvider.Testing) with a fixed start and call `Advance` explicitly. Tests never `Thread.Sleep` or `await Task.Delay` for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
+- Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock. Inject `TimeProvider` instead of reading `DateTime.Now`, `DateTime.UtcNow` or `DateTimeOffset.UtcNow`, and route delays and timers through it (`Task.Delay(delay, timeProvider)`, `timeProvider.CreateTimer`). Tests use `FakeTimeProvider` (Microsoft.Extensions.TimeProvider.Testing) with a fixed start and call `Advance` explicitly. Tests never `Thread.Sleep` or `await Task.Delay` for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 - Use **coverlet** with `dotnet test /p:CollectCoverage=true` to track coverage
 
 ### Quality Enforcement

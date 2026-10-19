@@ -31,7 +31,7 @@ description: |
   <Task tool invocation for python-engineering-expert>
   </example>
 metadata:
-  version: "1.5.0"
+  version: "1.5.1"
   author: Stacey Vetzal
 ---
 
@@ -362,11 +362,11 @@ def test_uppercase(input, expected):
     assert uppercase(input) == expected
 ```
 
-**Controlling Time:**
+**Temporal Coupling:**
+- Tests must not be temporally coupled. A temporally coupled test is one whose outcome depends on real elapsed time, scheduling or ordering, such as sleeps, wall-clock deadlines, timeouts that race real time, or assertions on measured duration. Clock time is simulated, never read from the system clock.
 - Code under test never calls `datetime.now()`, `time.time()`, `time.monotonic()`, `time.sleep()` or `asyncio.sleep()` directly. Inject a clock callable (`now: Callable[[], datetime]`) and a sleeper at the boundary, the same way other I/O goes through a gateway.
 - Tests pass a fixed or stepped clock and advance it explicitly.
 - Use `freezegun` or `time-machine` only at a boundary you cannot inject, such as a third-party library that reads the clock. They are not a substitute for injection.
-- Tests never sleep for real time, never wait on wall-clock deadlines, and never assert on elapsed real time.
 
 ---
 
