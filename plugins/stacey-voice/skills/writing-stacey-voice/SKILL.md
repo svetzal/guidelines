@@ -7,7 +7,7 @@ description: >
   or when any content needs to sound like Stacey wrote it. If you're writing prose that will be
   published under Stacey's name, this skill applies.
 metadata:
-  version: "1.4.1"
+  version: "1.5.2"
   author: Stacey Vetzal
 ---
 
@@ -55,6 +55,12 @@ Stacey does not stumble into her own projects. Drafts drift toward casting her a
 observer of them — discovering what she designed, preferring what she's already doing,
 beginning what she's done for years. Each drift is small and reads as modesty. Together they
 strip out her agency and make a considered body of work look like a run of good fortune.
+
+Preserving agency is an accuracy constraint, not a requirement to announce
+intentionality. Describe what Stacey actually chose when the choice explains a
+result, constraint or tradeoff. Do not add a sentence merely asserting that she,
+a person or people made a decision. Do not replace invented surprise with
+repeated claims of deliberate design. See "Generic agency claims" below.
 
 Four failure modes, all correcting the same way:
 
@@ -117,7 +123,7 @@ own writing is almost bare of it; a model reaching for her register produces it 
 reflex, because ornament is the cheapest way to sound conversational, punchy,
 first-person, and warm at the same time.
 
-Six kinds. Four have their own section below; the stumble lives under Authorial Stance because it is a stance failure as much as a decoration, and the riddle needs no section because the fix is always the same: say the thing's name. If the description carries a fact the name doesn't ("an agent, with nothing but what I wrote down"), keep the fact and still use the name:
+Eight kinds. Several have their own section below; the stumble lives under Authorial Stance because it is a stance failure as much as a decoration, and the riddle needs no section because the fix is always the same: say the thing's name. If the description carries a fact the name doesn't ("an agent, with nothing but what I wrote down"), keep the fact and still use the name:
 
 | Kind | What it does | Example |
 | --- | --- | --- |
@@ -127,13 +133,19 @@ Six kinds. Four have their own section below; the stumble lives under Authorial 
 | The quip | Tacks a sardonic tail onto a finished sentence | "and we just paid to find out how much that's worth." |
 | The stumble | Has her discover what she already teaches | "I thought I knew them." (see Authorial Stance, failure mode 4) |
 | The riddle | Names a thing by a coy description instead of its name | "checked by something that has never met me" for "checked by an agent" |
+| Generic agency claims | Announces that people made choices without explaining a particular choice | "Each change is a decision a person made." |
+| Conversational compression | Performs an easy explanation while leaving the reader to reconstruct its relationships | "a context number, which can be negative, times how wrong the model was, which usually is" |
 
 The sentimental closing tag in the Closing section is the oldest of them.
 
 **One test for all of them.** Strip the paragraph to its claims, its citations, and
-its concrete details. Read what is left. Ornament is whatever you removed. If the
-stripped paragraph ends cleanly, it was finished before the ornament arrived, and
-the ornament was the writer applauding.
+its concrete details. Then ask what each retained sentence adds. Truth and
+agreement with the post's theme are not sufficient: a generic assertion can
+still add nothing. If a sentence would fit almost any project after swapping
+the nouns, check whether it explains a specific relationship, consequence or
+responsibility. A conclusion can generalize the evidence; repeating the theme
+is not itself a conclusion. If the paragraph ends cleanly without a sentence,
+and loses no necessary information, delete that sentence.
 
 Ornament is not the same as voice. A rhetorical question that opens a line of
 argument, a parenthetical that admits something, a short sentence that turns the
@@ -274,6 +286,90 @@ paragraph above becomes:
 
 Five sentences, every one of them a claim, and the ending is the last fact.
 
+### Generic agency claims — explain the choice only when it adds information
+
+A sentence can be true and on-theme yet still be ornament. Generic reminders
+that a person made a decision pass a weak factuality check without helping the
+reader understand anything. They often arise when an instruction to preserve
+authorial agency is mistaken for a requirement to repeat a theme.
+
+> Each change is a decision a person made.
+> Everything traces back to a person who decided something.
+> Those choices determine what comes out.
+
+These assertions could accompany almost any engineered artifact. They do not
+identify a reason, constraint, tradeoff, consequence or allocation of
+responsibility. Repeating them as a conclusion does not add one.
+
+**The specific-choice test:** What does this sentence tell the reader about the
+particular choice? Keep it when it names the choice and supplies useful
+information about why it was made, what it cost, what changed, or who must act
+or answer for the result. A simple action can also carry necessary sequence or
+provenance; it does not need a justification attached to every verb.
+
+- "I chose a learning rate of one sixteenth because division by sixteen uses
+  shifts" explains an implementation constraint.
+- "Grouping the examples by maker made the last maker dominate the output"
+  explains a measured consequence without announcing anyone's agency.
+- "I deliberately chose the training data" adds nothing when the text has
+  already named the corpus and its purpose. Delete it.
+
+**Delete before paraphrasing.** Do not repair a generic agency claim by swapping
+in "intentional", "deliberate", "considered" or "human". If the surrounding
+example already demonstrates the choice, the sentence is finished without the
+reminder. Name an author only when authorship matters; explain a consequence
+without narrating the act of choosing when that is sufficient.
+
+**Check the surrounding sources.** A stock conclusion repeated in outlines,
+notes, examples and presenter scripts can become an apparent house style.
+When this failure recurs, remove its redundant instances from the materials
+used to draft future prose, not just from the current paragraph. Keep actual
+constraints, evidence and responsibility distinctions; remove the generic
+moral attached to them. Never invent a motive to make a choice sound specific.
+
+### Conversational compression — make the relationship explicit
+
+Technical explanations drift toward shorthand that sounds conversational but
+requires the reader to recover omitted quantities, resolve backward references,
+or hold an unfinished relationship across interruptions. The apparent ease is
+ornament; the missing precision makes the reader do the explaining.
+
+> Every weight's change is that, times a rate, times what the weight contributed.
+> A context number, which can be negative, times how wrong the model was, which usually is.
+
+The first leaves the operands unnamed. The second interrupts the multiplication
+with qualifications and makes the reader retrieve the omitted word "negative".
+"How wrong" also suggests a magnitude, obscuring the signed error actually used.
+
+Unlike a decorative closing sentence, these passages contain essential
+information. Repair them rather than simply deleting them:
+
+- Name quantities before combining them. Define a learning rate, prediction
+  error and context value, then state their relationship.
+- Keep operands and operations together. Put qualifications before or after the
+  complete relationship, rather than between its parts.
+- Repeat a technical noun when a pronoun could have more than one referent.
+  Avoid making "that", "it", "the other one" or "which usually is" carry a
+  quantity's identity or an omitted property.
+- Establish each relationship before adding another: the combinations of five
+  moves and three outcomes first, the counts stored for each combination next.
+- Keep names stable. Do not silently switch "error" from prediction error to
+  arithmetic overflow or from a signed difference to its magnitude.
+
+**The reconstruction test:** Can a reader identify every quantity and follow the
+operation in one forward reading? If they must look backward, supply a missing
+word, or decide which quantity "it" means, restore the explicit names. This is
+not a ban on pronouns, short sentences or asides; repair the places where they
+obscure the relationship.
+
+Plain language explains technical terms. It does not replace them with vague
+phrases. Preserve the mechanism when simplifying its explanation.
+
+Use mathematical notation for concrete numerical values and calculations:
+"-6,344", not "minus 6,344"; "683 - (-397) = 1,080", not "subtract minus 397".
+Use words such as "negative" to explain a property, not to spell out the sign
+of each numerical value. Keep prose explanations around the calculation.
+
 ## Borrowed Witness — Her Eyes Are Not Yours
 
 Distinct from ornament, and more damaging, is a true (or unverified) fact, found by the drafting
@@ -389,4 +485,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ## Post-Draft Reflection
 
-After writing, scrub for ornament: strip every paragraph to its claims, citations, and concrete details, and cut what you removed. The four kinds under "Ornament" each have a quicker test: the deletion test for narrated salience, the proposition test for echoes, and the strip test for alliances and quips. Then run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
+After writing, scrub for ornament: strip every paragraph to its claims, citations, and concrete details, and cut what you removed. Use the deletion test for narrated salience, the proposition test for echoes, and the strip test for alliances and quips. Use the specific-choice test for generic agency claims and delete redundant reminders before paraphrasing them. For conversational compression, use the reconstruction test and restore explicit relationships rather than deleting essential information. Then run the provenance test from "Borrowed Witness" on every first-person sentence of experience and rewrite or cut what fails it. Then include a short hidden note explaining how the draft matches Stacey's voice in tone, structure, and values. Remove this note before publishing — it's a self-check, not part of the output.
