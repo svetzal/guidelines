@@ -2,3 +2,6 @@ _site/
 checks/rustfacts/target/
 checks/fixtures/**/target/
 __pycache__/
+
+# Claude Code local settings can hold approved commands verbatim, secrets included
+**/.claude/settings.local.json
